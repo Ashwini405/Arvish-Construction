@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export default function News() {
@@ -15,7 +14,6 @@ export default function News() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      <Header />
       <div className="max-w-6xl mx-auto px-6 py-24">
         <div className="text-center mb-16">
           <span className="text-xs font-bold text-[#D4A13A] uppercase tracking-widest">Latest Updates</span>

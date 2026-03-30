@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export default function Blog() {
@@ -13,7 +12,6 @@ export default function Blog() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      <Header />
       <div className="max-w-6xl mx-auto px-6 py-24">
         <h1 className="text-4xl font-bold text-[#051614] mb-2">Our Blog</h1>
         <p className="text-gray-500 mb-12">Insights, news, and stories from Prestige Group</p>

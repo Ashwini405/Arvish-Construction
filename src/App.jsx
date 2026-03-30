@@ -7,6 +7,26 @@ import Blog from "./pages/Blog";
 import AboutUs from "./pages/AboutUs";
 import Services from "./pages/Services";
 import OurProjects from "./pages/OurProjects";
+import OurStoryAbout from "./pages/OurStoryAbout";
+import OurStoryManagement from "./pages/OurStoryManagement";
+import OurStorySustainability from "./pages/OurStorySustainability";
+import OurStoryDesign from "./pages/OurStoryDesign";
+import PreConstruction from "./pages/PreConstruction";
+import Construction from "./pages/Construction";
+import PostConstruction from "./pages/PostConstruction";
+import SmartIntegration from "./pages/SmartIntegration";
+import MaintenanceSupport from "./pages/MaintenanceSupport";
+import OurStory from "./pages/OurStory";
+import DiyasExplorations from "./pages/DiyasExplorations";
+import Investors from "./pages/Investors";
+import MediaCenter from "./pages/MediaCenter";
+import NriCorner from "./pages/NriCorner";
+import GodrejAmbassador from "./pages/GodrejAmbassador";
+import Enquire from "./pages/Enquire";
+import ScheduleSiteVisit from "./pages/ScheduleSiteVisit";
+import WorkWithUs from "./pages/WorkWithUs";
+import ReachUs from "./pages/ReachUs";
+
 import GroupCompanies from "./pages/GroupCompanies";
 import Careers from "./pages/Careers";
 import News from "./pages/News";
@@ -43,7 +63,26 @@ function AppRoutes() {
       <Route path="/blog" element={<Blog />} />
       <Route path="/about" element={<AboutUs />} />
       <Route path="/services" element={<Services />} />
+      <Route path="/services/pre-construction" element={<PreConstruction />} />
+      <Route path="/services/construction" element={<Construction />} />
+      <Route path="/services/post-construction" element={<PostConstruction />} />
+      <Route path="/services/smart-integration" element={<SmartIntegration />} />
+      <Route path="/services/maintenance-support" element={<MaintenanceSupport />} />
       <Route path="/projects" element={<OurProjects />} />
+      <Route path="/our-story" element={<OurStory />} />
+      <Route path="/our-story/about" element={<OurStoryAbout />} />
+      <Route path="/our-story/management" element={<OurStoryManagement />} />
+      <Route path="/our-story/sustainability" element={<OurStorySustainability />} />
+      <Route path="/our-story/design" element={<OurStoryDesign />} />
+      <Route path="/diyas-explorations" element={<DiyasExplorations />} />
+      <Route path="/investors" element={<Investors />} />
+      <Route path="/media-center" element={<MediaCenter />} />
+      <Route path="/nri-corner" element={<NriCorner />} />
+      <Route path="/godrej-ambassador" element={<GodrejAmbassador />} />
+      <Route path="/enquire" element={<Enquire />} />
+      <Route path="/schedule-site-visit" element={<ScheduleSiteVisit />} />
+      <Route path="/work-with-us" element={<WorkWithUs />} />
+      <Route path="/reach-us" element={<ReachUs />} />
       <Route path="/group-companies" element={<GroupCompanies />} />
       <Route path="/careers" element={<Careers />} />
       <Route path="/news" element={<News />} />

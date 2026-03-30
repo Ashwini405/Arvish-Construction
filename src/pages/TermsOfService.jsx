@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 const sections = [
@@ -47,7 +46,6 @@ const sections = [
 export default function TermsOfService() {
   return (
     <div className="bg-gray-50 min-h-screen">
-      <Header />
 
       {/* Hero */}
       <div className="bg-[#051614] pt-32 pb-16 px-6">

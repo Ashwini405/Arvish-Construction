@@ -3,12 +3,18 @@ import Logo from "./header/Logo";
 import NavLinks from "./header/NavLinks";
 import CTAButton from "./header/CTAButton";
 import MobileMenu from "./header/MobileMenu";
-import { siteConfig } from "../config/siteConfig";
+
+const defaultNavigation = [
+  { name: "Home", href: "#home" },
+  { name: "About", href: "#about" },
+  { name: "Team", href: "#team" },
+  { name: "Contact", href: "#contact" },
+];
 
 const Header = ({
-  logo = siteConfig.header.logo,
-  navigation = siteConfig.header.navigation,
-  cta = siteConfig.header.cta,
+  logo = { text: "Arvish", colors: "from-blue-400 to-cyan-300" },
+  navigation = defaultNavigation,
+  cta = { text: "Get Started", colors: "from-blue-500 to-cyan-500" },
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 

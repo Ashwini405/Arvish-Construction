@@ -1,268 +1,477 @@
-import { useEffect, useRef, useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-
-function useInView(threshold = 0.1) {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) setVisible(true); },
-      { threshold }
-    );
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return [ref, visible];
-}
 
 const services = [
   {
-    id: "01",
-    title: "Residential",
-    short: "Villas · Apartments · Communities",
-    desc: "Luxury villas, high-rise apartments and gated communities crafted with elegance and lasting quality.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=85",
-    route: "/services/residential",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
-        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-        <polyline points="9 22 9 12 15 12 15 22"/>
-      </svg>
-    ),
+    id: "pre",
+    route: "pre-construction",
+    phase: "01",
+    title: "The Vision",
+    subtitle: "Pre-Construction",
+    tagline: "Where blueprints meet destiny",
+    items: ["Bespoke Site Analysis", "Architectural Schematics", "Precision Budgeting"],
+    icon: "✧",
+    bg: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=90",
+    accent: "#94a3b8",
+    accentRgb: "148,163,184",
   },
   {
-    id: "02",
-    title: "Commercial",
-    short: "Towers · Malls · Mixed-Use",
-    desc: "Iconic office towers, retail destinations and mixed-use developments that define skylines.",
-    image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=85",
-    route: "/services/commercial-retail",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
-        <rect x="2" y="7" width="20" height="14" rx="1"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
-        <line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/>
-      </svg>
-    ),
+    id: "main",
+    route: "construction",
+    phase: "02",
+    title: "The Craft",
+    subtitle: "Construction",
+    tagline: "Mastery in every foundation",
+    items: ["Structural Integrity", "Artisanal Materials", "Elite Management"],
+    icon: "✦",
+    bg: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=90",
+    accent: "#cbd5e1",
+    accentRgb: "203,213,225",
   },
   {
-    id: "03",
-    title: "Education & Health",
-    short: "Schools · Hospitals · Clinics",
-    desc: "Purpose-built schools, universities and hospitals designed for safety and community service.",
-    image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=85",
-    route: "/services/educational-healthcare",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
-        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-      </svg>
-    ),
+    id: "post",
+    route: "post-construction",
+    phase: "03",
+    title: "The Legacy",
+    subtitle: "Post-Construction",
+    tagline: "The art of the final detail",
+    items: ["Quality Apotheosis", "Aesthetic Finishing", "The Grand Handover"],
+    icon: "✶",
+    bg: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=90",
+    accent: "#475569",
+    accentRgb: "71,85,105",
   },
   {
-    id: "04",
-    title: "Industrial",
-    short: "Warehouses · Factories · Logistics",
-    desc: "Heavy-duty industrial facilities engineered for peak operational performance and durability.",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=85",
-    route: "/services/industrial",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
-        <rect x="2" y="3" width="20" height="14" rx="1"/>
-        <path d="M8 21h8M12 17v4"/>
-        <path d="M7 8l3 3 3-3 3 3"/>
-      </svg>
-    ),
+    id: "tech",
+    route: "smart-integration",
+    phase: "04",
+    title: "The Precision",
+    subtitle: "Smart Integration",
+    tagline: "Technology meets excellence",
+    items: ["Smart Systems", "Automation Ready", "Future-Proof Design"],
+    icon: "◈",
+    bg: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1200&q=90",
+    accent: "#64748b",
+    accentRgb: "100,116,139",
+  },
+  {
+    id: "care",
+    route: "maintenance-support",
+    phase: "05",
+    title: "The Stewardship",
+    subtitle: "Maintenance & Support",
+    tagline: "Long-term excellence assured",
+    items: ["24/7 Support", "Preventive Care", "Lifetime Warranty"],
+    icon: "◉",
+    bg: "https://img.freepik.com/free-vector/phone-repair-service-flat-composition-with-engineers-disassembling-smartphone-blue-background-vector-illustration_1284-80867.jpg?semt=ais_incoming&w=740&q=80",
+    accent: "#cbd5e1",
+    accentRgb: "203,213,225",
   },
 ];
 
-function CircleCard({ service, index, visible }) {
+const AUTO_INTERVAL = 3500;
+
+export default function ServicesUltraPremium() {
   const navigate = useNavigate();
-  const [flipped, setFlipped] = useState(false);
+  const [active, setActive] = useState(0);
+  const [animating, setAnimating] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const [paused, setPaused] = useState(false);
+  const touchStartX = useRef(null);
+  const autoRef = useRef(null);
+  const resumeRef = useRef(null);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (paused) return;
+    autoRef.current = setInterval(() => {
+      setActive(prev => (prev + 1) % services.length);
+    }, AUTO_INTERVAL);
+    return () => clearInterval(autoRef.current);
+  }, [paused]);
+
+  const handleActivate = (i) => {
+    if (i === active || animating) return;
+    setAnimating(true);
+    setActive(i);
+    setPaused(true);
+    setTimeout(() => setAnimating(false), 800);
+    clearTimeout(resumeRef.current);
+    resumeRef.current = setTimeout(() => setPaused(false), 10000);
+  };
+
+  const handleTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; };
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(dx) > 50) {
+      if (dx < 0) handleActivate((active + 1) % services.length);
+      if (dx > 0) handleActivate((active - 1 + services.length) % services.length);
+    }
+    touchStartX.current = null;
+  };
+
+  const cur = services[active];
 
   return (
-    <div
-      className="flex flex-col items-center gap-4"
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(40px)",
-        transition: `opacity 0.7s ease ${index * 150}ms, transform 0.7s ease ${index * 150}ms`,
-      }}
-    >
-      {/* 3D flip circle */}
-      <div
-        className="relative cursor-pointer"
-        style={{ width: 200, height: 200, perspective: "800px" }}
-        onMouseEnter={() => setFlipped(true)}
-        onMouseLeave={() => setFlipped(false)}
-        onClick={() => navigate(service.route)}
-      >
-        <div
-          style={{
-            width: "100%",
-            height: "100%",
-            position: "relative",
-            transformStyle: "preserve-3d",
-            transition: "transform 0.7s cubic-bezier(0.4,0.2,0.2,1)",
-            transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
-          }}
-        >
-          {/* FRONT */}
-          <div
-            style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
-            className="absolute inset-0 rounded-full overflow-hidden border-4 border-[#D4A13A] shadow-2xl"
-          >
-            <img
-              src={service.image}
-              alt={service.title}
-              className="w-full h-full object-cover"
-            />
-            {/* dark overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#051614]/80 via-[#051614]/20 to-transparent" />
-            {/* front label */}
-            <div className="absolute inset-0 flex flex-col items-center justify-end pb-8 px-4 text-center">
-              <div className="text-[#D4A13A] mb-2">{service.icon}</div>
-              <h3 className="text-white font-black text-base leading-tight">{service.title}</h3>
-            </div>
-            {/* gold ring pulse */}
-            <div className="absolute inset-0 rounded-full border-2 border-[#D4A13A]/30 scale-110 pointer-events-none" />
-          </div>
-
-          {/* BACK */}
-          <div
-            style={{
-              backfaceVisibility: "hidden",
-              WebkitBackfaceVisibility: "hidden",
-              transform: "rotateY(180deg)",
-            }}
-            className="absolute inset-0 rounded-full bg-[#051614] border-4 border-[#D4A13A] shadow-2xl flex flex-col items-center justify-center px-6 text-center"
-          >
-            {/* ID */}
-            <span className="text-[#D4A13A]/30 text-5xl font-black absolute top-6 leading-none select-none">{service.id}</span>
-            <p className="text-[9px] font-black text-[#D4A13A] uppercase tracking-[0.2em] mb-2 relative z-10">{service.short}</p>
-            <p className="text-white/80 text-[11px] leading-relaxed relative z-10">{service.desc}</p>
-          </div>
-        </div>
-
-        {/* outer glow ring on hover */}
-        <div
-          className="absolute -inset-2 rounded-full border border-[#D4A13A]/40 pointer-events-none transition-opacity duration-500"
-          style={{ opacity: flipped ? 1 : 0 }}
-        />
-      </div>
-
-      {/* Label below circle */}
-      <div className="text-center">
-        <p className="text-white font-black text-sm uppercase tracking-wider">{service.title}</p>
-        <div
-          className="mx-auto mt-1.5 h-px bg-[#D4A13A] transition-all duration-500"
-          style={{ width: flipped ? "60px" : "24px" }}
-        />
-      </div>
-    </div>
-  );
-}
-
-export default function ServicesSection() {
-  const navigate = useNavigate();
-  const [sectionRef, visible] = useInView(0.08);
-
-  return (
-    <section ref={sectionRef} className="relative py-12 px-6 overflow-hidden">
-
+    <section className="ultra-services-container">
       <style>{`
-        @keyframes slowDrift {
-          0%, 100% { transform: scale(1.05) translate(0px, 0px); }
-          50%       { transform: scale(1.08) translate(-6px, -4px); }
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,400&family=Inter:wght@200;300;400&family=Montserrat:wght@200;300;400&display=swap');
+
+        .ultra-services-container {
+          min-height: 100vh;
+          padding: 80px 4%;
+          background: #ffffff;
+          color: #1a1a1a;
+          font-family: 'Cormorant Garamond', serif;
+          position: relative;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 60px;
         }
-        .slow-drift { animation: slowDrift 18s ease-in-out infinite; }
+
+        /* Abstract Background Elements */
+        .bg-mesh {
+          position: absolute;
+          inset: 0;
+          background: 
+            radial-gradient(circle at 50% -20%, rgba(var(--ar), 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 0% 100%, rgba(var(--ar), 0.05) 0%, transparent 40%);
+          z-index: 0;
+          transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .grain-overlay {
+          position: absolute;
+          inset: 0;
+          background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+          opacity: 0.03;
+          pointer-events: none;
+          z-index: 1;
+        }
+
+        /* Header Styles */
+        .header-group {
+          text-align: center;
+          position: relative;
+          z-index: 2;
+        }
+
+        .phase-counter {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 12px;
+          letter-spacing: 0.8em;
+          text-transform: uppercase;
+          color: rgba(0,0,0,0.6);
+          margin-bottom: 20px;
+          display: block;
+          opacity: 1;
+        }
+
+        .main-title {
+          font-size: clamp(32px, 6vw, 70px);
+          font-weight: 300;
+          line-height: 0.9;
+          margin: 0 0 8px 0;
+          letter-spacing: -0.03em;
+          color: #1a1a1a;
+        }
+
+        .title-accent {
+          display: inline-block;
+          background: linear-gradient(135deg, #1a1a1a 0%, #475569 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          font-weight: 500;
+        }
+
+        .title-subtitle {
+          font-family: 'Inter', sans-serif;
+          font-size: clamp(14px, 2vw, 18px);
+          color: rgba(0,0,0,0.55);
+          font-weight: 300;
+          letter-spacing: 0.05em;
+          margin: 0;
+        }
+
+        .main-title em {
+          font-family: 'Cormorant Garamond', serif;
+          font-style: italic;
+          display: none;
+          font-weight: 400;
+        }
+
+        /* Stage */
+        .stage {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 16px;
+          width: 100%;
+          max-width: 1400px;
+          height: 550px;
+          z-index: 2;
+        }
+
+        .card {
+          position: relative;
+          border-radius: 4px;
+          overflow: hidden;
+          transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+          cursor: pointer;
+        }
+
+        .card.side {
+          width: 85px;
+          height: 450px;
+          filter: grayscale(1) brightness(0.5);
+          opacity: 0.6;
+        }
+
+        .card.side:hover {
+          opacity: 0.8;
+          filter: grayscale(0.5) brightness(0.6);
+          height: 470px;
+        }
+
+        .card.active {
+          width: 700px;
+          height: 550px;
+          box-shadow: 0 40px 100px -20px rgba(0,0,0,0.8);
+        }
+
+        .card-image-wrapper {
+          position: absolute;
+          inset: 0;
+          transform: scale(1.1);
+          transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .card.active .card-image-wrapper {
+          transform: scale(1);
+        }
+
+        .card-image {
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-position: center;
+        }
+
+        .card-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, 
+            rgba(0,0,0,0.95) 0%, 
+            rgba(0,0,0,0.75) 30%, 
+            rgba(0,0,0,0.3) 70%,
+            transparent 100%);
+        }
+
+        .card-content {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          padding: 50px;
+          width: 100%;
+          opacity: 0;
+          transform: translateY(20px);
+          transition: all 0.6s 0.3s ease;
+        }
+
+        .card.active .card-content {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .card-subtitle {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 11px;
+          text-transform: uppercase;
+          letter-spacing: 0.5em;
+          color: rgba(255,255,255,0.9);
+          margin-bottom: 12px;
+          display: block;
+          font-weight: 500;
+        }
+
+        .card-title {
+          font-size: 52px;
+          font-weight: 400;
+          margin: 0 0 12px 0;
+          color: #ffffff;
+          letter-spacing: -0.02em;
+        }
+
+        .card-tagline {
+          font-family: 'Inter', sans-serif;
+          font-weight: 300;
+          font-size: 17px;
+          color: rgba(255,255,255,0.85);
+          margin-bottom: 32px;
+          line-height: 1.4;
+        }
+
+        .feature-list {
+          display: flex;
+          gap: 30px;
+          list-style: none;
+          padding: 0;
+          margin-bottom: 40px;
+        }
+
+        .feature-item {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 11px;
+          text-transform: uppercase;
+          letter-spacing: 0.2em;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: rgba(255,255,255,0.9);
+          font-weight: 500;
+        }
+
+        .feature-item::before {
+          content: '';
+          width: 5px;
+          height: 5px;
+          background: rgba(255,255,255,0.9);
+          border-radius: 50%;
+        }
+
+        /* Nav Footer */
+        .footer-nav {
+          width: 100%;
+          max-width: 600px;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          z-index: 2;
+        }
+
+        .progress-container {
+          width: 100%;
+          height: 1px;
+          background: rgba(0,0,0,0.1);
+          position: relative;
+        }
+
+        .progress-bar {
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 100%;
+          background: #1a1a1a;
+          transition: width 0.1s linear;
+        }
+
+        .nav-items {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .nav-btn {
+          background: none;
+          border: none;
+          color: rgba(0,0,0,0.3);
+          font-family: 'Montserrat', sans-serif;
+          font-size: 11px;
+          letter-spacing: 0.2em;
+          cursor: pointer;
+          transition: color 0.3s ease;
+          padding: 10px;
+        }
+
+        .nav-btn.active {
+          color: #1a1a1a;
+        }
+
+        @media (max-width: 900px) {
+          .stage { height: 450px; gap: 10px; }
+          .card.active { width: 100%; }
+          .card.side { width: 40px; }
+          .card-content { padding: 30px; }
+          .feature-list { flex-direction: column; gap: 10px; }
+        }
       `}</style>
 
-      {/* Background building image — more transparent */}
-      <div className="absolute inset-0 pointer-events-none">
-        <img
-          src="https://img.freepik.com/free-photo/construction-silhouette_1150-8336.jpg?semt=ais_hybrid&w=740&q=80"
-          alt=""
-          className="w-full h-full object-cover slow-drift"
-        />
-        <div className="absolute inset-0 bg-[#faf9f6]/78" />
+      <div className="bg-mesh" style={{ "--ar": cur.accentRgb }} />
+      <div className="grain-overlay" />
+
+      {/* Header */}
+      <div className="header-group">
+        <span className="phase-counter" style={{ "--a": cur.accent }}>{cur.phase}</span>
+        <h2 className="main-title">
+          Crafting <span className="title-accent">Tomorrow</span>
+        </h2>
+        <p className="title-subtitle">From Vision to Legacy — Five Phases of Excellence</p>
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+      {/* Main Stage */}
+      <div className="stage" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+        {services.map((s, i) => (
+          <div
+            key={s.id}
+            className={`card ${active === i ? "active" : "side"}`}
+            style={{ "--a": s.accent }}
+            onClick={() => active === i && !animating ? navigate(`/services/${s.route}`) : handleActivate(i)}
+          >
+            <div className="card-image-wrapper">
+              <div className="card-image" style={{ backgroundImage: `url(${s.bg})` }} />
+            </div>
+            <div className="card-overlay" />
+            
+            <div className="card-content">
+              <span className="card-subtitle">{s.subtitle}</span>
+              <h3 className="card-title">{s.title}</h3>
+              <p className="card-tagline">{s.tagline}</p>
+              
+              <ul className="feature-list">
+                {s.items.map((item, idx) => (
+                  <li key={idx} className="feature-item">{item}</li>
+                ))}
+              </ul>
 
-        {/* ── HEADER ── */}
-        <div
-          className="text-center mb-10"
-          style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(30px)", transition: "all 0.7s ease 0ms" }}
-        >
-          {/* Eyebrow */}
-          <div className="flex items-center justify-center gap-3 mb-3">
-            <div
-              className="h-px bg-gradient-to-r from-transparent to-white/60"
-              style={{ width: visible ? 48 : 0, transition: "width 1s ease 0.3s" }}
-            />
-            <span className="text-[10px] font-black text-white uppercase tracking-[0.35em] px-3 py-1 border border-white/40 rounded-full bg-white/10">
-              What We Do
-            </span>
-            <div
-              className="h-px bg-gradient-to-l from-transparent to-white/60"
-              style={{ width: visible ? 48 : 0, transition: "width 1s ease 0.3s" }}
-            />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                <div style={{ width: '40px', height: '1px', background: '#fff' }} />
+                <span style={{ fontSize: '12px', letterSpacing: '2px', textTransform: 'uppercase' }}>Discover</span>
+              </div>
+            </div>
           </div>
+        ))}
+      </div>
 
-          {/* Headline */}
-          <h2 className="text-4xl md:text-5xl font-black text-white leading-none mb-3">
-            Our{" "}
-            <span className="relative inline-block text-[#D4A13A]" style={{ textShadow: "0 0 40px #d4dbe2ef" }}>
-              Services
-              <svg className="absolute -bottom-1 left-0 w-full" height="5" viewBox="0 0 200 5" preserveAspectRatio="none">
-                <path
-                  d="M0 4 Q50 0 100 3 Q150 6 200 2"
-                  stroke="rgb(212, 207, 196)"
-                  strokeWidth="2"
-                  fill="none"
-                  strokeDasharray="220"
-                  style={visible
-                    ? { strokeDashoffset: 0, transition: "stroke-dashoffset 1.1s ease 0.6s" }
-                    : { strokeDashoffset: 220 }
-                  }
-                />
-              </svg>
-            </span>
-          </h2>
-
-          {/* Subtext */}
-          <p className="text-sm text-white/80 leading-relaxed max-w-xl mx-auto">
-            <span className="font-bold text-white">Four core sectors.</span>{" "}
-            <span className="text-[#D4A13A] font-semibold">One standard of excellence.</span>{" "}
-            Built to last across the UAE and beyond.
-          </p>
-
-          {/* Decorative dots */}
-          <div className="flex items-center justify-center gap-2 mt-4">
-            {[0,1,2].map(i => (
-              <div
-                key={i}
-                className="rounded-full bg-[#D4A13A]"
-                style={{
-                  width: i === 1 ? 20 : 6,
-                  height: 4,
-                  opacity: visible ? 1 : 0,
-                  transition: `opacity 0.5s ease ${0.8 + i * 0.1}s`,
-                }}
-              />
-            ))}
-          </div>
+      {/* Footer Navigation */}
+      <div className="footer-nav">
+        <div className="progress-container">
+          <div 
+            className="progress-bar" 
+            style={{ 
+              width: paused ? '100%' : '0%', 
+              transition: paused ? 'none' : `width ${AUTO_INTERVAL}ms linear`,
+              opacity: paused ? 0.2 : 1
+            }}
+            key={active}
+          />
         </div>
-
-        {/* ── CIRCLE CARDS ── */}
-        <div className="flex flex-wrap justify-center gap-10 md:gap-14">
+        <div className="nav-items">
           {services.map((s, i) => (
-            <CircleCard key={s.id} service={s} index={i} visible={visible} />
+            <button
+              key={s.id}
+              className={`nav-btn ${active === i ? "active" : ""}`}
+              onClick={() => handleActivate(i)}
+            >
+              {s.id.toUpperCase()}
+            </button>
           ))}
         </div>
-
-        {/* ── BOTTOM STRIP ── */}
-        
-
       </div>
     </section>
   );

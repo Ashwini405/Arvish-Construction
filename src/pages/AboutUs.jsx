@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export default function AboutUs() {
@@ -11,7 +10,6 @@ export default function AboutUs() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      <Header />
       <div className="max-w-6xl mx-auto px-6 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
           <div>

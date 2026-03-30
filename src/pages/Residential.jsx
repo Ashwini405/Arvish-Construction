@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export default function Residential() {
@@ -20,7 +19,6 @@ export default function Residential() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      <Header />
 
       <div className="bg-[#051614] text-white py-28 px-6">
         <div className="max-w-6xl mx-auto">
