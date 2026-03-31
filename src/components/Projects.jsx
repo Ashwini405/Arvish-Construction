@@ -288,7 +288,7 @@ export default function HeroProjects() {
         <div className="hs-grid"/>
 
         <div className="hs-label">
-          <h2 className="hs-label-text">Our Projects</h2>
+          <h2 className="hs-label-text">Our Projects implementation</h2>
         </div>
 
         <div className="hs-phase cards-phase">
