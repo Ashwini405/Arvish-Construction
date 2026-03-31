@@ -1,123 +1,101 @@
+import React, { useState, useEffect } from "react";
 import Footer from "../components/Footer";
 
-const cookieTypes = [
-  {
-    type: "Strictly Necessary",
-    purpose: "Essential for the website to function correctly. These cookies enable core features such as page navigation, secure form submissions, and access to protected areas of the site.",
-    examples: "Session cookies, security tokens",
-    canDisable: "No",
-  },
-  {
-    type: "Performance & Analytics",
-    purpose: "Help us understand how visitors interact with our website by collecting anonymous data on pages visited, time spent, and navigation paths. This helps us improve site performance.",
-    examples: "Google Analytics, page view counters",
-    canDisable: "Yes",
-  },
-  {
-    type: "Functional",
-    purpose: "Allow the website to remember your preferences such as language settings and previously viewed projects to provide a more personalised experience.",
-    examples: "Language preference, form auto-fill",
-    canDisable: "Yes",
-  },
-  {
-    type: "Marketing",
-    purpose: "Used to deliver relevant advertisements and track the effectiveness of our marketing campaigns. These cookies may be set by our advertising partners.",
-    examples: "Retargeting pixels, ad tracking",
-    canDisable: "Yes",
-  },
-];
-
+// ================= INDIA‑COMPLIANT SECTIONS (paragraph style) =================
 const sections = [
   {
     title: "What Are Cookies",
-    content: `Cookies are small text files placed on your device when you visit a website. They are widely used to make websites work efficiently and to provide information to website owners. Arvish Construction Group uses cookies to enhance your experience on our website and to help us understand how our site is being used.`,
+    content: `Cookies are small text files that are stored on your device when you visit a website. They help websites function properly and improve user experience by remembering preferences and providing useful insights to website owners. Arvish Constructions uses cookies to enhance your browsing experience and understand how our website is used.`,
   },
   {
     title: "How We Use Cookies",
-    content: `We use cookies to remember your preferences and settings, analyse website traffic and usage patterns, improve the performance and functionality of our website, and deliver relevant content about our construction services and projects. We do not use cookies to collect sensitive personal information or to track your activity across unrelated third-party websites.`,
+    content: `We use cookies to ensure smooth website functionality, remember user preferences, analyse website traffic, and improve overall performance. These cookies help us provide better services, optimize content, and make navigation easier for our users. We do not use cookies to collect sensitive personal information.`,
+  },
+  {
+    title: "Types of Cookies We Use",
+    content: `We use different types of cookies including essential cookies required for basic functionality, performance cookies to analyse website usage, functional cookies to remember user preferences, and optional marketing cookies to improve content relevance. Each type of cookie serves a specific purpose in enhancing the user experience.`,
   },
   {
     title: "Third-Party Cookies",
-    content: `Some cookies on our website are set by third-party services such as Google Analytics for traffic analysis and social media platforms for sharing functionality. These third parties have their own privacy policies and cookie practices. We recommend reviewing their policies for full details on how they use cookies.`,
+    content: `Some cookies may be placed by third-party services such as analytics providers to help us understand website traffic and performance. These third parties operate under their own privacy policies, and we recommend reviewing their policies for more information.`,
   },
   {
-    title: "Managing Your Cookie Preferences",
-    content: `You can control and manage cookies through your browser settings. Most browsers allow you to refuse cookies, delete existing cookies, or be notified when a new cookie is set. Please note that disabling certain cookies may affect the functionality of our website. Instructions for managing cookies can be found in your browser's help documentation.`,
+    title: "Managing Cookies",
+    content: `You can control or disable cookies through your browser settings at any time. Most browsers allow you to block or delete cookies; however, disabling certain cookies may affect the functionality and performance of the website.`,
   },
   {
     title: "Cookie Retention",
-    content: `Session cookies are temporary and are deleted when you close your browser. Persistent cookies remain on your device for a set period or until you delete them. The retention period for each cookie type is detailed in the table above. We regularly review our cookie usage to ensure we only retain cookies for as long as necessary.`,
+    content: `Some cookies are temporary and are deleted when you close your browser, while others may remain on your device for a longer period to remember your preferences. We only retain cookies for as long as necessary to improve user experience and website performance.`,
   },
   {
     title: "Updates to This Policy",
-    content: `We may update this Cookie Policy from time to time to reflect changes in technology, legislation, or our business practices. Any changes will be posted on this page with an updated revision date. We encourage you to review this policy periodically to stay informed about how we use cookies.`,
+    content: `We may update this Cookie Policy from time to time to reflect changes in technology, legal requirements, or our business practices. Any updates will be posted on this page with a revised date.`,
   },
   {
     title: "Contact Us",
-    content: `If you have any questions about our use of cookies or this Cookie Policy, please contact us at: Arvish Construction Group, PO Box 91656, Dubai, UAE. Email: corporate@arvishgroup.me. Tel: +971 42207539.`,
+    content: `If you have any questions about this Cookie Policy, please contact us at: Arvish Constructions, Hyderabad, Telangana, India. Email: info@arvishconstructions.com | Phone: +91 XXXXX XXXXX.`,
   },
 ];
 
 export default function CookiePolicy() {
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 400);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-gray-50 min-h-screen flex flex-col relative">
+      {/* ================= HERO with pattern overlay ================= */}
+      <section className="relative bg-[#051614] pt-28 pb-20 px-6 overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-5 pointer-events-none"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='none' stroke='%23D4A13A' stroke-width='0.5' d='M10 0 L10 100 M20 0 L20 100 M30 0 L30 100 M40 0 L40 100 M50 0 L50 100 M60 0 L60 100 M70 0 L70 100 M80 0 L80 100 M90 0 L90 100 M0 10 L100 10 M0 20 L100 20 M0 30 L100 30 M0 40 L100 40 M0 50 L100 50 M0 60 L100 60 M0 70 L100 70 M0 80 L100 80 M0 90 L100 90' /%3E%3C/svg%3E")`,
+            backgroundSize: "40px 40px",
+          }}
+        />
+        <div className="absolute top-20 left-1/4 w-64 h-64 bg-[#D4A13A] opacity-5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#D4A13A] opacity-5 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Hero */}
-      <div className="bg-[#051614] pt-32 pb-16 px-6">
-        <div className="max-w-4xl mx-auto">
-          <span className="text-xs font-bold text-[#D4A13A] uppercase tracking-widest">Legal</span>
-          <h1 className="text-4xl font-bold text-white mt-3 mb-4">Cookie Policy</h1>
-          <p className="text-gray-400 text-sm leading-relaxed max-w-2xl">
-            This policy explains how Arvish Construction Group uses cookies and similar technologies on our website.
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
+          <span className="text-xs font-bold text-[#D4A13A] uppercase tracking-widest border-b border-[#D4A13A] pb-1 inline-block">
+            Legal
+          </span>
+          <h1 className="text-4xl md:text-6xl font-bold text-white mt-4 tracking-tight">
+            Cookie Policy
+          </h1>
+          <p className="text-gray-300 text-base md:text-lg mt-4 max-w-2xl mx-auto leading-relaxed">
+            This policy explains how Arvish Constructions uses cookies and similar technologies on our website.
           </p>
-          <p className="text-gray-500 text-xs mt-4">Last updated: January 1, 2025</p>
+          <p className="text-gray-500 text-sm mt-6 flex items-center justify-center gap-2">
+            <span className="inline-block w-2 h-2 rounded-full bg-[#D4A13A]" />
+            Last updated: March 2026
+          </p>
         </div>
-      </div>
+      </section>
 
+      {/* ================= PARAGRAPH‑STYLE CONTENT ================= */}
       <div className="max-w-4xl mx-auto px-6 py-16">
-
-        {/* Cookie types table */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-10">
-          <div className="bg-[#051614] px-8 py-5">
-            <h2 className="text-base font-bold text-white">Types of Cookies We Use</h2>
-          </div>
-          <div className="divide-y divide-gray-100">
-            {cookieTypes.map((c, i) => (
-              <div key={i} className="px-8 py-6 grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div>
-                  <p className="text-xs font-black text-[#D4A13A] uppercase tracking-widest mb-1">Type</p>
-                  <p className="text-sm font-bold text-[#051614]">{c.type}</p>
-                </div>
-                <div className="md:col-span-2">
-                  <p className="text-xs font-black text-[#D4A13A] uppercase tracking-widest mb-1">Purpose</p>
-                  <p className="text-sm text-gray-600 leading-relaxed">{c.purpose}</p>
-                </div>
-                <div>
-                  <p className="text-xs font-black text-[#D4A13A] uppercase tracking-widest mb-1">Can Disable</p>
-                  <span className={`inline-block text-xs font-bold px-3 py-1 rounded-full ${c.canDisable === "Yes" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
-                    {c.canDisable}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Sections */}
-        <div className="space-y-10">
-          {sections.map((s, i) => (
-            <div key={i} className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="w-7 h-7 rounded-full bg-[#D4A13A]/10 border border-[#D4A13A]/30 flex items-center justify-center text-[10px] font-black text-[#D4A13A]">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h2 className="text-lg font-bold text-[#051614]">{s.title}</h2>
-              </div>
-              <p className="text-sm text-gray-600 leading-relaxed">{s.content}</p>
+        <div className="space-y-12">
+          {sections.map((section, index) => (
+            <div key={index} className="border-b border-gray-200 pb-8 last:border-0">
+              <h2 className="text-xl md:text-2xl font-semibold text-[#051614] mb-3">
+                {String(index + 1).padStart(2, "0")}. {section.title}
+              </h2>
+              <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+                {section.content}
+              </p>
             </div>
           ))}
         </div>
       </div>
+
+     
 
       <Footer />
     </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, ArrowUp, ArrowRight, Home, Building2, Factory, GraduationCap } from 'lucide-react';
 
@@ -67,9 +67,7 @@ const socials = [
 ];
 
 const offices = [
-  { city: 'Dubai', phone: '+971 42207539', fax: '+971 42207529', po: 'PO Box 91656' },
-  { city: 'Sharjah', phone: '+971 67451389', fax: '+971 67451388', po: 'PO Box 60839' },
-  { city: 'Abu Dhabi', phone: '+971 24456789', fax: '+971 24456788', po: 'PO Box 18490' },
+  { city: 'Hyderabad', phone: '+91 XXXXX XXXXX', po: 'Telangana, India' },
 ];
 
 // ----- Decorative categories (from second footer) -----
@@ -283,6 +281,16 @@ export default function Footer() {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
+  useEffect(() => {
+    if (!subscribed) return;
+
+    const timer = window.setTimeout(() => {
+      setSubscribed(false);
+    }, 3200);
+
+    return () => window.clearTimeout(timer);
+  }, [subscribed]);
+
   return (
     <>
       <style>{`
@@ -348,12 +356,12 @@ export default function Footer() {
                   className="w-12 h-auto object-contain"
                 />
                 <span className="footer-heading text-4xl font-black tracking-tighter text-slate-800 uppercase">
-                  Arvish Group
+                  Arvish Constructions
                 </span>
               </div>
               <p className="text-slate-500 text-sm leading-relaxed max-w-md">
-                Building landmark developments across the UAE and beyond since 1994.
-                Quality, innovation, and sustainability in every project we deliver.
+                Building reliable and modern construction projects in Hyderabad.
+We focus on quality, trust, and delivering projects on time.
               </p>
               {/* Decorative line */}
               <svg viewBox="0 0 280 6" className="w-48 h-2">
@@ -399,7 +407,7 @@ export default function Footer() {
                 Stay Updated
               </h3>
               <p className="text-slate-400 text-sm mb-4">
-                Get the latest project updates and construction insights.
+                with our latest projects and construction updates.
               </p>
 
               {subscribed ? (
@@ -474,26 +482,26 @@ export default function Footer() {
               <span className="w-2 h-2 rounded-full bg-[#FACC15]" />
               <h4 className="footer-heading text-slate-700 text-[11px] font-bold uppercase tracking-[0.25em]">Contact</h4>
             </div>
-                <a href="tel:+97142207539" className="flex items-center gap-3 text-slate-500 hover:text-slate-800 transition-colors duration-200 group">
+                <a href="tel:+91XXXXXXXXXX" className="flex items-center gap-3 text-slate-500 hover:text-slate-800 transition-colors duration-200 group">
                   <span className="w-8 h-8 rounded-full flex items-center justify-center border border-current transition-transform duration-300 group-hover:scale-110"
                     style={{ color: '#E31E24', borderColor: '#E31E2433', background: '#E31E2410' }}>
                     <Phone size={13} />
                   </span>
-                  +971 42207539
+                  +91 XXXXX XXXXX
                 </a>
-                <a href="mailto:corporate@arvishgroup.me" className="flex items-center gap-3 text-slate-500 hover:text-slate-800 transition-colors duration-200 group">
+                <a href="mailto:info@arvishconstructions.com" className="flex items-center gap-3 text-slate-500 hover:text-slate-800 transition-colors duration-200 group">
                   <span className="w-8 h-8 rounded-full flex items-center justify-center border border-current transition-transform duration-300 group-hover:scale-110"
                     style={{ color: '#1E3A8A', borderColor: '#1E3A8A33', background: '#1E3A8A10' }}>
                     <Mail size={13} />
                   </span>
-                  corporate@arvishgroup.me
+                  info@arvishconstructions.com
                 </a>
                 <div className="flex items-center gap-3 text-slate-500">
                   <span className="w-8 h-8 rounded-full flex items-center justify-center border border-current"
                     style={{ color: '#F97316', borderColor: '#F9731633', background: '#F9731610' }}>
                     <MapPin size={13} />
                   </span>
-                  PO Box 91656, Dubai, UAE
+                  Hyderabad, Telangana, India
                 </div>
               </div>
 
@@ -510,7 +518,7 @@ export default function Footer() {
                   <p className="text-xs text-slate-500 leading-relaxed">
                     {office.po}<br />
                     Tel: {office.phone}<br />
-                    Fax: {office.fax}
+                   
                   </p>
                 </div>
               ))}
@@ -532,7 +540,7 @@ export default function Footer() {
           </div>
 
           <p className="text-[11px] tracking-widest text-slate-400 text-center">
-            © {new Date().getFullYear()} Arvish Group. All rights reserved.
+            © {new Date().getFullYear()} Arvish Constructions. All rights reserved.
           </p>
 
           <button

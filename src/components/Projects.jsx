@@ -170,10 +170,6 @@ const FoundationSVG = () => (
 
 /* ─── Main Component ──────────────────────────────────────────────── */
 export default function HeroProjects() {
-  const [phase, setPhase] = useState("hero");
-  const [line1, setLine1] = useState(false);
-  const [line2, setLine2] = useState(false);
-  const [sub, setSub] = useState(false);
   const [visibleCards, setVisibleCards] = useState([]);
   const timerRef = useRef(null);
 
@@ -181,16 +177,7 @@ export default function HeroProjects() {
     if (timerRef.current) clearTimeout(timerRef.current);
   };
 
-  const runHero = useCallback(() => {
-    setPhase("hero");
-    setLine1(false); setLine2(false); setSub(false); setVisibleCards([]);
-    setTimeout(() => setLine1(true), 80);
-    setTimeout(() => setLine2(true), 480);
-    setTimeout(() => setSub(true), 860);
-  }, []);
-
   const runCards = useCallback(() => {
-    setPhase("cards");
     setVisibleCards([]);
     setTimeout(() => setVisibleCards([0]), 80);
     setTimeout(() => setVisibleCards([0,1]), 340);
@@ -198,24 +185,9 @@ export default function HeroProjects() {
   }, []);
 
   useEffect(() => {
-    runHero();
-
-    const tick = () => {
-      // Hero → Cards after 3s
-      timerRef.current = setTimeout(() => {
-        runCards();
-        // Cards → Hero after 4s
-        timerRef.current = setTimeout(() => {
-          runHero();
-          // Loop
-          timerRef.current = setTimeout(tick, 3000);
-        }, 4000);
-      }, 3000);
-    };
-
-    timerRef.current = setTimeout(tick, 3000);
+    runCards();
     return clearAll;
-  }, []);
+  }, [runCards]);
 
   return (
     <>
@@ -243,22 +215,18 @@ export default function HeroProjects() {
         @keyframes gridDrift{from{background-position:0 0}to{background-position:40px 40px}}
 
         .hs-label{
-          position:absolute;top:28px;left:38px;z-index:10;
-          display:flex;align-items:center;gap:10px;
+          position:absolute;top:28px;left:0;right:0;z-index:10;
+          display:flex;justify-content:center;align-items:center;
           animation:fadeUp .6s ease .3s both;
+          padding:0 20px;
+          text-align:center;
         }
-        .hs-label-line{width:28px;height:2px;background:#D4A13A}
-        .hs-label-text{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#D4A13A}
+        .hs-label-text{font-size:clamp(20px,3vw,32px);font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#fff;margin:0}
 
         /* Phases */
         .hs-phase{
           position:absolute;inset:0;z-index:2;
           transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1);
-        }
-        .hs-phase.hero-phase{
-          display:flex;flex-direction:column;
-          align-items:flex-end;justify-content:center;
-          padding-right:7vw;
         }
         .hs-phase.cards-phase{
           display:flex;align-items:center;justify-content:center;
@@ -266,29 +234,6 @@ export default function HeroProjects() {
           background:rgba(6,14,26,.8);
           backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
         }
-        .hs-phase.hide{opacity:0;pointer-events:none}
-        .hero-phase.hide{transform:translateY(-20px)}
-        .cards-phase.hide{transform:translateY(20px)}
-
-        /* Hero text */
-        .line-clip{overflow:hidden;display:block;line-height:1}
-        .hero-line{
-          display:block;
-          font-family:'Barlow Condensed',sans-serif;font-weight:900;
-          font-size:clamp(64px,9.2vw,132px);letter-spacing:-.01em;color:#fff;
-          transform:translateY(108%);opacity:0;
-          transition:transform .88s cubic-bezier(.16,1,.3,1),opacity .88s cubic-bezier(.16,1,.3,1);
-          will-change:transform,opacity;
-        }
-        .hero-line.in{transform:translateY(0);opacity:1}
-        .hero-gold{color:#D4A13A}
-        .hero-sub{
-          margin-top:16px;font-size:11px;font-weight:500;
-          letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.32);
-          opacity:0;transform:translateY(8px);
-          transition:opacity .6s ease .1s,transform .6s ease .1s;
-        }
-        .hero-sub.in{opacity:1;transform:translateY(0)}
 
         /* Bento */
         .bento-grid{
@@ -329,18 +274,6 @@ export default function HeroProjects() {
         }
         .bento-card:hover::after{opacity:1}
 
-        /* Progress dots */
-        .hs-dots{
-          position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
-          z-index:10;display:flex;gap:8px;
-        }
-        .hs-dot{
-          width:7px;height:7px;border-radius:50%;
-          background:rgba(255,255,255,.18);
-          transition:all .4s ease;
-        }
-        .hs-dot.on{width:24px;border-radius:4px;background:#D4A13A}
-
         @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
         @media(max-width:680px){
@@ -355,31 +288,14 @@ export default function HeroProjects() {
         <div className="hs-grid"/>
 
         <div className="hs-label">
-          <div className="hs-label-line"/>
-          <span className="hs-label-text">Our Projects</span>
+          <h2 className="hs-label-text">Our Projects</h2>
         </div>
 
-        {/* Phase 1 — Hero */}
-        <div className={`hs-phase hero-phase${phase!=="hero"?" hide":""}`}>
-          <span className="line-clip">
-            <span className={`hero-line${line1?" in":""}`}>BUILD THE</span>
-          </span>
-          <span className="line-clip">
-            <span className={`hero-line${line2?" in":""}`}>
-              <span className="hero-gold">FUTURE</span>
-            </span>
-          </span>
-          <p className={`hero-sub${sub?" in":""}`}>
-            Award-winning construction across the Middle East
-          </p>
-        </div>
-
-        {/* Phase 2 — Cards */}
-        <div className={`hs-phase cards-phase${phase!=="cards"?" hide":""}`}>
+        <div className="hs-phase cards-phase">
           <div className="bento-grid">
 
             <div className={`bento-card bento-large${visibleCards.includes(0)?" pop":""}`}>
-              <div className="bento-svg-wrap">{phase==="cards" && <SkyscraperSVG/>}</div>
+              <div className="bento-svg-wrap"><SkyscraperSVG/></div>
               <div className="bento-grad"/>
               <div className="bento-label">
                 <div className="bento-cat">Commercial</div>
@@ -388,7 +304,7 @@ export default function HeroProjects() {
             </div>
 
             <div className={`bento-card${visibleCards.includes(1)?" pop":""}`}>
-              <div className="bento-svg-wrap">{phase==="cards" && <BlueprintSVG/>}</div>
+              <div className="bento-svg-wrap"><BlueprintSVG/></div>
               <div className="bento-grad"/>
               <div className="bento-label">
                 <div className="bento-cat">Design</div>
@@ -397,7 +313,7 @@ export default function HeroProjects() {
             </div>
 
             <div className={`bento-card${visibleCards.includes(2)?" pop":""}`}>
-              <div className="bento-svg-wrap">{phase==="cards" && <FoundationSVG/>}</div>
+              <div className="bento-svg-wrap"><FoundationSVG/></div>
               <div className="bento-grad"/>
               <div className="bento-label">
                 <div className="bento-cat">Infrastructure</div>
@@ -406,12 +322,6 @@ export default function HeroProjects() {
             </div>
 
           </div>
-        </div>
-
-        {/* Dots */}
-        <div className="hs-dots">
-          <div className={`hs-dot${phase==="hero"?" on":""}`}/>
-          <div className={`hs-dot${phase==="cards"?" on":""}`}/>
         </div>
       </div>
     </>

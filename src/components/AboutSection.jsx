@@ -12,9 +12,9 @@ export default function AboutGlassSection() {
   });
 
   const metricDefs = [
-    { key: "projects", label: "Projects Completed", target: 1600, suffix: "+" },
+    { key: "projects", label: "Projects Completed", target: 50, suffix: "+" },
     { key: "satisfaction", label: "Client Satisfaction", target: 98, suffix: "%" },
-    { key: "years", label: "Years of Excellence", target: 15, suffix: "+" },
+    { key: "years", label: "Years of Excellence", target: 5, suffix: "+" },
   ];
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function AboutGlassSection() {
   useEffect(() => {
     if (!animationTriggered) return;
 
-    const duration = 1600;
+    const duration = 50;
     let startTimestamp = null;
     let rafId;
 
@@ -44,9 +44,9 @@ export default function AboutGlassSection() {
       const progress = Math.min((timestamp - startTimestamp) / duration, 1);
 
       setMetricValues({
-        projects: Math.round(1600 * progress),
+        projects: Math.round(50 * progress),
         satisfaction: Math.round(98 * progress),
-        years: Math.round(15 * progress),
+        years: Math.round(5 * progress),
       });
 
       if (progress < 1) {
@@ -425,8 +425,8 @@ export default function AboutGlassSection() {
         .cta-btn {
           border: 1px solid rgba(255,255,255,0.25);
           border-radius: 16px;
-          padding: 10px 18px;
-          font-size: 13px;
+          padding: 8px 14px;
+          font-size: 12px;
           color: #e8f4ff;
           background: rgba(255,255,255,0.08);
           backdrop-filter: blur(8px);
@@ -471,100 +471,100 @@ export default function AboutGlassSection() {
       >
         {/* Bokeh background dots */}
         {[
-          {w:120,h:120,l:"2%",  t:"8%",  op:0.18},
-          {w:70, h:70, l:"18%", t:"76%", op:0.14},
-          {w:55, h:55, l:"46%", t:"5%",  op:0.12},
-          {w:95, h:95, l:"78%", t:"70%", op:0.16},
-          {w:48, h:48, l:"90%", t:"16%", op:0.11},
-          {w:62, h:62, l:"34%", t:"86%", op:0.13},
-          {w:40, h:40, l:"60%", t:"50%", op:0.09},
-        ].map((d,i)=>(
+          { w: 120, h: 120, l: "2%", t: "8%", op: 0.18 },
+          { w: 70, h: 70, l: "18%", t: "76%", op: 0.14 },
+          { w: 55, h: 55, l: "46%", t: "5%", op: 0.12 },
+          { w: 95, h: 95, l: "78%", t: "70%", op: 0.16 },
+          { w: 48, h: 48, l: "90%", t: "16%", op: 0.11 },
+          { w: 62, h: 62, l: "34%", t: "86%", op: 0.13 },
+          { w: 40, h: 40, l: "60%", t: "50%", op: 0.09 },
+        ].map((d, i) => (
           <div key={i} className="bokeh" style={{
-            width:d.w, height:d.h, left:d.l, top:d.t,
-            background:`radial-gradient(circle,rgba(80,130,255,${d.op}) 0%,transparent 70%)`,
-            filter:"blur(4px)",
-          }}/>
+            width: d.w, height: d.h, left: d.l, top: d.t,
+            background: `radial-gradient(circle,rgba(80,130,255,${d.op}) 0%,transparent 70%)`,
+            filter: "blur(4px)",
+          }} />
         ))}
 
         {/* ═══════════════════════════════
             2-COLUMN GRID
         ═══════════════════════════════ */}
         <div style={{
-          display:"grid",
-          gridTemplateColumns:"1fr 1fr",
-          gap:"50px",
-          width:"100%",
-          maxWidth:1160,
-          margin:"0 auto",
-          alignItems:"center",
-          position:"relative",
-          zIndex:2,
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "50px",
+          width: "100%",
+          maxWidth: 1160,
+          margin: "0 auto",
+          alignItems: "center",
+          position: "relative",
+          zIndex: 2,
         }}>
 
           {/* ════════ LEFT COLUMN ════════ */}
-          <div className="left-col" style={{display:"flex",flexDirection:"column",gap:28}}>
+          <div className="left-col" style={{ display: "flex", flexDirection: "column", gap: 28 }}>
 
             {/* SVG City Illustration */}
             <div className="building-glow">
-              <svg viewBox="0 0 420 260" fill="none" xmlns="http://www.w3.org/2000/svg" style={{width:"100%",height:"auto"}}>
+              <svg viewBox="0 0 420 260" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
                 <defs>
                   <linearGradient id="b1" x1="0.2" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#1e3a6e"/><stop offset="100%" stopColor="#0c1a3a"/>
+                    <stop offset="0%" stopColor="#1e3a6e" /><stop offset="100%" stopColor="#0c1a3a" />
                   </linearGradient>
                   <linearGradient id="b2" x1="0.1" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#162d52"/><stop offset="100%" stopColor="#080f22"/>
+                    <stop offset="0%" stopColor="#162d52" /><stop offset="100%" stopColor="#080f22" />
                   </linearGradient>
                   <linearGradient id="win" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.75"/>
-                    <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.28"/>
+                    <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.75" />
+                    <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.28" />
                   </linearGradient>
                   <filter id="glow2">
-                    <feGaussianBlur stdDeviation="2.5" result="blur"/>
-                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    <feGaussianBlur stdDeviation="2.5" result="blur" />
+                    <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
                   </filter>
                   <linearGradient id="gnd" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#1a3a6e" stopOpacity="0.3"/>
-                    <stop offset="100%" stopColor="#080d1e" stopOpacity="0"/>
+                    <stop offset="0%" stopColor="#1a3a6e" stopOpacity="0.3" />
+                    <stop offset="100%" stopColor="#080d1e" stopOpacity="0" />
                   </linearGradient>
                 </defs>
-                <rect x="0" y="228" width="420" height="32" fill="url(#gnd)"/>
-                <line x1="0" y1="228" x2="420" y2="228" stroke="rgba(96,165,250,0.18)" strokeWidth="1"/>
+                <rect x="0" y="228" width="420" height="32" fill="url(#gnd)" />
+                <line x1="0" y1="228" x2="420" y2="228" stroke="rgba(96,165,250,0.18)" strokeWidth="1" />
                 {/* Far left small */}
-                <rect x="8" y="158" width="44" height="70" fill="#0b1530" rx="2"/>
-                {[168,184,200,216].map(y=>[14,28].map(x=>(<rect key={`a${x}${y}`} x={x} y={y} width="9" height="10" rx="1" fill="rgba(96,165,250,0.18)"/>)))}
+                <rect x="8" y="158" width="44" height="70" fill="#0b1530" rx="2" />
+                {[168, 184, 200, 216].map(y => [14, 28].map(x => (<rect key={`a${x}${y}`} x={x} y={y} width="9" height="10" rx="1" fill="rgba(96,165,250,0.18)" />)))}
                 {/* Left tall */}
-                <rect x="58" y="100" width="82" height="128" fill="url(#b2)" rx="2"/>
-                {[115,133,151,169,187,205].map(y=>[66,84,102,122].map(x=>(<rect key={`b${x}${y}`} x={x} y={y} width="10" height="12" rx="1" fill={((x+y)%3===0)?"url(#win)":"rgba(255,255,255,0.03)"}/>)))}
-                <rect x="54" y="94" width="90" height="9" fill="#162d52" rx="1.5"/>
-                <line x1="99" y1="94" x2="99" y2="72" stroke="rgba(96,165,250,0.4)" strokeWidth="1.5"/>
-                <circle cx="99" cy="71" r="2.5" fill="#60a5fa" filter="url(#glow2)"/>
+                <rect x="58" y="100" width="82" height="128" fill="url(#b2)" rx="2" />
+                {[115, 133, 151, 169, 187, 205].map(y => [66, 84, 102, 122].map(x => (<rect key={`b${x}${y}`} x={x} y={y} width="10" height="12" rx="1" fill={((x + y) % 3 === 0) ? "url(#win)" : "rgba(255,255,255,0.03)"} />)))}
+                <rect x="54" y="94" width="90" height="9" fill="#162d52" rx="1.5" />
+                <line x1="99" y1="94" x2="99" y2="72" stroke="rgba(96,165,250,0.4)" strokeWidth="1.5" />
+                <circle cx="99" cy="71" r="2.5" fill="#60a5fa" filter="url(#glow2)" />
                 {/* Center hero */}
-                <rect x="155" y="48" width="110" height="180" fill="url(#b1)" rx="3"/>
-                {[65,85,105,125,145,165,185,205].map(y=>[163,183,203,225,245].map(x=>(<rect key={`c${x}${y}`} x={x} y={y} width="11" height="13" rx="1" fill={((x*y)%5<2)?"url(#win)":"rgba(255,255,255,0.03)"}/>)))}
-                <rect x="150" y="42" width="120" height="10" fill="#1a3360" rx="2"/>
-                <rect x="196" y="30" width="28" height="16" fill="#162d52" rx="2"/>
-                <line x1="210" y1="30" x2="210" y2="10" stroke="rgba(96,165,250,0.5)" strokeWidth="1.5"/>
-                <circle cx="210" cy="9" r="3" fill="#60a5fa" filter="url(#glow2)"/>
+                <rect x="155" y="48" width="110" height="180" fill="url(#b1)" rx="3" />
+                {[65, 85, 105, 125, 145, 165, 185, 205].map(y => [163, 183, 203, 225, 245].map(x => (<rect key={`c${x}${y}`} x={x} y={y} width="11" height="13" rx="1" fill={((x * y) % 5 < 2) ? "url(#win)" : "rgba(255,255,255,0.03)"} />)))}
+                <rect x="150" y="42" width="120" height="10" fill="#1a3360" rx="2" />
+                <rect x="196" y="30" width="28" height="16" fill="#162d52" rx="2" />
+                <line x1="210" y1="30" x2="210" y2="10" stroke="rgba(96,165,250,0.5)" strokeWidth="1.5" />
+                <circle cx="210" cy="9" r="3" fill="#60a5fa" filter="url(#glow2)" />
                 {/* Right */}
-                <rect x="278" y="120" width="75" height="108" fill="url(#b2)" rx="2"/>
-                {[135,153,171,189,207].map(y=>[285,303,321,339].map(x=>(<rect key={`d${x}${y}`} x={x} y={y} width="9" height="12" rx="1" fill={((x+y)%4===0)?"url(#win)":"rgba(255,255,255,0.03)"}/>)))}
-                <rect x="274" y="114" width="83" height="9" fill="#152848" rx="1.5"/>
+                <rect x="278" y="120" width="75" height="108" fill="url(#b2)" rx="2" />
+                {[135, 153, 171, 189, 207].map(y => [285, 303, 321, 339].map(x => (<rect key={`d${x}${y}`} x={x} y={y} width="9" height="12" rx="1" fill={((x + y) % 4 === 0) ? "url(#win)" : "rgba(255,255,255,0.03)"} />)))}
+                <rect x="274" y="114" width="83" height="9" fill="#152848" rx="1.5" />
                 {/* Far right */}
-                <rect x="365" y="170" width="48" height="58" fill="#0b1530" rx="2"/>
-                {[178,194,210].map(y=>[371,385].map(x=>(<rect key={`e${x}${y}`} x={x} y={y} width="9" height="11" rx="1" fill="rgba(96,165,250,0.2)"/>)))}
+                <rect x="365" y="170" width="48" height="58" fill="#0b1530" rx="2" />
+                {[178, 194, 210].map(y => [371, 385].map(x => (<rect key={`e${x}${y}`} x={x} y={y} width="9" height="11" rx="1" fill="rgba(96,165,250,0.2)" />)))}
                 {/* Crane */}
-                <line x1="350" y1="228" x2="350" y2="75" stroke="rgba(96,165,250,0.28)" strokeWidth="2"/>
-                <line x1="308" y1="77" x2="382" y2="77" stroke="rgba(96,165,250,0.28)" strokeWidth="2"/>
-                <line x1="350" y1="77" x2="314" y2="108" stroke="rgba(96,165,250,0.18)" strokeWidth="1"/>
-                <line x1="314" y1="77" x2="314" y2="116" stroke="rgba(96,165,250,0.28)" strokeWidth="1" strokeDasharray="3,2"/>
-                <rect x="309" y="116" width="10" height="8" rx="1" fill="rgba(96,165,250,0.35)"/>
+                <line x1="350" y1="228" x2="350" y2="75" stroke="rgba(96,165,250,0.28)" strokeWidth="2" />
+                <line x1="308" y1="77" x2="382" y2="77" stroke="rgba(96,165,250,0.28)" strokeWidth="2" />
+                <line x1="350" y1="77" x2="314" y2="108" stroke="rgba(96,165,250,0.18)" strokeWidth="1" />
+                <line x1="314" y1="77" x2="314" y2="116" stroke="rgba(96,165,250,0.28)" strokeWidth="1" strokeDasharray="3,2" />
+                <rect x="309" y="116" width="10" height="8" rx="1" fill="rgba(96,165,250,0.35)" />
                 {/* Moon */}
-                <circle cx="358" cy="36" r="16" fill="none" stroke="rgba(96,165,250,0.12)" strokeWidth="1.5"/>
-                <circle cx="358" cy="36" r="10" fill="rgba(96,165,250,0.05)"/>
+                <circle cx="358" cy="36" r="16" fill="none" stroke="rgba(96,165,250,0.12)" strokeWidth="1.5" />
+                <circle cx="358" cy="36" r="10" fill="rgba(96,165,250,0.05)" />
                 {/* Stars */}
-                {[[45,28],[88,18],[318,22],[385,14],[130,32],[30,45]].map(([x,y],i)=>(<circle key={i} cx={x} cy={y} r="1.5" fill="rgba(255,255,255,0.45)"/>))}
-                <ellipse cx="210" cy="230" rx="95" ry="5" fill="rgba(96,165,250,0.07)"/>
-                {[70,120,170,220,270,320].map(x=>(<rect key={x} x={x} y="237" width="28" height="3" rx="1.5" fill="rgba(255,255,255,0.05)"/>))}
+                {[[45, 28], [88, 18], [318, 22], [385, 14], [130, 32], [30, 45]].map(([x, y], i) => (<circle key={i} cx={x} cy={y} r="1.5" fill="rgba(255,255,255,0.45)" />))}
+                <ellipse cx="210" cy="230" rx="95" ry="5" fill="rgba(96,165,250,0.07)" />
+                {[70, 120, 170, 220, 270, 320].map(x => (<rect key={x} x={x} y="237" width="28" height="3" rx="1.5" fill="rgba(255,255,255,0.05)" />))}
               </svg>
             </div>
 
@@ -594,29 +594,28 @@ export default function AboutGlassSection() {
 
               {/* Eyebrow + Headline — above the hand */}
               <div style={{
-                position:"absolute",
-                top:0,left:0,right:0,
-                zIndex:25,
-                padding:"0 4px",
+                position: "absolute",
+                top: 0, left: 0, right: 0,
+                zIndex: 25,
+                padding: "0 4px",
               }}>
-                <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:10}}>
-                  <div style={{width:28,height:2,background:"linear-gradient(90deg,#60a5fa,#38bdf8)",borderRadius:2}}/>
-                  <span style={{color:"#60a5fa",fontSize:11,letterSpacing:"0.16em",textTransform:"uppercase",fontWeight:600}}>
-                    About Our Company
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+                  <div style={{ width: 28, height: 2, background: "linear-gradient(90deg,#60a5fa,#38bdf8)", borderRadius: 2 }} />
+                  <span style={{ color: "#60a5fa", fontSize: 11, letterSpacing: "0.16em", textTransform: "uppercase", fontWeight: 600 }}>
+                    Building Excellence
                   </span>
                 </div>
-                <h2 style={{color:"white",fontSize:38,fontWeight:900,lineHeight:1.1,margin:0,letterSpacing:"-0.02em"}}>
-                  Built on
-                  <span style={{background:"linear-gradient(90deg,#60a5fa,#38bdf8,#22d3ee)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>
-                    Experience.
+                <h2 style={{ color: "white", fontSize: 38, fontWeight: 900, lineHeight: 1.1, margin: 0, letterSpacing: "-0.02em", maxWidth: 860 }}>
+                  Crafting Strong Foundations for the
+                  <span style={{ background: "linear-gradient(90deg,#60a5fa,#38bdf8,#22d3ee)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                    Future.
                   </span>
                 </h2>
                 <div className="animated-line"></div>
-                <p style={{color:"rgba(255,255,255,0.5)",fontSize:13,marginTop:10,lineHeight:1.75,maxWidth:360}}>
-                  With 15+ years in the industry, we deliver residential, commercial,
-                  and industrial projects with unmatched precision and trust.
+                <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, marginTop: 10, lineHeight: 1.75, maxWidth: 860 }}>
+                  With years of experience in the construction industry, we deliver residential, commercial, and industrial projects with a strong commitment to quality, reliability, and timely completion.
                 </p>
-                <div className="cta-container" style={{marginTop:18,display:'flex',gap:12}}>
+                <div className="cta-container" style={{ marginTop: 8, display: 'flex', gap: 10 }}>
                   <button className="cta-btn" onClick={() => navigate('/projects')}>View Projects</button>
                   <button className="cta-btn cta-alt" onClick={() => navigate('/contact')}>Get Connect</button>
                 </div>
@@ -624,13 +623,13 @@ export default function AboutGlassSection() {
 
               {/* Radial glow — sits behind card, in front of bg */}
               <div style={{
-                position:"absolute",
-                top:"5%", left:"5%",
-                width:320, height:320,
-                background:"radial-gradient(circle,rgba(96,165,250,0.13) 0%,transparent 70%)",
-                pointerEvents:"none",
-                zIndex:3,
-              }}/>
+                position: "absolute",
+                top: "5%", left: "5%",
+                width: 320, height: 320,
+                background: "radial-gradient(circle,rgba(96,165,250,0.13) 0%,transparent 70%)",
+                pointerEvents: "none",
+                zIndex: 3,
+              }} />
 
               {/*
               ══════════════════════════════════════════
@@ -642,13 +641,13 @@ export default function AboutGlassSection() {
                   <div className="glass-inner">
 
                     {/* Row 1: avatar + name + follow */}
-                    <div style={{display:"flex",alignItems:"flex-start",gap:12}}>
+                    <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
                       <div style={{
-                        width:52,height:52,borderRadius:"50%",flexShrink:0,
-                        overflow:"hidden",
-                        display:"flex",alignItems:"center",justifyContent:"center",
-                        boxShadow:"0 0 20px rgba(249,115,22,0.55)",
-                        border:"2px solid rgba(255,255,255,0.2)",
+                        width: 52, height: 52, borderRadius: "50%", flexShrink: 0,
+                        overflow: "hidden",
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        boxShadow: "0 0 20px rgba(249,115,22,0.55)",
+                        border: "2px solid rgba(255,255,255,0.2)",
                       }}>
                         <img
                           src="https://www.arvishconsulting.com/assets/arvish-logo-zo8liOBq.png"
@@ -657,48 +656,68 @@ export default function AboutGlassSection() {
                         />
                       </div>
 
-                      <div style={{flex:1,minWidth:0}}>
-                        <div style={{display:"flex",alignItems:"center",gap:5,flexWrap:"wrap"}}>
-                          <span style={{color:"white",fontWeight:700,fontSize:14,fontFamily:"Syne,sans-serif"}}>Arvish Constructions</span>
-                          <span style={{fontSize:11,color:"#34d399"}}>✓</span>
-                          <span style={{fontSize:10,color:"rgba(255,255,255,0.25)"}}>⬛</span>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 5, flexWrap: "wrap" }}>
+                          <span style={{ color: "white", fontWeight: 700, fontSize: 14, fontFamily: "Syne,sans-serif" }}>Arvish Constructions</span>
+
+                          <span style={{ fontSize: 10, color: "rgba(255,255,255,0.25)" }}>⬛</span>
                         </div>
-                        
+
                       </div>
 
                       <button className="follow-btn" onClick={() => window.open('https://www.facebook.com/', '_blank')}>Follow</button>
                     </div>
 
-                    <div className="card-divider"/>
+                    <div className="card-divider" />
 
                     {/* Headline */}
-                    <p style={{color:"white",fontWeight:700,fontSize:14,lineHeight:1.5,margin:0,fontFamily:"Syne,sans-serif"}}>
-                      Built on Experience.<br/>Driven by Quality.
+                    <p style={{ color: "white", fontWeight: 700, fontSize: 14, lineHeight: 1.5, margin: 0, fontFamily: "Syne,sans-serif" }}>
+                      Built on Experience.<br />Driven by Quality.
                     </p>
 
-                    <p style={{color:"#60a5fa",fontSize:11,marginTop:8,marginBottom:3}}>
-                      https://www.arvishconsulting.com/{" "}
-                      <span style={{color:"rgba(255,255,255,0.35)"}}>· | Building @Arvish</span>
+                    <p style={{ color: "#60a5fa", fontSize: 11, marginTop: 8, marginBottom: 3 }}>
+                      <a href="https://www.arvishconsulting.com/" target="_blank" rel="noopener noreferrer"
+                        style={{ color: "#60a5fa", textDecoration: "underline" }}>
+                        https://www.arvishconsulting.com/
+                      </a>
                     </p>
-                    <p style={{color:"rgba(255,255,255,0.42)",fontSize:11,margin:0}}>
-                      (15+ yrs) ← Get Started Free
-                    </p>
-                    <p style={{color:"rgba(255,255,255,0.26)",fontSize:10,marginTop:3}}>
-                      Construction &nbsp;&nbsp; https://www.arvishconsulting.com/
+                    <p style={{
+                      color: "rgb(204, 212, 221)",
+                      fontSize: 12,
+                      marginTop: 8,
+                      marginBottom: 4
+                    }}>
+                      Delivering reliable construction solutions with precision and commitment.
                     </p>
 
-                    <div className="card-divider"/>
+                    <p style={{
+                      color: "rgba(255,255,255,0.5)",
+                      fontSize: 11,
+                      margin: 0
+                    }}>
+                      Residential • Commercial & Retail • Educational & Healthcare • Industrial
+                    </p>
+
+                    <p style={{
+                      color: "rgba(255,255,255,0.35)",
+                      fontSize: 10,
+                      marginTop: 6
+                    }}>
+                      Years of Experience • Quality Work • On-Time Delivery
+                    </p>
+
+                    <div className="card-divider" />
 
                     {/* Stats */}
-                    <div style={{display:"flex",alignItems:"center"}}>
-                      <div style={{flex:1}}>
-                        <p style={{color:"white",fontWeight:700,fontSize:18,margin:0,fontFamily:"Syne,sans-serif"}}>1600+</p>
-                        <p style={{color:"rgba(255,255,255,0.32)",fontSize:10,margin:0}}>Projects · p.1600</p>
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <div style={{ flex: 1 }}>
+                        <p style={{ color: "white", fontWeight: 700, fontSize: 18, margin: 0, fontFamily: "Syne,sans-serif" }}>50+</p>
+                        <p style={{ color: "rgba(255,255,255,0.32)", fontSize: 10, margin: 0 }}>Projects · 50</p>
                       </div>
-                      <div style={{width:1,height:36,background:"rgba(255,255,255,0.13)",alignSelf:"center"}}/>
-                      <div style={{flex:1,paddingLeft:16}}>
-                        <p style={{color:"white",fontWeight:700,fontSize:18,margin:0,fontFamily:"Syne,sans-serif"}}>98%</p>
-                        <p style={{color:"rgba(255,255,255,0.32)",fontSize:10,margin:0}}>Success Rate · 2009</p>
+                      <div style={{ width: 1, height: 36, background: "rgba(255,255,255,0.13)", alignSelf: "center" }} />
+                      <div style={{ flex: 1, paddingLeft: 16 }}>
+                        <p style={{ color: "white", fontWeight: 700, fontSize: 18, margin: 0, fontFamily: "Syne,sans-serif" }}>98%</p>
+                        <p style={{ color: "rgba(255,255,255,0.32)", fontSize: 10, margin: 0 }}>Success Rate · 2020</p>
                       </div>
                     </div>
 
@@ -731,12 +750,12 @@ export default function AboutGlassSection() {
 
               {/* Sparkle accent */}
               <div className="sparkle" style={{
-                position:"absolute",
-                bottom:24,right:16,
-                color:"rgba(255,255,255,0.65)",
-                fontSize:22,
-                textShadow:"0 0 14px rgba(255,255,255,0.8)",
-                zIndex:30,
+                position: "absolute",
+                bottom: 24, right: 16,
+                color: "rgba(255,255,255,0.65)",
+                fontSize: 22,
+                textShadow: "0 0 14px rgba(255,255,255,0.8)",
+                zIndex: 30,
               }}>✦</div>
 
             </div>

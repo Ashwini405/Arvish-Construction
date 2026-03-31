@@ -124,8 +124,8 @@ export default function ServicesUltraPremium() {
         .ultra-services-container {
           min-height: 100vh;
           padding: 80px 4%;
-          background: #ffffff;
-          color: #1a1a1a;
+          background: linear-gradient(155deg, #060b1a 0%, #080f22 60%, #04090f 100%);
+          color: #ffffff;
           font-family: 'Cormorant Garamond', serif;
           position: relative;
           overflow: hidden;
@@ -168,7 +168,7 @@ export default function ServicesUltraPremium() {
           font-size: 12px;
           letter-spacing: 0.8em;
           text-transform: uppercase;
-          color: rgba(0,0,0,0.6);
+          color: rgba(255,255,255,0.75);
           margin-bottom: 20px;
           display: block;
           opacity: 1;
@@ -180,21 +180,19 @@ export default function ServicesUltraPremium() {
           line-height: 0.9;
           margin: 0 0 8px 0;
           letter-spacing: -0.03em;
-          color: #1a1a1a;
+          color: #ffffff;
         }
 
         .title-accent {
           display: inline-block;
-          background: linear-gradient(135deg, #1a1a1a 0%, #475569 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+          color: #ffffff;
           font-weight: 500;
         }
 
         .title-subtitle {
           font-family: 'Inter', sans-serif;
           font-size: clamp(14px, 2vw, 18px);
-          color: rgba(0,0,0,0.55);
+          color: rgba(255,255,255,0.75);
           font-weight: 300;
           letter-spacing: 0.05em;
           margin: 0;
@@ -359,7 +357,7 @@ export default function ServicesUltraPremium() {
         .progress-container {
           width: 100%;
           height: 1px;
-          background: rgba(0,0,0,0.1);
+          background: rgba(255,255,255,0.12);
           position: relative;
         }
 
@@ -368,7 +366,7 @@ export default function ServicesUltraPremium() {
           left: 0;
           top: 0;
           height: 100%;
-          background: #1a1a1a;
+          background: rgba(255,255,255,0.9);
           transition: width 0.1s linear;
         }
 
@@ -380,7 +378,7 @@ export default function ServicesUltraPremium() {
         .nav-btn {
           background: none;
           border: none;
-          color: rgba(0,0,0,0.3);
+          color: rgba(255,255,255,0.55);
           font-family: 'Montserrat', sans-serif;
           font-size: 11px;
           letter-spacing: 0.2em;
@@ -390,7 +388,7 @@ export default function ServicesUltraPremium() {
         }
 
         .nav-btn.active {
-          color: #1a1a1a;
+          color: rgba(255,255,255,0.95);
         }
 
         @media (max-width: 900px) {
