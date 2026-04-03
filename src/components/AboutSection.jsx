@@ -1,274 +1,153 @@
+
+
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function AboutGlassSection() {
-  const ref = useRef();
   const navigate = useNavigate();
-  const [animationTriggered, setAnimationTriggered] = useState(false);
-  const [metricValues, setMetricValues] = useState({
-    projects: 0,
-    satisfaction: 0,
-    years: 0,
-  });
+  const ref = useRef();
+  const [active, setActive] = useState(false);
+  const [metricValues, setMetricValues] = useState({ projects: 0, satisfaction: 0, years: 0 });
+  const [viewportWidth, setViewportWidth] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth : 1280
+  );
 
   const metricDefs = [
-    { key: "projects", label: "Projects Completed", target: 50, suffix: "+" },
-    { key: "satisfaction", label: "Client Satisfaction", target: 98, suffix: "%" },
-    { key: "years", label: "Years of Excellence", target: 5, suffix: "+" },
+    { key: "projects", label: "Projects\nCompleted", target: 50, suffix: "+" },
+    { key: "satisfaction", label: "Client\nSatisfaction", target: 98, suffix: "%" },
+    { key: "years", label: "Years of\nExcellence", target: 5, suffix: "+" },
   ];
 
   useEffect(() => {
     const el = ref.current;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.add("active");
-          setAnimationTriggered(true);
-        }
-      },
-      { threshold: 0.15 }
-    );
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) setActive(true);
+    }, { threshold: 0.1 });
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
-    if (!animationTriggered) return;
-
-    const duration = 50;
-    let startTimestamp = null;
-    let rafId;
-
-    const step = (timestamp) => {
-      if (!startTimestamp) startTimestamp = timestamp;
-      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-
+    if (!active) return;
+    let raf;
+    let start = null;
+    const duration = 1800;
+    const step = (ts) => {
+      if (!start) start = ts;
+      const p = Math.min((ts - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
       setMetricValues({
-        projects: Math.round(50 * progress),
-        satisfaction: Math.round(98 * progress),
-        years: Math.round(5 * progress),
+        projects: Math.round(50 * ease),
+        satisfaction: Math.round(98 * ease),
+        years: Math.round(5 * ease),
       });
-
-      if (progress < 1) {
-        rafId = requestAnimationFrame(step);
-      }
+      if (p < 1) raf = requestAnimationFrame(step);
     };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [active]);
 
-    rafId = requestAnimationFrame(step);
+  useEffect(() => {
+    const onResize = () => setViewportWidth(window.innerWidth);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
-    return () => {
-      if (rafId) cancelAnimationFrame(rafId);
-    };
-  }, [animationTriggered]);
+  const isMobile = viewportWidth <= 768;
+  const isTablet = viewportWidth <= 1024;
 
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap');
 
-        .about-section { font-family: 'DM Sans', sans-serif; }
-        .about-section h2 { font-family: 'DM Sans', sans-serif; }
+        .about-wrap * { box-sizing: border-box; }
+        .about-wrap { font-family: 'Outfit', sans-serif; }
 
-        /* LEFT column slide-in */
+        /* ── BLINKING WINDOWS ── */
+        .win-blink { animation: winBlink 3s ease-in-out infinite; }
+        .win-blink-2 { animation: winBlink 4.2s ease-in-out 0.8s infinite; }
+        .win-blink-3 { animation: winBlink 2.8s ease-in-out 1.5s infinite; }
+        @keyframes winBlink {
+          0%,100% { fill: rgba(59,130,246,0.18); }
+          40%     { fill: rgba(59,130,246,0.72); filter: brightness(1.4); }
+          60%     { fill: rgba(147,197,253,0.55); }
+        }
+
+        /* ── CRANE SWING ── */
+        .crane-hook { animation: craneSwing 3s ease-in-out infinite; transform-origin: 314px 77px; }
+        @keyframes craneSwing {
+          0%,100% { transform: translateX(0); }
+          50% { transform: translateX(-8px); }
+        }
+
+        /* ── ANTENNA PULSE ── */
+        .antenna-dot { animation: antPulse 2s ease-in-out infinite; }
+        .antenna-dot-2 { animation: antPulse 2.4s ease-in-out 0.6s infinite; }
+        @keyframes antPulse {
+          0%,100% { opacity: 0.5; r: 3; }
+          50% { opacity: 1; r: 5; filter: url(#glow2); }
+        }
+
+        /* ── MOON ROTATE ── */
+        .moon-ring { animation: moonSpin 18s linear infinite; transform-origin: 358px 36px; }
+        @keyframes moonSpin { to { transform: rotate(360deg); } }
+
+        /* ── STAR TWINKLE ── */
+        .star-twinkle { animation: twinkle 2.5s ease-in-out infinite; }
+        .star-twinkle:nth-child(2) { animation-delay: 0.4s; }
+        .star-twinkle:nth-child(3) { animation-delay: 0.9s; }
+        .star-twinkle:nth-child(4) { animation-delay: 1.3s; }
+        .star-twinkle:nth-child(5) { animation-delay: 1.8s; }
+        .star-twinkle:nth-child(6) { animation-delay: 0.7s; }
+        @keyframes twinkle {
+          0%,100% { opacity: 0.2; transform: scale(0.8); }
+          50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* ── GROUND PULSE ── */
+        .ground-shadow { animation: groundPulse 3s ease-in-out infinite; }
+        @keyframes groundPulse {
+          0%,100% { opacity: 0.4; }
+          50% { opacity: 0.8; }
+        }
+
+        /* ── LEFT COL SLIDE ── */
         .left-col {
           opacity: 0;
-          transform: translateX(-40px);
-          transition: opacity 0.9s ease, transform 0.9s ease;
+          transform: translateX(-50px);
+          transition: opacity 1s ease, transform 1s ease;
         }
-        .active .left-col { opacity: 1; transform: translateX(0); }
+        .section-active .left-col { opacity: 1; transform: translateX(0); }
 
-        /* RIGHT column slide-in */
+        /* ── RIGHT COL SLIDE ── */
         .right-col {
           opacity: 0;
           transform: translateX(50px);
-          transition: opacity 1s ease 0.25s, transform 1s ease 0.25s;
+          transition: opacity 1s ease 0.2s, transform 1s ease 0.2s;
         }
-        .active .right-col { opacity: 1; transform: translateX(0); }
+        .section-active .right-col { opacity: 1; transform: translateX(0); }
 
-        /* SVG city glow pulse */
-        .building-glow {
-          animation: bPulse 4s ease-in-out infinite;
-        }
-        @keyframes bPulse {
-          0%,100% { filter: drop-shadow(0 0 6px rgba(96,165,250,0.25)); }
-          50%      { filter: drop-shadow(0 0 16px rgba(96,165,250,0.5)); }
-        }
-
-        /* Stat bars */
-        .stat-row {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 10px;
-          margin-bottom: 8px;
-        }
-        .stat-row span:first-child {
-          color: rgba(255,255,255,0.65);
-          font-size: 13px;
-          font-weight: 500;
-        }
-        .stat-row span:last-child {
-          color: #61abff;
-          font-weight: 700;
-          font-size: 13px;
-        }
-        .bar-track {
-          height: 8px;
-          background: rgba(96,145,190,0.22);
-          border-radius: 999px;
-          overflow: hidden;
-          border: 1px solid rgba(121,185,255,0.18);
-        }
-        .bar-fill {
-          height: 100%;
-          border-radius: 999px;
-          background: linear-gradient(90deg, #3b82f6 0%, #38bdf8 40%, #a8f2ff 100%);
-          transform: scaleX(0);
-          transform-origin: left;
-          transition: transform 1.3s cubic-bezier(0.22,1,0.36,1);
-          box-shadow: 0 0 12px rgba(56,192,248,0.46);
-        }
-        .active .bar-fill { transform: scaleX(1); }
-
-        /* Chips styling */
-        .chips-container {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-          margin-top: 12px;
-        }
-        .chip {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          padding: 6px 12px;
-          background: rgba(96,165,250,0.1);
-          border: 1px solid rgba(96,165,250,0.2);
-          border-radius: 20px;
-          font-size: 12px;
-          color: rgba(255,255,255,0.85);
-          font-weight: 500;
-          backdrop-filter: blur(10px);
-          transition: all 0.2s ease;
-        }
-        .chip:hover {
-          background: rgba(96,165,250,0.15);
-          border-color: rgba(96,165,250,0.3);
-          transform: translateY(-1px);
-        }
-        .chip-check {
-          color: #34d399;
-          font-size: 14px;
-        }
-
-        /* What We Build tags */
-        .build-tags {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-          margin-top: 16px;
-        }
-        .build-tag {
-          padding: 4px 10px;
-          background: rgba(96,165,250,0.08);
-          border: 1px solid rgba(96,165,250,0.15);
-          border-radius: 12px;
-          font-size: 11px;
-          color: rgba(255,255,255,0.75);
-          font-weight: 500;
-          backdrop-filter: blur(8px);
-          transition: all 0.2s ease;
-        }
-        .build-tag:hover {
-          background: rgba(96,165,250,0.12);
-          border-color: rgba(96,165,250,0.25);
-          color: rgba(255,255,255,0.85);
-        }
-
-        /* Animated glowing line */
-        .animated-line {
-          width: 0;
-          height: 3px;
-          background: linear-gradient(90deg, #60a5fa, #38bdf8, #22d3ee);
-          border-radius: 2px;
-          margin: 16px 0 8px 0;
-          box-shadow: 0 0 20px rgba(96,165,250,0.6);
+        /* ── DIAMOND CARDS ── */
+        .diamond-wrap {
           position: relative;
-          animation: expandLine 2s ease-out 0.5s forwards;
-        }
-        .animated-line::after {
-          content: '';
-          position: absolute;
-          top: 50%;
-          right: -8px;
-          width: 14px;
-          height: 14px;
-          border-radius: 50%;
-          background: #22d3ee;
-          transform: translateY(-50%) scale(0);
-          box-shadow: 0 0 12px rgba(34, 211, 238, 0.85);
-          animation: lineNobe 2s ease-out 0.5s forwards;
-        }
-        @keyframes expandLine {
-          0% {
-            width: 0;
-            box-shadow: 0 0 0 rgba(96,165,250,0);
-          }
-          100% {
-            width: 120px;
-            box-shadow: 0 0 20px rgba(96,165,250,0.6);
-          }
-        }
-        @keyframes lineNobe {
-          0% {
-            transform: translateY(-50%) scale(0);
-            opacity: 0;
-          }
-          90% {
-            transform: translateY(-50%) scale(0.95);
-            opacity: 1;
-          }
-          100% {
-            transform: translateY(-50%) scale(1);
-            opacity: 1;
-          }
-        }
-
-        .stats-container {
-          background: rgba(6, 12, 25, 0.15);
-          border-radius: 0;
-          border: none;
-          box-shadow: none;
-          padding: 8px 0 0 0;
-        }
-        .stats-subtitle {
-          color: rgba(160, 190, 255, 0.75);
-          font-size: 11px;
-          letter-spacing: 0.05em;
-          text-transform: uppercase;
-          margin-bottom: 12px;
-        }
-        .diamond-grid {
-          display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 12px;
+          width: 120px;
+          height: 120px;
+          flex-shrink: 0;
         }
         .diamond-card {
-          position: relative;
-          width: 100%;
-          aspect-ratio: 1 / 1;
-          background: linear-gradient(145deg, rgba(74, 115, 171, 0.26), rgba(20, 35, 70, 0.42));
-          border: 1px solid rgba(104, 153, 221, 0.2);
-          border-radius: 16px;
-          transform: rotate(45deg);
-          box-shadow: 0 8px 14px rgba(15, 40, 80, 0.28);
-          overflow: hidden;
-        }
-        .diamond-card::before {
-          content: '';
           position: absolute;
           inset: 0;
-          background: radial-gradient(circle at 50% 20%, rgba(156,213,255,0.18), transparent 45%);
+          background: #ffffff;
+          border: 1.5px solid rgba(59,130,246,0.15);
+          border-radius: 18px;
+          transform: rotate(45deg);
+          box-shadow: 0 8px 32px rgba(59,130,246,0.10), 0 2px 8px rgba(0,0,0,0.06);
+          transition: box-shadow 0.3s, transform 0.3s;
+        }
+        .diamond-wrap:hover .diamond-card {
+          box-shadow: 0 16px 48px rgba(59,130,246,0.2), 0 4px 16px rgba(0,0,0,0.08);
+          transform: rotate(45deg) scale(1.04);
         }
         .diamond-content {
           position: absolute;
@@ -277,488 +156,487 @@ export default function AboutGlassSection() {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          text-align: center;
           transform: rotate(-45deg);
-          color: #e4f4ff;
-          z-index: 1;
-          padding: 8px;
+          text-align: center;
+          padding: 4px;
         }
         .diamond-value {
-          font-size: 26px;
+          font-family: 'Playfair Display', serif;
+          font-size: 28px;
           font-weight: 800;
-          color: #7dd3fc;
-          margin-bottom: 6px;
+          color: #1d4ed8;
+          line-height: 1;
+          margin-bottom: 4px;
         }
         .diamond-label {
-          font-size: 12px;
+          font-size: 10px;
           font-weight: 600;
-          color: rgba(207,226,255,0.92);
-          line-height: 1.2;
+          color: #64748b;
+          line-height: 1.3;
+          text-transform: uppercase;
+          letter-spacing: 0.03em;
+          white-space: pre-line;
         }
 
-        /*
-        ┌─────────────────────────────────────────────────────┐
-        │  HAND + CARD SCENE                                   │
-        │                                                      │
-        │  Strategy: one container, two layers                 │
-        │  • hand-img   → z-index 5   (behind card)           │
-        │  • card-wrap  → z-index 20  (in front of hand)      │
-        │                                                      │
-        │  The hand image is large and centered.              │
-        │  The card is absolutely positioned so it sits        │
-        │  right where the palm/fingers are in the photo.     │
-        └─────────────────────────────────────────────────────┘
-        */
-        .scene {
+        /* ── BAR STATS ── */
+        .bar-track {
+          height: 6px;
+          background: rgba(226,232,240,0.8);
+          border-radius: 999px;
+          overflow: hidden;
+          border: 1px solid rgba(203,213,225,0.6);
+        }
+        .bar-fill {
+          height: 100%;
+          border-radius: 999px;
+          background: linear-gradient(90deg, #2563eb, #38bdf8);
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 1.6s cubic-bezier(0.22,1,0.36,1);
+        }
+        .section-active .bar-fill { transform: scaleX(1); }
+
+        /* ── CARD ── */
+        .profile-card {
+          background: #ffffff;
+          border: 1px solid rgba(203,213,225,0.8);
+          border-radius: 20px;
+          padding: 20px;
+          box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
           position: relative;
-          width: 100%;
-          height: 620px;
+          overflow: hidden;
         }
-
-        /*
-          HAND IMAGE
-          ─────────
-          • Centered horizontally in the scene
-          • Bottom-anchored so wrist exits the bottom edge (natural crop)
-          • Large enough that the palm fills the scene
-          • NO scaleX flip — keep original orientation of hand.png
-            (if your hand faces the wrong way, add: transform: scaleX(-1))
-        */
-        .hand-img {
-          position: absolute;
-          bottom: -80px;
-          right: -120px;
-          width: 580px;
-          z-index: 5;
-          pointer-events: none;
-          /* dark shadow so hand blends into dark bg */
-          filter: drop-shadow(-8px -8px 30px rgba(0,0,0,0.7))
-                  drop-shadow(0 20px 40px rgba(0,0,0,0.9));
-        }
-
-        /*
-          CARD
-          ────
-          • Absolutely positioned in the scene
-          • Sits at top-center — this puts it right above the palm
-          • Rotated slightly to match the "held at an angle" look
-          • z-index 20 so it renders ON TOP of the hand
-        */
-        .card-wrap {
-          position: absolute;
-          top: 260px;
-          right: 98px;           /* positioned in hand's palm area */
-          transform: rotate(-6deg);
-          z-index: 20;
-          animation: none;
-          filter: drop-shadow(0 0 18px rgba(96,165,250,0.2)) 
-                  drop-shadow(0 8px 20px rgba(0,0,0,0.3));
-        }
-        @keyframes floatCard {
-          0%,100% { top: 170px;  transform: rotate(-8deg); }
-          50%      { top: 120px; transform: rotate(-6deg); }
-        }
-
-        /* Glass card shell */
-        .glass-outer {
-  width: 320px;
-  border-radius: 22px;
-  padding: 1px;
-  background: linear-gradient(
-    135deg,
-    rgba(96,165,250,0.35),
-    rgba(148,113,255,0.25)
-  );
-  box-shadow:
-    0 0 15px rgba(96,165,250,0.2),
-    0 0 30px rgba(148,113,255,0.12),
-    inset 0 0 8px rgba(255,255,255,0.1);
-}
-        .glass-inner {
-  background: rgba(5,10,22,0.7);
-  backdrop-filter: blur(30px) saturate(150%);
-  -webkit-backdrop-filter: blur(30px) saturate(150%);
-  border-radius: 21px;
-  padding: 24px 22px 20px;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(96,165,250,0.15);
-}
-        /* top-left inner shine */
-        .glass-inner::before {
+        .profile-card::before {
           content: '';
           position: absolute;
-          inset: 0;
-          background: linear-gradient(148deg, rgba(96,165,250,0.06) 0%, transparent 42%);
-          border-radius: 21px;
-          pointer-events: none;
+          top: 0; left: 0; right: 0;
+          height: 3px;
+          background: linear-gradient(90deg, #2563eb, #38bdf8, #7c3aed);
+          animation: cardLine 4s ease-in-out infinite;
+        }
+        @keyframes cardLine {
+          0%,100% { opacity: 0.6; }
+          50% { opacity: 1; }
         }
 
         .card-divider {
           height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(96,165,250,0.1), transparent);
-          margin: 12px 0;
+          background: linear-gradient(90deg, transparent, rgba(203,213,225,0.8), transparent);
+          margin: 14px 0;
         }
+
         .follow-btn {
-          border: 1px solid rgba(255,255,255,0.28);
+          border: 1.5px solid rgba(37,99,235,0.3);
           border-radius: 20px;
-          padding: 4px 14px;
+          padding: 5px 16px;
           font-size: 11px;
-          color: white;
-          background: rgba(255,255,255,0.07);
+          font-weight: 600;
+          color: #2563eb;
+          background: rgba(219,234,254,0.4);
           cursor: pointer;
-          font-family: 'DM Sans', sans-serif;
+          font-family: 'Outfit', sans-serif;
+          transition: all 0.2s;
           white-space: nowrap;
-          transition: background 0.2s;
         }
-        .follow-btn:hover { background: rgba(255,255,255,0.14); }
-        .follows-badge {
-          display: inline-block;
-          border: 1px solid rgba(255,255,255,0.15);
-          border-radius: 20px;
-          padding: 2px 9px;
-          font-size: 10px;
-          color: rgba(255,255,255,0.44);
-          margin-top: 3px;
+        .follow-btn:hover {
+          background: rgba(219,234,254,0.8);
+          border-color: rgba(37,99,235,0.5);
         }
 
         .cta-btn {
-          border: 1px solid rgba(255,255,255,0.25);
-          border-radius: 16px;
-          padding: 8px 14px;
-          font-size: 12px;
-          color: #e8f4ff;
-          background: rgba(255,255,255,0.08);
-          backdrop-filter: blur(8px);
+          border: 1.5px solid rgba(30,41,59,0.2);
+          border-radius: 12px;
+          padding: 10px 20px;
+          font-size: 13px;
+          font-weight: 600;
+          color: #0f172a;
+          background: #ffffff;
           cursor: pointer;
-          font-family: 'DM Sans', sans-serif;
-          transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+          font-family: 'Outfit', sans-serif;
+          transition: all 0.25s ease;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
         .cta-btn:hover {
-          background: rgba(96,165,250,0.18);
-          box-shadow: 0 10px 25px rgba(56,192,248,0.24);
+          background: #0f172a;
+          color: #ffffff;
+          border-color: #0f172a;
           transform: translateY(-2px);
+          box-shadow: 0 8px 24px rgba(0,0,0,0.14);
         }
-        .cta-alt {
-          color: #b8dbff;
-          border-color: rgba(96,165,250,0.3);
+        .cta-btn-primary {
+          background: #1d4ed8;
+          color: #ffffff;
+          border-color: #1d4ed8;
+        }
+        .cta-btn-primary:hover {
+          background: #1e40af;
+          border-color: #1e40af;
+          color: #ffffff;
         }
 
+        /* ── ACCENT TAGS ── */
+        .accent-tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          padding: 4px 10px;
+          border-radius: 20px;
+          font-size: 11px;
+          font-weight: 500;
+          border: 1px solid;
+        }
 
-        /* Bokeh */
-        .bokeh { position: absolute; border-radius: 50%; pointer-events: none; }
+        /* ── FLOATING PARTICLES ── */
+        .particle {
+          position: absolute;
+          border-radius: 50%;
+          pointer-events: none;
+          animation: particleFloat linear infinite;
+        }
+        @keyframes particleFloat {
+          0% { transform: translateY(0) scale(1); opacity: 0.6; }
+          50% { opacity: 1; }
+          100% { transform: translateY(-80px) scale(0.5); opacity: 0; }
+        }
 
-        /* Sparkle */
-        .sparkle { animation: sp 3s ease-in-out infinite; }
-        @keyframes sp {
-          0%,100% { opacity:0.4; transform:scale(1); }
-          50%      { opacity:1;  transform:scale(1.45); }
+        /* ── KICKER LINE ── */
+        .kicker-line {
+          display: inline-block;
+          width: 32px;
+          height: 2px;
+          background: #2563eb;
+          border-radius: 2px;
+          margin-right: 10px;
+          vertical-align: middle;
+          animation: kickerGrow 1s ease-out 0.3s both;
+        }
+        @keyframes kickerGrow {
+          from { width: 0; opacity: 0; }
+          to { width: 32px; opacity: 1; }
+        }
+
+        /* ── HEADING UNDERLINE ── */
+        .heading-underline {
+          position: relative;
+          display: inline;
+        }
+        .heading-underline::after {
+          content: '';
+          position: absolute;
+          bottom: 2px;
+          left: 0;
+          width: 0;
+          height: 3px;
+          background: linear-gradient(90deg, #2563eb, #38bdf8);
+          border-radius: 2px;
+          transition: width 1.2s ease 0.8s;
+        }
+        .section-active .heading-underline::after { width: 100%; }
+
+        /* ── STAT BADGE ── */
+        .stat-badge {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 14px;
+          background: #f8fafc;
+          border: 1px solid rgba(203,213,225,0.7);
+          border-radius: 12px;
+        }
+        .stat-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #22c55e;
+          animation: dotPulse 2s ease-in-out infinite;
+          flex-shrink: 0;
+        }
+        @keyframes dotPulse {
+          0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+          50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+        }
+
+        /* ── SECTION DECORATION ── */
+        .deco-circle {
+          position: absolute;
+          border-radius: 50%;
+          pointer-events: none;
+          animation: decoFloat 6s ease-in-out infinite;
+        }
+        @keyframes decoFloat {
+          0%,100% { transform: translateY(0) scale(1); }
+          50% { transform: translateY(-12px) scale(1.03); }
+        }
+
+        @media (max-width: 768px) {
+          .diamond-wrap { width: 100px; height: 100px; }
+          .diamond-value { font-size: 22px; }
+          .diamond-label { font-size: 9px; }
         }
       `}</style>
 
       <section
         ref={ref}
-        className="about-section"
+        className={`about-wrap${active ? " section-active" : ""}`}
         style={{
           position: "relative",
-          minHeight: "100vh",
-          background: "linear-gradient(155deg,#060b1a 0%,#080f22 60%,#04090f 100%)",
-          display: "flex",
-          alignItems: "center",
+          background: "#ffffff",
+          padding: isMobile ? "60px 16px" : isTablet ? "72px 32px" : "80px 6%",
           overflow: "hidden",
-          padding: "60px 6%",
         }}
       >
-        {/* Bokeh background dots */}
+        {/* ── BACKGROUND DECORATION ── */}
+        <div className="deco-circle" style={{ width: 400, height: 400, top: -120, right: -80, background: "radial-gradient(circle, rgba(219,234,254,0.5) 0%, transparent 70%)" }} />
+        <div className="deco-circle" style={{ width: 300, height: 300, bottom: -60, left: -40, background: "radial-gradient(circle, rgba(240,253,244,0.6) 0%, transparent 70%)", animationDelay: "2s" }} />
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle, rgba(148,163,184,0.06) 1px, transparent 1px)", backgroundSize: "28px 28px", pointerEvents: "none" }} />
+
+        {/* Floating particles */}
         {[
-          { w: 120, h: 120, l: "2%", t: "8%", op: 0.18 },
-          { w: 70, h: 70, l: "18%", t: "76%", op: 0.14 },
-          { w: 55, h: 55, l: "46%", t: "5%", op: 0.12 },
-          { w: 95, h: 95, l: "78%", t: "70%", op: 0.16 },
-          { w: 48, h: 48, l: "90%", t: "16%", op: 0.11 },
-          { w: 62, h: 62, l: "34%", t: "86%", op: 0.13 },
-          { w: 40, h: 40, l: "60%", t: "50%", op: 0.09 },
-        ].map((d, i) => (
-          <div key={i} className="bokeh" style={{
-            width: d.w, height: d.h, left: d.l, top: d.t,
-            background: `radial-gradient(circle,rgba(80,130,255,${d.op}) 0%,transparent 70%)`,
-            filter: "blur(4px)",
-          }} />
+          { w: 6, l: "12%", t: "70%", delay: "0s", dur: "6s", color: "rgba(59,130,246,0.25)" },
+          { w: 4, l: "28%", t: "80%", delay: "1.5s", dur: "5s", color: "rgba(56,189,248,0.3)" },
+          { w: 5, l: "72%", t: "75%", delay: "0.8s", dur: "7s", color: "rgba(37,99,235,0.2)" },
+          { w: 3, l: "85%", t: "65%", delay: "2s", dur: "5.5s", color: "rgba(124,58,237,0.2)" },
+        ].map((p, i) => (
+          <div key={i} className="particle" style={{ width: p.w, height: p.w, left: p.l, top: p.t, background: p.color, animationDuration: p.dur, animationDelay: p.delay }} />
         ))}
 
-        {/* ═══════════════════════════════
-            2-COLUMN GRID
-        ═══════════════════════════════ */}
         <div style={{
           display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "50px",
-          width: "100%",
-          maxWidth: 1160,
+          gridTemplateColumns: isTablet ? "1fr" : "1fr 1fr",
+          gap: isMobile ? 40 : isTablet ? 48 : 64,
+          maxWidth: 1200,
           margin: "0 auto",
           alignItems: "center",
           position: "relative",
           zIndex: 2,
         }}>
 
-          {/* ════════ LEFT COLUMN ════════ */}
-          <div className="left-col" style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+          {/* ══════════════════════════════
+              LEFT COLUMN — Illustration + Metrics
+          ══════════════════════════════ */}
+          <div className="left-col" style={{ display: "flex", flexDirection: "column", gap: 32, order: isTablet ? 2 : 1 }}>
 
-            {/* SVG City Illustration */}
-            <div className="building-glow">
-              <svg viewBox="0 0 420 260" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
+            {/* ── CITY SVG ── */}
+            <div style={{ position: "relative" }}>
+              {/* Glow halo behind SVG */}
+              <div style={{ position: "absolute", inset: "10%", background: "radial-gradient(ellipse, rgba(219,234,254,0.7) 0%, transparent 70%)", borderRadius: "50%", pointerEvents: "none" }} />
+              <svg viewBox="0 0 420 260" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", position: "relative", zIndex: 1 }}>
                 <defs>
-                  <linearGradient id="b1" x1="0.2" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#1e3a6e" /><stop offset="100%" stopColor="#0c1a3a" />
+                  <linearGradient id="b1" x1="0.5" y1="0" x2="0.5" y2="1">
+                    <stop offset="0%" stopColor="#93c5fd" />
+                    <stop offset="100%" stopColor="#3b82f6" />
                   </linearGradient>
-                  <linearGradient id="b2" x1="0.1" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#162d52" /><stop offset="100%" stopColor="#080f22" />
+                  <linearGradient id="b2" x1="0.5" y1="0" x2="0.5" y2="1">
+                    <stop offset="0%" stopColor="#bfdbfe" />
+                    <stop offset="100%" stopColor="#60a5fa" />
                   </linearGradient>
-                  <linearGradient id="win" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.75" />
-                    <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.28" />
+                  <linearGradient id="b3" x1="0.5" y1="0" x2="0.5" y2="1">
+                    <stop offset="0%" stopColor="#dbeafe" />
+                    <stop offset="100%" stopColor="#93c5fd" />
+                  </linearGradient>
+                  <linearGradient id="gnd" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#bfdbfe" stopOpacity="0.4" />
+                    <stop offset="100%" stopColor="white" stopOpacity="0" />
                   </linearGradient>
                   <filter id="glow2">
-                    <feGaussianBlur stdDeviation="2.5" result="blur" />
+                    <feGaussianBlur stdDeviation="2" result="blur" />
                     <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
                   </filter>
-                  <linearGradient id="gnd" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#1a3a6e" stopOpacity="0.3" />
-                    <stop offset="100%" stopColor="#080d1e" stopOpacity="0" />
-                  </linearGradient>
+                  <filter id="softShadow">
+                    <feDropShadow dx="0" dy="4" stdDeviation="6" floodColor="rgba(59,130,246,0.15)" />
+                  </filter>
                 </defs>
+
+                {/* Ground */}
                 <rect x="0" y="228" width="420" height="32" fill="url(#gnd)" />
-                <line x1="0" y1="228" x2="420" y2="228" stroke="rgba(96,165,250,0.18)" strokeWidth="1" />
-                {/* Far left small */}
-                <rect x="8" y="158" width="44" height="70" fill="#0b1530" rx="2" />
-                {[168, 184, 200, 216].map(y => [14, 28].map(x => (<rect key={`a${x}${y}`} x={x} y={y} width="9" height="10" rx="1" fill="rgba(96,165,250,0.18)" />)))}
-                {/* Left tall */}
-                <rect x="58" y="100" width="82" height="128" fill="url(#b2)" rx="2" />
-                {[115, 133, 151, 169, 187, 205].map(y => [66, 84, 102, 122].map(x => (<rect key={`b${x}${y}`} x={x} y={y} width="10" height="12" rx="1" fill={((x + y) % 3 === 0) ? "url(#win)" : "rgba(255,255,255,0.03)"} />)))}
-                <rect x="54" y="94" width="90" height="9" fill="#162d52" rx="1.5" />
-                <line x1="99" y1="94" x2="99" y2="72" stroke="rgba(96,165,250,0.4)" strokeWidth="1.5" />
-                <circle cx="99" cy="71" r="2.5" fill="#60a5fa" filter="url(#glow2)" />
-                {/* Center hero */}
-                <rect x="155" y="48" width="110" height="180" fill="url(#b1)" rx="3" />
-                {[65, 85, 105, 125, 145, 165, 185, 205].map(y => [163, 183, 203, 225, 245].map(x => (<rect key={`c${x}${y}`} x={x} y={y} width="11" height="13" rx="1" fill={((x * y) % 5 < 2) ? "url(#win)" : "rgba(255,255,255,0.03)"} />)))}
-                <rect x="150" y="42" width="120" height="10" fill="#1a3360" rx="2" />
-                <rect x="196" y="30" width="28" height="16" fill="#162d52" rx="2" />
-                <line x1="210" y1="30" x2="210" y2="10" stroke="rgba(96,165,250,0.5)" strokeWidth="1.5" />
-                <circle cx="210" cy="9" r="3" fill="#60a5fa" filter="url(#glow2)" />
-                {/* Right */}
-                <rect x="278" y="120" width="75" height="108" fill="url(#b2)" rx="2" />
-                {[135, 153, 171, 189, 207].map(y => [285, 303, 321, 339].map(x => (<rect key={`d${x}${y}`} x={x} y={y} width="9" height="12" rx="1" fill={((x + y) % 4 === 0) ? "url(#win)" : "rgba(255,255,255,0.03)"} />)))}
-                <rect x="274" y="114" width="83" height="9" fill="#152848" rx="1.5" />
-                {/* Far right */}
-                <rect x="365" y="170" width="48" height="58" fill="#0b1530" rx="2" />
-                {[178, 194, 210].map(y => [371, 385].map(x => (<rect key={`e${x}${y}`} x={x} y={y} width="9" height="11" rx="1" fill="rgba(96,165,250,0.2)" />)))}
+                <line x1="0" y1="228" x2="420" y2="228" stroke="rgba(147,197,253,0.5)" strokeWidth="1.5" />
+                <ellipse cx="210" cy="228" rx="180" ry="6" fill="rgba(147,197,253,0.12)" className="ground-shadow" />
+
+                {/* Far left small building */}
+                <rect x="8" y="162" width="44" height="66" fill="url(#b3)" rx="2" filter="url(#softShadow)" />
+                {[170, 186, 202].map(y => [13, 27, 41].map(x => (
+                  <rect key={`a${x}${y}`} x={x} y={y} width="9" height="11" rx="1.5" fill="rgba(59,130,246,0.22)" className="win-blink-3" />
+                )))}
+
+                {/* Left tall building */}
+                <rect x="58" y="98" width="84" height="130" fill="url(#b2)" rx="3" filter="url(#softShadow)" />
+                {[115, 133, 151, 169, 187, 205].map(y => [66, 84, 102, 122].map(x => {
+                  const cls = (x + y) % 5 === 0 ? "win-blink" : (x + y) % 7 === 0 ? "win-blink-2" : "";
+                  return <rect key={`b${x}${y}`} x={x} y={y} width="11" height="12" rx="1.5" fill="rgba(255,255,255,0.35)" className={cls} />;
+                }))}
+                <rect x="54" y="92" width="92" height="10" fill="#93c5fd" rx="2" />
+                <line x1="100" y1="92" x2="100" y2="68" stroke="rgba(59,130,246,0.5)" strokeWidth="2" />
+                <circle cx="100" cy="67" r="3" fill="#3b82f6" filter="url(#glow2)" className="antenna-dot" />
+
+                {/* Center hero building */}
+                <rect x="155" y="44" width="112" height="184" fill="url(#b1)" rx="4" filter="url(#softShadow)" />
+                {[62, 82, 102, 122, 142, 162, 182, 202].map(y => [163, 183, 203, 225, 245].map(x => {
+                  const cls = (x * y) % 9 === 0 ? "win-blink" : (x * y) % 7 === 0 ? "win-blink-2" : (x * y) % 5 === 0 ? "win-blink-3" : "";
+                  return <rect key={`c${x}${y}`} x={x} y={y} width="12" height="14" rx="1.5" fill="rgba(255,255,255,0.3)" className={cls} />;
+                }))}
+                <rect x="150" y="38" width="122" height="10" fill="#60a5fa" rx="2" />
+                <rect x="196" y="26" width="30" height="16" fill="#93c5fd" rx="3" />
+                <line x1="211" y1="26" x2="211" y2="6" stroke="rgba(59,130,246,0.6)" strokeWidth="2" />
+                <circle cx="211" cy="5" r="3.5" fill="#2563eb" filter="url(#glow2)" className="antenna-dot-2" />
+
+                {/* Right building */}
+                <rect x="280" y="118" width="78" height="110" fill="url(#b2)" rx="3" filter="url(#softShadow)" />
+                {[132, 150, 168, 186, 204].map(y => [287, 306, 325, 344].map(x => {
+                  const cls = (x + y) % 6 === 0 ? "win-blink-2" : "";
+                  return <rect key={`d${x}${y}`} x={x} y={y} width="10" height="12" rx="1.5" fill="rgba(255,255,255,0.35)" className={cls} />;
+                }))}
+                <rect x="276" y="112" width="86" height="10" fill="#93c5fd" rx="2" />
+
+                {/* Far right small */}
+                <rect x="368" y="172" width="46" height="56" fill="url(#b3)" rx="2" filter="url(#softShadow)" />
+                {[180, 196, 212].map(y => [373, 389].map(x => (
+                  <rect key={`e${x}${y}`} x={x} y={y} width="9" height="10" rx="1.5" fill="rgba(59,130,246,0.22)" className="win-blink" />
+                )))}
+
                 {/* Crane */}
-                <line x1="350" y1="228" x2="350" y2="75" stroke="rgba(96,165,250,0.28)" strokeWidth="2" />
-                <line x1="308" y1="77" x2="382" y2="77" stroke="rgba(96,165,250,0.28)" strokeWidth="2" />
-                <line x1="350" y1="77" x2="314" y2="108" stroke="rgba(96,165,250,0.18)" strokeWidth="1" />
-                <line x1="314" y1="77" x2="314" y2="116" stroke="rgba(96,165,250,0.28)" strokeWidth="1" strokeDasharray="3,2" />
-                <rect x="309" y="116" width="10" height="8" rx="1" fill="rgba(96,165,250,0.35)" />
+                <line x1="350" y1="228" x2="350" y2="73" stroke="rgba(96,165,250,0.4)" strokeWidth="2.5" />
+                <line x1="306" y1="75" x2="384" y2="75" stroke="rgba(96,165,250,0.4)" strokeWidth="2.5" />
+                <line x1="350" y1="75" x2="318" y2="105" stroke="rgba(96,165,250,0.25)" strokeWidth="1.5" />
+                <g className="crane-hook">
+                  <line x1="314" y1="75" x2="314" y2="120" stroke="rgba(96,165,250,0.45)" strokeWidth="1.5" strokeDasharray="3,2" />
+                  <rect x="308" y="120" width="12" height="9" rx="2" fill="rgba(59,130,246,0.5)" />
+                </g>
+
                 {/* Moon */}
-                <circle cx="358" cy="36" r="16" fill="none" stroke="rgba(96,165,250,0.12)" strokeWidth="1.5" />
-                <circle cx="358" cy="36" r="10" fill="rgba(96,165,250,0.05)" />
+                <circle cx="358" cy="34" r="18" fill="none" stroke="rgba(147,197,253,0.35)" strokeWidth="1.5" strokeDasharray="4,2" className="moon-ring" />
+                <circle cx="358" cy="34" r="12" fill="rgba(219,234,254,0.5)" />
+                <circle cx="354" cy="30" r="5" fill="rgba(147,197,253,0.4)" />
+
                 {/* Stars */}
-                {[[45, 28], [88, 18], [318, 22], [385, 14], [130, 32], [30, 45]].map(([x, y], i) => (<circle key={i} cx={x} cy={y} r="1.5" fill="rgba(255,255,255,0.45)" />))}
-                <ellipse cx="210" cy="230" rx="95" ry="5" fill="rgba(96,165,250,0.07)" />
-                {[70, 120, 170, 220, 270, 320].map(x => (<rect key={x} x={x} y="237" width="28" height="3" rx="1.5" fill="rgba(255,255,255,0.05)" />))}
+                {[[42, 26], [86, 16], [318, 20], [385, 12], [128, 30], [28, 44]].map(([x, y], i) => (
+                  <circle key={i} cx={x} cy={y} r="2" fill="#3b82f6" className="star-twinkle" />
+                ))}
+
+                {/* Road lines */}
+                {[70, 130, 190, 250, 310].map(x => (
+                  <rect key={x} x={x} y="236" width="32" height="3" rx="1.5" fill="rgba(147,197,253,0.3)" />
+                ))}
               </svg>
             </div>
 
-            {/* Key metrics as 3 diamond cards */}
-            <div className="stats-container">
-              <div className="stats-subtitle"></div>
-              <div className="diamond-grid">
-                {metricDefs.map((metric) => (
-                  <div key={metric.key} className="diamond-card">
-                    <div className="diamond-content">
-                      <div className="diamond-value">
-                        {metricValues[metric.key]}
-                        {metric.suffix}
-                      </div>
-                      <div className="diamond-label">{metric.label}</div>
-                    </div>
+            {/* ── METRICS ROW ── */}
+            <div style={{ display: "flex", gap: isMobile ? 16 : 24, justifyContent: "center", flexWrap: "wrap" }}>
+              {metricDefs.map((m) => (
+                <div key={m.key} className="diamond-wrap">
+                  <div className="diamond-card" />
+                  <div className="diamond-content">
+                    <div className="diamond-value">{metricValues[m.key]}{m.suffix}</div>
+                    <div className="diamond-label">{m.label}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+
+
+          </div>
+
+          {/* ══════════════════════════════
+              RIGHT COLUMN — Headline + Card + Tags
+          ══════════════════════════════ */}
+          <div className="right-col" style={{ order: isTablet ? 1 : 2, display: "flex", flexDirection: "column", gap: 28 }}>
+
+            {/* ── KICKER ── */}
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <span className="kicker-line" />
+              <span style={{ fontSize: 12, fontWeight: 700, color: "#2563eb", letterSpacing: "0.1em", textTransform: "uppercase" }}>Building Excellence</span>
+            </div>
+
+            {/* ── HEADLINE ── */}
+            <div>
+              <h2 style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: isMobile ? "clamp(2rem, 7vw, 2.8rem)" : "clamp(2.4rem, 3.5vw, 3.8rem)",
+                fontWeight: 800,
+                color: "#0f172a",
+                lineHeight: 1.08,
+                margin: 0,
+              }}>
+                Crafting Strong<br />
+                Foundations for the{" "}
+                <span className="heading-underline" style={{ color: "#2563eb" }}>Future.</span>
+              </h2>
+              <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.7, marginTop: 16, marginBottom: 0, maxWidth: "38ch" }}>
+                With years of experience in the construction industry, we deliver residential, commercial & retail, educational & healthcare, and industrial projects with a strong commitment to quality, reliability, and timely completion.
+              </p>
+            </div>
+
+            {/* ── PROFILE CARD — fully integrated ── */}
+            <div className="profile-card">
+              {/* Header row */}
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <div style={{
+                  width: 48, height: 48, borderRadius: "50%", overflow: "hidden", flexShrink: 0,
+                  border: "2px solid rgba(219,234,254,0.9)",
+                  boxShadow: "0 0 0 3px rgba(59,130,246,0.08)",
+                }}>
+                  <img src="https://www.arvishconsulting.com/assets/arvish-logo-zo8liOBq.png" alt="Arvish logo" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontWeight: 700, fontSize: 14, color: "#0f172a", fontFamily: "'Playfair Display', serif" }}>Arvish Constructions</div>
+                  <div className="stat-badge" style={{ marginTop: 4, display: "inline-flex" }}>
+                    <div className="stat-dot" />
+                    <span style={{ fontSize: 11, color: "#475569", fontWeight: 500 }}>Active</span>
+                  </div>
+                </div>
+                <a
+                  className="follow-btn"
+                  href="https://www.facebook.com/ArvishConstructions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Follow
+                </a>
+              </div>
+
+              <div className="card-divider" />
+
+              {/* Tagline */}
+              <p style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: 15, color: "#0f172a", margin: 0, lineHeight: 1.5 }}>
+                Built on Experience.<br />Driven by Quality.
+              </p>
+              <p style={{ fontSize: 12, color: "#64748b", marginTop: 8, marginBottom: 4 }}>
+                Delivering reliable construction solutions with precision, trust, and a commitment to excellence—ensuring every project is built to last.
+              </p>
+
+              {/* Accent tags */}
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 10 }}>
+                {[
+                  { label: "Residential", color: "#1d4ed8", bg: "rgba(219,234,254,0.6)", border: "rgba(147,197,253,0.5)", path: "/services/residential" },
+                  { label: "Commercial & Retail", color: "#0369a1", bg: "rgba(224,242,254,0.6)", border: "rgba(125,211,252,0.5)", path: "/services/commercial-retail" },
+                  { label: "Educational & Healthcare", color: "#047857", bg: "rgba(209,250,229,0.6)", border: "rgba(110,231,183,0.5)", path: "/services/educational-healthcare" },
+                  { label: "Industrial", color: "#7c3aed", bg: "rgba(237,233,254,0.6)", border: "rgba(196,181,253,0.5)", path: "/services/industrial" },
+                ].map(t => (
+                  <div key={t.label} className="accent-tag" style={{ color: t.color, background: t.bg, borderColor: t.border, fontSize: 11, fontWeight: 600, cursor: "pointer", transition: "all 0.2s" }} onClick={() => navigate(t.path)}>
+                    {t.label}
+                  </div>
+                ))}
+              </div>
+
+              <div className="card-divider" />
+
+              {/* Stats row */}
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 0 }}>
+                {[
+                  { value: "50+", label: "Projects", sub: "Completed" },
+                  { value: "98%", label: "Success", sub: "Rate" },
+                  { value: "5+", label: "Years", sub: "Excellence" },
+                ].map((s, i) => (
+                  <div key={i} style={{ textAlign: "center", padding: "4px 8px", borderRight: i < 2 ? "1px solid rgba(203,213,225,0.6)" : "none" }}>
+                    <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 800, fontSize: 20, color: "#1d4ed8" }}>{s.value}</div>
+                    <div style={{ fontSize: 10, fontWeight: 600, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.05em" }}>{s.label}</div>
+                    <div style={{ fontSize: 10, color: "#94a3b8" }}>{s.sub}</div>
                   </div>
                 ))}
               </div>
             </div>
 
-          </div>
 
-          {/* ════════ RIGHT COLUMN ════════ */}
-          <div className="right-col">
-            <div className="scene">
-
-              {/* Eyebrow + Headline — above the hand */}
-              <div style={{
-                position: "absolute",
-                top: 0, left: 0, right: 0,
-                zIndex: 25,
-                padding: "0 4px",
-              }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
-                  <div style={{ width: 28, height: 2, background: "linear-gradient(90deg,#60a5fa,#38bdf8)", borderRadius: 2 }} />
-                  <span style={{ color: "#60a5fa", fontSize: 11, letterSpacing: "0.16em", textTransform: "uppercase", fontWeight: 600 }}>
-                    Building Excellence
-                  </span>
-                </div>
-                <h2 style={{ color: "white", fontSize: 38, fontWeight: 900, lineHeight: 1.1, margin: 0, letterSpacing: "-0.02em", maxWidth: 860 }}>
-                  Crafting Strong Foundations for the
-                  <span style={{ background: "linear-gradient(90deg,#60a5fa,#38bdf8,#22d3ee)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                    Future.
-                  </span>
-                </h2>
-                <div className="animated-line"></div>
-                <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, marginTop: 10, lineHeight: 1.75, maxWidth: 860 }}>
-                  With years of experience in the construction industry, we deliver residential, commercial, and industrial projects with a strong commitment to quality, reliability, and timely completion.
-                </p>
-                <div className="cta-container" style={{ marginTop: 8, display: 'flex', gap: 10 }}>
-                  <button className="cta-btn" onClick={() => navigate('/projects')}>View Projects</button>
-                  <button className="cta-btn cta-alt" onClick={() => navigate('/contact')}>Get Connect</button>
-                </div>
-              </div>
-
-              {/* Radial glow — sits behind card, in front of bg */}
-              <div style={{
-                position: "absolute",
-                top: "5%", left: "5%",
-                width: 320, height: 320,
-                background: "radial-gradient(circle,rgba(96,165,250,0.13) 0%,transparent 70%)",
-                pointerEvents: "none",
-                zIndex: 3,
-              }} />
-
-              {/*
-              ══════════════════════════════════════════
-              CARD  (z-index 20 → in front of hand)
-              ══════════════════════════════════════════
-              */}
-              <div className="card-wrap">
-                <div className="glass-outer">
-                  <div className="glass-inner">
-
-                    {/* Row 1: avatar + name + follow */}
-                    <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
-                      <div style={{
-                        width: 52, height: 52, borderRadius: "50%", flexShrink: 0,
-                        overflow: "hidden",
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                        boxShadow: "0 0 20px rgba(249,115,22,0.55)",
-                        border: "2px solid rgba(255,255,255,0.2)",
-                      }}>
-                        <img
-                          src="https://www.arvishconsulting.com/assets/arvish-logo-zo8liOBq.png"
-                          alt="Arvish logo"
-                          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                        />
-                      </div>
-
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: 5, flexWrap: "wrap" }}>
-                          <span style={{ color: "white", fontWeight: 700, fontSize: 14, fontFamily: "Syne,sans-serif" }}>Arvish Constructions</span>
-
-                          <span style={{ fontSize: 10, color: "rgba(255,255,255,0.25)" }}>⬛</span>
-                        </div>
-
-                      </div>
-
-                      <button className="follow-btn" onClick={() => window.open('https://www.facebook.com/', '_blank')}>Follow</button>
-                    </div>
-
-                    <div className="card-divider" />
-
-                    {/* Headline */}
-                    <p style={{ color: "white", fontWeight: 700, fontSize: 14, lineHeight: 1.5, margin: 0, fontFamily: "Syne,sans-serif" }}>
-                      Built on Experience.<br />Driven by Quality.
-                    </p>
-
-                    <p style={{ color: "#60a5fa", fontSize: 11, marginTop: 8, marginBottom: 3 }}>
-                      <a href="https://www.arvishconsulting.com/" target="_blank" rel="noopener noreferrer"
-                        style={{ color: "#60a5fa", textDecoration: "underline" }}>
-                        https://www.arvishconsulting.com/
-                      </a>
-                    </p>
-                    <p style={{
-                      color: "rgb(204, 212, 221)",
-                      fontSize: 12,
-                      marginTop: 8,
-                      marginBottom: 4
-                    }}>
-                      Delivering reliable construction solutions with precision and commitment.
-                    </p>
-
-                    <p style={{
-                      color: "rgba(255,255,255,0.5)",
-                      fontSize: 11,
-                      margin: 0
-                    }}>
-                      Residential • Commercial & Retail • Educational & Healthcare • Industrial
-                    </p>
-
-                    <p style={{
-                      color: "rgba(255,255,255,0.35)",
-                      fontSize: 10,
-                      marginTop: 6
-                    }}>
-                      Years of Experience • Quality Work • On-Time Delivery
-                    </p>
-
-                    <div className="card-divider" />
-
-                    {/* Stats */}
-                    <div style={{ display: "flex", alignItems: "center" }}>
-                      <div style={{ flex: 1 }}>
-                        <p style={{ color: "white", fontWeight: 700, fontSize: 18, margin: 0, fontFamily: "Syne,sans-serif" }}>50+</p>
-                        <p style={{ color: "rgba(255,255,255,0.32)", fontSize: 10, margin: 0 }}>Projects · 50</p>
-                      </div>
-                      <div style={{ width: 1, height: 36, background: "rgba(255,255,255,0.13)", alignSelf: "center" }} />
-                      <div style={{ flex: 1, paddingLeft: 16 }}>
-                        <p style={{ color: "white", fontWeight: 700, fontSize: 18, margin: 0, fontFamily: "Syne,sans-serif" }}>98%</p>
-                        <p style={{ color: "rgba(255,255,255,0.32)", fontSize: 10, margin: 0 }}>Success Rate · 2020</p>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-
-              {/*
-              ══════════════════════════════════════════
-              HAND IMAGE  (z-index 5 → behind card)
-
-              KEY POSITIONING LOGIC:
-              • bottom: -60px  → wrist crops off at bottom (natural)
-              • left: 50%  → centered in the scene
-              • translateX(-30%) → shifts right so hand aligns right-side
-              • width: 520px → big enough that the palm fills the scene
-
-              The card (top:10px, translateX(-68%)) lands right
-              where the fingers are — visually "in the hand".
-
-              If hand.png already faces correct direction, no transform needed.
-              Toggle scaleX(-1) on/off to match your specific hand.png.
-              ══════════════════════════════════════════
-              */}
-              <img
-                src="/hand.png"
-                alt=""
-                className="hand-img"
-              />
-
-              {/* Sparkle accent */}
-              <div className="sparkle" style={{
-                position: "absolute",
-                bottom: 24, right: 16,
-                color: "rgba(255,255,255,0.65)",
-                fontSize: 22,
-                textShadow: "0 0 14px rgba(255,255,255,0.8)",
-                zIndex: 30,
-              }}>✦</div>
-
-            </div>
           </div>
 
         </div>

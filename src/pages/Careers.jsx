@@ -1,6 +1,8 @@
 import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
 
 export default function Careers() {
+  const navigate = useNavigate();
   const jobs = [
     { title: "Senior Civil Engineer", dept: "Engineering", location: "Dubai, UAE", type: "Full-Time" },
     { title: "Project Manager", dept: "Operations", location: "Sharjah, UAE", type: "Full-Time" },
@@ -41,7 +43,12 @@ export default function Careers() {
               </div>
               <div className="flex items-center gap-4">
                 <span className="text-xs font-semibold bg-[#D4A13A]/10 text-[#D4A13A] px-3 py-1 rounded-full">{job.type}</span>
-                <button className="bg-[#051614] text-white text-sm font-bold px-6 py-2 rounded-full hover:bg-[#0a2e2a] transition-colors">Apply Now</button>
+                <button
+                  onClick={() => navigate('/contact')}
+                  className="bg-[#051614] text-white text-sm font-bold px-6 py-2 rounded-full hover:bg-[#0a2e2a] transition-colors"
+                >
+                  Apply Now
+                </button>
               </div>
             </div>
           ))}

@@ -48,8 +48,8 @@ function AppRoutes() {
     // Check if landing has already been shown in this session
     const landingShown = sessionStorage.getItem("landingShown");
 
-    // If not on landing page and landing hasn't been shown, redirect to landing
-    if (location.pathname !== "/" && !landingShown) {
+    // Only force landing for first visits to non-home paths, so /home can still be reached.
+    if (location.pathname !== "/" && location.pathname !== "/home" && !landingShown) {
       navigate("/", { replace: true });
     }
   }, [location.pathname, navigate]);
@@ -58,8 +58,9 @@ function AppRoutes() {
     <>
     <ScrollToTop />
     <Routes>
-      <Route path="/" element={<Landing />} />
+      <Route path="/" element={<Navigate to="/home" replace />} />
       <Route path="/home" element={<Home />} />
+      <Route path="/landing" element={<Landing />} />
       <Route path="/blog" element={<Blog />} />
       <Route path="/about" element={<AboutUs />} />
       <Route path="/services" element={<Services />} />

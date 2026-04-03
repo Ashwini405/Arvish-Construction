@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin, ArrowUp, ArrowRight, Home, Building2, Factory, Gra
 
 // ----- Data from first footer -----
 const navLinks = [
-  { label: 'Home', path: '/home' },
+  { label: 'Home', path: '/' },
   { label: 'About Us', path: '/about' },
   { label: 'Services', path: '/services' },
   { label: 'Our Projects', path: '/projects' },

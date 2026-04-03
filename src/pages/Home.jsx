@@ -1,4 +1,5 @@
 
+import { useEffect } from "react";
 import Hero from "../components/Hero";
 import AboutSection from "../components/AboutSection";
 import ServicesSection from "../components/ServicesSection";
@@ -8,6 +9,10 @@ import Projects from "../components/Projects";
 import Footer from "../components/Footer";
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
+
   return (
 <div className="bg-gray-100">
       <Hero />
