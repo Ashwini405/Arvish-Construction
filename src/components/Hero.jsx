@@ -837,7 +837,7 @@ export default function Hero() {
         .ah-nav-cta{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:#2A4E7A;border:none;border-radius:6px;padding:11px 24px;cursor:pointer;transition:.22s;}
         .ah-nav-cta:hover{background:#1A2E50;transform:translateY(-1px);box-shadow:0 8px 24px rgba(10,22,40,0.22);}
 
-        .ah-hero{flex:1;position:relative;display:flex;height:calc(100vh - 72px);overflow:hidden;}
+        .ah-hero{flex:1;position:relative;display:flex;height:clamp(75vh, 90vw, calc(100vh - 72px));overflow:hidden;}
 
         .ah-right{position:absolute;top:0;right:0;bottom:0;width:58%;display:flex;flex-direction:column;overflow:hidden;transition:background 1.2s ease;}
         .ah-right::after{content:'';position:absolute;top:0;left:0;bottom:0;width:118px;pointer-events:none;z-index:5;transition:background 1.2s ease;}
@@ -870,11 +870,11 @@ export default function Hero() {
         }
         .ah-h1 .ah-h1-line1{
           display:flex;flex-wrap:nowrap;align-items:baseline;gap:.14em;
-          font-size:clamp(48px,4.7vw,76px);
+          font-size:clamp(2.25rem, 8vw, clamp(48px,4.7vw,76px));
           white-space:nowrap;
         }
         .ah-h1 .ah-h1-line2{
-          display:block;font-size:clamp(34px,3.2vw,54px);
+          display:block;font-size:clamp(1.875rem, 7vw, clamp(34px,3.2vw,54px));
           letter-spacing:-.03em;margin:8px 0 0 auto;text-align:right;color:#2A4E7A;
         }
         .ah-h1 em{

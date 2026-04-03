@@ -19,7 +19,7 @@
 
 ### Phase 3: Component Fixes
 - ✅ **src/components/ServicesSection.jsx** - Responsive heights, stage/carousel mobile-optimized
-- [ ] **src/components/Hero.jsx** - Responsive heights/text scaling
+- ✅ **src/components/Hero.jsx** - Responsive heights/text scaling
 
 ### Phase 4: Rollout & Testing
 - [ ] Apply patterns to remaining 35+ pages via search/replace
