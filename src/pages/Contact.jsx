@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 import { Phone, Mail, Send, CheckCircle, Building2, MapPin, Clock } from "lucide-react";
 
 export default function Contact() {
@@ -34,11 +35,9 @@ export default function Contact() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      {/* Simple page header – no hero section */}
-      
-
+      <Navbar />
       {/* Main two‑column layout */}
-      <div className="max-w-6xl mx-auto px-6 py-12 md:py-16">
+      <div className="max-w-6xl mx-auto px-4 xs:px-6 section-padding">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
           {/* LEFT COLUMN: Contact Form (Name, Email, Phone, Message) */}
           <div className="bg-white rounded-3xl shadow-xl p-6 md:p-8">

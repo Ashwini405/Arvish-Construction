@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Phone, MapPin, ArrowUp, ArrowRight, Home, Building2, Factory, GraduationCap } from 'lucide-react';
 
 // ----- Data from first footer -----
 const navLinks = [
-  { label: 'Home', path: '/' },
+  { label: 'Home', path: '/home' },
   { label: 'About Us', path: '/about' },
   { label: 'Services', path: '/services' },
   { label: 'Our Projects', path: '/projects' },
@@ -280,6 +280,7 @@ function ArchitecturalIllusion() {
 export default function Footer() {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!subscribed) return;
@@ -346,7 +347,7 @@ export default function Footer() {
 
         {/* Top banner */}
         <div className="relative z-10 border-b border-slate-200">
-          <div className="max-w-[1280px] mx-auto px-8 py-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div className="max-w-[1280px] mx-auto px-4 xs:px-6 lg:px-8 py-4 sm:py-6 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 items-center">
             {/* Brand + contact */}
             <div className="space-y-4" style={{ animation: 'slideInUp 0.7s ease both' }}>
               <div className="flex items-center gap-3">
@@ -440,7 +441,7 @@ We focus on quality, trust, and delivering projects on time.
         </div>
 
         {/* Middle grid: Company | Services | Offices | Categories */}
-        <div className="relative z-10 max-w-[1280px] mx-auto px-8 py-6 grid grid-cols-2 md:grid-cols-4 gap-8 border-b border-slate-200">
+        <div className="relative z-10 max-w-[1280px] mx-auto px-4 xs:px-6 lg:px-8 py-4 sm:py-6 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 border-b border-slate-200">
           {/* Company links */}
           <div style={{ animation: 'slideInUp 0.6s ease both', animationDelay: '0.1s' }}>
             <div className="flex items-center gap-2 mb-3">
@@ -450,9 +451,18 @@ We focus on quality, trust, and delivering projects on time.
             <ul className="space-y-2">
               {navLinks.map(link => (
                 <li key={link.label}>
-                  <Link to={link.path} className="link-item text-sm text-slate-500 hover:text-slate-800 transition-colors duration-200 inline-block">
-                    {link.label}
-                  </Link>
+                  {link.label === 'Home' ? (
+                    <button
+                      onClick={() => navigate('/home')}
+                      className="link-item text-sm text-slate-500 hover:text-slate-800 transition-colors duration-200 inline-block bg-transparent border-none cursor-pointer p-0"
+                    >
+                      {link.label}
+                    </button>
+                  ) : (
+                    <Link to={link.path} className="link-item text-sm text-slate-500 hover:text-slate-800 transition-colors duration-200 inline-block">
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -532,7 +542,7 @@ We focus on quality, trust, and delivering projects on time.
         <ArchitecturalIllusion />
 
         {/* Bottom bar */}
-        <div className="relative z-10 max-w-[1280px] mx-auto px-8 py-5 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="relative z-10 max-w-[1280px] mx-auto px-4 xs:px-6 lg:px-8 py-4 sm:py-5 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4">
           <div className="flex flex-wrap justify-center gap-8 text-[11px] uppercase tracking-widest text-slate-400">
             <Link to="/privacy-policy" className="link-item hover:text-slate-700 transition-colors">Privacy Policy</Link>
             <Link to="/terms-of-service" className="link-item hover:text-slate-700 transition-colors">Terms of Service</Link>

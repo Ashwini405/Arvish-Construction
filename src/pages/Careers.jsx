@@ -1,4 +1,5 @@
 import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 
 export default function Careers() {
@@ -14,6 +15,7 @@ export default function Careers() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
+      <Navbar />
       <div className="max-w-6xl mx-auto px-6 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
           <div>

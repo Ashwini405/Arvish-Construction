@@ -14,7 +14,7 @@ const Home = () => {
   }, []);
 
   return (
-<div className="bg-gray-100">
+<div className="bg-gray-100 section-padding">
       <Hero />
       <AboutSection />
       <ServicesSection />
@@ -22,7 +22,6 @@ const Home = () => {
       <Projects />
       {/* <Clients /> */}
       <Footer />
-
     </div>
   );
 };

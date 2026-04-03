@@ -1,4 +1,5 @@
 import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 
 export default function GroupCompanies() {
   const companies = [
@@ -12,6 +13,7 @@ export default function GroupCompanies() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
+      <Navbar />
       <div className="max-w-6xl mx-auto px-6 py-24">
         <div className="text-center mb-16">
           <span className="text-xs font-bold text-[#D4A13A] uppercase tracking-widest">Our Ecosystem</span>

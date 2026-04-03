@@ -1,4 +1,5 @@
 import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 
 export default function Industrial() {
   const projects = [
@@ -19,7 +20,7 @@ export default function Industrial() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-
+      <Navbar />
       <div className="bg-[#051614] text-white py-28 px-6">
         <div className="max-w-6xl mx-auto">
           <span className="text-xs font-bold text-[#D4A13A] uppercase tracking-widest">Services / Industrial</span>

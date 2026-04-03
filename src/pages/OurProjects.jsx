@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 
 const projects = [
   {
@@ -128,34 +129,10 @@ export default function OurProjects() {
 
   return (
     <div style={{ background: "#020208", minHeight: "100vh", color: "#fff", fontFamily: "'DM Sans', sans-serif" }}>
-
-      {/* NAV */}
-      <nav style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
-        display: "grid", gridTemplateColumns: "1fr auto 1fr",
-        alignItems: "center", padding: "0 36px", height: 64,
-        background: "rgba(2,2,8,0.85)", backdropFilter: "blur(18px)",
-        borderBottom: "1px solid rgba(255,255,255,0.06)",
-      }}>
-        <button onClick={() => navigate("/home")} style={{
-          display: "flex", alignItems: "center", gap: 8,
-          background: "none", border: "none", color: "rgba(160,185,230,0.7)",
-          fontSize: 13, cursor: "pointer", letterSpacing: ".04em",
-        }}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <polyline points="15 18 9 12 15 6" />
-          </svg>
-          Back
-        </button>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 1 }}>
-          <span style={{ fontSize: 15, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase" }}>Arvish</span>
-          <span style={{ fontSize: 9, letterSpacing: ".28em", color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>PROPERTIES</span>
-        </div>
-        <div />
-      </nav>
+      <Navbar />
 
       {/* HERO BANNER */}
-      <div style={{ position: "relative", paddingTop: 64, overflow: "hidden" }}>
+      <div style={{ position: "relative", overflow: "hidden" }}>
         <div style={{
           position: "relative", padding: "80px 40px 60px",
           background: "linear-gradient(160deg, #04040f 0%, #060c1e 60%, #020208 100%)",
@@ -218,7 +195,7 @@ export default function OurProjects() {
 
       {/* FILTER TABS */}
       <div style={{
-        position: "sticky", top: 64, zIndex: 40,
+        position: "sticky", top: 68, zIndex: 40,
         background: "rgba(2,2,8,0.92)", backdropFilter: "blur(18px)",
         borderBottom: "1px solid rgba(255,255,255,0.06)",
         padding: "0 40px",
@@ -261,6 +238,8 @@ export default function OurProjects() {
                 cursor: "pointer",
               }}
             >
+            
+            
               {/* Image */}
               <div style={{ position: "relative", height: 240, overflow: "hidden" }}>
                 <img

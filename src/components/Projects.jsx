@@ -335,6 +335,7 @@ import { useNavigate } from "react-router-dom";
 
 
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 /* ══════════════════════════════════════════════════════════════════
    SVG 1 — SKYSCRAPER  (light daytime palette — crisp blues & whites)
@@ -1377,8 +1378,8 @@ export default function HeroProjects() {
             <div className="site-section-heading" style={{ "--section-accent": "#4f86c6", maxWidth: "520px", gap: "12px", marginBottom: "8px" }}>
               <span className="site-section-kicker">Our Projects</span>
               <h1 className="site-section-title" style={{ maxWidth: "10ch" }}>
-                Building Spaces That <span className="site-section-accent">Define</span><br />
-                the Future.
+                Build the <span className="site-section-accent">Future</span><br />
+                with us.
               </h1>
             </div>
 
@@ -1408,11 +1409,14 @@ export default function HeroProjects() {
 
             <div className="hp-bento">
               {cards.map((c,i)=>(
-                <div key={i}
-                  className={`hp-card${i===0?" hp-cl":""}${vis.c.includes(i)?" pop":""}`}>
+                <Link 
+                  key={i}
+                  to={`/projects/${i===0 ? 'skytower' : i===1 ? 'alinma-bank' : 'emirates-logistics'}`}
+                  className={`hp-card${i===0?" hp-cl":""}${vis.c.includes(i)?" pop":""}`}
+                >
                   <div className="hp-svg">{c.svg}</div>
                   <div className="hp-ov"/>
-                  {i===0 && <div className="hp-cloc">{c.loc}</div>}
+                  {i===0 && <div className="hp-cloc">Dubai, UAE</div>}
                   <div className="hp-ci">
                     <div>
                       <div className="hp-ccat" style={{color:c.accent}}>{c.cat}</div>
@@ -1420,7 +1424,7 @@ export default function HeroProjects() {
                     </div>
                     <div className="hp-carr" style={{borderColor:c.accent+"99",color:c.accent}}>↗</div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

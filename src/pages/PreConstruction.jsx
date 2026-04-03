@@ -1,5 +1,6 @@
 import Footer from "../components/Footer";
-import { motion } from "framer-motion"; // or use CSS animations; we'll use Tailwind and keyframes
+import { motion } from "framer-motion";
+import Navbar from "../components/Navbar";
 
 export default function PreConstruction() {
   const fadeInUp = {
@@ -11,6 +12,7 @@ export default function PreConstruction() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
+      <Navbar />
       {/* Hero Section with Parallax Background */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image with Overlay */}

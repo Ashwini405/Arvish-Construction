@@ -1,6 +1,4 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 import Landing from "./pages/Landing";
 import Home from "./pages/Home";
 import Blog from "./pages/Blog";
@@ -36,29 +34,19 @@ import Residential from "./pages/Residential";
 import CommercialRetail from "./pages/CommercialRetail";
 import EducationalHealthcare from "./pages/EducationalHealthcare";
 import Industrial from "./pages/Industrial";
+import SkyTowerComplex from "./pages/projects/SkyTowerComplex";
+import AlinmaBankHQ from "./pages/projects/AlinmaBankHQ";
+import EmiratesLogistics from "./pages/projects/EmiratesLogistics";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
 
 function AppRoutes() {
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    // Check if landing has already been shown in this session
-    const landingShown = sessionStorage.getItem("landingShown");
-
-    // Only force landing for first visits to non-home paths, so /home can still be reached.
-    if (location.pathname !== "/" && location.pathname !== "/home" && !landingShown) {
-      navigate("/", { replace: true });
-    }
-  }, [location.pathname, navigate]);
-
   return (
     <>
     <ScrollToTop />
     <Routes>
-      <Route path="/" element={<Navigate to="/home" replace />} />
+      <Route path="/" element={<Landing />} />
       <Route path="/home" element={<Home />} />
       <Route path="/landing" element={<Landing />} />
       <Route path="/blog" element={<Blog />} />
@@ -70,6 +58,9 @@ function AppRoutes() {
       <Route path="/services/smart-integration" element={<SmartIntegration />} />
       <Route path="/services/maintenance-support" element={<MaintenanceSupport />} />
       <Route path="/projects" element={<OurProjects />} />
+      <Route path="/projects/skytower" element={<SkyTowerComplex />} />
+      <Route path="/projects/alinma-bank" element={<AlinmaBankHQ />} />
+      <Route path="/projects/emirates-logistics" element={<EmiratesLogistics />} />
       <Route path="/our-story" element={<OurStory />} />
       <Route path="/our-story/about" element={<OurStoryAbout />} />
       <Route path="/our-story/management" element={<OurStoryManagement />} />

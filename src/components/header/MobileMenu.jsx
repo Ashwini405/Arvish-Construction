@@ -8,7 +8,8 @@ const MobileMenu = ({ isOpen, setIsOpen, navLinks, ctaText, ctaColors }) => {
       {/* Mobile menu button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800/50 transition-colors"
+        className="md:hidden p-3 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800/50 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+        style={{ touchAction: 'manipulation' }}
       >
         {isOpen ? (
           <X className="w-6 h-6" />
