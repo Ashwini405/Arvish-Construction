@@ -14,15 +14,17 @@ const Home = () => {
   }, []);
 
   return (
-<div className="bg-gray-100 section-padding">
+    <>
       <Hero />
-      <AboutSection />
-      <ServicesSection />
-      <WhyChooseUs />
-      <Projects />
-      {/* <Clients /> */}
+      <div className="bg-gray-100 section-padding">
+        <AboutSection />
+        <ServicesSection />
+        <WhyChooseUs />
+        <Projects />
+        {/* <Clients /> */}
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 
