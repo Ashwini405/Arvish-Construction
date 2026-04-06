@@ -14,7 +14,8 @@ const navLinks = [
       { label: "Industrial", to: "/services/industrial" }
     ]
   },
-  { label: "Projects",   to: "/projects" },
+{ label: "Projects",   to: "/projects" },
+  { label: "Sustainability", to: "/our-story/sustainability" },
   { label: "Careers",    to: "/careers" },
   { label: "Contact",    to: "/contact" },
 ];
@@ -40,10 +41,11 @@ export default function Navbar() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&family=DM+Sans:wght@400;600;700&display=swap');
         .nb-root {
-          height: 68px; position: sticky; top: 0; z-index: 999;
+          height: clamp(64px, 10vw, 72px); position: sticky; top: 0; z-index: 999;
           display: flex; align-items: center; justify-content: space-between;
-          padding: 0 xs:px-4 sm:px-6 lg:px-8;
+          padding: 0 1.25rem;
           background: rgba(255,255,255,0.97);
+
           backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
           transition: box-shadow .3s;
           font-family: 'DM Sans', sans-serif;
@@ -66,12 +68,19 @@ export default function Navbar() {
           text-transform: uppercase; color: #D4A13A; line-height: 1; display: block;
         }
 
-        .nb-links { display: flex; align-items: center; gap: 2px; }
+        .nb-links { 
+          display: flex; 
+          align-items: center; 
+          gap: clamp(0.25rem, 1vw, 0.5rem);
+          flex-wrap: wrap;
+        }
         .nb-link {
-          font-size: 12px; font-weight: 600; color: #4E6278;
+          font-size: clamp(11px, 2.5vw, 12px); font-weight: 600; color: #4E6278;
           text-decoration: none; letter-spacing: .04em;
-          padding: 7px 14px; border-radius: 6px; transition: .18s;
+          padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(0.875rem, 2vw, 1rem); 
+          border-radius: 6px; transition: .18s;
           position: relative;
+          white-space: nowrap;
         }
         .nb-link:hover { color: #051614; background: rgba(212,161,58,0.08); }
         .nb-link.active { color: #051614; }
@@ -103,10 +112,10 @@ export default function Navbar() {
 
         /* Mobile drawer */
         .nb-drawer {
-          display: none; position: fixed; top: 68px; left: 0; right: 0;
+          display: none; position: fixed; top: clamp(64px, 10vw, 72px); left: 0; right: 0;
           background: rgba(255,255,255,0.98); backdrop-filter: blur(12px);
           border-bottom: 1px solid rgba(5,22,20,0.08);
-          flex-direction: column; padding: 16px 24px 24px; gap: 4px;
+          flex-direction: column; padding: 1rem 1.5rem 1.5rem; gap: 0.5rem;
           z-index: 998; box-shadow: 0 8px 32px rgba(5,22,20,0.10);
         }
         .nb-drawer.open { display: flex; }
@@ -114,7 +123,7 @@ export default function Navbar() {
         .nb-drawer .nb-cta { margin-top: 8px; text-align: center; padding: 13px; }
 
 @media (max-width: 860px) {
-          .nb-root { padding: 0 xs:px-4 sm:px-6; }
+          .nb-root { padding: 0 1rem; }
           .nb-links, .nb-cta { display: none; }
           .nb-burger { display: flex; }
           .nb-burger span { 
@@ -131,6 +140,16 @@ export default function Navbar() {
             border-radius: 12px;
             box-shadow: 0 8px 32px rgba(5,22,20,0.12);
           }
+          .nb-drawer {
+            display: none;
+            position: fixed;
+            top: clamp(64px, 10vw, 72px);
+            left: 0;
+            right: 0;
+            max-height: calc(100vh - clamp(64px, 10vw, 72px));
+            overflow-y: auto;
+          }
+          .nb-drawer.open { display: flex; }
           .nb-drawer .nb-link { 
             font-size: clamp(14px, 4vw, 16px); 
             padding: 1rem; 
@@ -144,6 +163,16 @@ export default function Navbar() {
             min-height: 44px;
             font-size: clamp(14px, 4vw, 16px);
           }
+          .nb-mobile-group { display: flex; flex-direction: column; gap: 0.25rem; }
+          .nb-mobile-sublinks { display: flex; flex-direction: column; gap: 0.25rem; padding-left: 0.75rem; }
+          .nb-mobile-sublink {
+            font-size: 0.95rem;
+            color: #4E6278;
+            background: rgba(212,161,58,0.08);
+            padding: 0.85rem 1rem;
+            border-radius: 10px;
+          }
+          .nb-mobile-sublink:hover { color: #051614; background: rgba(212,161,58,0.16); }
         }
         /* Services dropdown styles */
         .services-dropdown {
@@ -222,7 +251,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop CTA */}
-        <button className="nb-cta" onClick={() => navigate("/contact")}>
+        <button className="nb-cta" onClick={() => { setMenuOpen(false); navigate("/contact"); }}>
           Start a Project
         </button>
 
@@ -239,15 +268,31 @@ export default function Navbar() {
       {/* Mobile drawer */}
       <div className={`nb-drawer${menuOpen ? " open" : ""}`}>
         {navLinks.map(l => (
-          <Link
-            key={l.to}
-            to={l.to}
-            className={`nb-link${location.pathname === l.to ? " active" : ""}`}
-          >
-            {l.label}
-          </Link>
+          <div key={l.to} className="nb-mobile-group">
+            <Link
+              to={l.to}
+              onClick={() => setMenuOpen(false)}
+              className={`nb-link${location.pathname === l.to ? " active" : ""}`}
+            >
+              {l.label}
+            </Link>
+            {l.dropdown && (
+              <div className="nb-mobile-sublinks">
+                {l.dropdown.map(sub => (
+                  <Link
+                    key={sub.to}
+                    to={sub.to}
+                    onClick={() => setMenuOpen(false)}
+                    className={`nb-link nb-mobile-sublink${location.pathname === sub.to ? " active" : ""}`}
+                  >
+                    {sub.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         ))}
-        <button className="nb-cta" onClick={() => navigate("/contact")}>
+        <button className="nb-cta" onClick={() => { setMenuOpen(false); navigate("/contact"); }}>
           Start a Project
         </button>
       </div>

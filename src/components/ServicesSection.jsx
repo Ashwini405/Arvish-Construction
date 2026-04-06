@@ -725,7 +725,7 @@ export default function ServicesUltraPremium() {
         }
 
           .card.side {
-            width: 60px;
+            width: 30px;
             height: clamp(380px, 75vh, 450px);
 
           filter: grayscale(1) brightness(0.85);
@@ -739,7 +739,7 @@ export default function ServicesUltraPremium() {
         }
 
           .card.active {
-            width: calc(100vw - 140px);
+            width: calc(70vw - 80px);
             height: clamp(420px, 80vh, 550px);
 
           box-shadow: 0 40px 100px -20px rgba(0,0,0,0.22);

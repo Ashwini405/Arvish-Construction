@@ -784,6 +784,7 @@ export default function Hero() {
   const [isNight, setIsNight] = useState(false);
   const [phase,   setPhase]   = useState(0);
   const [scrolled,setScrolled]= useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const t = setTimeout(()=>setPhase(p=>(p+1)%PHASES.length), DURATIONS[phase]);
@@ -836,6 +837,17 @@ export default function Hero() {
         .ah-nav-right{display:flex;align-items:center;gap:16px;}
         .ah-nav-cta{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:#2A4E7A;border:none;border-radius:6px;padding:11px 24px;cursor:pointer;transition:.22s;}
         .ah-nav-cta:hover{background:#1A2E50;transform:translateY(-1px);box-shadow:0 8px 24px rgba(10,22,40,0.22);}
+
+        .ah-nav-toggle{display:none;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid rgba(10,22,40,0.12);border-radius:14px;background:transparent;color:var(--ink);cursor:pointer;transition:.22s;}
+        .ah-nav-toggle:hover{background:rgba(10,22,40,0.04);}
+        .ah-nav-toggle svg{width:20px;height:16px;}
+        .ah-nav-toggle rect{fill:var(--ink);rx:1;}
+
+        .ah-mobile-menu{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;gap:0.75rem;padding:1rem 24px;background:var(--surface);box-shadow:0 24px 48px rgba(10,22,40,0.12);z-index:299;border-bottom:1px solid var(--border);}
+        .ah-mobile-menu.open{display:flex;}
+        .ah-mobile-menu a{display:block;font-size:14px;font-weight:700;color:var(--ink);text-decoration:none;padding:14px 16px;border-radius:12px;transition:background .2s,color .2s;}
+        .ah-mobile-menu a:hover{background:var(--accent-pale);color:var(--ink);}
+        .ah-mobile-menu .ah-nav-cta{width:100%;padding:14px;}
 
         .ah-hero{flex:1;position:relative;display:flex;height:clamp(75vh, 90vw, calc(100vh - 72px));overflow:hidden;}
 
@@ -1012,6 +1024,8 @@ export default function Hero() {
         @media(max-width:1000px){
           .ah-nav{padding:0 24px;}
           .ah-nav-links{display:none;}
+          .ah-nav-toggle{display:flex;}
+          .ah-nav-right{display:none;}
           .ah-hero{flex-direction:column;height:auto;}
           .ah-left{width:100%;-webkit-mask-image:none;mask-image:none;}
           .ah-right{position:relative;width:100%;min-height:440px;}
@@ -1039,16 +1053,41 @@ export default function Hero() {
               <span className="ah-brand-sub">Constructions</span>
             </div>
           </a>
+          <button
+            type="button"
+            className="ah-nav-toggle"
+            onClick={() => setMenuOpen(open => !open)}
+            aria-label="Toggle navigation"
+            aria-expanded={menuOpen}
+          >
+            <svg viewBox="0 0 20 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="0" y="1" width="20" height="2" rx="1" />
+              <rect x="0" y="7" width="20" height="2" rx="1" />
+              <rect x="0" y="13" width="20" height="2" rx="1" />
+            </svg>
+          </button>
           <nav className="ah-nav-links">
             <Link className="ah-nav-link" to="/about">About</Link>
             <Link className="ah-nav-link" to="/projects">Projects</Link>
             <Link className="ah-nav-link" to="/services">Capabilities</Link>
+             <Link className="ah-nav-link" to="/our-story/sustainability">Sustainability</Link>
             <Link className="ah-nav-link" to="/careers">Careers</Link>
           </nav>
           <div className="ah-nav-right">
             <button className="ah-nav-cta" onClick={() => navigate('/contact')}>Start a Project</button>
           </div>
         </nav>
+
+        <div className={`ah-mobile-menu${menuOpen ? " open" : ""}`}>
+          <Link className="ah-nav-link" to="/about" onClick={() => setMenuOpen(false)}>About</Link>
+          <Link className="ah-nav-link" to="/projects" onClick={() => setMenuOpen(false)}>Projects</Link>
+          <Link className="ah-nav-link" to="/services" onClick={() => setMenuOpen(false)}>Capabilities</Link>
+          <Link className="ah-nav-link" to="/our-story/sustainability" onClick={() => setMenuOpen(false)}>Sustainability</Link>
+          <Link className="ah-nav-link" to="/careers" onClick={() => setMenuOpen(false)}>Careers</Link>
+          <button className="ah-nav-cta" onClick={() => { setMenuOpen(false); navigate('/contact'); }}>
+            Start a Project
+          </button>
+        </div>
 
         <div className="ah-hero">
           <div className={`ah-left ${isNight?"night":"day"}`}>
