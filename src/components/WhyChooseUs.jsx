@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -98,7 +97,8 @@ const services = [
 /* ═══════════════════════════════════════════════════
    CARD ILLUSTRATIONS
 ═══════════════════════════════════════════════════ */
-function CardIllustration({ id, phase }) {
+// FIX 1: Accept isMobile prop so we can adjust scale on small screens
+function CardIllustration({ id, phase, isMobile }) {
   const accentMap = {
     '01': '#4f86c6',
     '02': '#2f7de1',
@@ -111,22 +111,13 @@ function CardIllustration({ id, phase }) {
   };
   const a = accentMap[id] || C.accent;
   const vis = phase !== 'exit';
-  const illMeta = {
-    '01': { code:'EXEC', label:'Performance Index', chips:['Delivery', 'Quality'] },
-    '02': { code:'SAFE', label:'Protection Layer', chips:['Protocols', 'Readiness'] },
-    '03': { code:'SYNC', label:'Partner Network', chips:['Clients', 'Teams'] },
-    '04': { code:'ETHC', label:'Trust Balance', chips:['Clarity', 'Accountability'] },
-    '05': { code:'ECO', label:'Sustainable Systems', chips:['Materials', 'Efficiency'] },
-    '06': { code:'CARE', label:'Client Response', chips:['Dialogue', 'Milestones'] },
-    '07': { code:'TEAM', label:'Cross-Discipline Unit', chips:['Specialists', 'Alignment'] },
-    '08': { code:'SOLV', label:'Response Framework', chips:['Diagnosis', 'Recovery'] },
-  };
 
+  // FIX 2: On mobile use scale(1.0) so the illustration fits without clipping
   const shared = {
     position:'absolute',inset:0,width:'100%',height:'100%',
     opacity: vis ? 1 : 0,
     transition:'opacity 0.25s ease',
-    transform:'scale(1.16)',
+    transform: isMobile ? 'scale(1.0)' : 'scale(1.16)',
     transformOrigin:'center 34%',
     filter:'saturate(1.45) contrast(1.12)',
   };
@@ -269,13 +260,11 @@ function CardIllustration({ id, phase }) {
         <circle cx="260" cy="95" r="12" fill={a} opacity="0.7" filter="url(#f04)"/>
         <g style={{animation:'balanceBeam04 4s ease-in-out infinite',transformOrigin:'260px 155px'}}>
           <rect x="140" y="152" width="240" height="6" rx="3" fill={a} opacity="0.55"/>
-          {/* Left pan */}
           <g style={{animation:'panLeft04 4s ease-in-out infinite'}}>
             <line x1="152" y1="158" x2="152" y2="248" stroke={a} strokeWidth="1.5" opacity="0.3"/>
             <ellipse cx="152" cy="248" rx="46" ry="10" fill={a} opacity="0.07" stroke={a} strokeWidth="1.5"/>
             <rect x="130" y="230" width="44" height="12" rx="4" fill={a} opacity="0.28"/>
           </g>
-          {/* Right pan */}
           <g style={{animation:'panRight04 4s ease-in-out infinite'}}>
             <line x1="368" y1="158" x2="368" y2="262" stroke={a} strokeWidth="1.5" opacity="0.3"/>
             <ellipse cx="368" cy="262" rx="46" ry="10" fill={a} opacity="0.07" stroke={a} strokeWidth="1.5"/>
@@ -657,11 +646,13 @@ export default function WhyChooseUs() {
           {/* ══════════════════════════════
               COL A — COMPANY PANEL
           ══════════════════════════════ */}
+          {/* order:1 on mobile keeps Col A first; Col C gets order:2; Col B gets order:3 */}
           <div style={{
             display:'flex',flexDirection:'column',gap:14,
             height:isTablet ? 'auto' : CARD_H,
             boxSizing:'border-box',
             paddingRight:isTablet ? 0 : 28,
+            order: isMobile ? 1 : 'unset',
           }}>
 
             {/* Company card */}
@@ -784,6 +775,7 @@ Driven by Quality.</div>
             height:isTablet ? 'auto' : CARD_H,
             boxSizing:'border-box',
             padding:isTablet ? '0' : '0 28px 0 28px',
+            order: isMobile ? 3 : 'unset',
           }}>
 
             {/* Feature buttons */}
@@ -825,19 +817,22 @@ Driven by Quality.</div>
               })}
             </div>
 
-
-
           </div>
           {/* END COL B */}
 
           {/* ══════════════════════════════
               COL C — CARD + NAV
           ══════════════════════════════ */}
-          <div style={{display:'flex',flexDirection:isMobile ? 'column' : 'row',alignItems:'flex-start',gap:14,paddingLeft:isTablet ? 0 : 28,height:isTablet ? 'auto' : CARD_H,boxSizing:'border-box'}}>
+          {/* order:2 on mobile → illustration shows between company info and feature list */}
+          <div style={{display:'flex',flexDirection:isMobile ? 'column' : 'row',alignItems:'flex-start',gap:14,paddingLeft:isTablet ? 0 : 28,height:isTablet ? 'auto' : CARD_H,boxSizing:'border-box', order: isMobile ? 2 : 'unset'}}>
 
             {/* THE CARD */}
             <div style={{
-              flex:1,height:isTablet ? (isMobile ? 420 : 520) : CARD_H,
+              flex:'none',
+              width: isMobile ? '100%' : undefined,
+              flexGrow: isMobile ? 0 : 1,
+              // Explicit pixel height — never collapses to 0 on mobile
+              height: isMobile ? 480 : isTablet ? 520 : CARD_H,
               borderRadius:20,overflow:'hidden',position:'relative',
               background:'linear-gradient(180deg, rgba(255,255,255,0.98), rgba(241,246,253,0.96))',
               border:`1px solid rgba(188,203,221,0.95)`,
@@ -848,8 +843,8 @@ Driven by Quality.</div>
                 0 0 28px rgba(129,160,197,0.16)
               `,
             }}>
-              {/* Illustration — always mounted for animation continuity */}
-              <CardIllustration id={f.id} phase={phase}/>
+              {/* FIX 1 applied here: pass isMobile so illustration adjusts its scale */}
+              <CardIllustration id={f.id} phase={phase} isMobile={isMobile}/>
 
               {/* Bottom gradient */}
               <div style={{position:'absolute',inset:0,pointerEvents:'none',
@@ -887,9 +882,7 @@ Driven by Quality.</div>
                 {f.id === '08' && (
                   <div style={{display:'flex',gap:10,flexWrap:'wrap',margin:'0 0 18px'}}>
                     {[
-                      { label:'Rapid diagnosis', value:'Root-cause mapping' },
-                      { label:'Action planning', value:'Clear recovery paths' },
-                      { label:'Delivery control', value:'Measured next steps' },
+                     
                     ].map((item, idx) => (
                       <div key={idx} style={{
                         minWidth:124,
