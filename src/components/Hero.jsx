@@ -816,9 +816,8 @@ export default function Hero() {
         .ah{font-family:'DM Sans',sans-serif;color:var(--ink);min-height:100vh;display:flex;flex-direction:column;background:var(--bg);}
 
         .ah-nav{height:72px;padding:0 52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:300;background:var(--surface);border-bottom:none;transition:box-shadow .3s;box-shadow:${scrolled?"0 4px 32px rgba(10,22,40,0.08)":"none"};}
-        .ah-brand{display:flex;align-items:center;gap:14px;text-decoration:none;margin-left:24px;}
-        .ah-logo{
-          width:108px;height:108px;background:linear-gradient(150deg,#0A1628,#1A2E50);
+        .ah-brand-wrap{display:flex;align-items:center;gap:14px;text-decoration:none;margin-left:24px;}
+        .ah-brand-icon{display:flex;align-items:center;justify-content:center;width:108px;height:108px;background:linear-gradient(150deg,#0A1628,#1A2E50);
           display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(10,22,40,0.2);
           clip-path:polygon(14% 6%,86% 6%,95% 42%,50% 100%,5% 42%);
         }
@@ -831,6 +830,8 @@ export default function Hero() {
           font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;
           letter-spacing:.16em;text-transform:uppercase;color:#A87418;line-height:1;font-weight:800;
         }
+        .ah-brand-wrap{display:flex;align-items:center;gap:14px;text-decoration:none;margin-left:24px;}
+        .ah-brand-text{display:flex;flex-direction:column;gap:4px;margin-left:1px;text-decoration:none;color:inherit;}
         .ah-nav-links{display:flex;align-items:center;margin-left:auto;padding-right:28px;}
         .ah-nav-links a{font-size:12.5px;font-weight:700;color:var(--muted);text-decoration:none;letter-spacing:.04em;padding:8px 18px;border-radius:6px;transition:.18s;}
         .ah-nav-links a:hover{color:var(--ink);background:var(--accent-pale);}
@@ -1022,10 +1023,15 @@ export default function Hero() {
         .ah-metric-label{font-size:8px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-l);margin-top:5px;line-height:1.4;}
 
         @media(max-width:1000px){
-          .ah-nav{padding:0 24px;}
+          .ah-nav{padding:14px 24px 12px;position:relative;height:auto;min-height:108px;}
           .ah-nav-links{display:none;}
           .ah-nav-toggle{display:flex;}
           .ah-nav-right{display:none;}
+          .ah-brand-wrap{display:flex;align-items:center;justify-content:center;position:relative;width:100%;min-height:108px;margin-left:0;}
+          .ah-brand-icon{position:absolute;left:0;top:50%;transform:translateY(-50%);width:108px;height:108px;}
+          .ah-brand-text{margin:0 auto;text-align:center;padding:0 44px 0 96px;}
+          .ah-brand-name{font-size:26px;}
+          .ah-brand-sub{font-size:10px;}
           .ah-hero{flex-direction:column;height:auto;}
           .ah-left{width:100%;-webkit-mask-image:none;mask-image:none;}
           .ah-right{position:relative;width:100%;min-height:440px;}
@@ -1041,18 +1047,18 @@ export default function Hero() {
 
       <div className="ah">
         <nav className="ah-nav">
-          <a href="#" className="ah-brand">
-            <div className="ah-logo">
+          <div className="ah-brand-wrap">
+            <a href="#" className="ah-brand-icon">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
                 <polygon points="12,2 22,22 2,22" fill="white" opacity="0.9"/>
                 <polygon points="12,9 17,22 7,22" fill="#C8922A" opacity="0.8"/>
               </svg>
-            </div>
-            <div className="ah-brand-text">
+            </a>
+            <a href="#" className="ah-brand-text">
               <span className="ah-brand-name">Arvish</span>
               <span className="ah-brand-sub">Constructions</span>
-            </div>
-          </a>
+            </a>
+          </div>
           <button
             type="button"
             className="ah-nav-toggle"
