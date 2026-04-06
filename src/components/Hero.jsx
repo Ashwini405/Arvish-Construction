@@ -1023,11 +1023,12 @@ export default function Hero() {
         .ah-metric-label{font-size:8px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-l);margin-top:5px;line-height:1.4;}
 
         @media(max-width:1000px){
-          .ah-nav{padding:14px 24px 12px;position:relative;height:auto;min-height:108px;}
+          .section-padding .ah { margin-top: -3rem; }
+          .ah-nav{padding:0 24px 8px;position:relative;height:auto;min-height:88px;}
           .ah-nav-links{display:none;}
           .ah-nav-toggle{display:flex;}
           .ah-nav-right{display:none;}
-          .ah-brand-wrap{display:flex;align-items:center;justify-content:center;position:relative;width:100%;min-height:108px;margin-left:0;}
+          .ah-brand-wrap{display:flex;align-items:center;justify-content:center;position:relative;width:100%;min-height:88px;margin-left:0;}
           .ah-brand-icon{position:absolute;left:0;top:50%;transform:translateY(-50%);width:108px;height:108px;}
           .ah-brand-text{margin:0 auto;text-align:center;padding:0 44px 0 96px;}
           .ah-brand-name{font-size:26px;}
