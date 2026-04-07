@@ -76,18 +76,7 @@ const ResidentialVillaProject = () => {
               A residential villa designed to provide comfortable living with modern design, quality construction, and practical space planning.
             </p>
             
-            <div className="flex flex-wrap justify-center gap-8 mb-16">
-              {stats.map((stat, idx) => (
-                <div key={idx} className="text-center animate-fade-in-up" style={{ animationDelay: `${idx * 100}ms` }}>
-                  <div className={`text-4xl md:text-5xl font-black ${stat.accent ? 'text-blue-400' : 'text-white'}`}>
-                    {stat.value}
-                  </div>
-                  <div className="text-sm uppercase tracking-wider text-gray-300 mt-2 font-semibold">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
+            
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 

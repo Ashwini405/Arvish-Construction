@@ -109,50 +109,67 @@ export default function PreConstruction() {
         </div>
       </section>
 
-      {/* Our Pre‑Construction Process */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <motion.div {...fadeInUp} className="text-center mb-12">
-            <span className="text-sm font-bold text-[#D4A13A] uppercase tracking-widest">Methodology</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#051614] mt-2">Our 5‑Phase Process</h2>
-            <div className="w-20 h-1 bg-[#D4A13A] mx-auto mt-4" />
+    {/* Our Pre‑Construction Process */}
+<section className="py-20 px-6 bg-gray-50">
+  <div className="max-w-7xl mx-auto">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="text-center mb-16"
+    >
+      <div className="inline-flex items-center gap-3 mb-4">
+        <div className="w-8 h-0.5 bg-blue-600 rounded-full" />
+        <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">Methodology</span>
+        <div className="w-8 h-0.5 bg-blue-600 rounded-full" />
+      </div>
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Our 5‑Phase Process</h2>
+      <div className="w-20 h-1 bg-blue-600 mx-auto mt-4" />
+      <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+        A structured, client‑focused approach to turn your vision into reality.
+      </p>
+    </motion.div>
+
+    {/* Horizontal Step Cards */}
+    <div className="relative">
+      {/* Connecting line (desktop) */}
+      <div className="absolute top-20 left-0 right-0 h-0.5 bg-blue-200 hidden lg:block" />
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        {[
+          { step: "01", title: "Planning", desc: "Initial discussions and understanding project requirements.", icon: "📋" },
+          { step: "02", title: "Site Analysis", desc: "Evaluating site conditions and feasibility.", icon: "🔍" },
+          { step: "03", title: "Design Development", desc: "Preparing layouts and design concepts.", icon: "✏️" },
+          { step: "04", title: "Budget Planning", desc: "Estimating costs and planning resources.", icon: "💰" },
+          { step: "05", title: "Preparation", desc: "Finalizing all requirements before construction begins.", icon: "✅" }
+        ].map((item, idx) => (
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: idx * 0.1, duration: 0.5 }}
+            viewport={{ once: true }}
+            className="relative bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 group border border-gray-100 hover:border-blue-200"
+          >
+            {/* Step circle */}
+            <div className="absolute -top-5 left-6 lg:left-1/2 lg:-translate-x-1/2">
+              <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm shadow-md group-hover:scale-110 transition-transform">
+                {item.step}
+              </div>
+            </div>
+
+            <div className="text-center pt-6">
+              <div className="text-4xl mb-3">{item.icon}</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+            </div>
           </motion.div>
-
-          <div className="relative">
-            {/* Vertical Timeline Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-[#D4A13A]/30 hidden md:block" />
-
-            {[
-              { step: "01", title: "Planning", desc: "Initial discussions and understanding project requirements." },
-              { step: "02", title: "Site Analysis", desc: "Evaluating site conditions and feasibility." },
-              { step: "03", title: "Design Development", desc: "Preparing layouts and design concepts." },
-              { step: "04", title: "Budget Planning", desc: "Estimating costs and planning resources." },
-              { step: "05", title: "Preparation", desc: "Finalizing all requirements before construction begins." }
-            ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className={`relative mb-12 md:mb-20 flex flex-col md:flex-row items-center ${
-                  idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
-              >
-                <div className="flex-1 p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow md:mx-8">
-                  <span className="text-4xl font-black text-[#D4A13A]/20">{item.step}</span>
-                  <h3 className="text-xl font-bold text-[#051614] mt-2">{item.title}</h3>
-                  <p className="text-gray-600 mt-2">{item.desc}</p>
-                </div>
-                <div className="hidden md:block w-12 h-12 rounded-full bg-[#D4A13A] text-white flex items-center justify-center text-xl font-bold z-10">
-                  {idx + 1}
-                </div>
-                <div className="flex-1 hidden md:block" />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Key Benefits */}
       <section className="py-20 px-4 bg-white">

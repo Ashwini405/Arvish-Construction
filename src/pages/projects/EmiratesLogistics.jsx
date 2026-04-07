@@ -97,28 +97,7 @@ const IndustrialWarehouseProject = () => {
                 An industrial warehouse project designed for efficient storage, logistics operations, and durable long-term use.
               </p>
 
-              <div className="flex flex-wrap justify-center gap-8 mb-16">
-                {stats.map((stat, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="text-center"
-                  >
-                    <div
-                      className={`text-4xl md:text-5xl font-black ${
-                        stat.accent ? 'text-blue-400' : 'text-white'
-                      }`}
-                    >
-                      {stat.value}
-                    </div>
-                    <div className="text-sm uppercase tracking-wider text-gray-300 mt-2 font-semibold">
-                      {stat.label}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+             
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button

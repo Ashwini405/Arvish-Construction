@@ -68,34 +68,13 @@ const CommercialOfficeProject = () => {
                 <div className="w-8 h-0.5 bg-white/50 rounded-full" />
               </div>
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
-                Commercial Office Building
+                Commercial Office
               </h1>
               <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-12 leading-relaxed">
                 A commercial office building designed to support modern business operations with efficient layouts, durable construction, and practical design.
               </p>
 
-              <div className="flex flex-wrap justify-center gap-8 mb-16">
-                {stats.map((stat, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="text-center"
-                  >
-                    <div
-                      className={`text-4xl md:text-5xl font-black ${
-                        stat.accent ? 'text-blue-400' : 'text-white'
-                      }`}
-                    >
-                      {stat.value}
-                    </div>
-                    <div className="text-sm uppercase tracking-wider text-gray-300 mt-2 font-semibold">
-                      {stat.label}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+            
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button

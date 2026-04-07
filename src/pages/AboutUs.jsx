@@ -226,52 +226,62 @@ export default function AboutUs() {
       </section>
 
       {/* Journey Timeline */}
-      <section className="py-20 px-6 bg-gradient-to-r from-blue-50 to-indigo-50">
-        <div className="max-w-7xl mx-auto">
+<section className="py-20 px-6 bg-gradient-to-r from-blue-50 to-indigo-50">
+  <div className="max-w-7xl mx-auto">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="text-center mb-12"
+    >
+      <div className="inline-flex items-center gap-3 mb-4">
+        <div className="w-8 h-0.5 bg-blue-600 rounded-full" />
+        <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">Our Journey</span>
+        <div className="w-8 h-0.5 bg-blue-600 rounded-full" />
+      </div>
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Our Growth Journey</h2>
+      <div className="w-20 h-1 bg-blue-600 mx-auto mt-4" />
+    </motion.div>
+
+    <div className="relative">
+      <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-blue-200 hidden md:block" />
+      <div className="space-y-8 md:space-y-0">
+        {[
+          { stage: "Stage 1", title: "Company Foundation", desc: "Started with a vision to deliver reliable construction services in Hyderabad." },
+          { stage: "Stage 2", title: "Residential Projects", desc: "Focused on building quality residential homes with strong construction practices." },
+          { stage: "Stage 3", title: "Commercial Expansion", desc: "Expanded into commercial and retail construction projects." },
+          { stage: "Stage 4", title: "Project Growth", desc: "Successfully completed multiple projects with a focus on quality and timely delivery." },
+          { stage: "Stage 5", title: "Service Expansion", desc: "Extended services to include industrial and specialized construction projects." },
+          { stage: "Stage 6", title: "Modern Approach", desc: "Adopted efficient construction methods and improved project management practices." },
+          { stage: "Stage 7", title: "Client Trust", desc: "Built strong relationships with clients through reliable work and consistent results." },
+          { stage: "Stage 8", title: "Ongoing Growth", desc: "Continuing to grow with a focus on quality construction and customer satisfaction." }
+        ].map((item, idx) => (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            key={idx}
+            initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: idx * 0.1 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className={`relative flex flex-col md:flex-row items-center ${
+              idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+            }`}
           >
-            <div className="inline-flex items-center gap-3 mb-4">
-              <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
-              <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">Our Journey</span>
-              <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
+            <div className="flex-1 p-6 bg-white rounded-xl shadow-md mx-4 md:mx-8 hover:shadow-lg transition-all border border-blue-100">
+              <span className="text-3xl font-black text-blue-100">{item.stage}</span>
+              <h3 className="text-xl font-bold text-gray-900 mt-1">{item.title}</h3>
+              <p className="text-gray-600 mt-2">{item.desc}</p>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Milestones of Excellence</h2>
-            <div className="w-20 h-1 bg-blue-600 mx-auto mt-4" />
+            <div className="hidden md:flex w-12 h-12 rounded-full bg-blue-600 text-white items-center justify-center z-10 shadow-md">
+              {idx + 1}
+            </div>
+            <div className="flex-1 hidden md:block" />
           </motion.div>
-          <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-blue-200 hidden md:block" />
-            <div className="space-y-8 md:space-y-0">
-              {milestones.map((milestone, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  viewport={{ once: true }}
-                  className={`relative flex flex-col md:flex-row items-center ${
-                    idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                  }`}
-                >
-                  <div className="flex-1 p-6 bg-white rounded-xl shadow-md mx-4 md:mx-8 hover:shadow-lg transition-all border border-blue-100">
-                    <span className="text-3xl font-black text-blue-100">{milestone.year}</span>
-                    <h3 className="text-xl font-bold text-gray-900 mt-1">{milestone.title}</h3>
-                    <p className="text-gray-600 mt-2">{milestone.desc}</p>
-                  </div>
-                  <div className="hidden md:flex w-12 h-12 rounded-full bg-blue-600 text-white items-center justify-center z-10 shadow-md">
-                    {idx + 1}
-                  </div>
-                  <div className="flex-1 hidden md:block" />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Mission & Vision */}
       <section className="py-20 px-6 bg-blue-600">

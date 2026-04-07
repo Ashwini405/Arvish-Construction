@@ -22,8 +22,9 @@ const Home = () => {
         <WhyChooseUs />
         <Projects />
         {/* <Clients /> */}
+        <Footer />
       </div>
-      <Footer />
+     
     </>
   );
 };
