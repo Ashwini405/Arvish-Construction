@@ -26,6 +26,7 @@ export default function Navbar() {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 10);
@@ -34,7 +35,11 @@ export default function Navbar() {
   }, []);
 
   // Close menu on route change
-  useEffect(() => { setMenuOpen(false); }, [location.pathname]);
+  useEffect(() => { setMenuOpen(false); setServicesOpen(false); }, [location.pathname]);
+
+  useEffect(() => {
+    if (!menuOpen) setServicesOpen(false);
+  }, [menuOpen]);
 
   return (
     <>
@@ -164,7 +169,8 @@ export default function Navbar() {
             font-size: clamp(14px, 4vw, 16px);
           }
           .nb-mobile-group { display: flex; flex-direction: column; gap: 0.25rem; }
-          .nb-mobile-sublinks { display: flex; flex-direction: column; gap: 0.25rem; padding-left: 0.75rem; }
+          .nb-mobile-sublinks { display: flex; flex-direction: column; gap: 0.25rem; padding-left: 0.75rem; max-height: 0; overflow: hidden; opacity: 0; transition: max-height .28s ease, opacity .2s ease; }
+          .nb-mobile-sublinks.open { max-height: 420px; opacity: 1; }
           .nb-mobile-sublink {
             font-size: 0.95rem;
             color: #4E6278;
@@ -218,12 +224,12 @@ export default function Navbar() {
             if (l.dropdown) {
               return (
                 <div key={l.to} className="relative nb-link has-dropdown" onMouseEnter={() => {}} onMouseLeave={() => {}}>
-                  <Link
-                    to={l.to}
+                  <button
+                    type="button"
                     className={`nb-link${location.pathname === l.to ? " active" : ""}`}
                   >
-                    {l.label}
-                  </Link>
+                    {l.label} ▼
+                  </button>
                   <div className="services-dropdown">
                     {l.dropdown.map((sub) => (
                       <Link
@@ -269,26 +275,37 @@ export default function Navbar() {
       <div className={`nb-drawer${menuOpen ? " open" : ""}`}>
         {navLinks.map(l => (
           <div key={l.to} className="nb-mobile-group">
-            <Link
-              to={l.to}
-              onClick={() => setMenuOpen(false)}
-              className={`nb-link${location.pathname === l.to ? " active" : ""}`}
-            >
-              {l.label}
-            </Link>
-            {l.dropdown && (
-              <div className="nb-mobile-sublinks">
-                {l.dropdown.map(sub => (
-                  <Link
-                    key={sub.to}
-                    to={sub.to}
-                    onClick={() => setMenuOpen(false)}
-                    className={`nb-link nb-mobile-sublink${location.pathname === sub.to ? " active" : ""}`}
-                  >
-                    {sub.label}
-                  </Link>
-                ))}
-              </div>
+            {l.dropdown ? (
+              <>
+                <button
+                  type="button"
+                  className={`nb-link${location.pathname === l.to ? " active" : ""}`}
+                  onClick={() => setServicesOpen(open => !open)}
+                  aria-expanded={servicesOpen}
+                >
+                  {l.label} ▼
+                </button>
+                <div className={`nb-mobile-sublinks${servicesOpen ? " open" : ""}`}>
+                  {l.dropdown.map(sub => (
+                    <Link
+                      key={sub.to}
+                      to={sub.to}
+                      onClick={() => { setMenuOpen(false); setServicesOpen(false); }}
+                      className={`nb-link nb-mobile-sublink${location.pathname === sub.to ? " active" : ""}`}
+                    >
+                      {sub.label}
+                    </Link>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <Link
+                to={l.to}
+                onClick={() => setMenuOpen(false)}
+                className={`nb-link${location.pathname === l.to ? " active" : ""}`}
+              >
+                {l.label}
+              </Link>
             )}
           </div>
         ))}

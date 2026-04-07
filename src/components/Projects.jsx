@@ -1416,7 +1416,7 @@ export default function HeroProjects() {
                 >
                   <div className="hp-svg">{c.svg}</div>
                   <div className="hp-ov"/>
-                  {i===0 && <div className="hp-cloc">Dubai, UAE</div>}
+                  {i===0 && <div className="hp-cloc">HYD</div>}
                   <div className="hp-ci">
                     <div>
                       <div className="hp-ccat" style={{color:c.accent}}>{c.cat}</div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
@@ -24,58 +24,64 @@ export default function Blog() {
 
   const posts = [
     {
-      title: "Top Construction Trends in 2025",
-      date: "Jan 15, 2025",
+      title: "Key Factors to Consider Before Starting Construction",
+      date: "Jan 10, 2026",
       category: "Industry",
-      desc: "Exploring the latest innovations shaping the construction industry across India and beyond – from modular construction to AI-powered project management.",
+      desc: "Before starting any construction project, it is important to understand planning, budgeting, and design considerations to avoid delays and unexpected costs.",
       author: "Arvish Team",
-      readTime: "5 min read",
+      readTime: "4 min read",
       featured: true,
+      image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800",
     },
     {
-      title: "Sustainable Building Practices",
-      date: "Feb 3, 2025",
-      category: "Sustainability",
-      desc: "How Arvish Constructions is leading the way in eco-friendly construction, green building certifications, and reducing carbon footprint.",
+      title: "How to Choose the Right Construction Company",
+      date: "Feb 2, 2026",
+      category: "Industry",
+      desc: "Choosing the right construction company is crucial. Look for experience, transparency, and quality of previous work before making a decision.",
+      author: "Arvish Team",
+      readTime: "5 min read",
+      featured: false,
+      image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800",
+    },
+    {
+      title: "Modern Home Design Ideas for 2026",
+      date: "Mar 5, 2026",
+      category: "Design",
+      desc: "Explore simple and modern design ideas that improve space utilization, lighting, and comfort in residential construction.",
+      author: "Arvish Team",
+      readTime: "5 min read",
+      featured: false,
+      image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800",
+    },
+    {
+      title: "Importance of Quality Materials in Construction",
+      date: "Apr 12, 2026",
+      category: "Operations",
+      desc: "Using high-quality materials ensures durability, safety, and long-term performance of any construction project.",
       author: "Arvish Team",
       readTime: "4 min read",
       featured: false,
+      image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800",
     },
     {
-      title: "Luxury Residential Design Tips",
-      date: "Mar 10, 2025",
-      category: "Design",
-      desc: "Key design principles behind our award-winning residential projects in Hyderabad, Mumbai, and Bangalore.",
+      title: "Smart Construction: Future of Building",
+      date: "May 18, 2026",
+      category: "Technology",
+      desc: "Smart construction techniques and automation are improving efficiency, reducing cost, and enhancing project management.",
       author: "Arvish Team",
       readTime: "6 min read",
       featured: false,
+      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800",
     },
     {
-      title: "Commercial Real Estate Outlook 2025",
-      date: "Apr 5, 2025",
-      category: "Industry",
-      desc: "A deep dive into the commercial property market trends across India – office spaces, retail, and mixed-use developments.",
-      author: "Arvish Team",
-      readTime: "7 min read",
-      featured: false,
-    },
-    {
-      title: "Smart Buildings & IoT Integration",
-      date: "May 20, 2025",
-      category: "Technology",
-      desc: "How we integrate smart technology into modern construction for better energy efficiency, security, and occupant comfort.",
+      title: "Sustainable Construction Practices",
+      date: "Jun 8, 2026",
+      category: "Sustainability",
+      desc: "Eco-friendly construction practices help reduce environmental impact while maintaining quality and efficiency.",
       author: "Arvish Team",
       readTime: "5 min read",
       featured: false,
-    },
-    {
-      title: "Project Management Best Practices",
-      date: "Jun 1, 2025",
-      category: "Operations",
-      desc: "Lessons learned from managing large-scale construction projects on time and within budget – our proven methodologies.",
-      author: "Arvish Team",
-      readTime: "8 min read",
-      featured: false,
+      image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800",
     },
   ];
 
@@ -92,24 +98,24 @@ export default function Blog() {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-white min-h-screen">
       <Navbar />
+
+      {/* Animated Background Elements */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-20 -left-20 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-float"></div>
+        <div className="absolute bottom-20 -right-20 w-96 h-96 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-float-delayed"></div>
+      </div>
+
       {/* Hero Section */}
-      <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[450px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="https://images.pexels.com/photos/261949/pexels-photo-261949.jpeg?auto=compress&cs=tinysrgb&w=1920"
             alt="Blog header"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-[#051614]/70" />
-          <div
-            className="absolute inset-0 opacity-20 pointer-events-none"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='none' stroke='%23D4A13A' stroke-width='0.5' d='M10 0 L10 100 M20 0 L20 100 M30 0 L30 100 M40 0 L40 100 M50 0 L50 100 M60 0 L60 100 M70 0 L70 100 M80 0 L80 100 M90 0 L90 100 M0 10 L100 10 M0 20 L100 20 M0 30 L100 30 M0 40 L100 40 M0 50 L100 50 M0 60 L100 60 M0 70 L100 70 M0 80 L100 80 M0 90 L100 90' /%3E%3C/svg%3E")`,
-              backgroundSize: "40px 40px",
-            }}
-          />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-indigo-900/70 to-slate-900/80" />
         </div>
         <div className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto">
           <motion.div
@@ -117,19 +123,24 @@ export default function Blog() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-sm font-bold text-[#D4A13A] uppercase tracking-widest border-b border-[#D4A13A] pb-1">
-              Insights & Stories
-            </span>
-            <h1 className="text-4xl md:text-6xl font-bold mt-4 mb-4">Our Blog</h1>
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-8 h-0.5 bg-white/50 rounded-full"></div>
+              <span className="text-xs font-bold text-white/80 uppercase tracking-wider">Insights & Stories</span>
+              <div className="w-8 h-0.5 bg-white/50 rounded-full"></div>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-bold mt-4 mb-4">Construction Insights</h1>
             <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
-              Expert insights, industry trends, and company news from Arvish Constructions.
+              Practical knowledge, expert tips, and real-world insights from Arvish Constructions to help you understand modern construction better.
+            </p>
+            <p style={{marginTop: "10px", fontSize: "14px", color: "#ccc"}}>
+              Learn how we approach construction projects with quality, planning, and precision.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-6 py-16">
+      <div className="relative max-w-7xl mx-auto px-6 py-16">
         {/* Featured Post */}
         {featuredPost && (
           <motion.div
@@ -139,16 +150,20 @@ export default function Blog() {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-blue-100 hover:shadow-2xl transition-all duration-500">
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="h-64 md:h-auto bg-gradient-to-br from-[#051614] to-[#0a2e2a] flex items-center justify-center">
-                  <TrendingUp size={64} className="text-[#D4A13A] opacity-50" />
+                <div className="h-64 md:h-auto overflow-hidden">
+                  <img
+                    src={featuredPost.image}
+                    alt={featuredPost.title}
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  />
                 </div>
                 <div className="p-8 md:p-10">
-                  <span className="text-xs font-bold text-[#D4A13A] uppercase tracking-wider bg-[#D4A13A]/10 px-3 py-1 rounded-full">
-                    Featured
+                  <span className="text-xs font-bold text-blue-600 uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-full">
+                    Latest Article
                   </span>
-                  <h2 className="text-2xl md:text-3xl font-bold text-[#051614] mt-4 mb-3">
+                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mt-4 mb-3">
                     {featuredPost.title}
                   </h2>
                   <p className="text-gray-600 mb-4">{featuredPost.desc}</p>
@@ -163,8 +178,8 @@ export default function Blog() {
                       <Tag size={14} /> {featuredPost.category}
                     </span>
                   </div>
-                  <button className="inline-flex items-center gap-2 text-[#D4A13A] font-bold hover:gap-3 transition-all">
-                    Read Full Article <ArrowRight size={16} />
+                  <button className="inline-flex items-center gap-2 text-blue-600 font-bold hover:gap-3 transition-all group">
+                    Read More <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
               </div>
@@ -180,8 +195,8 @@ export default function Blog() {
               onClick={() => setFilter(cat)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 filter === cat
-                  ? "bg-[#D4A13A] text-[#051614] shadow-md"
-                  : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
+                  ? "bg-blue-600 text-white shadow-md"
+                  : "bg-white text-gray-600 hover:bg-blue-50 border border-gray-200"
               }`}
             >
               {cat}
@@ -205,18 +220,22 @@ export default function Blog() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: idx * 0.05 }}
-                className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group"
+                className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 overflow-hidden border border-gray-100 hover:border-blue-200 group hover:-translate-y-2"
               >
-                <div className="h-48 bg-gradient-to-br from-[#051614] to-[#0a2e2a] relative overflow-hidden">
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition" />
-                  <div className="absolute bottom-3 left-3">
-                    <span className="text-xs font-bold text-[#D4A13A] uppercase tracking-wider bg-white/90 px-2 py-1 rounded">
+                <div className="h-48 overflow-hidden">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="mb-2">
+                    <span className="text-xs font-bold text-blue-600 uppercase tracking-wider bg-blue-50 px-2 py-1 rounded">
                       {post.category}
                     </span>
                   </div>
-                </div>
-                <div className="p-6">
-                  <h2 className="text-lg font-bold text-[#051614] mb-2 line-clamp-2">
+                  <h2 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
                     {post.title}
                   </h2>
                   <p className="text-gray-500 text-sm mb-4 line-clamp-3">{post.desc}</p>
@@ -228,8 +247,8 @@ export default function Blog() {
                       <Clock size={12} /> {post.readTime}
                     </span>
                   </div>
-                  <button className="text-sm font-bold text-[#D4A13A] hover:underline inline-flex items-center gap-1">
-                    Read More <ChevronRight size={14} />
+                  <button className="text-sm font-bold text-blue-600 hover:underline inline-flex items-center gap-1 group/btn">
+                    Read More <ChevronRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
                   </button>
                 </div>
               </motion.div>
@@ -237,45 +256,39 @@ export default function Blog() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Newsletter Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mt-20 bg-gradient-to-r from-[#051614] to-[#0a2e2a] rounded-3xl p-10 text-white text-center"
-        >
-          <Mail size={48} className="text-[#D4A13A] mx-auto mb-4" />
-          <h3 className="text-2xl font-bold mb-2">Subscribe to Our Newsletter</h3>
-          <p className="text-gray-300 mb-6 max-w-md mx-auto">
-            Get the latest construction insights, project updates, and industry trends delivered to your inbox.
-          </p>
-          {subscribed ? (
-            <div className="inline-flex items-center gap-2 bg-green-600 px-6 py-3 rounded-lg">
-              <span>✓ Subscribed successfully!</span>
-            </div>
-          ) : (
-            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Your email address"
-                required
-                className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#D4A13A]"
-              />
-              <button
-                type="submit"
-                className="bg-[#D4A13A] text-[#051614] font-bold px-6 py-3 rounded-lg hover:bg-[#c3922f] transition flex items-center justify-center gap-2"
-              >
-                Subscribe <Send size={16} />
-              </button>
-            </form>
-          )}
-        </motion.div>
       </div>
 
       <Footer />
+
+      {/* Animation Styles */}
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        @keyframes float-delayed {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(20px) rotate(-5deg); }
+        }
+        .animate-float {
+          animation: float 8s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+          animation: float-delayed 10s ease-in-out infinite;
+        }
+        .line-clamp-2 {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+        .line-clamp-3 {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      `}</style>
     </div>
   );
 }

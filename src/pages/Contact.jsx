@@ -34,18 +34,25 @@ export default function Contact() {
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7012.127925934586!2d78.39503956699822!3d17.44233422717238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91c40d552785%3A0x87716a7a2a18b5e7!2sARVISH%20CONSULTING!5e1!3m2!1sen!2sin!4v1774940732995!5m2!1sen!2sin";
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-white min-h-screen">
       <Navbar />
+      
+      {/* Animated Background Elements */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-20 -left-20 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float"></div>
+        <div className="absolute bottom-20 -right-20 w-96 h-96 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float-delayed"></div>
+      </div>
+
       {/* Main two‑column layout */}
-      <div className="max-w-6xl mx-auto px-4 xs:px-6 section-padding">
+      <div className="relative max-w-6xl mx-auto px-4 xs:px-6 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
-          {/* LEFT COLUMN: Contact Form (Name, Email, Phone, Message) */}
-          <div className="bg-white rounded-3xl shadow-xl p-6 md:p-8">
+          {/* LEFT COLUMN: Contact Form */}
+          <div className="bg-white rounded-3xl shadow-xl p-6 md:p-8 border border-blue-100 animate-fade-in-up">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-8 rounded-full bg-[#D4A13A]/10 flex items-center justify-center">
-                <Send size={16} className="text-[#D4A13A]" />
+              <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                <Send size={16} className="text-blue-600" />
               </div>
-              <h2 className="text-2xl font-bold text-[#051614]">Send Us a Message</h2>
+              <h2 className="text-2xl font-bold text-gray-900">Send Us a Message</h2>
             </div>
 
             {submitted && (
@@ -66,7 +73,7 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#D4A13A] focus:ring-1 focus:ring-[#D4A13A] transition"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
                   placeholder="John Doe"
                 />
               </div>
@@ -80,7 +87,7 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#D4A13A] focus:ring-1 focus:ring-[#D4A13A] transition"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
                   placeholder="john@example.com"
                 />
               </div>
@@ -94,7 +101,7 @@ export default function Contact() {
                   value={formData.phone}
                   onChange={handleChange}
                   required
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#D4A13A] focus:ring-1 focus:ring-[#D4A13A] transition"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
                   placeholder="+91 12345 67890"
                 />
               </div>
@@ -108,14 +115,14 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#D4A13A] focus:ring-1 focus:ring-[#D4A13A] transition resize-none"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition resize-none"
                   placeholder="Tell us about your project..."
                 />
               </div>
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#051614] text-white font-bold py-4 rounded-xl hover:bg-[#0a2e2a] transition-all duration-300 transform hover:scale-[1.01] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition-all duration-300 transform hover:scale-[1.01] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
               >
                 {isSubmitting ? (
                   <>
@@ -133,15 +140,15 @@ export default function Contact() {
           </div>
 
           {/* RIGHT COLUMN: Address Block + Embedded Map + Office Hours */}
-          <div className="space-y-6">
-            {/* Address Card (now includes email) */}
-            <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
+          <div className="space-y-6 animate-fade-in-up animation-delay-200">
+            {/* Address Card */}
+            <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-blue-100 group">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#D4A13A]/10 flex items-center justify-center">
-                  <Building2 size={18} className="text-[#D4A13A]" />
+                <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
+                  <Building2 size={18} className="text-blue-600 group-hover:text-white transition-colors" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-[#051614]">ARVISH CONSULTING</h3>
+                  <h3 className="text-xl font-bold text-gray-900">ARVISH CONSULTING</h3>
                   <div className="space-y-2 mt-3 text-sm text-gray-600">
                     <p className="flex items-start gap-2">
                       <MapPin size={14} className="text-gray-400 mt-0.5 flex-shrink-0" />
@@ -156,7 +163,7 @@ export default function Contact() {
                       Fax: +91 40 1234 5679
                     </p>
                     <p className="flex items-center gap-2">
-                      <Mail size={14} className="text-[#D4A13A]" />
+                      <Mail size={14} className="text-blue-600" />
                       <span className="font-medium">Email:</span> corporate@arvishgroup.me
                     </p>
                   </div>
@@ -164,8 +171,8 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Google Map Embed – placed directly under the address card */}
-            <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-200">
+            {/* Google Map Embed */}
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-blue-100 transform hover:scale-[1.01] transition-all duration-500">
               <iframe
                 src={mapEmbedUrl}
                 width="100%"
@@ -180,10 +187,10 @@ export default function Contact() {
             </div>
 
             {/* Office Hours Card */}
-            <div className="bg-white rounded-2xl p-5 shadow-md">
+            <div className="bg-white rounded-2xl p-5 shadow-md hover:shadow-lg transition-all duration-300 border border-blue-100">
               <div className="flex items-center gap-3 mb-2">
-                <Clock size={18} className="text-[#D4A13A]" />
-                <h3 className="text-md font-bold text-[#051614]">Office Hours</h3>
+                <Clock size={18} className="text-blue-600" />
+                <h3 className="text-md font-bold text-gray-900">Office Hours</h3>
               </div>
               <div className="space-y-1 text-sm text-gray-500">
                 <p>Monday – Friday: 9:00 AM – 6:00 PM</p>
@@ -198,12 +205,43 @@ export default function Contact() {
       <Footer />
 
       <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        @keyframes float-delayed {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(20px) rotate(-5deg); }
+        }
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
         @keyframes fadeIn {
           from { opacity: 0; transform: translateY(-10px); }
           to { opacity: 1; transform: translateY(0); }
         }
+        .animate-float {
+          animation: float 8s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+          animation: float-delayed 10s ease-in-out infinite;
+        }
+        .animate-fade-in-up {
+          animation: fadeInUp 0.6s ease-out forwards;
+          opacity: 0;
+        }
         .animate-fadeIn {
           animation: fadeIn 0.3s ease-out forwards;
+        }
+        .animation-delay-200 {
+          animation-delay: 0.2s;
         }
       `}</style>
     </div>

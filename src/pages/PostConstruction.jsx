@@ -1,5 +1,6 @@
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
+import Navbar from "../components/Navbar";
 
 export default function PostConstruction() {
   const fadeInUp = {
@@ -11,6 +12,7 @@ export default function PostConstruction() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
+      <Navbar />
       {/* Hero Section with Parallax Background */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">

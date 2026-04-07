@@ -785,6 +785,11 @@ export default function Hero() {
   const [phase,   setPhase]   = useState(0);
   const [scrolled,setScrolled]= useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+
+  useEffect(() => {
+    if (!menuOpen) setServicesOpen(false);
+  }, [menuOpen]);
 
   useEffect(() => {
     const t = setTimeout(()=>setPhase(p=>(p+1)%PHASES.length), DURATIONS[phase]);
@@ -832,9 +837,16 @@ export default function Hero() {
         }
         .ah-brand-wrap{display:flex;align-items:center;gap:14px;text-decoration:none;margin-left:24px;}
         .ah-brand-text{display:flex;flex-direction:column;gap:4px;margin-left:1px;text-decoration:none;color:inherit;}
-        .ah-nav-links{display:flex;align-items:center;margin-left:auto;padding-right:28px;}
-        .ah-nav-links a{font-size:12.5px;font-weight:700;color:var(--muted);text-decoration:none;letter-spacing:.04em;padding:8px 18px;border-radius:6px;transition:.18s;}
-        .ah-nav-links a:hover{color:var(--ink);background:var(--accent-pale);}
+        .ah-nav-links{display:flex;align-items:center;margin-left:auto;padding-right:28px;gap:8px;}
+        .ah-nav-dropdown{position:relative;}
+        .ah-nav-links a,
+        .ah-nav-links button.ah-nav-link{font-size:12.5px;font-weight:700;color:var(--muted);text-decoration:none;letter-spacing:.04em;padding:8px 18px;border-radius:6px;transition:.18s;background:transparent;border:none;cursor:pointer;}
+        .ah-nav-links a:hover,
+        .ah-nav-links button.ah-nav-link:hover{color:var(--ink);background:var(--accent-pale);}
+        .ah-dropdown-menu{position:absolute;top:100%;left:0;min-width:220px;padding:10px 0;margin-top:10px;background:var(--white);border:1px solid var(--border);border-radius:16px;box-shadow:0 24px 48px rgba(10,22,40,0.12);opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .18s ease,transform .18s ease,visibility .18s ease;z-index:400;}
+        .ah-nav-dropdown:hover .ah-dropdown-menu{opacity:1;visibility:visible;transform:translateY(4px);}
+        .ah-dropdown-item{display:block;padding:10px 18px;font-size:12px;font-weight:700;color:var(--muted);text-decoration:none;letter-spacing:.03em;transition:.18s;}
+        .ah-dropdown-item:hover{color:var(--ink);background:var(--accent-pale);}
         .ah-nav-right{display:flex;align-items:center;gap:16px;}
         .ah-nav-cta{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:#2A4E7A;border:none;border-radius:6px;padding:11px 24px;cursor:pointer;transition:.22s;}
         .ah-nav-cta:hover{background:#1A2E50;transform:translateY(-1px);box-shadow:0 8px 24px rgba(10,22,40,0.22);}
@@ -846,8 +858,14 @@ export default function Hero() {
 
         .ah-mobile-menu{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;gap:0.75rem;padding:1rem 24px;background:var(--surface);box-shadow:0 24px 48px rgba(10,22,40,0.12);z-index:299;border-bottom:1px solid var(--border);}
         .ah-mobile-menu.open{display:flex;}
-        .ah-mobile-menu a{display:block;font-size:14px;font-weight:700;color:var(--ink);text-decoration:none;padding:14px 16px;border-radius:12px;transition:background .2s,color .2s;}
-        .ah-mobile-menu a:hover{background:var(--accent-pale);color:var(--ink);}
+        .ah-mobile-menu a,
+        .ah-mobile-menu button.ah-nav-link{display:block;font-size:14px;font-weight:700;color:var(--ink);text-decoration:none;padding:14px 16px;border-radius:12px;transition:background .2s,color .2s;background:transparent;border:none;text-align:left;cursor:pointer;}
+        .ah-mobile-menu a:hover,
+        .ah-mobile-menu button.ah-nav-link:hover{background:var(--accent-pale);color:var(--ink);}
+        .ah-mobile-submenu{display:flex;flex-direction:column;gap:0.4rem;}
+        .ah-mobile-submenu-links{display:flex;flex-direction:column;gap:0.35rem;padding-left:1rem;max-height:0;overflow:hidden;opacity:0;transition:max-height .28s ease,opacity .2s ease;}
+        .ah-mobile-submenu-links.open{max-height:500px;opacity:1;}
+        .ah-mobile-submenu-links a{padding-left:12px;border-radius:10px;}
         .ah-mobile-menu .ah-nav-cta{width:100%;padding:14px;}
 
         .ah-hero{flex:1;position:relative;display:flex;height:clamp(75vh, 90vw, calc(100vh - 72px));overflow:hidden;}
@@ -1076,8 +1094,16 @@ export default function Hero() {
           <nav className="ah-nav-links">
             <Link className="ah-nav-link" to="/about">About</Link>
             <Link className="ah-nav-link" to="/projects">Projects</Link>
-            <Link className="ah-nav-link" to="/services">Capabilities</Link>
-             <Link className="ah-nav-link" to="/our-story/sustainability">Sustainability</Link>
+            <div className="ah-nav-dropdown">
+              <button type="button" className="ah-nav-link ah-nav-button">Services ▼</button>
+              <div className="ah-dropdown-menu">
+                <Link className="ah-dropdown-item" to="/services/residential">Residential</Link>
+                <Link className="ah-dropdown-item" to="/services/commercial-retail">Commercial & Retail</Link>
+                <Link className="ah-dropdown-item" to="/services/educational-healthcare">Educational & Healthcare</Link>
+                <Link className="ah-dropdown-item" to="/services/industrial">Industrial</Link>
+              </div>
+            </div>
+            <Link className="ah-nav-link" to="/our-story/sustainability">Sustainability</Link>
             <Link className="ah-nav-link" to="/careers">Careers</Link>
           </nav>
           <div className="ah-nav-right">
@@ -1088,7 +1114,22 @@ export default function Hero() {
         <div className={`ah-mobile-menu${menuOpen ? " open" : ""}`}>
           <Link className="ah-nav-link" to="/about" onClick={() => setMenuOpen(false)}>About</Link>
           <Link className="ah-nav-link" to="/projects" onClick={() => setMenuOpen(false)}>Projects</Link>
-          <Link className="ah-nav-link" to="/services" onClick={() => setMenuOpen(false)}>Capabilities</Link>
+          <div className="ah-mobile-submenu">
+            <button
+              type="button"
+              className="ah-nav-link ah-nav-button"
+              onClick={() => setServicesOpen(open => !open)}
+              aria-expanded={servicesOpen}
+            >
+              Services ▼
+            </button>
+            <div className={`ah-mobile-submenu-links${servicesOpen ? " open" : ""}`}>
+              <Link className="ah-nav-link" to="/services/residential" onClick={() => { setMenuOpen(false); setServicesOpen(false); }}>Residential</Link>
+              <Link className="ah-nav-link" to="/services/commercial-retail" onClick={() => { setMenuOpen(false); setServicesOpen(false); }}>Commercial & Retail</Link>
+              <Link className="ah-nav-link" to="/services/educational-healthcare" onClick={() => { setMenuOpen(false); setServicesOpen(false); }}>Educational & Healthcare</Link>
+              <Link className="ah-nav-link" to="/services/industrial" onClick={() => { setMenuOpen(false); setServicesOpen(false); }}>Industrial</Link>
+            </div>
+          </div>
           <Link className="ah-nav-link" to="/our-story/sustainability" onClick={() => setMenuOpen(false)}>Sustainability</Link>
           <Link className="ah-nav-link" to="/careers" onClick={() => setMenuOpen(false)}>Careers</Link>
           <button className="ah-nav-cta" onClick={() => { setMenuOpen(false); navigate('/contact'); }}>

@@ -1,25 +1,26 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import ScrollToTop from '../../components/ScrollToTop';
 
-const EmiratesLogistics = () => {
+const IndustrialWarehouseProject = () => {
   const navigate = useNavigate();
 
   const stats = [
-    { value: '2.1M', label: 'sq m Development', accent: true },
-    { value: '18', label: 'Warehouse Blocks', accent: false },
+    { value: '60,000', label: 'sq ft Area', accent: true },
+    { value: '1', label: 'Warehouse Unit', accent: false },
     { value: 'Ongoing', label: 'Status', accent: true },
-    { value: 'Dubai, UAE', label: 'Location', accent: false },
+    { value: 'Telangana', label: 'Location', accent: false },
   ];
 
   const timeline = [
-    { year: '2023 Q3', title: 'Site Preparation', desc: 'Land clearing, geotechnical investigation, and utility coordination completed.' },
-    { year: '2024 Q1', title: 'Infrastructure', desc: 'Road network, drainage systems, and power substation construction underway.' },
-    { year: '2024 Q2', title: 'First Phase Warehouses', desc: 'Block A-F foundations cast, steel structure erection commencing.' },
-    { year: '2024 Q4', title: 'Phase 1 Complete', desc: '6 warehouse blocks operational with full racking and mezzanine fitout.' },
-    { year: '2025 Q2', title: 'Full Completion', desc: 'All 18 blocks, cold storage, and admin facilities operational.' },
+    { year: '2023', title: 'Planning', desc: 'Project planning and site preparation.' },
+    { year: '2023', title: 'Foundation', desc: 'Foundation and base structure completed.' },
+    { year: '2024', title: 'Structure', desc: 'Main warehouse structure construction.' },
+    { year: '2024', title: 'Finishing', desc: 'Roofing and finishing works.' },
+    { year: '2025', title: 'Completion', desc: 'Final inspection and project completion.' },
   ];
 
   const gallery = [
@@ -31,171 +32,256 @@ const EmiratesLogistics = () => {
     'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=1200&h=800&fit=crop',
   ];
 
-  const capacities = [
-    { type: 'Standard Warehouse', area: '850K sqm', bays: '120', height: '12m' },
-    { type: 'Cold Storage', area: '120K sqm', temp: '-20°C to +4°C', bays: '18' },
-    { type: 'Cross-Dock', area: '95K sqm', doors: '248', automation: 'Full AS/RS' },
-    { type: 'Hazardous Goods', area: '45K sqm', compliance: 'ATEX Zone 2', bays: '12' },
+  const features = [
+    {
+      icon: '🏭',
+      title: 'Warehouse Construction',
+      desc: 'Designed for efficient storage and logistics operations.',
+    },
+    {
+      icon: '🧱',
+      title: 'Durable Structure',
+      desc: 'Built with strong materials for long-term industrial use.',
+    },
+    {
+      icon: '📦',
+      title: 'Storage Efficiency',
+      desc: 'Optimized layouts for easy movement and storage handling.',
+    },
+    {
+      icon: '⚙️',
+      title: 'Practical Design',
+      desc: 'Designed to support daily industrial operations.',
+    },
   ];
 
   return (
     <>
       <ScrollToTop />
-      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900/50 to-orange-900/20 text-white overflow-hidden">
+      <div className="bg-white min-h-screen overflow-hidden">
         <Navbar />
-        
-        {/* HERO */}
-        <section className="relative pt-32 pb-24 overflow-hidden">
+
+        {/* Animated Background Elements */}
+        <div className="fixed inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-20 -left-20 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-float" />
+          <div className="absolute bottom-20 -right-20 w-96 h-96 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-float-delayed" />
+        </div>
+
+        {/* HERO SECTION */}
+        <section className="relative pt-32 pb-20 overflow-hidden">
           <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-gray-900/30 to-slate-900/90" />
-            <img 
-              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=2000&h=1200&fit=crop" 
-              alt="Emirates Logistics Park" 
-              className="w-full h-full object-cover object-center"
+            <img
+              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=2000&h=1200&fit=crop"
+              alt="Industrial Warehouse Project"
+              className="w-full h-full object-cover"
             />
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-indigo-900/70 to-slate-900/80" />
           </div>
-          
-          <div className="relative z-10 container mx-auto px-6 text-center">
-            <span className="inline-flex items-center px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest bg-gradient-to-r from-orange-500/20 via-amber-500/20 to-orange-500/20 border border-orange-500/40 text-orange-100 mb-8">
-              Mega Logistics Park • Dubai Logistics Corridor
-            </span>
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-white via-gray-100 to-slate-200 bg-clip-text text-transparent mb-6 leading-tight">
-              Emirates<br />
-              <span className="text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-orange-400 via-amber-500 to-orange-600 bg-clip-text text-transparent">Logistics Park</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto mb-12 leading-relaxed">
-              Next-generation logistics mega-hub spanning 2.1 million sqm with 18 smart warehouses, 
-              full automation, and hazardous goods capability on Dubai's strategic logistics corridor.
-            </p>
-            
-            <div className="flex flex-wrap justify-center gap-8 mb-20">
-              {stats.map((stat, idx) => (
-                <div key={idx} className="text-center">
-                  <div className={`text-4xl md:text-5xl font-black ${stat.accent ? 'bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent' : 'text-white/95'}`}>
-                    {stat.value}
+          <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="inline-flex items-center gap-3 mb-6">
+                <div className="w-8 h-0.5 bg-white/50 rounded-full" />
+                <span className="text-xs font-bold text-white/80 uppercase tracking-wider">
+                  Telangana • Industrial Project
+                </span>
+                <div className="w-8 h-0.5 bg-white/50 rounded-full" />
+              </div>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
+                Industrial Warehouse
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-12 leading-relaxed">
+                An industrial warehouse project designed for efficient storage, logistics operations, and durable long-term use.
+              </p>
+
+              <div className="flex flex-wrap justify-center gap-8 mb-16">
+                {stats.map((stat, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="text-center"
+                  >
+                    <div
+                      className={`text-4xl md:text-5xl font-black ${
+                        stat.accent ? 'text-blue-400' : 'text-white'
+                      }`}
+                    >
+                      {stat.value}
+                    </div>
+                    <div className="text-sm uppercase tracking-wider text-gray-300 mt-2 font-semibold">
+                      {stat.label}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button
+                  onClick={() => navigate('/enquire')}
+                  className="group px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-full shadow-xl hover:shadow-blue-500/25 hover:-translate-y-1 transition-all duration-300 uppercase tracking-wider flex items-center gap-2"
+                >
+                  Start Your Project
+                  <svg
+                    className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </button>
+                <button
+                  onClick={() => navigate('/projects')}
+                  className="px-8 py-4 border-2 border-white/30 hover:border-blue-400 text-white font-bold text-lg rounded-full hover:bg-blue-600/10 backdrop-blur-sm hover:-translate-y-1 transition-all duration-300 uppercase tracking-wide"
+                >
+                  ← View Portfolio
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* PROJECT OVERVIEW */}
+        <section className="py-24 px-6 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7 }}
+                viewport={{ once: true }}
+              >
+                <div className="inline-flex items-center gap-3 mb-4">
+                  <div className="w-8 h-0.5 bg-blue-600 rounded-full" />
+                  <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">
+                    Project Overview
+                  </span>
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-2 mb-6 leading-tight">
+                  Industrial Strength<br />
+                  <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                    Warehouse Solution
+                  </span>
+                </h2>
+                <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                  This project focuses on building a strong and practical warehouse suitable for industrial storage and operations. The design ensures durability, efficient space usage, and smooth workflow.
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7 }}
+                viewport={{ once: true }}
+                className="relative"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5e169c5?w=800&h=1000&fit=crop"
+                  alt="Industrial Warehouse Project"
+                  className="w-full h-auto rounded-2xl shadow-2xl"
+                />
+                <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/10 via-transparent to-indigo-500/10 rounded-2xl blur-xl" />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* FEATURES SECTION */}
+        <section className="py-24 bg-gray-50">
+          <div className="container mx-auto px-6">
+            <div className="max-w-4xl mx-auto text-center mb-16">
+              <div className="inline-flex items-center gap-3 mb-4">
+                <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
+                <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">Key Features</span>
+                <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-2 mb-4">
+                Industrial Strength <br />
+                <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Meets Practical Design</span>
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {features.map((feature, idx) => (
+                <div
+                  key={idx}
+                  className="group p-8 rounded-2xl bg-white shadow-md border border-gray-100 hover:border-blue-200 hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 animate-fade-in-up"
+                  style={{ animationDelay: `${idx * 100}ms` }}
+                >
+                  <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                    {feature.icon}
                   </div>
-                  <div className="text-sm uppercase tracking-wider text-slate-400 mt-3 font-semibold">
-                    {stat.label}
-                  </div>
+                  <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                    {feature.title}
+                  </h4>
+                  <p className="text-gray-600 leading-relaxed">
+                    {feature.desc}
+                  </p>
                 </div>
               ))}
             </div>
-
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <button 
-                onClick={() => navigate('/enquire')}
-                className="px-16 py-5 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-slate-900 font-bold text-lg rounded-3xl shadow-2xl hover:shadow-orange-500/25 hover:-translate-y-1 transition-all duration-300 uppercase tracking-widest"
-              >
-                Facility Leasing
-              </button>
-              <button 
-                onClick={() => navigate('/projects')}
-                className="px-14 py-5 border-2 border-slate-300/60 hover:border-orange-400 text-white font-bold text-lg rounded-3xl hover:bg-orange-500/10 backdrop-blur-sm hover:-translate-y-1 transition-all duration-300 uppercase tracking-wide"
-              >
-                ← View Portfolio
-              </button>
-            </div>
           </div>
         </section>
 
-        {/* SPECIFICATIONS */}
-        <section className="py-28 bg-slate-900/40">
-          <div className="container mx-auto px-6">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-24">
-                <span className="inline-block px-8 py-4 rounded-2xl text-lg font-bold uppercase tracking-widest bg-gradient-to-r from-orange-500/15 to-amber-500/15 border border-orange-500/30 text-orange-150">
-                  Infrastructure Scale
+        {/* TIMELINE SECTION */}
+        <section className="py-20 px-6 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <div className="inline-flex items-center gap-3 mb-4">
+                <div className="w-8 h-0.5 bg-blue-600 rounded-full" />
+                <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">
+                  Construction Timeline
                 </span>
-                <h2 className="text-5xl md:text-6xl font-bold text-white mt-8 mb-12 leading-tight">
-                  Industrial Engineering<br />
-                  <span className="bg-gradient-to-r from-orange-400 via-amber-500 to-orange-600 bg-clip-text text-transparent">at Scale</span>
-                </h2>
+                <div className="w-8 h-0.5 bg-blue-600 rounded-full" />
               </div>
-
-              <div className="grid lg:grid-cols-2 gap-12 mb-20">
-                <div>
-                  <h3 className="text-3xl font-bold text-white mb-8">Warehouse Specifications</h3>
-                  <div className="space-y-6">
-                    {capacities.map((spec, idx) => (
-                      <div key={idx} className="group p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:border-orange-400/50 hover:bg-orange-500/5 transition-all duration-500 hover:-translate-y-2">
-                        <div className="flex items-start justify-between mb-4">
-                          <h4 className="text-2xl font-bold text-orange-300 group-hover:text-orange-200">{spec.type}</h4>
-                          <span className="text-3xl font-black text-orange-400">{spec.area}</span>
-                        </div>
-                        <div className="grid grid-cols-3 gap-6 text-sm text-slate-400">
-                          <div>{spec.bays || spec.doors} Bays</div>
-                          <div>{spec.height || spec.temp}</div>
-                          <div>{spec.compliance || 'Automated'}</div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="space-y-8">
-                  <div className="p-10 rounded-4xl bg-gradient-to-br from-orange-500/5 to-amber-500/5 border-2 border-orange-400/20 shadow-2xl backdrop-blur-xl">
-                    <h4 className="text-3xl font-bold text-white mb-6">Scale & Capacity</h4>
-                    <ul className="space-y-4 text-lg text-slate-300">
-                      <li className="flex items-center gap-4">📏 <span>2.1M sqm total site area</span></li>
-                      <li className="flex items-center gap-4">🚚 <span>15km internal road network</span></li>
-                      <li className="flex items-center gap-4">⚡ <span>50MW dedicated power substation</span></li>
-                      <li className="flex items-center gap-4">💧 <span>Zero discharge water recycling</span></li>
-                      <li className="flex items-center gap-4">🔒 <span>24/7 AI security perimeter</span></li>
-                    </ul>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-6 p-8 rounded-3xl bg-white/3 border border-white/10 backdrop-blur-xl">
-                    <div>
-                      <div className="text-4xl font-black text-orange-400 mb-2">Phase 1</div>
-                      <div className="text-slate-400">Q2 2024</div>
-                      <div className="text-sm text-slate-500 mt-2">6 warehouses operational</div>
-                    </div>
-                    <div>
-                      <div className="text-4xl font-black text-orange-400 mb-2">Full Site</div>
-                      <div className="text-slate-400">Q2 2025</div>
-                      <div className="text-sm text-slate-500 mt-2">18 warehouses + support infra</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* TIMELINE */}
-        <section className="py-24">
-          <div className="container mx-auto px-6 max-w-5xl">
-            <div className="text-center mb-24">
-              <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-slate-100 to-orange-200 bg-clip-text text-transparent">
-                Construction Timeline
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">
+                Project Timeline
               </h2>
-              <p className="text-xl text-slate-400 mt-6 max-w-3xl mx-auto">
-                Phased mega-project delivery for uninterrupted operations
+              <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
+                Step-by-step construction process for quality delivery
               </p>
-            </div>
+            </motion.div>
 
             <div className="relative">
-              <div className="absolute left-8 lg:left-1/2 w-1.5 h-full bg-gradient-to-b from-orange-400 via-amber-400 to-orange-500 rounded-full shadow-xl transform -translate-x-1/2 lg:translate-x-0" />
-              
-              <div className="space-y-16">
+              <div className="absolute left-1/2 -translate-x-1/2 w-1 h-full bg-blue-200 rounded-full hidden md:block" />
+              <div className="space-y-12">
                 {timeline.map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-12 lg:gap-24">
-                    <div className={`flex-1 p-10 rounded-4xl shadow-2xl backdrop-blur-xl border
-                      ${idx % 2 === 0 
-                        ? 'bg-gradient-to-r from-amber-500/8 via-orange-400/3 to-amber-500/8 border-amber-400/30 ml-auto order-2 lg:order-1'
-                        : 'bg-gradient-to-r from-orange-500/8 via-amber-500/3 to-orange-500/8 border-orange-400/30 order-1 lg:order-2'
-                      }`}
-                    >
-                      <div className="flex items-center gap-6 mb-8">
-                        <div className="w-24 h-24 bg-gradient-to-br from-orange-400 to-amber-500 rounded-3xl flex items-center justify-center font-mono font-bold text-2xl text-slate-900 shadow-2xl border-4 border-white/20">
-                          {item.year}
+                  <div
+                    key={idx}
+                    className={`flex flex-col md:flex-row items-center gap-8 ${
+                      idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                    }`}
+                  >
+                    <div className="flex-1">
+                      <div
+                        className={`p-6 rounded-xl bg-gray-50 border border-gray-100 shadow-md hover:shadow-lg transition-all ${
+                          idx % 2 === 0 ? 'md:mr-8' : 'md:ml-8'
+                        }`}
+                      >
+                        <div className="flex items-center gap-4 mb-3">
+                          <div className="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center font-bold text-xl text-white shadow-md">
+                            {item.year}
+                          </div>
+                          <h4 className="text-xl font-bold text-gray-900">{item.title}</h4>
                         </div>
-                        <div>
-                          <h4 className="text-3xl font-bold text-white mb-2">{item.title}</h4>
-                        </div>
+                        <p className="text-gray-600 leading-relaxed">{item.desc}</p>
                       </div>
-                      <p className="text-xl text-slate-300 leading-relaxed">{item.desc}</p>
                     </div>
+                    <div className="hidden md:flex w-10 h-10 bg-blue-600 rounded-full items-center justify-center text-white font-bold shadow-md z-10">
+                      {idx + 1}
+                    </div>
+                    <div className="flex-1 hidden md:block" />
                   </div>
                 ))}
               </div>
@@ -203,70 +289,31 @@ const EmiratesLogistics = () => {
           </div>
         </section>
 
-        {/* GALLERY */}
-        <section className="py-24 bg-slate-900/60">
-          <div className="container mx-auto px-6">
-            <div className="text-center mb-24">
-              <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-100 via-orange-100 to-slate-100 bg-clip-text text-transparent">
-                Site Progress
-              </h2>
-            </div>
-            
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 max-w-none">
-              {gallery.map((img, idx) => (
-                <div 
-                  key={idx}
-                  className="group relative h-96 rounded-4xl overflow-hidden shadow-2xl bg-gradient-to-br from-slate-900/70 to-transparent backdrop-blur-xl border border-orange-400/20 hover:border-orange-500/50 transition-all duration-700 hover:shadow-orange-500/40 hover:-translate-y-4 hover:scale-[1.03]"
-                >
-                  <img 
-                    src={img} 
-                    alt={`Logistics Park ${idx + 1}`}
-                    className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-115"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-end p-10">
-                    <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-8 shadow-2xl transform translate-y-16 group-hover:translate-y-0 transition-all duration-700 w-full max-w-md mx-auto">
-                      <span className="block text-4xl font-black text-orange-500 mb-4">Phase {idx + 1}</span>
-                      <span className="text-xl font-bold text-slate-900 uppercase tracking-wider block opacity-90">Construction Update</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        {/* CTA */}
-        <section className="py-32 text-center bg-gradient-to-t from-slate-950 to-gray-900/50">
-          <div className="container mx-auto px-6 max-w-4xl relative z-10">
-            <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white via-slate-100 to-orange-200 bg-clip-text text-transparent mb-8 leading-tight">
-              Industrial Powerhouse<br />
-              <span className="bg-gradient-to-r from-orange-400 via-amber-500 to-orange-600 bg-clip-text text-transparent">Ready for Scale</span>
-            </h2>
-            <p className="text-2xl md:text-3xl text-slate-300 mb-16 max-w-3xl mx-auto leading-relaxed">
-              2.1M sqm logistics ecosystem engineered for the future of global supply chains.
-            </p>
-            <div className="flex flex-col xl:flex-row gap-8 justify-center items-center">
-              <button 
-                onClick={() => navigate('/enquire')}
-                className="px-20 py-8 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 hover:from-orange-400 hover:via-amber-400 hover:to-orange-500 text-slate-900 font-bold text-xl rounded-4xl shadow-2xl hover:shadow-orange-500/50 hover:-translate-y-4 transition-all duration-700 uppercase tracking-widest"
-              >
-                Lease Space Now
-              </button>
-              <button 
-                onClick={() => navigate('/services/industrial')}
-                className="px-20 py-8 border-4 border-orange-400/60 hover:border-orange-300 text-orange-100 font-bold text-xl rounded-4xl hover:bg-orange-500/20 backdrop-blur-3xl hover:-translate-y-4 transition-all duration-700 uppercase tracking-widest hover:text-orange-50"
-              >
-                Industrial Services →
-              </button>
-            </div>
-          </div>
-        </section>
+        
 
         <Footer />
+
+        {/* Custom Animations */}
+        <style>{`
+          @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+          }
+          @keyframes float-delayed {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(20px) rotate(-5deg); }
+          }
+          .animate-float {
+            animation: float 8s ease-in-out infinite;
+          }
+          .animate-float-delayed {
+            animation: float-delayed 10s ease-in-out infinite;
+          }
+        `}</style>
       </div>
     </>
   );
 };
 
-export default EmiratesLogistics;
-
+export default IndustrialWarehouseProject;

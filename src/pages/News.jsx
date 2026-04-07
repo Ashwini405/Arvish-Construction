@@ -1,42 +1,194 @@
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import {
+  Calendar,
+  Tag,
+  ArrowRight,
+  Mail,
+  Send,
+} from "lucide-react";
 
 export default function News() {
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+
   const news = [
-    { title: "Prestige Group Wins Best Developer Award 2025", date: "June 10, 2025", tag: "Award", desc: "We are proud to announce that Prestige Group has been recognized as the Best Developer of the Year at the UAE Construction Excellence Awards." },
-    { title: "New Partnership with Green Build Initiative", date: "May 22, 2025", tag: "Partnership", desc: "Prestige Group signs a strategic partnership with the UAE Green Build Initiative to accelerate sustainable construction practices." },
-    { title: "Groundbreaking Ceremony for Horizon Mall Extension", date: "April 15, 2025", tag: "Project Launch", desc: "The groundbreaking ceremony for the Horizon Mall Extension project was held in Dubai, marking the start of a major retail development." },
-    { title: "Prestige Group Expands to London", date: "March 5, 2025", tag: "Expansion", desc: "Prestige Group officially opens its UK office in London, marking a significant milestone in the company's international growth strategy." },
-    { title: "Annual Safety Excellence Recognition", date: "February 18, 2025", tag: "Safety", desc: "Our HSE team achieved zero lost-time incidents across all active project sites in 2024, earning the Annual Safety Excellence recognition." },
-    { title: "Q4 2024 Financial Results Announced", date: "January 30, 2025", tag: "Financial", desc: "Prestige Group reports a 22% revenue growth in Q4 2024, driven by strong performance in residential and commercial segments." },
+    {
+      title: "New Residential Project Successfully Completed in Hyderabad",
+      date: "June 12, 2026",
+      tag: "Project",
+      desc: "Arvish Constructions has successfully completed a modern residential project in Hyderabad, delivering quality construction with timely execution.",
+      image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800",
+    },
+    {
+      title: "Expansion of Commercial Construction Services",
+      date: "May 28, 2026",
+      tag: "Business",
+      desc: "We are expanding our commercial construction services to meet the growing demand for office and retail spaces in Hyderabad.",
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800",
+    },
+    {
+      title: "Focus on Sustainable Construction Practices",
+      date: "May 10, 2026",
+      tag: "Sustainability",
+      desc: "Arvish Constructions is adopting eco-friendly materials and efficient construction methods to reduce environmental impact.",
+      image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800",
+    },
+    {
+      title: "Industrial Project Development in Telangana",
+      date: "April 18, 2026",
+      tag: "Project",
+      desc: "Our team has started a new industrial infrastructure project in Telangana with advanced construction techniques.",
+      image: "https://img.indiafilings.com/learn/wp-content/uploads/2020/01/Telangana-State-Industrial-Policy.jpg",
+    },
+    {
+      title: "Improving Project Delivery with Modern Techniques",
+      date: "March 25, 2026",
+      tag: "Technology",
+      desc: "We are implementing modern construction technologies to improve efficiency, reduce delays, and ensure better project outcomes.",
+      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800",
+    },
+    {
+      title: "Commitment to Quality and Client Satisfaction",
+      date: "March 5, 2026",
+      tag: "Quality",
+      desc: "Arvish Constructions continues to focus on delivering high-quality projects with strong attention to detail and customer satisfaction.",
+      image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800",
+    },
   ];
 
-  const tagColor = { Award: "bg-yellow-100 text-yellow-700", Partnership: "bg-blue-100 text-blue-700", "Project Launch": "bg-green-100 text-green-700", Expansion: "bg-purple-100 text-purple-700", Safety: "bg-red-100 text-red-700", Financial: "bg-gray-100 text-gray-700" };
+  const tagColor = {
+    Project: "bg-blue-100 text-blue-700",
+    Business: "bg-indigo-100 text-indigo-700",
+    Sustainability: "bg-green-100 text-green-700",
+    Technology: "bg-purple-100 text-purple-700",
+    Quality: "bg-amber-100 text-amber-700",
+  };
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (email) {
+      setSubscribed(true);
+      setEmail("");
+      setTimeout(() => setSubscribed(false), 3000);
+    }
+  };
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-white min-h-screen">
       <Navbar />
-      <div className="max-w-6xl mx-auto px-6 py-24">
-        <div className="text-center mb-16">
-          <span className="text-xs font-bold text-[#D4A13A] uppercase tracking-widest">Latest Updates</span>
-          <h1 className="text-4xl font-bold text-[#051614] mt-3">News & Press</h1>
-          <p className="text-gray-500 mt-4 max-w-xl mx-auto">Stay up to date with the latest announcements, milestones, and achievements from Prestige Group.</p>
+
+      {/* Animated Background Elements */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-20 -left-20 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-float"></div>
+        <div className="absolute bottom-20 -right-20 w-96 h-96 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-float-delayed"></div>
+      </div>
+
+      {/* Hero Section */}
+      <section className="relative min-h-[450px] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            alt="News header"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-indigo-900/70 to-slate-900/80" />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {news.map((n, i) => (
-            <div key={i} className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex justify-between items-center mb-4">
-                <span className={`text-xs font-bold px-3 py-1 rounded-full ${tagColor[n.tag]}`}>{n.tag}</span>
-                <span className="text-xs text-gray-400">{n.date}</span>
-              </div>
-              <h2 className="text-lg font-bold text-[#051614] mb-3">{n.title}</h2>
-              <p className="text-gray-500 text-sm mb-4">{n.desc}</p>
-              <button className="text-sm font-bold text-[#D4A13A] hover:underline">Read Full Story →</button>
+        <div className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-8 h-0.5 bg-white/50 rounded-full"></div>
+              <span className="text-xs font-bold text-white/80 uppercase tracking-wider">Latest Updates</span>
+              <div className="w-8 h-0.5 bg-white/50 rounded-full"></div>
             </div>
+            <h1 className="text-4xl md:text-6xl font-bold mt-4 mb-4">Latest Updates</h1>
+            <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
+              Stay informed with the latest project updates, company milestones, and construction insights from Arvish Constructions.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* News Grid */}
+      <div className="relative max-w-7xl mx-auto px-6 py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {news.map((item, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.1, duration: 0.5 }}
+              viewport={{ once: true }}
+              className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 overflow-hidden border border-gray-100 hover:border-blue-200 hover:-translate-y-2"
+            >
+              <div className="h-56 overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+              <div className="p-6">
+                <div className="flex justify-between items-center mb-3">
+                  <span className={`text-xs font-bold px-3 py-1 rounded-full ${tagColor[item.tag]}`}>
+                    {item.tag}
+                  </span>
+                  <span className="text-xs text-gray-400 flex items-center gap-1">
+                    <Calendar size={12} /> {item.date}
+                  </span>
+                </div>
+                <h2 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+                  {item.title}
+                </h2>
+                <p className="text-gray-600 text-sm mb-4 line-clamp-3">{item.desc}</p>
+                <button className="text-sm font-bold text-blue-600 hover:underline inline-flex items-center gap-1 group/btn">
+                  Read More <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </motion.div>
           ))}
         </div>
+
+        
       </div>
+
       <Footer />
+
+      {/* Animation Styles */}
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        @keyframes float-delayed {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(20px) rotate(-5deg); }
+        }
+        .animate-float {
+          animation: float 8s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+          animation: float-delayed 10s ease-in-out infinite;
+        }
+        .line-clamp-2 {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+        .line-clamp-3 {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      `}</style>
     </div>
   );
 }

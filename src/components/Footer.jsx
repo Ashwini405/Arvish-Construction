@@ -6,12 +6,12 @@ import { Mail, Phone, MapPin, ArrowUp, ArrowRight, Home, Building2, Factory, Gra
 const navLinks = [
   { label: 'Home', path: '/home' },
   { label: 'About Us', path: '/about' },
-  { label: 'Services', path: '/services' },
+  // { label: 'Services', path: '/services' },
   { label: 'Our Projects', path: '/projects' },
-  { label: 'Group Companies', path: '/group-companies' },
+  { label: 'Our Divisions', path: '/group-companies' },
   { label: 'Careers', path: '/careers' },
-  { label: 'News', path: '/news' },
-  { label: 'Blog', path: '/blog' },
+  // { label: 'News', path: '/news' },
+  // { label: 'Blog', path: '/blog' },
   { label: 'Contact', path: '/contact' },
 ];
 

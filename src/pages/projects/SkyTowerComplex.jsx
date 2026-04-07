@@ -1,185 +1,253 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import ScrollToTop from '../../components/ScrollToTop';
 
-const SkyTowerComplex = () => {
+const CommercialOfficeProject = () => {
   const navigate = useNavigate();
 
   const stats = [
-    { value: '850K', label: 'sq ft Built Area', accent: true },
-    { value: '52', label: 'Storeys', accent: false },
-    { value: '2024', label: 'Completion', accent: true },
-    { value: 'Dubai, UAE', label: 'Location', accent: false },
+    { value: '40,000', label: 'sq ft Area', accent: true },
+    { value: '1', label: 'Building', accent: false },
+    { value: '2024', label: 'Completed', accent: true },
+    { value: 'Hyderabad', label: 'Location', accent: false },
   ];
 
   const timeline = [
-    { year: '2022', title: 'Design Phase', desc: 'Architectural concept and structural engineering completed with BIM modeling.' },
-    { year: '2023 Q1', title: 'Foundation', desc: 'Deep pile foundation system installed to support 52-storey structure.' },
-    { year: '2023 Q3', title: 'Superstructure', desc: 'Core and perimeter columns reaching 40th floor with precast elements.' },
-    { year: '2024 Q1', title: 'Envelope Complete', desc: 'Curtain wall system installed with double-glazed unitized facade.' },
-    { year: '2024 Q2', title: 'Completion', desc: 'Final fit-out, MEP commissioning, and handover to client.' },
+    { year: '2023', title: 'Planning', desc: 'Project planning, design, and site preparation.' },
+    { year: '2023', title: 'Foundation Work', desc: 'Foundation and structural base construction.' },
+    { year: '2024', title: 'Structure Completion', desc: 'Main building structure completed.' },
+    { year: '2024', title: 'Finishing', desc: 'Interior and exterior finishing works.' },
+    { year: '2024', title: 'Project Handover', desc: 'Final inspection and project delivery.' },
   ];
 
   const gallery = [
+    'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1517457373958-b7bdd4587206?w=1200&h=800&fit=crop',
     'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1531297484001-8002211f4d49?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&h=800&fit=crop',
   ];
 
   return (
     <>
       <ScrollToTop />
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900/20 to-slate-900 text-white overflow-hidden">
+      <div className="min-h-screen bg-white overflow-hidden">
         <Navbar />
-        
-        {/* HERO SECTION */}
-        <section className="relative pt-20 xs:pt-28 pb-16 xs:pb-20 lg:pt-32 lg:pb-24 overflow-hidden">
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-blue-900/20 to-slate-900/80" />
-            <img 
-              src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=2000&h=1200&fit=crop" 
-              alt="Sky Tower Complex" 
-              className="w-full h-full object-cover object-center scale-105"
-            />
-          </div>
-          
-          <div className="relative z-10 container mx-auto px-6 text-center">
-            <span className="inline-flex items-center px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-yellow-400/20 to-orange-400/20 border border-yellow-400/30 text-yellow-100 mb-8">
-              Commercial Tower • Dubai, UAE
-            </span>
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-white via-slate-100 to-slate-200 bg-clip-text text-transparent mb-6 leading-tight">
-              Sky Tower<br />
-              <span className="text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent">Complex</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto mb-12 leading-relaxed">
-              A 52-storey landmark commercial tower redefining Dubai's skyline with sustainable design, 
-              premium Grade-A office spaces, and world-class amenities.
-            </p>
-            
-            <div className="flex flex-wrap justify-center gap-8 mb-16">
-              {stats.map((stat, idx) => (
-                <div key={idx} className="text-center">
-                  <div className={`text-4xl md:text-5xl font-black ${stat.accent ? 'bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent' : 'text-white'}`}>
-                    {stat.value}
-                  </div>
-                  <div className="text-sm uppercase tracking-wider text-slate-400 mt-2 font-medium">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button 
-                onClick={() => navigate('/enquire')}
-                className="px-12 py-4 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-slate-900 font-bold text-lg rounded-2xl shadow-2xl hover:shadow-yellow-500/25 hover:-translate-y-1 transition-all duration-300 uppercase tracking-wider"
-              >
-                Get Quote
-              </button>
-              <button 
-                onClick={() => navigate('/projects')}
-                className="px-12 py-4 border-2 border-slate-300/50 hover:border-white text-white font-bold text-lg rounded-2xl hover:bg-white/10 backdrop-blur-sm hover:-translate-y-1 transition-all duration-300 uppercase tracking-wider"
-              >
-                ← View All Projects
-              </button>
-            </div>
+        {/* Animated Background Orbs */}
+        <div className="fixed inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-20 -left-20 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-float" />
+          <div className="absolute bottom-20 -right-20 w-96 h-96 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-float-delayed" />
+        </div>
+
+        {/* HERO SECTION */}
+        <section className="relative pt-32 pb-24 overflow-hidden">
+          <div className="absolute inset-0">
+            <img
+              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=2000&h=1200&fit=crop"
+              alt="Commercial Office Building Project"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-indigo-900/70 to-slate-900/80" />
+          </div>
+          <div className="relative z-10 container mx-auto px-6 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="inline-flex items-center gap-3 mb-6">
+                <div className="w-8 h-0.5 bg-white/50 rounded-full" />
+                <span className="text-xs font-bold text-white/80 uppercase tracking-wider">
+                  Hyderabad • Commercial Project
+                </span>
+                <div className="w-8 h-0.5 bg-white/50 rounded-full" />
+              </div>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
+                Commercial Office Building
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-12 leading-relaxed">
+                A commercial office building designed to support modern business operations with efficient layouts, durable construction, and practical design.
+              </p>
+
+              <div className="flex flex-wrap justify-center gap-8 mb-16">
+                {stats.map((stat, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="text-center"
+                  >
+                    <div
+                      className={`text-4xl md:text-5xl font-black ${
+                        stat.accent ? 'text-blue-400' : 'text-white'
+                      }`}
+                    >
+                      {stat.value}
+                    </div>
+                    <div className="text-sm uppercase tracking-wider text-gray-300 mt-2 font-semibold">
+                      {stat.label}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button
+                  onClick={() => navigate('/enquire')}
+                  className="group px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-full shadow-xl hover:shadow-blue-500/25 hover:-translate-y-1 transition-all duration-300 uppercase tracking-wider flex items-center gap-2"
+                >
+                  Start Your Project
+                  <svg
+                    className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </button>
+                <button
+                  onClick={() => navigate('/projects')}
+                  className="px-8 py-4 border-2 border-white/30 hover:border-blue-400 text-white font-bold text-lg rounded-full hover:bg-blue-600/10 backdrop-blur-sm hover:-translate-y-1 transition-all duration-300 uppercase tracking-wide"
+                >
+                  ← All Projects
+                </button>
+              </div>
+            </motion.div>
           </div>
         </section>
 
         {/* PROJECT OVERVIEW */}
-        <section className="section-padding bg-slate-900/50">
-          <div className="container mx-auto px-6">
+        <section className="py-24 px-6 bg-white">
+          <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <span className="inline-block px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-yellow-400/20 to-orange-400/20 border border-yellow-400/30 text-yellow-200 mb-8">
-                  Project Overview
-                </span>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">
-                  Redefining<br />
-                  <span className="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent">Dubai's Skyline</span>
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7 }}
+                viewport={{ once: true }}
+              >
+                <div className="inline-flex items-center gap-3 mb-4">
+                  <div className="w-8 h-0.5 bg-blue-600 rounded-full" />
+                  <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">
+                    Project Overview
+                  </span>
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-2 mb-6 leading-tight">
+                  Functional and Modern<br />
+                  <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                    Commercial Spaces
+                  </span>
                 </h2>
-                <p className="text-lg text-slate-300 leading-relaxed mb-8">
-                  Sky Tower Complex represents the pinnacle of modern commercial architecture. 
-                  This 52-storey Grade-A office tower combines innovative sustainable design 
-                  with premium office spaces and world-class amenities, setting a new benchmark 
-                  for commercial real estate in Dubai.
+                <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                  This project focuses on creating a practical and efficient office space suitable for business operations. The building is designed with proper planning, ensuring durability, functionality, and ease of use.
                 </p>
-                <div className="space-y-4 mb-12">
+                <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <div className="w-2 h-2 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full mt-2 flex-shrink-0" />
+                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0" />
                     <div>
-                      <h4 className="font-bold text-white text-lg mb-2">LEED Gold Certified</h4>
-                      <p className="text-slate-400">Achieved LEED Gold certification through energy-efficient systems, sustainable materials, and water conservation measures.</p>
+                      <h4 className="font-bold text-gray-900 text-lg mb-1">Efficient Layout Design</h4>
+                      <p className="text-gray-500">
+                        Optimized office spaces for better productivity and usage.
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="w-2 h-2 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full mt-2 flex-shrink-0" />
+                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0" />
                     <div>
-                      <h4 className="font-bold text-white text-lg mb-2">52 Connected Floors</h4>
-                      <p className="text-slate-400">High-speed elevators serving 52 office floors plus 6 levels of premium parking and retail podium.</p>
+                      <h4 className="font-bold text-gray-900 text-lg mb-1">Quality Construction</h4>
+                      <p className="text-gray-500">
+                        Built using reliable materials ensuring strength and durability.
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="w-2 h-2 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full mt-2 flex-shrink-0" />
+                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0" />
                     <div>
-                      <h4 className="font-bold text-white text-lg mb-2">Sky Observatory</h4>
-                      <p className="text-slate-400">Level 52 features a 360° observatory lounge with panoramic views of Dubai Marina and Palm Jumeirah.</p>
+                      <h4 className="font-bold text-gray-900 text-lg mb-1">Practical Infrastructure</h4>
+                      <p className="text-gray-500">
+                        Includes essential facilities like parking and utility support.
+                      </p>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=1000&fit=crop" 
-                  alt="Sky Tower rendering" 
-                  className="w-full h-auto rounded-3xl shadow-2xl"
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7 }}
+                viewport={{ once: true }}
+                className="relative"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=1000&fit=crop"
+                  alt="Prestige Business Park rendering"
+                  className="w-full h-auto rounded-2xl shadow-2xl"
                 />
-                <div className="absolute -inset-4 bg-gradient-to-r from-yellow-500/10 via-transparent to-orange-500/10 rounded-3xl blur-xl opacity-75" />
-              </div>
+                <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/10 via-transparent to-indigo-500/10 rounded-2xl blur-xl" />
+              </motion.div>
             </div>
           </div>
         </section>
 
         {/* TIMELINE */}
-        <section className="section-padding">
-          <div className="container mx-auto px-6">
-            <div className="text-center mb-24">
-              <span className="inline-block px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border-2 border-blue-500/20 text-blue-200 mb-8">
-                Project Timeline
-              </span>
-              <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-slate-100 to-slate-300 bg-clip-text text-transparent mb-6">
+        <section className="py-24 px-6 bg-gradient-to-r from-blue-50 to-indigo-50">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <div className="inline-flex items-center gap-3 mb-4">
+                <div className="w-8 h-0.5 bg-blue-600 rounded-full" />
+                <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">
+                  Project Timeline
+                </span>
+                <div className="w-8 h-0.5 bg-blue-600 rounded-full" />
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-2">
                 From Vision to Reality
               </h2>
-            </div>
+            </motion.div>
 
-            <div className="relative max-w-4xl mx-auto">
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-yellow-400 via-orange-400 to-yellow-400" />
-              
+            <div className="relative">
+              <div className="absolute left-1/2 -translate-x-1/2 w-1 h-full bg-blue-200 rounded-full hidden md:block" />
               <div className="space-y-12">
                 {timeline.map((item, idx) => (
-                  <div key={idx} className={`flex items-center ${idx % 2 === 0 ? 'flex-row-reverse justify-end' : 'justify-start'}`}>
-                    <div className={`w-5/12 p-8 rounded-3xl shadow-xl backdrop-blur-sm
-                      ${idx % 2 === 0 
-                        ? 'bg-gradient-to-r from-orange-500/10 via-yellow-400/5 to-orange-500/10 border border-orange-400/30 ml-auto' 
-                        : 'bg-gradient-to-r from-blue-500/10 via-indigo-500/5 to-blue-500/10 border border-blue-400/30'
-                      }`}
-                    >
-                      <div className="flex items-center gap-4 mb-6">
-                        <div className="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-2xl flex items-center justify-center font-bold text-slate-900 text-xl shadow-2xl">
-                          {item.year}
+                  <div
+                    key={idx}
+                    className={`flex flex-col md:flex-row items-center gap-8 ${
+                      idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                    }`}
+                  >
+                    <div className="flex-1">
+                      <div
+                        className={`p-6 rounded-xl bg-white shadow-md hover:shadow-lg transition-all ${
+                          idx % 2 === 0 ? 'md:mr-8' : 'md:ml-8'
+                        }`}
+                      >
+                        <div className="flex items-center gap-4 mb-3">
+                          <div className="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center font-bold text-xl text-white shadow-md">
+                            {item.year}
+                          </div>
+                          <h4 className="text-xl font-bold text-gray-900">{item.title}</h4>
                         </div>
-                        <div>
-                          <h4 className="text-2xl font-bold text-white">{item.title}</h4>
-                        </div>
+                        <p className="text-gray-600 leading-relaxed">{item.desc}</p>
                       </div>
-                      <p className="text-slate-300 leading-relaxed">{item.desc}</p>
                     </div>
-                    <div className="w-1/2" />
+                    <div className="hidden md:flex w-10 h-10 bg-blue-600 rounded-full items-center justify-center text-white font-bold shadow-md z-10">
+                      {idx + 1}
+                    </div>
+                    <div className="flex-1 hidden md:block" />
                   </div>
                 ))}
               </div>
@@ -187,70 +255,32 @@ const SkyTowerComplex = () => {
           </div>
         </section>
 
-        {/* GALLERY */}
-        <section className="section-padding bg-slate-900/30">
-          <div className="container mx-auto px-6">
-            <div className="text-center mb-20">
-              <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-slate-100 via-blue-100 to-slate-100 bg-clip-text text-transparent mb-6">
-                Visual Journey
-              </h2>
-              <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-                Every phase captured — from foundation pouring to the final curtain wall installation
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
-              {gallery.map((img, idx) => (
-                <div key={idx} className="group relative overflow-hidden rounded-3xl shadow-2xl hover:shadow-yellow-500/20 transition-all duration-500 hover:-translate-y-2 hover:scale-105">
-                  <img 
-                    src={img} 
-                    alt={`Project gallery ${idx + 1}`}
-                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                    <span className="bg-white/90 text-slate-900 px-4 py-2 rounded-full text-sm font-bold backdrop-blur-sm">
-                      View Full Size
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+      
 
-        {/* CTA SECTION */}
-        <section className="section-padding text-center">
-          <div className="container mx-auto px-6 max-w-4xl">
-            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-slate-100 to-slate-200 bg-clip-text text-transparent mb-6">
-              Ready to Build<br />
-              <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">Your Vision?</span>
-            </h2>
-            <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed">
-              Sky Tower Complex proves our ability to deliver landmark commercial projects on time, 
-              on budget, and to the highest international standards.
-            </p>
-            <div className="flex flex-col lg:flex-row gap-6 justify-center items-center">
-              <button 
-                onClick={() => navigate('/enquire')}
-                className="px-16 py-6 bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 hover:from-yellow-400 hover:via-orange-400 hover:to-red-400 text-slate-900 font-bold text-xl rounded-3xl shadow-2xl hover:shadow-yellow-500/50 hover:-translate-y-2 transition-all duration-500 uppercase tracking-wide"
-              >
-                Start Your Project
-              </button>
-              <button 
-                onClick={() => navigate('/contact')}
-                className="px-16 py-6 border-4 border-white/20 hover:border-white text-white font-bold text-xl rounded-3xl hover:bg-white/10 backdrop-blur-xl hover:-translate-y-2 transition-all duration-500 uppercase tracking-wide"
-              >
-                Contact Expert Team
-              </button>
-            </div>
-          </div>
-        </section>
+       
 
         <Footer />
+
+        {/* Custom Animations */}
+        <style>{`
+          @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+          }
+          @keyframes float-delayed {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(20px) rotate(-5deg); }
+          }
+          .animate-float {
+            animation: float 8s ease-in-out infinite;
+          }
+          .animate-float-delayed {
+            animation: float-delayed 10s ease-in-out infinite;
+          }
+        `}</style>
       </div>
     </>
   );
 };
 
-export default SkyTowerComplex;
-
+export default CommercialOfficeProject;

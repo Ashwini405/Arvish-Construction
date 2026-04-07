@@ -88,10 +88,10 @@ const stats = [
 ];
 
 const services = [
-  { label: 'Luxury Residential',       path: '/services/residential',              icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
-  { label: 'Commercial Buildings',     path: '/services/commercial-retail',       icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 00-1-1h-2a1 1 0 00-1 1v5m4 0H9' },
-  { label: 'Schools & Hospitals',      path: '/services/educational-healthcare',  icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z' },
-  { label: 'Industrial Infrastructure', path: '/services/industrial',              icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
+  { label: 'Residential',       path: '/services/residential',              icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
+  { label: 'Commercial & Retail',     path: '/services/commercial-retail',       icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 00-1-1h-2a1 1 0 00-1 1v5m4 0H9' },
+  { label: 'Educational & Healthcare',      path: '/services/educational-healthcare',  icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z' },
+  { label: 'Industrial', path: '/services/industrial',              icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
 ];
 
 /* ═══════════════════════════════════════════════════
@@ -649,9 +649,10 @@ export default function WhyChooseUs() {
           {/* order:1 on mobile keeps Col A first; Col C gets order:2; Col B gets order:3 */}
           <div style={{
             display:'flex',flexDirection:'column',gap:14,
-            height:isTablet ? 'auto' : CARD_H,
+            minHeight:isTablet ? 'auto' : CARD_H,
             boxSizing:'border-box',
             paddingRight:isTablet ? 0 : 28,
+            paddingBottom:isTablet ? 0 : 14,
             order: isMobile ? 1 : 'unset',
           }}>
 
@@ -729,10 +730,10 @@ Driven by Quality.</div>
             </div>
 
             {/* CTAs */}
-            <div style={{display:'flex',flexDirection:'column',gap:9}}>
+            <div style={{display:'flex',flexDirection:'column',gap:9,alignItems:'stretch',marginTop:'auto'}}>
               <button
                 onClick={() => navigate('/contact')}
-                style={{padding:'13px 18px',background:`linear-gradient(110deg,${C.accent},${C.accent2})`,
+                style={{width:'100%',padding:'13px 18px',background:`linear-gradient(110deg,${C.accent},${C.accent2})`,
                   border:'none',borderRadius:7,cursor:'pointer',color:'#ffffff',
                   fontSize:11,fontWeight:700,letterSpacing:'0.1em',textTransform:'uppercase',
                   fontFamily:'"Courier New",monospace',boxShadow:`0 4px 22px rgba(126,168,214,0.3)`,
@@ -740,13 +741,13 @@ Driven by Quality.</div>
                 onMouseEnter={e=>{e.currentTarget.style.transform='translateY(-2px)';e.currentTarget.style.boxShadow=`0 8px 30px rgba(126,168,214,0.42)`;}}
                 onMouseLeave={e=>{e.currentTarget.style.transform='none';e.currentTarget.style.boxShadow=`0 4px 22px rgba(126,168,214,0.3)`;}}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{width:14,height:14}}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002 2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
                 </svg>
                 Get Free Quote
               </button>
               <button
                 onClick={() => navigate('/projects')}
-                style={{padding:'12px 18px',background:'rgba(255,255,255,0.9)',
+                style={{width:'100%',padding:'12px 18px',background:'rgba(255,255,255,0.9)',
                   border:`1px solid ${C.border}`,borderRadius:7,cursor:'pointer',color:C.accent,
                   fontSize:11,fontWeight:600,letterSpacing:'0.1em',textTransform:'uppercase',
                   fontFamily:'"Courier New",monospace',transition:'all 0.2s',
@@ -758,7 +759,7 @@ Driven by Quality.</div>
                 </svg>
                 View Our Work
               </button>
-              <div style={{display:'flex',alignItems:'center',gap:9,paddingLeft:4,paddingTop:2}}>
+              <div style={{display:'flex',alignItems:'center',gap:9,paddingLeft:4,paddingTop:2,marginTop:'auto'}}>
                 <div style={{width:6,height:6,borderRadius:'50%',background:C.accent,boxShadow:`0 0 7px ${C.accent}`,flexShrink:0}}/>
                 <span style={{fontSize:10,color:'#000000',fontFamily:'"Courier New",monospace'}}>24/7 Support Available</span>
               </div>
@@ -772,7 +773,7 @@ Driven by Quality.</div>
           ══════════════════════════════ */}
           <div style={{
             display:'flex',flexDirection:'column',
-            height:isTablet ? 'auto' : CARD_H,
+            minHeight:isTablet ? 'auto' : CARD_H,
             boxSizing:'border-box',
             padding:isTablet ? '0' : '0 28px 0 28px',
             order: isMobile ? 3 : 'unset',
@@ -824,7 +825,7 @@ Driven by Quality.</div>
               COL C — CARD + NAV
           ══════════════════════════════ */}
           {/* order:2 on mobile → illustration shows between company info and feature list */}
-          <div style={{display:'flex',flexDirection:isMobile ? 'column' : 'row',alignItems:'flex-start',gap:14,paddingLeft:isTablet ? 0 : 28,height:isTablet ? 'auto' : CARD_H,boxSizing:'border-box', order: isMobile ? 2 : 'unset'}}>
+          <div style={{display:'flex',flexDirection:isMobile ? 'column' : 'row',alignItems:'flex-start',gap:14,paddingLeft:isTablet ? 0 : 28,minHeight:isMobile ? 480 : isTablet ? 520 : CARD_H,boxSizing:'border-box', order: isMobile ? 2 : 'unset'}}>
 
             {/* THE CARD */}
             <div style={{
