@@ -15,7 +15,7 @@ export default function Residential() {
 
   const projects = [
     { name: "Independent House Construction", location: "Hyderabad", units: "3BHK Residential Home", status: "Completed", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600" },
-    { name: "Residential Apartment Project", location: "Hyderabad", units: "Apartment Units", status: "Completed", image: "https://naiknavare.com/assets/img/Aranya/aranya-715x500.jpg" },
+    { name: "Residential Apartment Project", location: "Hyderabad", units: "Apartment Units", status: "Completed", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600" },
     { name: "Villa Construction Project", location: "Telangana", units: "Modern Villa", status: "Ongoing", image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600" },
     { name: "Home Renovation Project", location: "Hyderabad", units: "Residential Upgrade", status: "Completed", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600" },
   ];

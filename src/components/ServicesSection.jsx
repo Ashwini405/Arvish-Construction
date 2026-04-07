@@ -10,9 +10,9 @@ const services = [
     tagline: "Where every great structure begins.",
     items: ["Detailed Site Analysis", "Innovative Design Planning", "Accurate Project Estimation"],
     icon: "✧",
-    accent:    "#4a7a9b",
+    accent: "#4a7a9b",
     accentRgb: "74,122,155",
-    bgCard:    "#deeaf2",
+    bgCard: "#deeaf2",
   },
   {
     id: "main",
@@ -22,9 +22,9 @@ const services = [
     tagline: "Built with precision. Delivered with excellence.",
     items: ["Strong Structural Execution", "High-Quality Materials", "Efficient Project Management"],
     icon: "✦",
-    accent:    "#9a6f48",
+    accent: "#9a6f48",
     accentRgb: "154,111,72",
-    bgCard:    "#f0e4d6",
+    bgCard: "#f0e4d6",
   },
   {
     id: "post",
@@ -34,9 +34,9 @@ const services = [
     tagline: "Perfection in every detail.",
     items: ["Quality Inspection", "Premium Finishing", "Smooth Project Handover"],
     icon: "✶",
-    accent:    "#3d8c7a",
+    accent: "#3d8c7a",
     accentRgb: "61,140,122",
-    bgCard:    "#d4ece7",
+    bgCard: "#d4ece7",
   },
   {
     id: "tech",
@@ -46,9 +46,9 @@ const services = [
     tagline: "Smart structures for modern living.",
     items: ["Smart Automation Systems", "Energy-Efficient Solutions", "Future-Ready Design"],
     icon: "◈",
-    accent:    "#5e4fa0",
+    accent: "#5e4fa0",
     accentRgb: "94,79,160",
-    bgCard:    "#e0daf5",
+    bgCard: "#e0daf5",
   },
   {
     id: "care",
@@ -58,9 +58,9 @@ const services = [
     tagline: "Committed beyond completion.",
     items: ["Reliable Maintenance Support", "Regular Inspections", "Long-Term Service Care"],
     icon: "◉",
-    accent:    "#8a7040",
+    accent: "#8a7040",
     accentRgb: "138,112,64",
-    bgCard:    "#ede3cc",
+    bgCard: "#ede3cc",
   },
 ];
 
@@ -69,11 +69,11 @@ const AUTO_INTERVAL = 3000;
 function AnimBlueprint() {
   return (
     <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"
-      style={{ width:"100%", height:"100%", display:"block" }}>
+      style={{ width: "100%", height: "100%", display: "block" }}>
       <defs>
         <radialGradient id="v-glow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%"  stopColor="#4a7a9b" stopOpacity="0.18"/>
-          <stop offset="100%" stopColor="#4a7a9b" stopOpacity="0"/>
+          <stop offset="0%" stopColor="#4a7a9b" stopOpacity="0.18" />
+          <stop offset="100%" stopColor="#4a7a9b" stopOpacity="0" />
         </radialGradient>
         <style>{`
           @keyframes v-fd  { from{opacity:0}          to{opacity:1} }
@@ -135,56 +135,56 @@ function AnimBlueprint() {
             transform-origin:352px 38px; }
         `}</style>
       </defs>
-      <rect width="400" height="300" fill="#deeaf2"/>
-      <rect width="400" height="300" fill="url(#v-glow)"/>
+      <rect width="400" height="300" fill="#deeaf2" />
+      <rect width="400" height="300" fill="url(#v-glow)" />
       <g transform="translate(200,88)">
-        <circle className="v-topo"/>
-        <circle className="v-topo"/>
-        <circle className="v-topo"/>
-        <circle className="v-topo"/>
+        <circle className="v-topo" />
+        <circle className="v-topo" />
+        <circle className="v-topo" />
+        <circle className="v-topo" />
       </g>
       <polygon className="v-site"
-        points="48,268 52,42 210,28 358,48 370,260 240,278 140,282"/>
-      <path className="v-wall v-wall-1" d="M 90 240 L 90 80 L 310 80 L 310 240 Z"/>
-      <path className="v-wall v-wall-2" d="M 200 80 L 200 160 L 310 160"/>
+        points="48,268 52,42 210,28 358,48 370,260 240,278 140,282" />
+      <path className="v-wall v-wall-1" d="M 90 240 L 90 80 L 310 80 L 310 240 Z" />
+      <path className="v-wall v-wall-2" d="M 200 80 L 200 160 L 310 160" />
       <g>
-        <line className="v-part" x1="90"  y1="160" x2="200" y2="160"/>
-        <line className="v-part" x1="155" y1="80"  x2="155" y2="160"/>
-        <line className="v-part" x1="200" y1="160" x2="200" y2="240"/>
-        <line className="v-part" x1="90"  y1="200" x2="200" y2="200"/>
+        <line className="v-part" x1="90" y1="160" x2="200" y2="160" />
+        <line className="v-part" x1="155" y1="80" x2="155" y2="160" />
+        <line className="v-part" x1="200" y1="160" x2="200" y2="240" />
+        <line className="v-part" x1="90" y1="200" x2="200" y2="200" />
       </g>
-      <path className="v-wall v-wall-3" fill="none" d="M 155 200 Q 170 200 170 215"/>
-      <path className="v-wall v-wall-4" fill="none" d="M 200 130 Q 215 130 215 145"/>
-      <rect className="v-room v-r1" x="91"  y="81"  width="63"  height="78" fill="rgba(74,122,155,0.08)"/>
-      <rect className="v-room v-r2" x="156" y="81"  width="43"  height="78" fill="rgba(74,122,155,0.06)"/>
-      <rect className="v-room v-r3" x="91"  y="161" width="108" height="78" fill="rgba(74,122,155,0.1)"/>
-      <rect className="v-room v-r4" x="201" y="161" width="108" height="78" fill="rgba(74,122,155,0.06)"/>
+      <path className="v-wall v-wall-3" fill="none" d="M 155 200 Q 170 200 170 215" />
+      <path className="v-wall v-wall-4" fill="none" d="M 200 130 Q 215 130 215 145" />
+      <rect className="v-room v-r1" x="91" y="81" width="63" height="78" fill="rgba(74,122,155,0.08)" />
+      <rect className="v-room v-r2" x="156" y="81" width="43" height="78" fill="rgba(74,122,155,0.06)" />
+      <rect className="v-room v-r3" x="91" y="161" width="108" height="78" fill="rgba(74,122,155,0.1)" />
+      <rect className="v-room v-r4" x="201" y="161" width="108" height="78" fill="rgba(74,122,155,0.06)" />
       <text className="v-lbl v-l1" x="122" y="124" textAnchor="middle">STUDY</text>
       <text className="v-lbl v-l2" x="178" y="124" textAnchor="middle">BED</text>
       <text className="v-lbl v-l3" x="145" y="184" textAnchor="middle">LIVING</text>
       <text className="v-lbl v-l4" x="255" y="204" textAnchor="middle">KITCHEN</text>
-      <line className="v-dim" x1="90"  y1="258" x2="310" y2="258"/>
-      <line className="v-dim" x1="90"  y1="252" x2="90"  y2="264"/>
-      <line className="v-dim" x1="310" y1="252" x2="310" y2="264"/>
+      <line className="v-dim" x1="90" y1="258" x2="310" y2="258" />
+      <line className="v-dim" x1="90" y1="252" x2="90" y2="264" />
+      <line className="v-dim" x1="310" y1="252" x2="310" y2="264" />
       <text className="v-dtx" x="200" y="271" textAnchor="middle">18.0 m</text>
-      <line className="v-dim" x1="326" y1="80"  x2="326" y2="240"/>
-      <line className="v-dim" x1="320" y1="80"  x2="332" y2="80"/>
-      <line className="v-dim" x1="320" y1="240" x2="332" y2="240"/>
+      <line className="v-dim" x1="326" y1="80" x2="326" y2="240" />
+      <line className="v-dim" x1="320" y1="80" x2="332" y2="80" />
+      <line className="v-dim" x1="320" y1="240" x2="332" y2="240" />
       <text className="v-dtx" x="344" y="163" textAnchor="middle">12.0 m</text>
       <g className="v-pin">
-        <ellipse cx="200" cy="106" rx="10" ry="10" fill="#4a7a9b"/>
-        <ellipse cx="200" cy="106" rx="4"  ry="4"  fill="white"/>
-        <path fill="#4a7a9b" d="M 192 106 Q 192 118 200 126 Q 208 118 208 106 Z"/>
+        <ellipse cx="200" cy="106" rx="10" ry="10" fill="#4a7a9b" />
+        <ellipse cx="200" cy="106" rx="4" ry="4" fill="white" />
+        <path fill="#4a7a9b" d="M 192 106 Q 192 118 200 126 Q 208 118 208 106 Z" />
       </g>
-      <circle className="v-ping" cx="200" cy="106"/>
+      <circle className="v-ping" cx="200" cy="106" />
       <g className="v-compass">
-        <circle cx="352" cy="38" r="14" fill="white" fillOpacity="0.7" stroke="#2e6080" strokeWidth="0.8"/>
-        <polygon fill="#2e6080" points="352,26 354.5,36 352,34 349.5,36"/>
-        <polygon fill="#aac4d8" points="352,50 354.5,40 352,42 349.5,40"/>
-        <polygon fill="#aac4d8" points="340,38 350,35.5 348,38 350,40.5"/>
-        <polygon fill="#aac4d8" points="364,38 354,35.5 356,38 354,40.5"/>
+        <circle cx="352" cy="38" r="14" fill="white" fillOpacity="0.7" stroke="#2e6080" strokeWidth="0.8" />
+        <polygon fill="#2e6080" points="352,26 354.5,36 352,34 349.5,36" />
+        <polygon fill="#aac4d8" points="352,50 354.5,40 352,42 349.5,40" />
+        <polygon fill="#aac4d8" points="340,38 350,35.5 348,38 350,40.5" />
+        <polygon fill="#aac4d8" points="364,38 354,35.5 356,38 354,40.5" />
         <text x="352" y="30" textAnchor="middle"
-          style={{fontFamily:"monospace",fontSize:"6px",fill:"#1a3a52",fontWeight:"bold"}}>N</text>
+          style={{ fontFamily: "monospace", fontSize: "6px", fill: "#1a3a52", fontWeight: "bold" }}>N</text>
       </g>
     </svg>
   );
@@ -192,16 +192,16 @@ function AnimBlueprint() {
 
 function AnimConstruction() {
   const rows = [
-    { y:228, bricks:[{x:92,w:56},{x:154,w:56},{x:216,w:56},{x:276,w:52}],  delay:"0.10s" },
-    { y:200, bricks:[{x:108,w:54},{x:168,w:54},{x:228,w:54},{x:282,w:38}], delay:"0.28s" },
-    { y:173, bricks:[{x:96,w:56},{x:158,w:56},{x:220,w:56}],               delay:"0.46s" },
-    { y:147, bricks:[{x:108,w:54},{x:168,w:54},{x:228,w:54}],              delay:"0.64s" },
-    { y:122, bricks:[{x:96,w:56},{x:158,w:56},{x:220,w:56}],               delay:"0.82s" },
-    { y:97,  bricks:[{x:108,w:54,win:true},{x:168,w:54,win:true},{x:228,w:54,win:true}], delay:"1.00s" },
+    { y: 228, bricks: [{ x: 92, w: 56 }, { x: 154, w: 56 }, { x: 216, w: 56 }, { x: 276, w: 52 }], delay: "0.10s" },
+    { y: 200, bricks: [{ x: 108, w: 54 }, { x: 168, w: 54 }, { x: 228, w: 54 }, { x: 282, w: 38 }], delay: "0.28s" },
+    { y: 173, bricks: [{ x: 96, w: 56 }, { x: 158, w: 56 }, { x: 220, w: 56 }], delay: "0.46s" },
+    { y: 147, bricks: [{ x: 108, w: 54 }, { x: 168, w: 54 }, { x: 228, w: 54 }], delay: "0.64s" },
+    { y: 122, bricks: [{ x: 96, w: 56 }, { x: 158, w: 56 }, { x: 220, w: 56 }], delay: "0.82s" },
+    { y: 97, bricks: [{ x: 108, w: 54, win: true }, { x: 168, w: 54, win: true }, { x: 228, w: 54, win: true }], delay: "1.00s" },
   ];
   return (
     <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"
-      style={{ width:"100%", height:"100%", display:"block" }}>
+      style={{ width: "100%", height: "100%", display: "block" }}>
       <defs>
         <style>{`
           @keyframes cn-rise { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
@@ -212,39 +212,39 @@ function AnimConstruction() {
           @keyframes cn-scaf { from{opacity:0} to{opacity:0.32} }
         `}</style>
       </defs>
-      <rect width="400" height="300" fill="#f0e4d6"/>
-      <rect x="50" y="255" width="300" height="7" rx="2" fill="#9a6f48" opacity="0.22"/>
-      <g style={{animation:"cn-scaf 0.3s 0.04s ease both",opacity:0}}>
-        <line stroke="#b5845a" strokeWidth="1" x1="88"  y1="255" x2="88"  y2="86"/>
-        <line stroke="#b5845a" strokeWidth="1" x1="312" y1="255" x2="312" y2="86"/>
-        {[190,158,126,94].map(y => <line key={y} stroke="#b5845a" strokeWidth="0.7" x1="82" y1={y} x2="318" y2={y}/>)}
+      <rect width="400" height="300" fill="#f0e4d6" />
+      <rect x="50" y="255" width="300" height="7" rx="2" fill="#9a6f48" opacity="0.22" />
+      <g style={{ animation: "cn-scaf 0.3s 0.04s ease both", opacity: 0 }}>
+        <line stroke="#b5845a" strokeWidth="1" x1="88" y1="255" x2="88" y2="86" />
+        <line stroke="#b5845a" strokeWidth="1" x1="312" y1="255" x2="312" y2="86" />
+        {[190, 158, 126, 94].map(y => <line key={y} stroke="#b5845a" strokeWidth="0.7" x1="82" y1={y} x2="318" y2={y} />)}
       </g>
-      {rows.map((row,ri) => (
-        <g key={ri} style={{animation:`cn-rise 0.42s ${row.delay} cubic-bezier(0.2,1,0.3,1) both`,opacity:0}}>
-          {row.bricks.map((b,bi) => (
+      {rows.map((row, ri) => (
+        <g key={ri} style={{ animation: `cn-rise 0.42s ${row.delay} cubic-bezier(0.2,1,0.3,1) both`, opacity: 0 }}>
+          {row.bricks.map((b, bi) => (
             <g key={bi}>
               <rect x={b.x} y={row.y} width={b.w} height={24} rx="1"
-                fill={bi%2===0?"#c4956a":"#b5845a"} stroke="#f0e4d6" strokeWidth="1.5"/>
-              {b.win && <rect x={b.x+10} y={row.y+4} width={b.w-20} height={16} rx="1"
-                fill="#c8dcea" stroke="#9a7055" strokeWidth="0.8" opacity="0.85"/>}
+                fill={bi % 2 === 0 ? "#c4956a" : "#b5845a"} stroke="#f0e4d6" strokeWidth="1.5" />
+              {b.win && <rect x={b.x + 10} y={row.y + 4} width={b.w - 20} height={16} rx="1"
+                fill="#c8dcea" stroke="#9a7055" strokeWidth="0.8" opacity="0.85" />}
             </g>
           ))}
-          {ri%2===0 && <circle r="5" cx={row.bricks[0].x+28} cy={row.y}
+          {ri % 2 === 0 && <circle r="5" cx={row.bricks[0].x + 28} cy={row.y}
             fill="#9a6f48" opacity="0"
-            style={{animation:`cn-dust 0.38s ${row.delay} ease both`}}/>}
+            style={{ animation: `cn-dust 0.38s ${row.delay} ease both` }} />}
         </g>
       ))}
-      <g style={{animation:"cn-roof 0.48s 1.18s cubic-bezier(0.2,1,0.3,1) both",opacity:0}}>
-        <polygon fill="#7a5030" stroke="#f0e4d6" strokeWidth="1.5" points="86,97 200,60 314,97"/>
-        <line stroke="#f0e4d6" strokeWidth="1" x1="200" y1="60" x2="200" y2="97"/>
+      <g style={{ animation: "cn-roof 0.48s 1.18s cubic-bezier(0.2,1,0.3,1) both", opacity: 0 }}>
+        <polygon fill="#7a5030" stroke="#f0e4d6" strokeWidth="1.5" points="86,97 200,60 314,97" />
+        <line stroke="#f0e4d6" strokeWidth="1" x1="200" y1="60" x2="200" y2="97" />
       </g>
-      <g style={{animation:"cn-crane 0.55s 1.55s ease both",opacity:0}}>
-        <line stroke="#9a6f48" strokeWidth="2.5" x1="320" y1="260" x2="320" y2="46"/>
-        <line stroke="#9a6f48" strokeWidth="2"   x1="242" y1="46"  x2="370" y2="46"/>
-        <line stroke="#9a6f48" strokeWidth="1.5" x1="370" y1="46"  x2="378" y2="70"/>
-        <g style={{animation:"cn-swing 2.2s 2.1s ease-in-out infinite",transformOrigin:"320px 46px"}}>
-          <line stroke="#888" strokeWidth="1" x1="320" y1="46" x2="320" y2="82"/>
-          <path fill="none" stroke="#888" strokeWidth="1.5" d="M315 82 Q311 91 317 94 Q323 97 326 91"/>
+      <g style={{ animation: "cn-crane 0.55s 1.55s ease both", opacity: 0 }}>
+        <line stroke="#9a6f48" strokeWidth="2.5" x1="320" y1="260" x2="320" y2="46" />
+        <line stroke="#9a6f48" strokeWidth="2" x1="242" y1="46" x2="370" y2="46" />
+        <line stroke="#9a6f48" strokeWidth="1.5" x1="370" y1="46" x2="378" y2="70" />
+        <g style={{ animation: "cn-swing 2.2s 2.1s ease-in-out infinite", transformOrigin: "320px 46px" }}>
+          <line stroke="#888" strokeWidth="1" x1="320" y1="46" x2="320" y2="82" />
+          <path fill="none" stroke="#888" strokeWidth="1.5" d="M315 82 Q311 91 317 94 Q323 97 326 91" />
         </g>
       </g>
     </svg>
@@ -254,12 +254,12 @@ function AnimConstruction() {
 function AnimPostConstruction() {
   return (
     <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"
-      style={{ width:"100%", height:"100%", display:"block" }}>
+      style={{ width: "100%", height: "100%", display: "block" }}>
       <defs>
         <linearGradient id="pc-sh" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%"   stopColor="white" stopOpacity="0"/>
-          <stop offset="50%"  stopColor="white" stopOpacity="0.72"/>
-          <stop offset="100%" stopColor="white" stopOpacity="0"/>
+          <stop offset="0%" stopColor="white" stopOpacity="0" />
+          <stop offset="50%" stopColor="white" stopOpacity="0.72" />
+          <stop offset="100%" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <style>{`
           @keyframes pc-pop  { from{opacity:0;transform:scale(0.87)} to{opacity:1;transform:scale(1)} }
@@ -275,57 +275,57 @@ function AnimPostConstruction() {
           @keyframes pc-ring { 0%,100%{r:29;opacity:0.14} 50%{r:40;opacity:0} }
         `}</style>
       </defs>
-      <rect width="400" height="300" fill="#d4ece7"/>
-      <polygon fill="#b8dcd6" stroke="#3d8c7a" strokeWidth="1" points="42,34 358,34 358,246 42,246"/>
-      <rect fill="none" stroke="#3d8c7a" strokeWidth="0.6" strokeDasharray="5,4" x="60" y="50" width="102" height="86" opacity="0.5"/>
-      <rect fill="none" stroke="#3d8c7a" strokeWidth="0.6" strokeDasharray="5,4" x="238" y="50" width="102" height="86" opacity="0.5"/>
-      <rect fill="#a0cfc8" x="42"  y="234" width="316" height="12"/>
-      <polygon fill="#90c0b8" points="42,246 358,246 378,282 22,282"/>
-      {[90,176,262].map(x => <line key={x} stroke="#88b8b0" strokeWidth="0.5" x1={x} y1="246" x2={x+26} y2="282" opacity="0.5"/>)}
-      <g style={{animation:"pc-pop 0.52s 0.28s cubic-bezier(0.2,1,0.3,1) both",opacity:0,transformOrigin:"196px 204px"}}>
-        <rect fill="#6aafaa" rx="4" x="84" y="194" width="164" height="40"/>
-        <rect fill="#58a09a" rx="3" x="84" y="182" width="164" height="16"/>
-        <rect fill="#58a09a" rx="3" x="80" y="182" width="16" height="54"/>
-        <rect fill="#58a09a" rx="3" x="236" y="182" width="16" height="54"/>
+      <rect width="400" height="300" fill="#d4ece7" />
+      <polygon fill="#b8dcd6" stroke="#3d8c7a" strokeWidth="1" points="42,34 358,34 358,246 42,246" />
+      <rect fill="none" stroke="#3d8c7a" strokeWidth="0.6" strokeDasharray="5,4" x="60" y="50" width="102" height="86" opacity="0.5" />
+      <rect fill="none" stroke="#3d8c7a" strokeWidth="0.6" strokeDasharray="5,4" x="238" y="50" width="102" height="86" opacity="0.5" />
+      <rect fill="#a0cfc8" x="42" y="234" width="316" height="12" />
+      <polygon fill="#90c0b8" points="42,246 358,246 378,282 22,282" />
+      {[90, 176, 262].map(x => <line key={x} stroke="#88b8b0" strokeWidth="0.5" x1={x} y1="246" x2={x + 26} y2="282" opacity="0.5" />)}
+      <g style={{ animation: "pc-pop 0.52s 0.28s cubic-bezier(0.2,1,0.3,1) both", opacity: 0, transformOrigin: "196px 204px" }}>
+        <rect fill="#6aafaa" rx="4" x="84" y="194" width="164" height="40" />
+        <rect fill="#58a09a" rx="3" x="84" y="182" width="164" height="16" />
+        <rect fill="#58a09a" rx="3" x="80" y="182" width="16" height="54" />
+        <rect fill="#58a09a" rx="3" x="236" y="182" width="16" height="54" />
       </g>
-      <g style={{animation:"pc-pop 0.52s 0.52s cubic-bezier(0.2,1,0.3,1) both",opacity:0,transformOrigin:"196px 228px"}}>
-        <rect fill="#a8d8d2" stroke="#3d8c7a" strokeWidth="1" rx="2" x="148" y="228" width="90" height="6"/>
-        <line stroke="#3d8c7a" strokeWidth="1.5" x1="160" y1="234" x2="160" y2="246"/>
-        <line stroke="#3d8c7a" strokeWidth="1.5" x1="228" y1="234" x2="228" y2="246"/>
+      <g style={{ animation: "pc-pop 0.52s 0.52s cubic-bezier(0.2,1,0.3,1) both", opacity: 0, transformOrigin: "196px 228px" }}>
+        <rect fill="#a8d8d2" stroke="#3d8c7a" strokeWidth="1" rx="2" x="148" y="228" width="90" height="6" />
+        <line stroke="#3d8c7a" strokeWidth="1.5" x1="160" y1="234" x2="160" y2="246" />
+        <line stroke="#3d8c7a" strokeWidth="1.5" x1="228" y1="234" x2="228" y2="246" />
       </g>
-      <g style={{animation:"pc-pop 0.52s 0.76s cubic-bezier(0.2,1,0.3,1) both",opacity:0,transformOrigin:"200px 74px"}}>
-        <line stroke="#3d8c7a" strokeWidth="1.5" x1="200" y1="34" x2="200" y2="62"/>
-        <ellipse fill="#fffbe6" stroke="#c9a96e" strokeWidth="1.2" cx="200" cy="70" rx="22" ry="14"/>
-        <ellipse fill="rgba(201,169,110,0.16)" cx="200" cy="78" rx="36" ry="24"/>
+      <g style={{ animation: "pc-pop 0.52s 0.76s cubic-bezier(0.2,1,0.3,1) both", opacity: 0, transformOrigin: "200px 74px" }}>
+        <line stroke="#3d8c7a" strokeWidth="1.5" x1="200" y1="34" x2="200" y2="62" />
+        <ellipse fill="#fffbe6" stroke="#c9a96e" strokeWidth="1.2" cx="200" cy="70" rx="22" ry="14" />
+        <ellipse fill="rgba(201,169,110,0.16)" cx="200" cy="78" rx="36" ry="24" />
       </g>
-      <g style={{animation:"pc-pop 0.52s 1.00s cubic-bezier(0.2,1,0.3,1) both",opacity:0,transformOrigin:"200px 256px"}}>
-        <ellipse fill="none" stroke="#3d8c7a" strokeWidth="1.2" strokeDasharray="4,3" cx="200" cy="256" rx="78" ry="16"/>
-        <ellipse fill="none" stroke="#3d8c7a" strokeWidth="0.6" cx="200" cy="256" rx="56" ry="11"/>
+      <g style={{ animation: "pc-pop 0.52s 1.00s cubic-bezier(0.2,1,0.3,1) both", opacity: 0, transformOrigin: "200px 256px" }}>
+        <ellipse fill="none" stroke="#3d8c7a" strokeWidth="1.2" strokeDasharray="4,3" cx="200" cy="256" rx="78" ry="16" />
+        <ellipse fill="none" stroke="#3d8c7a" strokeWidth="0.6" cx="200" cy="256" rx="56" ry="11" />
       </g>
       <rect x="0" y="0" width="92" height="300" fill="url(#pc-sh)"
-        style={{animation:"pc-shine 1.4s 1.18s ease both"}}/>
-      <g style={{animation:"pc-fade 0.3s 1.28s ease both",opacity:0}}>
-        <rect fill="white" stroke="#b8dcd6" strokeWidth="1" rx="6" x="296" y="46" width="80" height="98"/>
-        <rect fill="#3d8c7a" rx="4" x="296" y="46" width="80" height="22"/>
+        style={{ animation: "pc-shine 1.4s 1.18s ease both" }} />
+      <g style={{ animation: "pc-fade 0.3s 1.28s ease both", opacity: 0 }}>
+        <rect fill="white" stroke="#b8dcd6" strokeWidth="1" rx="6" x="296" y="46" width="80" height="98" />
+        <rect fill="#3d8c7a" rx="4" x="296" y="46" width="80" height="22" />
         <text x="336" y="61" textAnchor="middle"
-          style={{fontFamily:"monospace",fontSize:"9px",fill:"white",letterSpacing:"1px"}}>QUALITY</text>
-        {[0,1,2].map(i => (
-          <g key={i} transform={`translate(308,${88+i*24})`}>
+          style={{ fontFamily: "monospace", fontSize: "9px", fill: "white", letterSpacing: "1px" }}>QUALITY</text>
+        {[0, 1, 2].map(i => (
+          <g key={i} transform={`translate(308,${88 + i * 24})`}>
             <circle r="10" cx="0" cy="0" fill="none" stroke="#3d8c7a" strokeWidth="1.5"
               strokeDasharray="63" strokeDashoffset="63"
-              style={{animation:`pc-draw 0.4s ${1.5+i*0.24}s ease both`}}/>
+              style={{ animation: `pc-draw 0.4s ${1.5 + i * 0.24}s ease both` }} />
             <path fill="none" stroke="#3d8c7a" strokeWidth="2.2"
               strokeLinecap="round" strokeLinejoin="round" d="M -5 0 L -1 5 L 7 -5"
               strokeDasharray="22" strokeDashoffset="22"
-              style={{animation:`pc-draw 0.3s ${1.65+i*0.24}s ease both`}}/>
-            <g style={{animation:`pc-spark 0.5s ${1.88+i*0.24}s ease both`,opacity:0}}>
-              <line stroke="#c9a96e" strokeWidth="1.2" x1="13" y1="-11" x2="15" y2="-15"/>
-              <line stroke="#c9a96e" strokeWidth="1.2" x1="15" y1="-8"  x2="19" y2="-8"/>
+              style={{ animation: `pc-draw 0.3s ${1.65 + i * 0.24}s ease both` }} />
+            <g style={{ animation: `pc-spark 0.5s ${1.88 + i * 0.24}s ease both`, opacity: 0 }}>
+              <line stroke="#c9a96e" strokeWidth="1.2" x1="13" y1="-11" x2="15" y2="-15" />
+              <line stroke="#c9a96e" strokeWidth="1.2" x1="15" y1="-8" x2="19" y2="-8" />
             </g>
           </g>
         ))}
         <circle cx="336" cy="96" r="29" fill="none" stroke="#3d8c7a" strokeWidth="0.8"
-          style={{animation:"pc-ring 2.4s 2.4s ease-in-out infinite"}}/>
+          style={{ animation: "pc-ring 2.4s 2.4s ease-in-out infinite" }} />
       </g>
     </svg>
   );
@@ -334,15 +334,15 @@ function AnimPostConstruction() {
 function AnimSmartIntegration() {
   return (
     <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"
-      style={{ width:"100%", height:"100%", display:"block" }}>
+      style={{ width: "100%", height: "100%", display: "block" }}>
       <defs>
         <linearGradient id="smart-bg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"  stopColor="#0a1929"/>
-          <stop offset="100%" stopColor="#051220"/>
+          <stop offset="0%" stopColor="#0a1929" />
+          <stop offset="100%" stopColor="#051220" />
         </linearGradient>
         <linearGradient id="building-grad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"  stopColor="#5e4fa0"/>
-          <stop offset="100%" stopColor="#3d2a6d"/>
+          <stop offset="0%" stopColor="#5e4fa0" />
+          <stop offset="100%" stopColor="#3d2a6d" />
         </linearGradient>
         <style>{`
           @keyframes s-fd  { from{opacity:0} to{opacity:1} }
@@ -401,55 +401,55 @@ function AnimSmartIntegration() {
           .s-st2 { animation-delay:3.3s }
         `}</style>
       </defs>
-      <rect width="400" height="300" fill="url(#smart-bg)"/>
+      <rect width="400" height="300" fill="url(#smart-bg)" />
       <defs>
         <pattern id="smart-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#5040a0" strokeWidth="0.3" opacity="0.1"/>
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#5040a0" strokeWidth="0.3" opacity="0.1" />
         </pattern>
       </defs>
-      <rect width="400" height="300" fill="url(#smart-grid)"/>
+      <rect width="400" height="300" fill="url(#smart-grid)" />
       <g>
-        <path className="s-building" d="M 60 80 L 60 240 L 160 240 L 160 80 Z"/>
-        <rect className="s-building" x="70" y="100" width="35" height="35" rx="3" style={{animationDelay:"0.5s"}}/>
-        <rect className="s-building" x="115" y="100" width="35" height="35" rx="3" style={{animationDelay:"0.6s"}}/>
-        <rect className="s-building" x="70" y="155" width="35" height="35" rx="3" style={{animationDelay:"0.7s"}}/>
-        <rect className="s-building" x="115" y="155" width="35" height="35" rx="3" style={{animationDelay:"0.8s"}}/>
+        <path className="s-building" d="M 60 80 L 60 240 L 160 240 L 160 80 Z" />
+        <rect className="s-building" x="70" y="100" width="35" height="35" rx="3" style={{ animationDelay: "0.5s" }} />
+        <rect className="s-building" x="115" y="100" width="35" height="35" rx="3" style={{ animationDelay: "0.6s" }} />
+        <rect className="s-building" x="70" y="155" width="35" height="35" rx="3" style={{ animationDelay: "0.7s" }} />
+        <rect className="s-building" x="115" y="155" width="35" height="35" rx="3" style={{ animationDelay: "0.8s" }} />
       </g>
       <g>
-        <circle className="s-device s-d1" cx="50" cy="100" fill="#ffc107"/>
+        <circle className="s-device s-d1" cx="50" cy="100" fill="#ffc107" />
         <text className="s-label s-l1" x="50" y="125" textAnchor="middle">LIGHT</text>
       </g>
       <g>
-        <circle className="s-device s-d2" cx="190" cy="100" fill="#ff6b6b"/>
+        <circle className="s-device s-d2" cx="190" cy="100" fill="#ff6b6b" />
         <text className="s-label s-l2" x="190" y="125" textAnchor="middle">TEMP</text>
       </g>
       <g>
-        <circle className="s-device s-d3" cx="50" cy="240" fill="#4facfe"/>
+        <circle className="s-device s-d3" cx="50" cy="240" fill="#4facfe" />
         <text className="s-label s-l3" x="50" y="265" textAnchor="middle">CAMERA</text>
       </g>
       <g>
-        <circle className="s-device s-d4" cx="190" cy="240" fill="#00d4ff"/>
+        <circle className="s-device s-d4" cx="190" cy="240" fill="#00d4ff" />
         <text className="s-label s-l4" x="190" y="265" textAnchor="middle">DOOR</text>
       </g>
-      <circle className="s-hub" cx="120" cy="160" r="6" style={{animationDelay:"1.3s"}}/>
-      <circle className="s-ripple s-r1" cx="120" cy="160"/>
-      <circle className="s-ripple s-r2" cx="120" cy="160"/>
-      <circle className="s-ripple s-r3" cx="120" cy="160"/>
-      <line className="s-flow s-f1" x1="120" y1="160" x2="50" y2="100" stroke="#7060b8" strokeWidth="1.5"/>
-      <line className="s-flow s-f2" x1="120" y1="160" x2="190" y2="100" stroke="#7060b8" strokeWidth="1.5"/>
-      <line className="s-flow s-f3" x1="120" y1="160" x2="50" y2="240" stroke="#7060b8" strokeWidth="1.5"/>
-      <line className="s-flow s-f4" x1="120" y1="160" x2="190" y2="240" stroke="#7060b8" strokeWidth="1.5"/>
+      <circle className="s-hub" cx="120" cy="160" r="6" style={{ animationDelay: "1.3s" }} />
+      <circle className="s-ripple s-r1" cx="120" cy="160" />
+      <circle className="s-ripple s-r2" cx="120" cy="160" />
+      <circle className="s-ripple s-r3" cx="120" cy="160" />
+      <line className="s-flow s-f1" x1="120" y1="160" x2="50" y2="100" stroke="#7060b8" strokeWidth="1.5" />
+      <line className="s-flow s-f2" x1="120" y1="160" x2="190" y2="100" stroke="#7060b8" strokeWidth="1.5" />
+      <line className="s-flow s-f3" x1="120" y1="160" x2="50" y2="240" stroke="#7060b8" strokeWidth="1.5" />
+      <line className="s-flow s-f4" x1="120" y1="160" x2="190" y2="240" stroke="#7060b8" strokeWidth="1.5" />
       <g>
-        <text x="250" y="95" style={{fontFamily:"monospace", fontSize:"10px", fill:"#7060b8", fontWeight:"bold"}}>EFFICIENCY</text>
-        <rect x="240" y="220" width="15" height="0" className="s-bar s-b1" fill="#00d4ff"/>
-        <rect x="260" y="200" width="15" height="0" className="s-bar s-b2" fill="#4facfe"/>
-        <rect x="280" y="180" width="15" height="0" className="s-bar s-b3" fill="#7060b8"/>
-        <circle cx="248" cy="160" r="3" fill="#3d8c7a"/>
+        <text x="250" y="95" style={{ fontFamily: "monospace", fontSize: "10px", fill: "#7060b8", fontWeight: "bold" }}>EFFICIENCY</text>
+        <rect x="240" y="220" width="15" height="0" className="s-bar s-b1" fill="#00d4ff" />
+        <rect x="260" y="200" width="15" height="0" className="s-bar s-b2" fill="#4facfe" />
+        <rect x="280" y="180" width="15" height="0" className="s-bar s-b3" fill="#7060b8" />
+        <circle cx="248" cy="160" r="3" fill="#3d8c7a" />
         <text className="s-status s-st1" x="260" y="165">OPTIMIZED</text>
-        <circle cx="248" cy="140" r="3" fill="#7060b8"/>
+        <circle cx="248" cy="140" r="3" fill="#7060b8" />
         <text className="s-status s-st2" x="260" y="145">CONNECTED</text>
       </g>
-      <text x="120" y="30" style={{fontFamily:"monospace", fontSize:"11px", fill:"#a090d8", letterSpacing:"0.15em", opacity:0, animation:"s-fd 0.4s 0.3s ease both", textAnchor:"middle"}}>
+      <text x="120" y="30" style={{ fontFamily: "monospace", fontSize: "11px", fill: "#a090d8", letterSpacing: "0.15em", opacity: 0, animation: "s-fd 0.4s 0.3s ease both", textAnchor: "middle" }}>
         SMART AUTOMATION
       </text>
     </svg>
@@ -457,20 +457,20 @@ function AnimSmartIntegration() {
 }
 
 function AnimMaintenance() {
-  const makeTeeth = (cx,cy,r,teeth,h) =>
-    Array.from({length:teeth},(_,i) => {
-      const a  = (i/teeth)*Math.PI*2;
-      const a1 = ((i+0.14)/teeth)*Math.PI*2;
-      const a2 = ((i+0.86)/teeth)*Math.PI*2;
-      const a3 = ((i+1.00)/teeth)*Math.PI*2;
-      return `${cx+r*Math.cos(a)},${cy+r*Math.sin(a)} `+
-             `${cx+(r+h)*Math.cos(a1)},${cy+(r+h)*Math.sin(a1)} `+
-             `${cx+(r+h)*Math.cos(a2)},${cy+(r+h)*Math.sin(a2)} `+
-             `${cx+r*Math.cos(a3)},${cy+r*Math.sin(a3)}`;
+  const makeTeeth = (cx, cy, r, teeth, h) =>
+    Array.from({ length: teeth }, (_, i) => {
+      const a = (i / teeth) * Math.PI * 2;
+      const a1 = ((i + 0.14) / teeth) * Math.PI * 2;
+      const a2 = ((i + 0.86) / teeth) * Math.PI * 2;
+      const a3 = ((i + 1.00) / teeth) * Math.PI * 2;
+      return `${cx + r * Math.cos(a)},${cy + r * Math.sin(a)} ` +
+        `${cx + (r + h) * Math.cos(a1)},${cy + (r + h) * Math.sin(a1)} ` +
+        `${cx + (r + h) * Math.cos(a2)},${cy + (r + h) * Math.sin(a2)} ` +
+        `${cx + r * Math.cos(a3)},${cy + r * Math.sin(a3)}`;
     }).join(" ");
   return (
     <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"
-      style={{ width:"100%", height:"100%", display:"block" }}>
+      style={{ width: "100%", height: "100%", display: "block" }}>
       <defs>
         <style>{`
           @keyframes mt-cw  { from{transform:rotate(0deg)}   to{transform:rotate(360deg)} }
@@ -487,65 +487,65 @@ function AnimMaintenance() {
           .mt-gx { animation:mt-gin 0.4s 0.46s ease both, mt-cw  4.8s 0.88s linear infinite; transform-origin:236px 192px; }
         `}</style>
       </defs>
-      <rect width="400" height="300" fill="#ede3cc"/>
+      <rect width="400" height="300" fill="#ede3cc" />
       <g className="mt-gl">
-        <polygon points={makeTeeth(152,148,38,12,10)} fill="#c8a870" stroke="#8a7040" strokeWidth="0.5"/>
-        <circle cx="152" cy="148" r="38" fill="#c8a870" stroke="#8a7040" strokeWidth="1"/>
-        <circle cx="152" cy="148" r="16" fill="#ede3cc" stroke="#8a7040" strokeWidth="1"/>
-        <circle cx="152" cy="148" r="4"  fill="#8a7040"/>
-        {[0,60,120,180,240,300].map(d => (
+        <polygon points={makeTeeth(152, 148, 38, 12, 10)} fill="#c8a870" stroke="#8a7040" strokeWidth="0.5" />
+        <circle cx="152" cy="148" r="38" fill="#c8a870" stroke="#8a7040" strokeWidth="1" />
+        <circle cx="152" cy="148" r="16" fill="#ede3cc" stroke="#8a7040" strokeWidth="1" />
+        <circle cx="152" cy="148" r="4" fill="#8a7040" />
+        {[0, 60, 120, 180, 240, 300].map(d => (
           <line key={d} stroke="#8a7040" strokeWidth="1.5"
-            x1={152+10*Math.cos(d*Math.PI/180)} y1={148+10*Math.sin(d*Math.PI/180)}
-            x2={152+14*Math.cos(d*Math.PI/180)} y2={148+14*Math.sin(d*Math.PI/180)}/>
+            x1={152 + 10 * Math.cos(d * Math.PI / 180)} y1={148 + 10 * Math.sin(d * Math.PI / 180)}
+            x2={152 + 14 * Math.cos(d * Math.PI / 180)} y2={148 + 14 * Math.sin(d * Math.PI / 180)} />
         ))}
       </g>
       <g className="mt-gs">
-        <polygon points={makeTeeth(234,108,24,8,7)} fill="#dfc090" stroke="#8a7040" strokeWidth="0.5"/>
-        <circle cx="234" cy="108" r="24" fill="#dfc090" stroke="#8a7040" strokeWidth="1"/>
-        <circle cx="234" cy="108" r="10" fill="#ede3cc" stroke="#8a7040" strokeWidth="1"/>
-        <circle cx="234" cy="108" r="3"  fill="#8a7040"/>
+        <polygon points={makeTeeth(234, 108, 24, 8, 7)} fill="#dfc090" stroke="#8a7040" strokeWidth="0.5" />
+        <circle cx="234" cy="108" r="24" fill="#dfc090" stroke="#8a7040" strokeWidth="1" />
+        <circle cx="234" cy="108" r="10" fill="#ede3cc" stroke="#8a7040" strokeWidth="1" />
+        <circle cx="234" cy="108" r="3" fill="#8a7040" />
       </g>
       <g className="mt-gx">
-        <polygon points={makeTeeth(236,192,15,6,6)} fill="#c8a870" stroke="#8a7040" strokeWidth="0.5"/>
-        <circle cx="236" cy="192" r="15" fill="#c8a870" stroke="#8a7040" strokeWidth="1"/>
-        <circle cx="236" cy="192" r="6"  fill="#ede3cc" stroke="#8a7040" strokeWidth="0.8"/>
+        <polygon points={makeTeeth(236, 192, 15, 6, 6)} fill="#c8a870" stroke="#8a7040" strokeWidth="0.5" />
+        <circle cx="236" cy="192" r="15" fill="#c8a870" stroke="#8a7040" strokeWidth="1" />
+        <circle cx="236" cy="192" r="6" fill="#ede3cc" stroke="#8a7040" strokeWidth="0.8" />
       </g>
       <path fill="none" stroke="#8a7040" strokeWidth="2" strokeLinecap="round"
         d="M 12 250 L 50 250 L 60 230 L 70 270 L 80 210 L 90 270 L 100 250 L 372 250"
         strokeDasharray="600" strokeDashoffset="600"
-        style={{animation:"mt-hb 1.6s 0.8s ease both"}}/>
+        style={{ animation: "mt-hb 1.6s 0.8s ease both" }} />
       <circle cx="330" cy="250" r="5" fill="#8a7040"
-        style={{animation:"mt-pulse 1.4s 2.5s ease-in-out infinite"}}/>
+        style={{ animation: "mt-pulse 1.4s 2.5s ease-in-out infinite" }} />
       <path fill="#8a7040" opacity="0"
         d="M 330 38 L 372 54 L 372 96 Q 372 120 351 132 Q 330 120 330 96 Z"
-        style={{animation:"mt-fade 0.4s 1.28s ease both"}}/>
+        style={{ animation: "mt-fade 0.4s 1.28s ease both" }} />
       <path fill="none" stroke="#8a7040" strokeWidth="2"
         d="M 330 38 L 372 54 L 372 96 Q 372 120 351 132 Q 330 120 330 96 Z"
         strokeDasharray="260" strokeDashoffset="260"
-        style={{animation:"mt-shield 0.7s 1.08s ease both"}}/>
+        style={{ animation: "mt-shield 0.7s 1.08s ease both" }} />
       <path fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
         d="M 340 82 L 349 93 L 365 70"
         strokeDasharray="40" strokeDashoffset="40"
-        style={{animation:"mt-tick 0.4s 1.78s ease both"}}/>
-      <g style={{opacity:0,animation:"mt-fade 0.4s 0.58s ease both, mt-rock 2.8s 1.5s ease-in-out infinite",transformOrigin:"42px 248px"}}>
-        <ellipse cx="42" cy="232" rx="8" ry="5"   fill="#c9a96e" stroke="#8a7040" strokeWidth="0.8"/>
-        <rect x="38" y="234" width="8" height="24" rx="2" fill="#c8a870" stroke="#8a7040" strokeWidth="0.8"/>
-        <ellipse cx="42" cy="259" rx="7" ry="4"   fill="#c9a96e" stroke="#8a7040" strokeWidth="0.8"/>
+        style={{ animation: "mt-tick 0.4s 1.78s ease both" }} />
+      <g style={{ opacity: 0, animation: "mt-fade 0.4s 0.58s ease both, mt-rock 2.8s 1.5s ease-in-out infinite", transformOrigin: "42px 248px" }}>
+        <ellipse cx="42" cy="232" rx="8" ry="5" fill="#c9a96e" stroke="#8a7040" strokeWidth="0.8" />
+        <rect x="38" y="234" width="8" height="24" rx="2" fill="#c8a870" stroke="#8a7040" strokeWidth="0.8" />
+        <ellipse cx="42" cy="259" rx="7" ry="4" fill="#c9a96e" stroke="#8a7040" strokeWidth="0.8" />
       </g>
-      <g style={{animation:"mt-fade 0.5s 1.68s ease both",opacity:0}}>
-        <rect x="294" y="166" width="76" height="70" rx="4" fill="white" stroke="#d4c090" strokeWidth="1"/>
-        <rect x="294" y="166" width="76" height="21" rx="4" fill="#8a7040"/>
-        <rect x="294" y="180" width="76" height="7" fill="#8a7040"/>
-        {[320,344].map(x => <line key={x} stroke="#d4c090" strokeWidth="0.5" x1={x} y1="187" x2={x} y2="236"/>)}
-        {[204,219].map(y => <line key={y} stroke="#d4c090" strokeWidth="0.5" x1="294" y1={y} x2="370" y2={y}/>)}
+      <g style={{ animation: "mt-fade 0.5s 1.68s ease both", opacity: 0 }}>
+        <rect x="294" y="166" width="76" height="70" rx="4" fill="white" stroke="#d4c090" strokeWidth="1" />
+        <rect x="294" y="166" width="76" height="21" rx="4" fill="#8a7040" />
+        <rect x="294" y="180" width="76" height="7" fill="#8a7040" />
+        {[320, 344].map(x => <line key={x} stroke="#d4c090" strokeWidth="0.5" x1={x} y1="187" x2={x} y2="236" />)}
+        {[204, 219].map(y => <line key={y} stroke="#d4c090" strokeWidth="0.5" x1="294" y1={y} x2="370" y2={y} />)}
         <path fill="none" stroke="#3d8c7a" strokeWidth="2"
           strokeLinecap="round" strokeLinejoin="round"
           d="M 302 211 L 307 217 L 315 205"
           strokeDasharray="20" strokeDashoffset="20"
-          style={{animation:"mt-tick 0.32s 2.18s ease both"}}/>
-        <circle cx="332" cy="211" r="4" fill="#c9a96e" opacity="0.75"/>
-        <circle cx="356" cy="211" r="4" fill="#c9a96e" opacity="0.52"/>
-        <circle cx="332" cy="226" r="4" fill="#3d8c7a" opacity="0.65"/>
+          style={{ animation: "mt-tick 0.32s 2.18s ease both" }} />
+        <circle cx="332" cy="211" r="4" fill="#c9a96e" opacity="0.75" />
+        <circle cx="356" cy="211" r="4" fill="#c9a96e" opacity="0.52" />
+        <circle cx="332" cy="226" r="4" fill="#3d8c7a" opacity="0.65" />
       </g>
     </svg>
   );
@@ -561,17 +561,17 @@ const ANIMATIONS = [
 
 export default function ServicesUltraPremium() {
   const navigate = useNavigate();
-  const [active, setActive]       = useState(0);
+  const [active, setActive] = useState(0);
   const [animating, setAnimating] = useState(false);
-  const [loaded, setLoaded]       = useState(false);
-  const [paused, setPaused]       = useState(false);
-  const [animKeys, setAnimKeys]   = useState([0,0,0,0,0]);
+  const [loaded, setLoaded] = useState(false);
+  const [paused, setPaused] = useState(false);
+  const [animKeys, setAnimKeys] = useState([0, 0, 0, 0, 0]);
   const touchStartX = useRef(null);
-  const autoRef     = useRef(null);
-  const resumeRef   = useRef(null);
+  const autoRef = useRef(null);
+  const resumeRef = useRef(null);
 
   const servicePaths = {
-    pre:  '/services/pre-construction',
+    pre: '/services/pre-construction',
     main: '/services/construction',
     post: '/services/post-construction',
     tech: '/services/smart-integration',
@@ -609,7 +609,7 @@ export default function ServicesUltraPremium() {
   };
 
   const handleTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; };
-  const handleTouchEnd   = (e) => {
+  const handleTouchEnd = (e) => {
     if (touchStartX.current === null) return;
     const dx = e.changedTouches[0].clientX - touchStartX.current;
     if (Math.abs(dx) > 50) {
@@ -1056,18 +1056,19 @@ export default function ServicesUltraPremium() {
       <div className="grain-overlay" />
 
       {/* Header */}
-      <div className="header-group">
-        <span className="phase-counter">Our Services</span>
-        <h2 className="main-title">
-          Crafting <span className="title-accent">Tomorrow</span>
+      <div className="header-group site-section-heading center"
+        style={{ "--section-accent": cur.accent }}>
+        <span className="site-section-kicker">Our Services</span>
+        <h2 className="site-section-title">
+          Crafting<span className="site-section-accent"> Tomorrow</span>
         </h2>
-        <p className="title-subtitle">From Concept to Completion — Delivering Excellence at Every Stage</p>
+        <p className="title-subtitle">From Vision to Legacy — Five Phases of Excellence</p>
       </div>
 
       {/* Main Stage */}
       <div className="stage" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
         {services.map((s, i) => {
-          const Anim     = ANIMATIONS[i];
+          const Anim = ANIMATIONS[i];
           const isActive = active === i;
           return (
             <div
@@ -1098,9 +1099,9 @@ export default function ServicesUltraPremium() {
                   ))}
                 </ul>
 
-                <div style={{ display:"flex", alignItems:"center", gap:"20px" }}>
-                  <div style={{ width:"40px", height:"1px", background:"#fff" }} />
-                  <span style={{ fontSize:"12px", letterSpacing:"2px", textTransform:"uppercase", color:"#fff" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+                  <div style={{ width: "40px", height: "1px", background: "#fff" }} />
+                  <span style={{ fontSize: "12px", letterSpacing: "2px", textTransform: "uppercase", color: "#fff" }}>
                     Discover
                   </span>
                 </div>
@@ -1116,9 +1117,9 @@ export default function ServicesUltraPremium() {
           <div
             className="progress-bar"
             style={{
-              width:      paused ? "100%" : "0%",
+              width: paused ? "100%" : "0%",
               transition: paused ? "none" : `width ${AUTO_INTERVAL}ms linear`,
-              opacity:    paused ? 0.2 : 1,
+              opacity: paused ? 0.2 : 1,
             }}
             key={active}
           />

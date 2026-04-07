@@ -39,14 +39,13 @@ export default function Construction() {
             transition={{ duration: 0.8 }}
           >
             <span className="text-sm font-bold text-[#D4A13A] uppercase tracking-widest border-b border-[#D4A13A] pb-1">
-              Construction Excellence
+              Construction
             </span>
             <h1 className="text-5xl md:text-7xl font-bold mt-6 mb-4 leading-tight">
-              Building Beyond<br />Expectations
+              The Craft
             </h1>
             <p className="text-lg md:text-xl max-w-2xl mx-auto text-gray-200">
-              We transform blueprints into reality with uncompromising quality, safety, and innovation,
-              delivering structures that stand the test of time.
+              Built with precision. Delivered with excellence. We execute every project with strong construction practices, quality materials, and efficient project management.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <button className="px-6 py-3 bg-[#D4A13A] text-[#051614] font-bold rounded-lg hover:bg-[#c3922f] transition">
@@ -82,19 +81,19 @@ export default function Construction() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "Structural Integrity",
-                desc: "We build with seismic resilience, high‑strength materials, and precision engineering.",
+                title: "Strong Construction",
+                desc: "We ensure every structure is built with strength and durability.",
                 icon: "🏗️"
               },
               {
-                title: "Artisanal Materials",
-                desc: "Hand‑selected finishes and premium materials that elevate aesthetics and longevity.",
-                icon: "✨"
+                title: "Quality Materials",
+                desc: "Using reliable materials to maintain long-term performance.",
+                icon: "🧱"
               },
               {
-                title: "Elite Management",
-                desc: "Lean construction practices, real‑time reporting, and experienced site leadership.",
-                icon: "📊"
+                title: "Project Management",
+                desc: "Efficient planning and execution for smooth construction.",
+                icon: "📋"
               }
             ].map((item, idx) => (
               <motion.div
@@ -126,20 +125,20 @@ export default function Construction() {
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
-                phase: "Phase 1: Site Preparation",
-                items: ["Clearing & grading", "Temporary utilities", "Shoring & excavation", "Foundation pouring"]
+                phase: "Step 1: Site Preparation",
+                items: ["Site clearing", "Initial setup", "Foundation marking"]
               },
               {
-                phase: "Phase 2: Structural Frame",
-                items: ["Steel erection / reinforced concrete", "Floor slabs", "Vertical circulation cores", "Pre‑cast elements"]
+                phase: "Step 2: Structural Work",
+                items: ["Foundation work", "Columns and beams", "Slab construction"]
               },
               {
-                phase: "Phase 3: Enclosure & MEP",
-                items: ["Curtain wall / cladding", "Roofing & waterproofing", "HVAC, electrical, plumbing rough‑ins", "Fire protection"]
+                phase: "Step 3: Finishing Work",
+                items: ["Walls and plastering", "Flooring and fittings", "Painting"]
               },
               {
-                phase: "Phase 4: Finishes & Commissioning",
-                items: ["Interior finishes", "Fixtures & equipment", "System testing & balancing", "Final inspections & handover"]
+                phase: "Step 4: Final Completion",
+                items: ["Final inspection", "Quality checks", "Project handover"]
               }
             ].map((phase, idx) => (
               <motion.div
@@ -176,10 +175,26 @@ export default function Construction() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { title: "Safety First", desc: "Zero‑incident culture with ISO 45001 certified protocols.", icon: "🛡️" },
-              { title: "On‑Time Delivery", desc: "98% project completion within original schedule.", icon: "⏱️" },
-              { title: "Quality Assurance", desc: "Rigorous inspections and material testing at every stage.", icon: "🔍" },
-              { title: "Sustainable Building", desc: "LEED and Estidama practices for greener footprints.", icon: "🌱" }
+              {
+                title: "Quality Work",
+                desc: "Maintaining high standards in every stage of construction.",
+                icon: "✅"
+              },
+              {
+                title: "On-Time Delivery",
+                desc: "Projects completed within the planned schedule.",
+                icon: "⏱️"
+              },
+              {
+                title: "Experienced Team",
+                desc: "Skilled professionals ensuring smooth execution.",
+                icon: "👷"
+              },
+              {
+                title: "Reliable Execution",
+                desc: "Consistent and dependable construction process.",
+                icon: "🏗️"
+              }
             ].map((benefit, idx) => (
               <motion.div
                 key={idx}
@@ -198,143 +213,9 @@ export default function Construction() {
         </div>
       </section>
 
-      {/* Featured Project */}
-      <section className="py-20 px-4 bg-[#051614] text-white">
-        <div className="max-w-6xl mx-auto">
-          <motion.div {...fadeInUp} className="text-center mb-12">
-            <span className="text-sm font-bold text-[#D4A13A] uppercase tracking-widest">Featured Work</span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-2">The Arvish Tower – A Landmark Completed</h2>
-            <div className="w-20 h-1 bg-[#D4A13A] mx-auto mt-4" />
-          </motion.div>
+     
 
-          <div className="flex flex-col md:flex-row gap-8 items-center">
-            <div className="md:w-1/2">
-              <img
-                src="https://images.pexels.com/photos/2277963/pexels-photo-2277963.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                alt="Completed building"
-                className="rounded-2xl shadow-xl"
-              />
-            </div>
-            <div className="md:w-1/2 space-y-4">
-              <p className="text-gray-300">
-                The 45‑story mixed‑use tower was delivered 3 months ahead of schedule, with zero
-                lost‑time incidents and a LEED Gold certification. Our team employed advanced BIM
-                coordination, prefabricated facade panels, and a just‑in‑time logistics strategy to
-                achieve exceptional quality and efficiency.
-              </p>
-              <div className="flex gap-6 text-sm">
-                <div>
-                  <span className="block text-2xl font-bold text-[#D4A13A]">3 mo</span>
-                  <span className="text-gray-400">Early delivery</span>
-                </div>
-                <div>
-                  <span className="block text-2xl font-bold text-[#D4A13A]">0</span>
-                  <span className="text-gray-400">LTI incidents</span>
-                </div>
-                <div>
-                  <span className="block text-2xl font-bold text-[#D4A13A]">LEED Gold</span>
-                  <span className="text-gray-400">Certified</span>
-                </div>
-              </div>
-              <button className="mt-4 text-[#D4A13A] font-bold flex items-center gap-1 hover:gap-2 transition-all">
-                View Project Gallery <span>→</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Construction Animation / Illusion */}
-      <section className="py-20 px-4 bg-white overflow-hidden">
-        <div className="max-w-6xl mx-auto">
-          <motion.div {...fadeInUp} className="text-center mb-12">
-            <span className="text-sm font-bold text-[#D4A13A] uppercase tracking-widest">Innovation in Motion</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#051614] mt-2">Bringing Blueprints to Life</h2>
-            <div className="w-20 h-1 bg-[#D4A13A] mx-auto mt-4" />
-          </motion.div>
-
-          <div className="relative w-full h-[300px] md:h-[400px]">
-            <svg className="w-full h-full" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#D4A13A" stopOpacity="0.2" />
-                  <stop offset="100%" stopColor="#051614" stopOpacity="0.2" />
-                </linearGradient>
-                <filter id="shadow">
-                  <feDropShadow dx="2" dy="2" stdDeviation="3" floodOpacity="0.3" />
-                </filter>
-              </defs>
-
-              {/* Animated construction crane */}
-              <g transform="translate(100, 50)">
-                <line x1="0" y1="0" x2="0" y2="200" stroke="#D4A13A" strokeWidth="4" strokeDasharray="5 5">
-                  <animate attributeName="stroke-dashoffset" values="0;20" dur="2s" repeatCount="indefinite" />
-                </line>
-                <line x1="0" y1="0" x2="80" y2="0" stroke="#D4A13A" strokeWidth="4" />
-                <line x1="80" y1="0" x2="80" y2="50" stroke="#D4A13A" strokeWidth="2" strokeDasharray="3 3">
-                  <animate attributeName="y2" values="50;70;50" dur="3s" repeatCount="indefinite" />
-                </line>
-                <circle cx="0" cy="200" r="8" fill="#D4A13A" filter="url(#shadow)" />
-                <circle cx="80" cy="50" r="6" fill="#D4A13A" />
-              </g>
-
-              {/* Building blocks rising */}
-              {[200, 300, 400, 500, 600].map((x, i) => (
-                <rect
-                  key={i}
-                  x={x}
-                  y={350 - i * 30}
-                  width="30"
-                  height={i * 30 + 30}
-                  fill="url(#grad)"
-                  stroke="#D4A13A"
-                  strokeWidth="1.5"
-                  rx="2"
-                >
-                  <animate
-                    attributeName="height"
-                    values={`${i * 30 + 30};${i * 30 + 70};${i * 30 + 30}`}
-                    dur="4s"
-                    repeatCount="indefinite"
-                    begin={`${i * 0.5}s`}
-                  />
-                </rect>
-              ))}
-
-              {/* Construction workers silhouette */}
-              <g transform="translate(500, 320)" opacity="0.8">
-                <circle cx="0" cy="0" r="8" fill="#051614" />
-                <rect x="-4" y="0" width="8" height="20" fill="#051614" />
-                <circle cx="30" cy="0" r="8" fill="#051614" />
-                <rect x="26" y="0" width="8" height="20" fill="#051614" />
-              </g>
-
-              {/* Ground line */}
-              <line x1="0" y1="350" x2="800" y2="350" stroke="#D4A13A" strokeWidth="2" strokeDasharray="5 5" />
-            </svg>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 px-4 bg-[#D4A13A] text-[#051614]">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div {...fadeInUp}>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to build your next landmark?</h2>
-            <p className="text-lg opacity-90 mb-8">
-              Let’s discuss your project – from concept to completion, we deliver excellence.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <button className="px-8 py-3 bg-[#051614] text-white font-bold rounded-lg hover:bg-black transition">
-                Start Your Project
-              </button>
-              <button className="px-8 py-3 border-2 border-[#051614] text-[#051614] font-bold rounded-lg hover:bg-[#051614]/10 transition">
-                Contact Our Team
-              </button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      
 
       <Footer />
     </div>

@@ -27,6 +27,7 @@ import ReachUs from "./pages/ReachUs";
 
 import GroupCompanies from "./pages/GroupCompanies";
 import Careers from "./pages/Careers";
+import CareerApplication from "./pages/CareerApplication";
 import News from "./pages/News";
 import Contact from "./pages/Contact";
 import ScrollToTop from "./components/ScrollToTop";
@@ -77,6 +78,7 @@ function AppRoutes() {
       <Route path="/reach-us" element={<ReachUs />} />
       <Route path="/group-companies" element={<GroupCompanies />} />
       <Route path="/careers" element={<Careers />} />
+      <Route path="/careers/apply" element={<CareerApplication />} />
       <Route path="/news" element={<News />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/services/residential" element={<Residential />} />

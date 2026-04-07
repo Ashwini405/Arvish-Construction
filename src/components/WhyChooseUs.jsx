@@ -27,64 +27,64 @@ const features = [
     label:'High Quality Construction',
     tag:'QUALITY',
     sub:'We ensure top-quality materials and skilled workmanship to deliver strong, durable, and long-lasting structures.',
-    icon:'M9 12l2 2 4-4'
+    icon:'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z'
   },
   {
     id:'02',
     label:'On-Time Project Delivery',
     tag:'DELIVERY',
     sub:'We complete projects on schedule without compromising quality or safety standards.',
-    icon:'M12 8v4l3 3'
+    icon:'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z'
   },
   {
     id:'03',
     label:'Experienced Team',
     tag:'TEAM',
     sub:'Our team of engineers, architects, and workers bring years of expertise to every project.',
-    icon:'M17 20h5v-2'
+    icon:'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z'
   },
   {
     id:'04',
     label:'Transparent Pricing',
     tag:'TRUST',
     sub:'We maintain complete transparency in pricing with no hidden costs.',
-    icon:'M3 6l3 1'
+    icon:'M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3'
   },
   {
     id:'05',
     label:'Modern Design Approach',
     tag:'DESIGN',
     sub:'We follow modern architecture and innovative construction techniques.',
-    icon:'M21 12a9 9'
+    icon:'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
   },
   {
     id:'06',
     label:'Customer Satisfaction',
     tag:'CLIENT',
     sub:'Client satisfaction is our top priority, ensuring every expectation is met.',
-    icon:'M15 12a3 3'
+    icon:'M15 12a3 3 0 11-6 0 3 3 0 016 0zM2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z'
   },
   {
     id:'07',
     label:'Strong Project Management',
     tag:'MANAGEMENT',
     sub:'Efficient planning and execution ensure smooth project completion.',
-    icon:'M12 4.354'
+    icon:'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z'
   },
   {
     id:'08',
     label:'Problem Solving Approach',
     tag:'SOLUTIONS',
     sub:'We handle challenges efficiently with smart and practical solutions.',
-    icon:'M14.828 14.828'
+    icon:'M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
   },
 ];
 
 const stats = [
-  { value: '50+', label: 'Projects Completed', gold: false },
-  { value: '5+', label: 'Years Experience', gold: true },
-  { value: '25+', label: 'Happy Clients', gold: false },
-  { value: '100%', label: 'Quality Assurance', gold: true },
+  { label: 'Reliable Execution', gold: false },
+  { label: 'Commitment to Quality', gold: true },
+  { label: 'Client-Focused Approach', gold: false },
+  { label: 'End-to-End Support', gold: true },
 ];
 
 const services = [
@@ -563,7 +563,7 @@ export default function WhyChooseUs() {
   const advance = useCallback(() => goTo((cur + 1) % features.length), [cur, goTo]);
 
   useEffect(() => {
-    timer.current = setInterval(advance, 5000);
+    timer.current = setInterval(advance, 1000);
     return () => clearInterval(timer.current);
   }, [advance]);
 
@@ -576,7 +576,7 @@ export default function WhyChooseUs() {
   const pick = (i) => {
     clearInterval(timer.current);
     goTo(i);
-    timer.current = setInterval(advance, 5000);
+    timer.current = setInterval(advance, 3000);
   };
 
   const f = features[cur];
@@ -686,22 +686,15 @@ Driven by Quality.</div>
             </div>
 
             {/* Stats */}
-            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10}}>
+            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:8}}>
               {stats.map((s,i)=>(
-                <div key={i} style={{
-                  padding:'14px 14px',
-                  background:'linear-gradient(180deg, rgba(255,255,255,0.98), rgba(243,247,253,0.95))',
-                  border:`1px solid rgba(213,227,241,0.95)`,
-                  borderTop:`3px solid ${s.gold?C.gold:C.accent}`,
-                  borderRadius:10,
-                  boxShadow:'0 12px 28px rgba(97,131,172,0.08)',
-                }}>
-                  <div style={{fontSize:20,fontWeight:900,lineHeight:1,marginBottom:4,
-                    color:s.gold?C.gold:C.accent,fontFamily:'"Courier New",monospace',
-                    textShadow:`0 0 12px ${s.gold?'rgba(108,155,208,0.2)':'rgba(79,134,198,0.16)'}`}}>
-                    <AnimCounter target={s.value}/>
-                  </div>
-                  <div style={{fontSize:9,color:C.textDim,lineHeight:1.3}}>{s.label}</div>
+                <div key={i}
+                  style={{display:'flex',alignItems:'center',gap:8,padding:'10px 12px',borderRadius:8,
+                    background:'rgba(245,249,255,0.96)',
+                    border:`1px solid rgba(209,223,238,0.95)`,
+                    borderLeft:`3px solid ${s.gold?C.gold:C.accent}`,transition:'all 0.2s',boxShadow:'inset 0 0 0 1px rgba(255,255,255,0.72)'}}>
+                  <div style={{width:3,height:28,background:s.gold?C.gold:C.accent,borderRadius:2,opacity:0.8}}/>
+                  <div style={{fontSize:10,color:C.textDim,fontWeight:500,lineHeight:1.3}}>{s.label}</div>
                 </div>
               ))}
             </div>
@@ -743,26 +736,10 @@ Driven by Quality.</div>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{width:14,height:14}}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002 2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
                 </svg>
-                Get Free Quote
+                Get Connect
               </button>
-              <button
-                onClick={() => navigate('/projects')}
-                style={{width:'100%',padding:'12px 18px',background:'rgba(255,255,255,0.9)',
-                  border:`1px solid ${C.border}`,borderRadius:7,cursor:'pointer',color:C.accent,
-                  fontSize:11,fontWeight:600,letterSpacing:'0.1em',textTransform:'uppercase',
-                  fontFamily:'"Courier New",monospace',transition:'all 0.2s',
-                  display:'flex',alignItems:'center',justifyContent:'center',gap:8}}
-                onMouseEnter={e=>{e.currentTarget.style.background='rgba(239,244,250,1)';e.currentTarget.style.borderColor=C.borderHi;}}
-                onMouseLeave={e=>{e.currentTarget.style.background='rgba(255,255,255,0.9)';e.currentTarget.style.borderColor=C.border;}}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{width:14,height:14}}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                </svg>
-                View Our Work
-              </button>
-              <div style={{display:'flex',alignItems:'center',gap:9,paddingLeft:4,paddingTop:2,marginTop:'auto'}}>
-                <div style={{width:6,height:6,borderRadius:'50%',background:C.accent,boxShadow:`0 0 7px ${C.accent}`,flexShrink:0}}/>
-                <span style={{fontSize:10,color:'#000000',fontFamily:'"Courier New",monospace'}}>24/7 Support Available</span>
-              </div>
+              
+              
             </div>
 
           </div>
@@ -916,58 +893,7 @@ Driven by Quality.</div>
               </div>
             </div>
 
-            {/* VERTICAL NAV */}
-            <div style={{flexShrink:0,display:'flex',flexDirection:isMobile ? 'row' : 'column',alignItems:'center',justifyContent:'center',gap:12,width:isMobile ? '100%' : 'auto'}}>
-              <button onClick={()=>pick((cur-1+features.length)%features.length)} style={{
-                width:40,height:40,borderRadius:8,
-                background:'rgba(255,255,255,0.9)',border:`1px solid ${C.border}`,
-                color:C.accent,cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',
-                transition:'all 0.2s',outline:'none'}}
-                onMouseEnter={e=>{e.currentTarget.style.background='rgba(239,244,250,1)';e.currentTarget.style.borderColor=C.borderHi;e.currentTarget.style.boxShadow=`0 0 14px rgba(126,168,214,0.18)`;}}
-                onMouseLeave={e=>{e.currentTarget.style.background='rgba(255,255,255,0.9)';e.currentTarget.style.borderColor=C.border;e.currentTarget.style.boxShadow='none';}}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{width:13,height:13}}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7"/>
-                </svg>
-              </button>
-
-              <div style={{position:'relative',width:2,height:180,background:'rgba(210,220,232,0.8)',borderRadius:1}}>
-                <div style={{position:'absolute',top:0,left:0,right:0,borderRadius:1,
-                  height:`${((cur+1)/features.length)*100}%`,
-                  background:`linear-gradient(to bottom,${C.accent},rgba(126,168,214,0.35))`,
-                  transition:'height 0.5s cubic-bezier(0.16,1,0.3,1)',
-                  boxShadow:`0 0 7px rgba(126,168,214,0.24)`}}/>
-                {features.map((_,i)=>(
-                  <div key={i} style={{position:'absolute',left:-4,width:10,height:'1.5px',borderRadius:1,
-                    top:`${(i/(features.length-1))*100}%`,
-                    background:i<=cur?C.accent:'rgba(210,220,232,0.9)',
-                    transition:'background 0.3s'}}/>
-                ))}
-              </div>
-
-              <button onClick={()=>pick((cur+1)%features.length)} style={{
-                width:40,height:40,borderRadius:8,
-                background:'rgba(255,255,255,0.9)',border:`1px solid ${C.border}`,
-                color:C.accent,cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',
-                transition:'all 0.2s',outline:'none'}}
-                onMouseEnter={e=>{e.currentTarget.style.background='rgba(239,244,250,1)';e.currentTarget.style.borderColor=C.borderHi;e.currentTarget.style.boxShadow=`0 0 14px rgba(126,168,214,0.18)`;}}
-                onMouseLeave={e=>{e.currentTarget.style.background='rgba(255,255,255,0.9)';e.currentTarget.style.borderColor=C.border;e.currentTarget.style.boxShadow='none';}}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{width:13,height:13}}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"/>
-                </svg>
-              </button>
-
-              <div style={{textAlign:'center',marginTop:4}}>
-                <span style={{display:'block',fontSize:22,fontWeight:900,color:C.accent,
-                  fontFamily:'"Courier New",monospace',textShadow:`0 0 10px ${C.accent}22`,
-                  transition:'all 0.3s'}}>
-                  {String(cur+1).padStart(2,'0')}
-                </span>
-                <div style={{width:20,height:'1px',background:'rgba(126,168,214,0.28)',margin:'4px auto'}}/>
-                <span style={{fontSize:10,color:'rgba(101,126,159,0.46)',fontFamily:'"Courier New",monospace'}}>
-                  {String(features.length).padStart(2,'0')}
-                </span>
-              </div>
-            </div>
+           
 
           </div>
           {/* END COL C */}

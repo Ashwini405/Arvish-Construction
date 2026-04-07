@@ -89,7 +89,7 @@ export default function OurProjects() {
 
   const stats = [
     { val: "50+", label: "Projects Completed" },
-    { val: "5+", label: "Years Experience" },
+    { val: "9+", label: "Years Experience" },
     { val: "25+", label: "Happy Clients" },
     { val: "100%", label: "Quality Commitment" },
   ];

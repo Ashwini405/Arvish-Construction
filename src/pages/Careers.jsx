@@ -8,12 +8,12 @@ export default function Careers() {
   const [activeFilter, setActiveFilter] = useState("All");
   
   const jobs = [
-    { title: "Civil Engineer", dept: "Engineering", location: "Hyderabad", type: "Full-Time" },
-    { title: "Site Supervisor", dept: "Construction", location: "Hyderabad", type: "Full-Time" },
-    { title: "Interior Designer", dept: "Design", location: "Hyderabad", type: "Full-Time" },
-    { title: "Project Coordinator", dept: "Operations", location: "Hyderabad", type: "Full-Time" },
-    { title: "Quantity Surveyor", dept: "Finance", location: "Hyderabad", type: "Full-Time" },
-    { title: "Safety Officer", dept: "Safety", location: "Telangana", type: "Contract" },
+    { title: "Civil Engineer", dept: "Engineering", location: "Hyderabad", type: "Full-Time", jd: "Lead design and review of structural elements, coordinate with contractors, and ensure compliance with project specifications." },
+    { title: "Site Supervisor", dept: "Construction", location: "Hyderabad", type: "Full-Time", jd: "Manage daily site operations, supervise field teams, and ensure safe, high-quality execution of construction work." },
+    { title: "Interior Designer", dept: "Design", location: "Hyderabad", type: "Full-Time", jd: "Create interior layouts, select finishes and materials, and collaborate with clients to deliver stylish and functional spaces." },
+    { title: "Project Coordinator", dept: "Operations", location: "Hyderabad", type: "Full-Time", jd: "Support project planning, maintain schedules, and liaise between teams to keep deliveries on track." },
+    { title: "Quantity Surveyor", dept: "Finance", location: "Hyderabad", type: "Full-Time", jd: "Manage cost estimations, prepare budgets, and monitor financial performance across projects." },
+    { title: "Safety Officer", dept: "Safety", location: "Telangana", type: "Contract", jd: "Implement and enforce safety protocols, carry out inspections, and ensure compliance with all safety regulations." },
   ];
 
   // Get unique departments for filter
@@ -26,7 +26,7 @@ export default function Careers() {
   // Stats data
   const stats = [
     { value: "50+", label: "Projects Completed" },
-    { value: "5+", label: "Years Experience" },
+    { value: "9+", label: "Years Experience" },
     { value: "25+", label: "Team Members" },
     { value: "100%", label: "Commitment to Quality" },
   ];
@@ -204,7 +204,7 @@ export default function Careers() {
                     </div>
                   </div>
                   <button
-                    onClick={() => navigate('/contact')}
+                    onClick={() => navigate('/careers/apply', { state: { job } })}
                     className="bg-white border-2 border-blue-600 text-blue-600 text-sm font-bold px-6 py-2.5 rounded-full hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 group/btn"
                   >
                     Apply Now
@@ -237,7 +237,7 @@ export default function Careers() {
               We are always open to connecting with skilled professionals. Send us your details and we will reach out when suitable opportunities are available.
             </p>
             <button
-              onClick={() => navigate('/contact')}
+              onClick={() => navigate('/careers/apply')}
               className="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg"
             >
               Submit Your Resume

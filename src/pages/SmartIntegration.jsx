@@ -42,11 +42,10 @@ export default function SmartIntegration() {
               Smart Integration
             </span>
             <h1 className="text-5xl md:text-7xl font-bold mt-6 mb-4 leading-tight">
-              Intelligence Built<br />Into Every Space
+              The Precision
             </h1>
             <p className="text-lg md:text-xl max-w-2xl mx-auto text-gray-200">
-              We embed cutting‑edge technology and future‑proof infrastructure into every project,
-              creating environments that are intuitive, efficient, and ready for tomorrow.
+              Smart structures for modern living. We integrate practical and efficient solutions to improve comfort, usability, and long-term performance.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <button className="px-6 py-3 bg-[#D4A13A] text-[#051614] font-bold rounded-lg hover:bg-[#c3922f] transition">
@@ -82,19 +81,19 @@ export default function SmartIntegration() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "Smart Systems",
-                desc: "Integrated IoT devices, voice‑controlled automation, and real‑time monitoring for ultimate convenience.",
-                icon: "🏠"
+                title: "Smart Planning",
+                desc: "Planning spaces to support modern living with efficient layouts and practical design.",
+                icon: "🏗️"
               },
               {
-                title: "Automation Ready",
-                desc: "Pre‑wired for lighting, climate, audio, security, and window treatments – easy upgrades at any time.",
+                title: "Energy Efficiency",
+                desc: "Designing buildings that use energy efficiently for better performance.",
+                icon: "💡"
+              },
+              {
+                title: "Future-Ready Design",
+                desc: "Creating flexible structures that can adapt to future needs.",
                 icon: "⚙️"
-              },
-              {
-                title: "Future‑Proof Design",
-                desc: "Scalable infrastructure, high‑bandwidth cabling, and adaptable layouts that evolve with technology.",
-                icon: "🚀"
               }
             ].map((item, idx) => (
               <motion.div
@@ -127,10 +126,10 @@ export default function SmartIntegration() {
             <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-[#D4A13A]/30 transform -translate-y-1/2" />
             <div className="grid md:grid-cols-4 gap-6 relative z-10">
               {[
-                { step: "1", title: "Consultation", desc: "Understand needs, lifestyle, and future tech goals." },
-                { step: "2", title: "Design & Spec", desc: "Select systems, wiring plan, and interface design." },
-                { step: "3", title: "Infrastructure", desc: "Install structured cabling, conduits, and central hubs." },
-                { step: "4", title: "Commissioning", desc: "Configuration, testing, and user training." }
+                { step: "1", title: "Planning", desc: "Understanding project requirements and user needs." },
+                { step: "2", title: "Design", desc: "Creating efficient layouts and planning integration." },
+                { step: "3", title: "Implementation", desc: "Applying practical solutions during construction." },
+                { step: "4", title: "Final Setup", desc: "Ensuring all systems are ready for use." }
               ].map((item, idx) => (
                 <motion.div
                   key={idx}
@@ -163,10 +162,26 @@ export default function SmartIntegration() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { title: "Energy Efficiency", desc: "Reduce consumption with automated lighting, HVAC, and smart metering.", icon: "💡" },
-              { title: "Enhanced Security", desc: "Remote monitoring, biometric access, and real‑time alerts.", icon: "🔒" },
-              { title: "Convenience", desc: "Control everything from your phone or voice – anywhere.", icon: "📱" },
-              { title: "Property Value", desc: "Smart‑ready homes command higher resale value and appeal.", icon: "📈" }
+              {
+                title: "Efficient Usage",
+                desc: "Better use of space and resources for improved performance.",
+                icon: "⚡"
+              },
+              {
+                title: "Comfort & Convenience",
+                desc: "Designed to improve everyday usability and comfort.",
+                icon: "🏡"
+              },
+              {
+                title: "Reliable Systems",
+                desc: "Simple and practical solutions that work effectively.",
+                icon: "🔧"
+              },
+              {
+                title: "Long-Term Value",
+                desc: "Structures designed to remain useful and adaptable over time.",
+                icon: "📈"
+              }
             ].map((benefit, idx) => (
               <motion.div
                 key={idx}
@@ -185,148 +200,10 @@ export default function SmartIntegration() {
         </div>
       </section>
 
-      {/* Case Study: Smart Tower */}
-      <section className="py-20 px-4 bg-[#051614] text-white">
-        <div className="max-w-6xl mx-auto">
-          <motion.div {...fadeInUp} className="text-center mb-12">
-            <span className="text-sm font-bold text-[#D4A13A] uppercase tracking-widest">Success Story</span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-2">The Arvish Tower: A Smart Landmark</h2>
-            <div className="w-20 h-1 bg-[#D4A13A] mx-auto mt-4" />
-          </motion.div>
+      
 
-          <div className="flex flex-col md:flex-row gap-8 items-center">
-            <div className="md:w-1/2">
-              <img
-                src="https://images.pexels.com/photos/2760242/pexels-photo-2760242.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                alt="Smart building"
-                className="rounded-2xl shadow-xl"
-              />
-            </div>
-            <div className="md:w-1/2 space-y-4">
-              <p className="text-gray-300">
-                The Arvish Tower features a fully integrated building management system (BMS) that
-                controls lighting, HVAC, and security. Occupants enjoy personalized climate zones,
-                energy usage insights, and remote access. The building achieved a 28% reduction
-                in energy consumption and was awarded the "Smart Building of the Year" accolade.
-              </p>
-              <div className="flex gap-6 text-sm">
-                <div>
-                  <span className="block text-2xl font-bold text-[#D4A13A]">28%</span>
-                  <span className="text-gray-400">Energy savings</span>
-                </div>
-                <div>
-                  <span className="block text-2xl font-bold text-[#D4A13A]">100%</span>
-                  <span className="text-gray-400">Smart‑ready units</span>
-                </div>
-                <div>
-                  <span className="block text-2xl font-bold text-[#D4A13A]">5⭐</span>
-                  <span className="text-gray-400">User satisfaction</span>
-                </div>
-              </div>
-              <button className="mt-4 text-[#D4A13A] font-bold flex items-center gap-1 hover:gap-2 transition-all">
-                Read Full Case Study <span>→</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Futuristic Smart Animation */}
-      <section className="py-20 px-4 bg-white overflow-hidden">
-        <div className="max-w-6xl mx-auto">
-          <motion.div {...fadeInUp} className="text-center mb-12">
-            <span className="text-sm font-bold text-[#D4A13A] uppercase tracking-widest">Innovation in Action</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#051614] mt-2">Connected Living</h2>
-            <div className="w-20 h-1 bg-[#D4A13A] mx-auto mt-4" />
-          </motion.div>
-
-          <div className="relative w-full h-[300px] md:h-[400px]">
-            <svg className="w-full h-full" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="techGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#D4A13A" stopOpacity="0.4" />
-                  <stop offset="100%" stopColor="#051614" stopOpacity="0.4" />
-                </linearGradient>
-                <filter id="glowTech">
-                  <feGaussianBlur stdDeviation="2" result="coloredBlur" />
-                  <feMerge>
-                    <feMergeNode in="coloredBlur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-
-              {/* Smart home silhouette */}
-              <rect x="100" y="150" width="180" height="180" fill="url(#techGrad)" stroke="#D4A13A" strokeWidth="1.5" rx="8" />
-              <rect x="160" y="250" width="60" height="80" fill="#D4A13A" opacity="0.3" />
-              <circle cx="190" cy="220" r="15" fill="#D4A13A" opacity="0.5">
-                <animate attributeName="r" values="15;20;15" dur="2s" repeatCount="indefinite" />
-              </circle>
-
-              {/* Data streams */}
-              {[0, 1, 2, 3, 4].map(i => (
-                <line
-                  key={i}
-                  x1="280"
-                  y1={180 + i * 30}
-                  x2="380"
-                  y2={180 + i * 30}
-                  stroke="#D4A13A"
-                  strokeWidth="1.5"
-                  strokeDasharray="5 5"
-                >
-                  <animate attributeName="stroke-dashoffset" values="0;20;0" dur="2s" repeatCount="indefinite" />
-                </line>
-              ))}
-
-              {/* Central hub with pulses */}
-              <g transform="translate(500, 220)">
-                <circle cx="0" cy="0" r="25" fill="none" stroke="#D4A13A" strokeWidth="2" filter="url(#glowTech)">
-                  <animate attributeName="r" values="25;35;25" dur="2s" repeatCount="indefinite" />
-                </circle>
-                <circle cx="0" cy="0" r="8" fill="#D4A13A" />
-                <circle cx="0" cy="0" r="15" fill="none" stroke="#D4A13A" strokeWidth="1" strokeDasharray="3 3">
-                  <animate attributeName="r" values="15;25;15" dur="2s" repeatCount="indefinite" />
-                </circle>
-              </g>
-
-              {/* Connection nodes */}
-              <circle cx="600" cy="140" r="8" fill="#D4A13A" filter="url(#glowTech)">
-                <animate attributeName="r" values="8;12;8" dur="1.5s" repeatCount="indefinite" />
-              </circle>
-              <circle cx="650" cy="300" r="8" fill="#D4A13A" filter="url(#glowTech)">
-                <animate attributeName="r" values="8;12;8" dur="1.5s" repeatCount="indefinite" begin="0.5s" />
-              </circle>
-              <circle cx="720" cy="180" r="6" fill="#D4A13A" filter="url(#glowTech)">
-                <animate attributeName="r" values="6;10;6" dur="1.2s" repeatCount="indefinite" begin="1s" />
-              </circle>
-
-              {/* Ground line */}
-              <line x1="0" y1="350" x2="800" y2="350" stroke="#D4A13A" strokeWidth="2" strokeDasharray="5 5" />
-            </svg>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 px-4 bg-[#D4A13A] text-[#051614]">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div {...fadeInUp}>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to go smart?</h2>
-            <p className="text-lg opacity-90 mb-8">
-              Let our smart integration experts design a connected environment that anticipates your needs.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <button className="px-8 py-3 bg-[#051614] text-white font-bold rounded-lg hover:bg-black transition">
-                Start Your Smart Journey
-              </button>
-              <button className="px-8 py-3 border-2 border-[#051614] text-[#051614] font-bold rounded-lg hover:bg-[#051614]/10 transition">
-                Download Smart Brochure
-              </button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      
 
       <Footer />
     </div>

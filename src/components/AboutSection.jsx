@@ -381,7 +381,7 @@ export default function AboutGlassSection() {
         style={{
           position: "relative",
           background: "#ffffff",
-          padding: isMobile ? "60px 16px" : isTablet ? "72px 32px" : "80px 6%",
+          padding: isMobile ? "60px 16px 30px" : isTablet ? "72px 32px 36px" : "80px 6% 40px",
           overflow: "hidden",
         }}
       >
@@ -561,7 +561,7 @@ export default function AboutGlassSection() {
                 Foundations for the{" "}
                 <span className="heading-underline" style={{ color: "#2563eb" }}>Future.</span>
               </h2>
-              <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.7, marginTop: 16, marginBottom: 0, maxWidth: "38ch" }}>
+              <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.7, marginTop: 16, marginBottom: 0, maxWidth: "55ch" }}>
                 With years of experience in the construction industry, we deliver residential, commercial & retail, educational & healthcare, and industrial projects with a strong commitment to quality, reliability, and timely completion.
               </p>
             </div>
@@ -620,20 +620,7 @@ export default function AboutGlassSection() {
 
               <div className="card-divider" />
 
-              {/* Stats row */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 0 }}>
-                {[
-                  { value: "50+", label: "Projects", sub: "Completed" },
-                  { value: "98%", label: "Success", sub: "Rate" },
-                  { value: "5+", label: "Years", sub: "Excellence" },
-                ].map((s, i) => (
-                  <div key={i} style={{ textAlign: "center", padding: "4px 8px", borderRight: i < 2 ? "1px solid rgba(203,213,225,0.6)" : "none" }}>
-                    <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 800, fontSize: 20, color: "#1d4ed8" }}>{s.value}</div>
-                    <div style={{ fontSize: 10, fontWeight: 600, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.05em" }}>{s.label}</div>
-                    <div style={{ fontSize: 10, color: "#94a3b8" }}>{s.sub}</div>
-                  </div>
-                ))}
-              </div>
+              
             </div>
 
 

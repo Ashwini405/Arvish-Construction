@@ -549,20 +549,22 @@ We focus on quality, trust, and delivering projects on time.
             <Link to="/cookie-policy" className="link-item hover:text-slate-700 transition-colors">Cookie Policy</Link>
           </div>
 
-          <p className="text-[11px] tracking-widest text-slate-400 text-center">
-            © {new Date().getFullYear()} Arvish Constructions. All rights reserved.
-          </p>
+          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
+            <p className="text-[11px] tracking-widest text-slate-400 text-center">
+              © {new Date().getFullYear()} Arvish Constructions. All rights reserved.
+            </p>
 
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="group flex items-center gap-2 text-[11px] font-bold tracking-widest text-[#E31E24] uppercase hover:text-[#1E3A8A] transition-colors"
-          >
-            <span className="relative">
-              <ArrowUp size={14} className="group-hover:-translate-y-1 transition-transform duration-300" />
-              <span className="absolute -inset-2 rounded-full border border-[#E31E24] opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-400" />
-            </span>
-            Back to Top
-          </button>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="group flex items-center gap-2 text-[11px] font-bold tracking-widest text-[#E31E24] uppercase hover:text-[#1E3A8A] transition-colors"
+            >
+              <span className="relative">
+                <ArrowUp size={14} className="group-hover:-translate-y-1 transition-transform duration-300" />
+                <span className="absolute -inset-2 rounded-full border border-[#E31E24] opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-400" />
+              </span>
+              Back to Top
+            </button>
+          </div>
         </div>
       </footer>
     </>
