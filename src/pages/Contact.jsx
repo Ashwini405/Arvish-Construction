@@ -142,26 +142,29 @@ export default function Contact() {
           {/* RIGHT COLUMN: Address Block + Embedded Map + Office Hours */}
           <div className="space-y-6 animate-fade-in-up animation-delay-200">
             {/* Address Card */}
-            <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-blue-100 group">
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-md hover:shadow-xl transition-all duration-300 border border-blue-100 group">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
-                  <Building2 size={18} className="text-blue-600 group-hover:text-white transition-colors" />
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-100 flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300 flex-shrink-0">
+                  <Building2 size={20} className="text-blue-600 group-hover:text-white transition-colors" />
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900">ARVISH CONSULTING</h3>
-                  <div className="space-y-2 mt-3 text-sm text-gray-600">
-                    <p className="flex items-start gap-2">
-                      <MapPin size={14} className="text-gray-400 mt-0.5 flex-shrink-0" />
-                      <span>4 th Floor, CPR Galaxy, Kavuri Hills Rd, beside Orchids, Kakatiya Hills, Kavuri Hills Phase 3, Kavuri Hills, Madhapur, Hyderabad, Telangana 500033</span>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg md:text-xl font-bold text-gray-900">ARVISH CONSULTING</h3>
+                  <div className="space-y-3 mt-4 text-sm md:text-base text-gray-600">
+                    <p className="flex items-start gap-3">
+                      <MapPin size={16} className="text-gray-400 mt-1 flex-shrink-0" />
+                      <span className="font-medium leading-relaxed">4 th Floor, CPR Galaxy, Kavuri Hills Rd, beside Orchids, Kakatiya Hills, Kavuri Hills Phase 3, Kavuri Hills, Madhapur, Hyderabad, Telangana 500033</span>
                     </p>
-                    <p className="flex items-center gap-2">
-                      <Phone size={14} className="text-gray-400" />
-                      +91 99665 56804
+                    <p className="flex items-center gap-3">
+                      <Phone size={16} className="text-gray-400 flex-shrink-0" />
+                      <span className="font-semibold">+91 99665 56804</span>
                     </p>
                     
-                    <a href="mailto:arvishconstructions.interiors@gmail.com" className="flex items-center gap-2 text-slate-500 hover:text-slate-800 transition-colors duration-200 group">
-                      <Mail size={14} className="text-blue-600" />
-                      <span className="font-medium">Email:</span> arvishconstructions.interiors@gmail.com
+                    <a href="mailto:arvishconstructions.interiors@gmail.com" className="flex items-start gap-3 text-slate-600 hover:text-slate-900 transition-colors duration-200 group">
+                      <Mail size={16} className="text-blue-600 mt-1 flex-shrink-0" />
+                      <div>
+                        <span className="font-semibold block">Email:</span>
+                        <span className="break-all">arvishconstructions.interiors@gmail.com</span>
+                      </div>
                     </a>
                   </div>
                 </div>
@@ -179,17 +182,17 @@ export default function Contact() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="ARVISH CONSULTING Location Map"
-                className="w-full h-[300px] md:h-[400px]"
+                className="w-full h-[250px] md:h-[400px]"
               />
             </div>
 
             {/* Office Hours Card */}
-            <div className="bg-white rounded-2xl p-5 shadow-md hover:shadow-lg transition-all duration-300 border border-blue-100">
-              <div className="flex items-center gap-3 mb-2">
-                <Clock size={18} className="text-blue-600" />
-                <h3 className="text-md font-bold text-gray-900">Office Hours</h3>
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-md hover:shadow-lg transition-all duration-300 border border-blue-100">
+              <div className="flex items-center gap-3 mb-4">
+                <Clock size={20} className="text-blue-600" />
+                <h3 className="text-lg md:text-md font-bold text-gray-900">Office Hours</h3>
               </div>
-              <div className="space-y-1 text-sm text-gray-500">
+              <div className="space-y-2 text-sm md:text-base text-gray-600 font-medium">
                 <p>Monday – Friday: 9:00 AM – 6:00 PM</p>
                 <p>Saturday: 10:00 AM – 2:00 PM</p>
                 <p>Sunday: Closed</p>

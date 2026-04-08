@@ -218,7 +218,7 @@ export default function Residential() {
       </div>
 
       {/* ══ HERO ══ */}
-      <section className="relative overflow-hidden" style={{ height: '90vh', minHeight: 560 }}>
+      <section className="relative overflow-hidden min-h-[70vh] md:min-h-[90vh]">
         <div className="absolute inset-0">
           <img
             src="/residential_hero.png"
@@ -229,20 +229,13 @@ export default function Residential() {
 
         {/* Text overlay — left-anchored, no heavy dark overlay */}
         <div className="absolute inset-0 flex items-center">
-          <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 2.5rem', width: '100%' }}>
+          <div className="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-12">
             <motion.div
               initial={{ opacity: 0, y: 36 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-              style={{
-                maxWidth: 520,
-                background: 'linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(250,250,250,0.85) 100%)',
-                backdropFilter: 'blur(12px)',
-                borderRadius: 20,
-                padding: '2.8rem 3rem',
-                border: '1px solid rgba(200,200,200,0.45)',
-                boxShadow: '0 24px 64px rgba(20,30,40,0.12)',
-              }}
+              className="w-full max-w-[520px] rounded-[20px] bg-white/90 backdrop-blur-[12px] p-6 sm:p-10 border border-slate-200/70 shadow-[0_24px_64px_rgba(20,30,40,0.12)]"
+              style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.96) 0%, rgba(250,250,250,0.88) 100%)' }}
             >
               {/* Eyebrow */}
               <motion.div
@@ -255,6 +248,7 @@ export default function Residential() {
                 <span style={{ fontSize: 10, fontWeight: 600, color: '#6a7a8a', letterSpacing: '0.22em', textTransform: 'uppercase', fontFamily: 'sans-serif' }}>
                   Services / Residential
                 </span>
+                <div style={{ width: 28, height: 1, background: '#6a7a8a' }} />
               </motion.div>
 
               {/* Headline */}
@@ -360,7 +354,7 @@ export default function Residential() {
               </p>
               <div className="flex flex-wrap gap-8">
                 <div className="text-center">
-                  <p className="text-3xl font-black text-blue-600">50+</p>
+                  <p className="text-3xl font-black text-blue-600">25+</p>
                   <p className="text-xs text-gray-500 mt-1">Projects Delivered</p>
                 </div>
                 <div className="w-px bg-gray-300" />
@@ -465,7 +459,7 @@ export default function Residential() {
           >
             <div className="inline-flex items-center gap-3 mb-4">
               <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
-              <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">Portfolio</span>
+              <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">our work</span>
               <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Featured Residential Projects</h2>
@@ -483,10 +477,10 @@ export default function Residential() {
                 className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border border-gray-100"
               >
                 <div className="flex flex-col md:flex-row">
-                  <div className="md:w-2/5 h-64 md:h-auto overflow-hidden bg-slate-900 border-r border-slate-100 flex-shrink-0 relative">
+                  <div className="w-full md:w-2/5 h-80 md:h-auto overflow-hidden bg-slate-900 border-b border-slate-100 md:border-b-0 md:border-r flex-shrink-0 relative">
                     <ProjectAnimation type={project.type} />
                   </div>
-                  <div className="md:w-3/5 p-6">
+                  <div className="w-full md:w-3/5 p-6">
                     <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">
                       {project.name}
                     </h3>

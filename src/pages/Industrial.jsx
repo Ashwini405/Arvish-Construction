@@ -336,7 +336,7 @@ export default function Industrial() {
   };
 
   const stats = [
-    { value: "50+", label: "Industrial Projects", icon: Building2 },
+    { value: "25+", label: "Industrial Projects", icon: Building2 },
     { value: "9+", label: "Years Experience", icon: TrendingUp },
     { value: "25+", label: "Clients Served", icon: MapPin },
     { value: "100%", label: "Quality Commitment", icon: CheckCircle },

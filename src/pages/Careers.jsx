@@ -25,7 +25,7 @@ export default function Careers() {
 
   // Stats data
   const stats = [
-    { value: "50+", label: "Projects Completed" },
+    { value: "25+", label: "Projects Completed" },
     { value: "9+", label: "Years Experience" },
     { value: "25+", label: "Team Members" },
     { value: "100%", label: "Commitment to Quality" },

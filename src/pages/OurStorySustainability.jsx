@@ -88,7 +88,7 @@ export default function SustainabilityPage() {
             <div className="lg:col-span-6 animate-fade-in-up">
               <div className="inline-flex items-center gap-3 mb-8">
                 <div className="w-6 h-px bg-[#1e3a8a]/40"></div>
-                <span className="text-[11px] font-bold text-[#1e3a8a] uppercase tracking-[0.25em]">Our Story · Sustainability</span>
+                <span className="text-[11px] font-bold text-[#1e3a8a] uppercase tracking-[0.25em]">Our Story Sustainability</span>
               </div>
               <h1 className="font-display text-5xl md:text-6xl lg:text-[4rem] font-extrabold text-slate-900 leading-[1.05] tracking-tight mb-8">
                 Building softly <br/> on a <span className="text-[#1e3a8a]">solid foundation.</span>

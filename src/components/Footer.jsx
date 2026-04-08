@@ -8,7 +8,7 @@ const navLinks = [
   { label: 'About Us', path: '/about' },
   // { label: 'Services', path: '/services' },
   { label: 'Our Projects', path: '/projects' },
-  { label: 'Our Divisions', path: '/group-companies' },
+  // { label: 'Our Divisions', path: '/group-companies' },
   { label: 'Careers', path: '/careers' },
   // { label: 'News', path: '/news' },
   // { label: 'Blog', path: '/blog' },
@@ -349,7 +349,7 @@ export default function Footer() {
         <div className="relative z-10 border-b border-slate-200">
         <div className="max-w-[1280px] mx-auto px-4 xs:px-6 lg:px-8 py-4 sm:py-6 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 items-center">
             {/* Brand + contact */}
-            <div className="space-y-4" style={{ animation: 'slideInUp 0.7s ease both' }}>
+           <div className="space-y-4" style={{ animation: 'slideInUp 0.7s ease both', paddingTop: '2.5rem' }}>
               <div className="flex items-center gap-3">
                 <img
                   src="https://www.arvishconsulting.com/assets/arvish-logo-zo8liOBq.png"

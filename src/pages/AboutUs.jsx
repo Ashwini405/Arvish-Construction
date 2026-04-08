@@ -30,7 +30,7 @@ export default function AboutUs() {
 
   const stats = [
     { key: "years", value: 9, label: "Years Experience", suffix: "+", icon: Clock },
-    { key: "projects", value: 50, label: "Projects Completed", suffix: "+", icon: Building2 },
+    { key: "projects", value: 25, label: "Projects Completed", suffix: "+", icon: Building2 },
     { key: "clients", value: 25, label: "Happy Clients", suffix: "+", icon: Users },
     { key: "support", value: 24, label: "Client Support", suffix: "24/7", icon: Headphones }
   ];
@@ -56,7 +56,7 @@ export default function AboutUs() {
         const ease = progress * (2 - progress);
         setCounters({
           years: Math.min(9, Math.round(9 * ease)),
-          projects: Math.min(50, Math.round(50 * ease)),
+          projects: Math.min(25, Math.round(25 * ease)),
           clients: Math.min(25, Math.round(25 * ease)),
           countries: Math.min(1, Math.round(1 * ease)),
         });
@@ -296,7 +296,11 @@ export default function AboutUs() {
             viewport={{ once: true }}
             className="order-1 lg:order-2"
           >
-            <h2 className="text-sm font-bold text-blue-600 uppercase tracking-widest mb-2 border-l-4 border-blue-600 pl-4 py-1">Who We Are</h2>
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
+              <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">Who We Are</span>
+              <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
+            </div>
             <h3 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
               Building the Future,<br />One Project at a Time.
             </h3>

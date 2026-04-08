@@ -174,42 +174,42 @@ function IsoSchool() {
 const projects = [
   {
     id: 1, num: "01", name: "Residential Apartment Project",
-    type: "Residential", location: "Hyderabad", year: "2024",
+    type: "Residential", location: "Hyderabad",
     area: "25,000 sq ft", status: "Completed",
     desc: "Multi-storey residential complex featuring premium finishes and efficient spatial planning throughout.",
     tags: ["RERA Certified", "Premium Fit-out"], Svg: IsoApartment,
   },
   {
     id: 2, num: "02", name: "Commercial Office Building",
-    type: "Commercial", location: "Hyderabad", year: "2023",
+    type: "Commercial", location: "Hyderabad",
     area: "40,000 sq ft", status: "Completed",
     desc: "Grade-A office tower with curtain-wall glazing, open-plan floors, and intelligent building systems.",
     tags: ["Grade-A Structure", "Smart Systems"], Svg: IsoOffice,
   },
   {
     id: 3, num: "03", name: "Independent Villa",
-    type: "Residential", location: "Hyderabad", year: "2024",
+    type: "Residential", location: "Hyderabad",
     area: "5,000 sq ft", status: "Completed",
     desc: "Premium villa with hip-roof architecture, landscaped garden, and bespoke interior detailing.",
     tags: ["Bespoke Design", "Private Garden"], Svg: IsoVilla,
   },
   {
     id: 4, num: "04", name: "Retail Shop Complex",
-    type: "Commercial", location: "Telangana", year: "2023",
+    type: "Commercial", location: "Telangana",
     area: "15,000 sq ft", status: "Completed",
     desc: "Four-bay retail strip optimised for high footfall, with flexible unit layouts and ample parking.",
     tags: ["High Footfall", "Flexible Units"], Svg: IsoRetail,
   },
   {
     id: 5, num: "05", name: "Industrial Warehouse",
-    type: "Industrial", location: "Telangana", year: "2024",
+    type: "Industrial", location: "Telangana",
     area: "60,000 sq ft", status: "Ongoing",
     desc: "Large-span warehouse with heavy-duty floor slabs, dock levellers, and fire suppression systems.",
     tags: ["Dock Levellers", "Fire Systems"], Svg: IsoWarehouse,
   },
   {
     id: 6, num: "06", name: "School Building Project",
-    type: "Educational", location: "Hyderabad", year: "2024",
+    type: "Educational", location: "Hyderabad",
     area: "20,000 sq ft", status: "Ongoing",
     desc: "Safe, naturally-lit campus compliant with NBC norms, with a central clock tower as focal point.",
     tags: ["NBC Compliant", "Natural Light"], Svg: IsoSchool,
@@ -297,7 +297,7 @@ function ProjectCard({ project, idx }) {
         <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
           <div className="flex flex-wrap gap-3 text-xs text-slate-400">
             <span className="flex items-center gap-1"><MapPin size={10} />{location}</span>
-            <span className="flex items-center gap-1"><Calendar size={10} />{year}</span>
+            
             <span className="flex items-center gap-1 text-[#1e3a8a] font-semibold">
               <Maximize2 size={10} />{area}
             </span>
@@ -373,14 +373,6 @@ export default function OurProjects() {
           {/* Top rule only, vertical divider removed */}
           <motion.div initial={{ width: 0 }} animate={{ width: "100%" }} transition={{ duration: 1.5, ease: "circOut" }} className="absolute top-0 left-0 h-px bg-slate-100" />
 
-          {/* Blueprint corner marks */}
-          <svg className="absolute top-24 left-6 opacity-25" width="36" height="36" viewBox="0 0 36 36" fill="none">
-            <motion.path initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1, delay: 0.5 }} d="M0 36V0H36" stroke="#1e3a8a" strokeWidth="1.5" />
-          </svg>
-          <svg className="absolute bottom-8 right-6 opacity-15" width="36" height="36" viewBox="0 0 36 36" fill="none">
-            <motion.path initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1, delay: 0.5 }} d="M36 0V36H0" stroke="#1e3a8a" strokeWidth="1.5" />
-          </svg>
-
           {/* Animated Background Architectural Blueprint */}
           <svg className="absolute right-[-5%] top-[5%] h-[90%] w-[55%] opacity-[0.18]" viewBox="0 0 800 600" fill="none">
             {/* Background Grid */}
@@ -432,9 +424,10 @@ export default function OurProjects() {
 
             {/* LEFT */}
             <div className="lg:col-span-5">
-              <div className="fu d1 inline-flex items-center gap-3 mb-10">
-                <div className="w-8 h-px bg-slate-900" />
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-[0.2em]">Our Portfolio</span>
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-6 h-px bg-[#1e3a8a]/40" />
+                <span className="text-xs font-bold text-[#1e3a8a] uppercase tracking-[0.2em]">Our work</span>
+               
               </div>
 
               <h1 className="fu d2 font-display text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 leading-[1.05] mb-6">

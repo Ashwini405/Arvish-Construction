@@ -13,7 +13,7 @@ export default function AboutGlassSection() {
   );
 
   const metricDefs = [
-    { key: "projects", label: "Projects\nCompleted", target: 50, suffix: "+" },
+    { key: "projects", label: "Projects\nCompleted", target: 25, suffix: "+" },
     { key: "satisfaction", label: "Client\nSatisfaction", target: 98, suffix: "%" },
     { key: "years", label: "Years of\nExcellence", target: 9, suffix: "+" },
   ];
@@ -37,9 +37,9 @@ export default function AboutGlassSection() {
       const p = Math.min((ts - start) / duration, 1);
       const ease = 1 - Math.pow(1 - p, 3);
       setMetricValues({
-        projects: Math.round(50 * ease),
+        projects: Math.round(25 * ease),
         satisfaction: Math.round(98 * ease),
-        years: Math.round(5 * ease),
+        years: Math.round(9 * ease),
       });
       if (p < 1) raf = requestAnimationFrame(step);
     };

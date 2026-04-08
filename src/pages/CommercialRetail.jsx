@@ -662,7 +662,7 @@ export default function CommercialRetail() {
   };
 
   const stats = [
-    { value: "50+",  label: "Commercial Projects", icon: Building2 },
+    { value: "25+",  label: "Commercial Projects", icon: Building2 },
     { value: "9+",   label: "Years Experience",    icon: TrendingUp },
     { value: "25+",  label: "Clients Served",      icon: Users },
     { value: "100%", label: "Quality Commitment",  icon: Award },
@@ -866,7 +866,7 @@ export default function CommercialRetail() {
               style={{ textAlign: "center", marginBottom: "4rem" }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 10 }}>
                 <div style={{ width: 26, height: 1, background: "#8896a8" }}/>
-                <span style={{ fontSize: 10, fontWeight: 600, color: "#6a7a8a", letterSpacing: "0.22em", textTransform: "uppercase" }}>Portfolio</span>
+                <span style={{ fontSize: 10, fontWeight: 600, color: "#6a7a8a", letterSpacing: "0.22em", textTransform: "uppercase" }}>our work</span>
                 <div style={{ width: 26, height: 1, background: "#8896a8" }}/>
               </div>
               <h2 style={{ fontFamily: serif, fontSize: "clamp(2rem,3.5vw,2.8rem)", fontWeight: 600, color: "#18232e", letterSpacing: "-0.02em" }}>
@@ -875,7 +875,7 @@ export default function CommercialRetail() {
              
             </motion.div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(500px,1fr))", gap: "1.5rem" }}>
+            <div className="commercial-projects-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "1.5rem" }}>
               {projects.map((p, i) => {
                 const st = statusCfg[p.status];
                 return (
@@ -885,12 +885,13 @@ export default function CommercialRetail() {
                     transition={{ delay: i * 0.08, duration: 0.5 }}
                     viewport={{ once: true }}
                     whileHover={{ y: -5, boxShadow: "0 20px 48px rgba(28,40,55,0.1)" }}
+                    className="commercial-project-card"
                     style={{ background: "#fff", borderRadius: 16, border: "1px solid #e4ddd3", overflow: "hidden", display: "flex", transition: "all 0.3s ease" }}
                   >
-                    <div style={{ width: "42%", flexShrink: 0, background: "#f5f0e8", minHeight: 200 }}>
+                    <div className="commercial-project-image" style={{ width: "42%", flexShrink: 0, background: "#f5f0e8", minHeight: 240 }}>
                       <p.Ill />
                     </div>
-                    <div style={{ padding: "2rem 1.75rem", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                    <div className="commercial-project-content" style={{ padding: "2rem 1.75rem", display: "flex", flexDirection: "column", justifyContent: "center" }}>
                       <h3 style={{ fontFamily: serif, fontSize: "1.2rem", fontWeight: 600, color: "#18232e", marginBottom: 4, lineHeight: 1.2 }}>{p.name}</h3>
                       <p style={{ fontSize: "0.78rem", color: "#8a9aaa", marginBottom: 4, fontWeight: 400 }}>{p.location}</p>
                       <p style={{ fontSize: "0.84rem", color: "#5a6a7a", marginBottom: "1.2rem", fontWeight: 300 }}>{p.type}</p>
@@ -911,6 +912,12 @@ export default function CommercialRetail() {
         <style>{`
           @media (max-width: 900px) {
             [data-wcu] { grid-template-columns: 1fr !important; }
+          }
+          @media (max-width: 760px) {
+            .commercial-projects-grid { grid-template-columns: 1fr !important; }
+            .commercial-project-card { flex-direction: column !important; }
+            .commercial-project-image { width: 100% !important; min-height: 240px !important; }
+            .commercial-project-content { padding: 1.5rem 1.25rem !important; }
           }
           @media (max-width: 620px) {
             [data-proj] { grid-template-columns: 1fr !important; }
