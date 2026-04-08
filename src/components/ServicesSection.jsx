@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 
 const services = [
   {
@@ -560,7 +559,6 @@ const ANIMATIONS = [
 ];
 
 export default function ServicesUltraPremium() {
-  const navigate = useNavigate();
   const [active, setActive] = useState(0);
   const [animating, setAnimating] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -569,14 +567,6 @@ export default function ServicesUltraPremium() {
   const touchStartX = useRef(null);
   const autoRef = useRef(null);
   const resumeRef = useRef(null);
-
-  const servicePaths = {
-    pre: '/services/pre-construction',
-    main: '/services/construction',
-    post: '/services/post-construction',
-    tech: '/services/smart-integration',
-    care: '/services/maintenance-support',
-  };
 
   useEffect(() => { setLoaded(true); }, []);
 
@@ -594,10 +584,6 @@ export default function ServicesUltraPremium() {
 
   const handleActivate = (i) => {
     if (animating) return;
-    if (i === active) {
-      navigate(servicePaths[services[i].id]);
-      return;
-    }
     setAnimating(true);
     setActive(i);
     setAnimKeys(k => { const n = [...k]; n[i]++; return n; });
@@ -605,7 +591,6 @@ export default function ServicesUltraPremium() {
     setTimeout(() => setAnimating(false), 800);
     clearTimeout(resumeRef.current);
     resumeRef.current = setTimeout(() => setPaused(false), 10000);
-    setTimeout(() => { navigate(servicePaths[services[i].id]); }, 900);
   };
 
   const handleTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; };
