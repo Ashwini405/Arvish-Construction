@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
@@ -49,8 +49,6 @@ const goals2030 = [
 ];
 
 export default function SustainabilityPage() {
-  const navigate = useNavigate();
-
   return (
     <div className="bg-white min-h-screen">
       <Navbar />
@@ -62,76 +60,113 @@ export default function SustainabilityPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-50 rounded-full blur-3xl opacity-20 animate-pulse-slow"></div>
       </div>
 
-      {/* HERO SECTION */}
-      <div className="relative pt-32 pb-20 overflow-hidden">
-        <div className="relative max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in-up">
-              <div className="inline-flex items-center gap-3 mb-6">
-                <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
-                <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">Our Story · Sustainability</span>
+      {/* ════════════════════════════════════════
+          HERO SECTION — Environmental Blueprint
+          ════════════════════════════════════════ */}
+      <div className="relative pt-32 pb-24 overflow-hidden border-b border-slate-200 bg-white">
+        
+        {/* Soft background grid */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="sustain-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e3a8a" strokeWidth="0.5" strokeOpacity="0.05"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#sustain-grid)" />
+          </svg>
+        </div>
+
+        {/* Ambient background glows */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-50/50 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-[80px] pointer-events-none translate-y-1/3 -translate-x-1/4"></div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            
+            {/* Left Column */}
+            <div className="lg:col-span-6 animate-fade-in-up">
+              <div className="inline-flex items-center gap-3 mb-8">
+                <div className="w-6 h-px bg-[#1e3a8a]/40"></div>
+                <span className="text-[11px] font-bold text-[#1e3a8a] uppercase tracking-[0.25em]">Our Story · Sustainability</span>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                Building Responsibly for a Better Future
+              <h1 className="font-display text-5xl md:text-6xl lg:text-[4rem] font-extrabold text-slate-900 leading-[1.05] tracking-tight mb-8">
+                Building softly <br/> on a <span className="text-[#1e3a8a]">solid foundation.</span>
               </h1>
-              <p className="text-gray-600 text-lg leading-relaxed max-w-xl mb-8">
-                At Arvish Constructions, we focus on responsible construction practices by using quality materials, reducing waste, and ensuring efficient project execution.
+              <p className="text-slate-600 text-lg leading-relaxed mb-10 max-w-lg font-medium">
+                At Arvish Constructions, sustainability isn't an afterthought—it's engineered into every blueprint. We focus on responsible resource management, waste reduction, and lifecycle efficiency.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <div className="flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-full">
-                  <span className="text-blue-600 text-sm">🌿</span>
-                  <span className="text-xs font-semibold text-blue-700">Responsible Construction</span>
-                </div>
-                <div className="flex items-center gap-2 bg-indigo-50 px-4 py-2 rounded-full">
-                  <span className="text-indigo-600 text-sm">🏗️</span>
-                  <span className="text-xs font-semibold text-indigo-700">Quality Materials</span>
-                </div>
-                <div className="flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-full">
-                  <span className="text-slate-600 text-sm">♻️</span>
-                  <span className="text-xs font-semibold text-slate-700">Waste Reduction</span>
-                </div>
+              
+              <div className="flex flex-wrap gap-3">
+                {[
+                  { id: "01", label: "Responsible Construction" },
+                  { id: "02", label: "Quality Materials" },
+                  { id: "03", label: "Waste Reduction" }
+                ].map((tag) => (
+                  <div key={tag.id} className="flex items-center gap-3 bg-white border border-slate-200 px-4 py-2.5 rounded-full shadow-sm">
+                    <span className="text-[10px] font-bold text-[#1e3a8a] tracking-wider">{tag.id}</span>
+                    <span className="w-px h-3 bg-slate-200"></span>
+                    <span className="text-[11px] font-semibold text-slate-700 uppercase tracking-wide">{tag.label}</span>
+                  </div>
+                ))}
               </div>
             </div>
-            <div className="relative animate-fade-in-up animation-delay-200">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-200 to-indigo-200 rounded-3xl blur-2xl opacity-30"></div>
-              <div className="relative bg-white rounded-3xl shadow-2xl border border-blue-100 p-8 transform hover:scale-[1.02] transition-all duration-500">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-50 to-transparent rounded-tr-3xl"></div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                  <span className="w-8 h-1 bg-blue-600 rounded-full"></span>
-                  Our Sustainability Commitment
+
+            {/* Right Column (Data Card) */}
+            <div className="lg:col-span-6 relative animate-fade-in-up animation-delay-200">
+              
+              {/* Complex Architectural Card */}
+              <div className="relative bg-white/70 backdrop-blur-xl rounded-[2rem] border border-white p-10 md:p-12 shadow-[0_20px_40px_rgba(30,58,138,0.06)] overflow-hidden">
+                
+                {/* Structural Overlay inside card */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#1e3a8a]/5 to-transparent rounded-tr-[2rem] pointer-events-none"></div>
+                
+                {/* Subtle blueprint path inside the card */}
+                <svg className="absolute bottom-0 right-0 w-full h-[60%] opacity-[0.03] pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M 100 150 L 300 150 L 300 50 L 400 50" stroke="#1e3a8a" strokeWidth="4" fill="none" strokeLinejoin="round"/>
+                  <circle cx="100" cy="150" r="8" fill="#1e3a8a"/>
+                  <circle cx="400" cy="50" r="8" fill="#1e3a8a"/>
+                </svg>
+
+                <h3 className="font-display text-2xl font-extrabold text-slate-900 mb-8 flex items-center gap-4 border-b border-slate-100 pb-6">
+                  <div className="w-1.5 h-1.5 bg-[#1e3a8a]" />
+                  Sustainability Metrics
                 </h3>
-                <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mt-0.5">
-                      <div className="w-2 h-2 rounded-full bg-blue-600"></div>
+                
+                <div className="space-y-6 relative z-10">
+                  {[
+                    { title: "Resource Handling", desc: "Responsible material processing and certified on-site waste management." },
+                    { title: "Lifecycle Quality", desc: "Sourcing premium materials for prolonged structural durability." },
+                    { title: "Site Ecology", desc: "Clean operations and zero-toxicity disposal of construction waste." }
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-start gap-4 group">
+                      <div className="shrink-0 w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center bg-white shadow-sm mt-0.5 group-hover:border-[#1e3a8a]/40 transition-colors">
+                        <div className="w-2 h-2 rounded-full bg-[#1e3a8a]/40 group-hover:bg-[#1e3a8a] transition-colors"></div>
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold text-slate-900 mb-1 tracking-wide">{item.title}</h4>
+                        <p className="text-slate-500 text-xs leading-relaxed font-medium">{item.desc}</p>
+                      </div>
                     </div>
-                    <p className="text-gray-600 text-sm">Responsible material handling and on-site waste management</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mt-0.5">
-                      <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                    </div>
-                    <p className="text-gray-600 text-sm">Quality materials and safe practices at every stage</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mt-0.5">
-                      <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                    </div>
-                    <p className="text-gray-600 text-sm">Clean sites and careful disposal of construction waste</p>
-                  </div>
+                  ))}
                 </div>
-                <div className="mt-6 pt-6 border-t border-gray-100">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-500">Local Best Practices:</span>
+
+                <div className="mt-8 pt-6 border-t border-slate-100/80 relative z-10">
+                  <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">Execution Protocols</span>
                     <div className="flex gap-2">
-                      <span className="px-2 py-0.5 bg-blue-50 text-blue-700 rounded text-xs">Site Safety</span>
-                      <span className="px-2 py-0.5 bg-blue-50 text-blue-700 rounded text-xs">Waste Control</span>
-                      <span className="px-2 py-0.5 bg-blue-50 text-blue-700 rounded text-xs">Quality</span>
+                      <span className="px-3 py-1 bg-[#1e3a8a]/5 border border-[#1e3a8a]/10 text-[#1e3a8a] font-semibold rounded-full text-[10px] uppercase tracking-wider">Site Safety</span>
+                      <span className="px-3 py-1 bg-emerald-500/5 border border-emerald-500/10 text-emerald-700 font-semibold rounded-full text-[10px] uppercase tracking-wider">Eco Control</span>
                     </div>
                   </div>
                 </div>
               </div>
+
+              {/* CAD Crosshairs overlaying card */}
+              <div className="absolute -top-4 -left-4 w-8 h-8 border-t border-l border-[#1e3a8a]/30 pointer-events-none" />
+              <div className="absolute -bottom-4 -right-4 w-8 h-8 border-b border-r border-[#1e3a8a]/30 pointer-events-none" />
             </div>
+            
           </div>
         </div>
       </div>
@@ -178,35 +213,53 @@ export default function SustainabilityPage() {
         </div>
       </div>
 
-      {/* 2030 GOALS SECTION */}
-      <div className="relative py-20 bg-gradient-to-r from-blue-50 via-white to-indigo-50">
+      {/* ════════════════════════════════════════
+          2030 GOALS SECTION — Minimalist Clean Layout
+          ════════════════════════════════════════ */}
+      <div className="relative py-24 bg-[#f8fafc] overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="animate-fade-in-up">
-              <div className="inline-flex items-center gap-3 mb-4">
-                <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
-                <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">2030 Targets</span>
+            
+            {/* Left Content */}
+            <div className="animate-fade-in-up pr-8">
+              <div className="inline-flex items-center gap-4 mb-6">
+                <div className="w-8 h-[2px] bg-[#1e3a8a]"></div>
+                <span className="text-xs font-bold text-[#1e3a8a] uppercase tracking-widest">2030 Targets</span>
+                <div className="w-8 h-[2px] bg-[#1e3a8a]"></div>
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Sustainability Goals for 2030</h2>
-              <p className="text-gray-600 leading-relaxed">
+              
+              <h2 className="font-display text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight leading-[1.1]">
+                Our Sustainability Goals for 2030
+              </h2>
+              
+              <p className="text-slate-600 text-lg leading-relaxed">
                 We aim to improve our construction practices by focusing on efficiency, reducing waste, and maintaining high-quality standards across all our projects.
               </p>
             </div>
-            <div className="space-y-6 animate-fade-in-up animation-delay-200">
-              {goals2030.map((goal, idx) => (
-                <div key={idx}>
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-sm font-medium text-gray-700">{goal.label}</span>
-                    <span className="text-sm font-bold text-blue-600">{goal.pct}%</span>
-                  </div>
-                  <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <div
-                      className="h-full rounded-full bg-gradient-to-r from-blue-500 to-blue-700 transition-all duration-1000 ease-out"
-                      style={{ width: `${goal.pct}%` }}
-                    ></div>
-                  </div>
+
+            {/* Right Content - Clean Progress Card */}
+            <div className="animate-fade-in-up animation-delay-200">
+              <div className="bg-white rounded-3xl p-10 md:p-14 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-slate-100">
+                <div className="space-y-10">
+                  {goals2030.map((goal, idx) => (
+                    <div key={idx}>
+                      <div className="flex justify-between items-center mb-3">
+                        <span className="text-[15px] font-semibold text-slate-700">{goal.label}</span>
+                        <span className="text-[15px] font-bold text-[#1e3a8a]">{goal.pct}%</span>
+                      </div>
+                      
+                      {/* Progress Bar Container */}
+                      <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                        {/* Actual Bar */}
+                        <div
+                          className="h-full bg-[#1e3a8a] rounded-full transition-all duration-[1500ms] ease-out"
+                          style={{ width: `${goal.pct}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </div>
@@ -241,28 +294,52 @@ export default function SustainabilityPage() {
         </div>
       </div>
 
-      {/* PLEDGE BANNER */}
-      <div className="relative py-16 mx-6 md:mx-12 mb-12 rounded-3xl overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-700 opacity-90"></div>
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=1600&h=400&fit=crop')] bg-cover bg-center mix-blend-overlay"></div>
-        <div className="relative max-w-4xl mx-auto text-center px-6 py-12">
-          <div className="inline-flex items-center gap-3 mb-6">
-            <div className="w-12 h-px bg-white/30"></div>
-            <span className="text-xs font-bold text-white uppercase tracking-wider">Our Pledge</span>
-            <div className="w-12 h-px bg-white/30"></div>
+      {/* ════════════════════════════════════════
+          PLEDGE BANNER — Eco-Architectural Style
+          ════════════════════════════════════════ */}
+      <div className="relative py-24 mx-6 md:mx-12 mb-16 rounded-[2rem] overflow-hidden shadow-xl border border-slate-200 group">
+        {/* Background Image — Desaturated & Tinted */}
+        <div className="absolute inset-0 bg-[#f8fafc] z-0"></div>
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=1600&h=600&fit=crop')] bg-cover bg-center grayscale opacity-[0.12] z-0"></div>
+        
+        {/* Architectural Blueprint Grid */}
+        <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" xmlns="http://www.w3.org/2000/svg">
+          <pattern id="eco-grid" width="60" height="60" patternUnits="userSpaceOnUse">
+            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#1e3a8a" strokeWidth="1" strokeOpacity="0.06"/>
+          </pattern>
+          <rect width="100%" height="100%" fill="url(#eco-grid)" />
+        </svg>
+
+        {/* Ambient Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[400px] bg-blue-100/50 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+        {/* Main Content Card (Frosted Glass) */}
+        <div className="relative z-10 max-w-4xl mx-auto px-6">
+          <div className="bg-white/70 backdrop-blur-xl border border-white shadow-[0_20px_40px_rgba(30,58,138,0.06)] p-10 md:p-14 rounded-3xl relative overflow-hidden text-center backdrop-saturate-150">
+            
+            {/* Top architectural label */}
+            <div className="inline-flex items-center justify-center gap-3 mb-8 w-full">
+              <div className="w-12 h-px bg-[#1e3a8a]/20"></div>
+              <span className="text-[11px] font-bold text-[#1e3a8a] uppercase tracking-[0.3em]">Our Corporate Pledge</span>
+              <div className="w-12 h-px bg-[#1e3a8a]/20"></div>
+            </div>
+            
+            <p className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-900 leading-[1.3] mb-10 tracking-tight" style={{ fontFamily: "'Syne', sans-serif" }}>
+              "We are committed to delivering construction projects with <span className="relative inline-block text-[#1e3a8a]">quality, responsibility</span> and a focus on long-term value."
+            </p>
+            
+            <div className="flex justify-center">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 bg-[#1e3a8a] text-white px-8 py-4 rounded-xl text-sm font-bold hover:bg-[#152c6e] transition-all duration-300 shadow-xl shadow-[#1e3a8a]/20 group/btn"
+                >
+                  Partner With Us
+                  <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </Link>
+            </div>
           </div>
-          <p className="text-xl md:text-2xl lg:text-3xl font-light text-white leading-relaxed italic">
-            "We are committed to delivering construction projects with quality, responsibility, and a focus on long-term value."
-          </p>
-          <button
-            onClick={() => navigate("/contact")}
-            className="mt-8 inline-flex items-center gap-2 bg-white text-blue-700 px-6 py-3 rounded-full text-sm font-semibold hover:bg-blue-50 transition-all transform hover:scale-105 shadow-lg"
-          >
-            Partner With Us
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </button>
         </div>
       </div>
 

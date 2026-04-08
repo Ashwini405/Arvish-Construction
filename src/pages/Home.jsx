@@ -16,14 +16,14 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <div className="bg-gray-100 section-padding">
+      <div className="bg-white section-padding pb-0">
         <AboutSection />
         <ServicesSection />
         <WhyChooseUs />
         <Projects />
         {/* <Clients /> */}
-        <Footer />
       </div>
+      <Footer />
      
     </>
   );

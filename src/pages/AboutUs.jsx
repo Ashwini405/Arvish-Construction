@@ -6,9 +6,7 @@ import {
   Award,
   Building2,
   Users,
-  Globe,
   Clock,
-  CheckCircle,
   TrendingUp,
   Headphones,
   Shield,
@@ -16,6 +14,7 @@ import {
   Lightbulb,
   Target,
   Quote,
+  CheckCircle,
 } from "lucide-react";
 
 export default function AboutUs() {
@@ -43,17 +42,9 @@ export default function AboutUs() {
     { title: "Excellence", desc: "Delivering beyond expectations, every time.", icon: Award },
   ];
 
-  const milestones = [
-    { year: "2020", title: "Founded", desc: "Started Arvish Constructions with a focus on quality construction services." },
-    { year: "2021", title: "Growth", desc: "Completed initial residential and small commercial projects." },
-    { year: "2023", title: "Expansion", desc: "Expanded services to include commercial and industrial projects." },
-    { year: "2025", title: "Today", desc: "Continuing to deliver reliable construction solutions across Hyderabad and Telangana." },
-  ];
-
   useEffect(() => {
     if (inView) {
       controls.start("visible");
-      // Animate counters
       const duration = 2000;
       const stepTime = 20;
       const steps = duration / stepTime;
@@ -61,11 +52,13 @@ export default function AboutUs() {
       const interval = setInterval(() => {
         step++;
         const progress = step / steps;
+        // Ease out quad
+        const ease = progress * (2 - progress);
         setCounters({
-          years: Math.min(5, Math.floor(5 * progress)),
-          projects: Math.min(50, Math.floor(50 * progress)),
-          clients: Math.min(25, Math.floor(25 * progress)),
-          countries: Math.min(1, Math.floor(1 * progress)),
+          years: Math.min(9, Math.round(9 * ease)),
+          projects: Math.min(50, Math.round(50 * ease)),
+          clients: Math.min(25, Math.round(25 * ease)),
+          countries: Math.min(1, Math.round(1 * ease)),
         });
         if (step >= steps) clearInterval(interval);
       }, stepTime);
@@ -74,96 +67,253 @@ export default function AboutUs() {
   }, [inView, controls]);
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-slate-50 min-h-screen font-sans">
       <Navbar />
 
-      {/* Animated Background Elements */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-20 -left-20 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-float"></div>
-        <div className="absolute bottom-20 -right-20 w-96 h-96 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-float-delayed"></div>
-      </div>
+      {/* ── STYLES FOR 3D CSS ELEMENTS ── */}
+      <style>{`
+        .light-bg-grid {
+          position: absolute;
+          inset: 0;
+          background-image: linear-gradient(to right, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+                            linear-gradient(to bottom, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+          background-size: 30px 30px;
+          animation: bgFloat 30s linear infinite;
+        }
+        @keyframes bgFloat { 0% { transform: translateY(0); } 100% { transform: translateY(40e px); } }
 
-      {/* Hero Section */}
-      <section className="relative min-h-[550px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.pexels.com/photos/2760242/pexels-photo-2760242.jpeg?auto=compress&cs=tinysrgb&w=1920"
-            alt="Construction site"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-indigo-900/80" />
+        /* Isometric Container */
+        .iso-scene {
+          width: 100%;
+          height: 100%;
+          perspective: 1200px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transform-style: preserve-3d;
+        }
+        .iso-wrapper {
+          position: relative;
+          transform: rotateX(60deg) rotateZ(45deg);
+          animation: isoHover 6s ease-in-out infinite;
+          transform-style: preserve-3d;
+        }
+        @keyframes isoHover {
+          0%, 100% { transform: rotateX(60deg) rotateZ(45deg) translateZ(0px); }
+          50% { transform: rotateX(60deg) rotateZ(45deg) translateZ(20px); }
+        }
+
+        /* 3D Shapes */
+        .iso-cube { position: absolute; transform-style: preserve-3d; transition: transform 0.3s; }
+        .iso-face { position: absolute; }
+        
+        /* Main Tower */
+        .c-main { left: -60px; top: -60px; transform: translateZ(0); }
+        .c-main .f-top { width: 120px; height: 120px; background: #e0f2fe; transform: rotateX(90deg) translateZ(60px) translateY(-60px); border: 2px solid white; }
+        .c-main .f-left { width: 120px; height: 220px; background: #bae6fd; transform: rotateY(-90deg) translateZ(60px) translateY(-110px); border: 2px solid white; display: flex; flex-wrap: wrap; padding: 8px; gap: 8px; align-content: flex-start;}
+        .c-main .f-right { width: 120px; height: 220px; background: #7dd3fc; transform: rotateY(0deg) translateZ(60px) translateY(-110px); border: 2px solid white; display: flex; flex-wrap: wrap; padding: 8px; gap: 8px; align-content: flex-start;}
+        
+        /* Windows */
+        .iso-win { width: 20px; height: 26px; background: rgba(255,255,255,0.7); border-radius: 2px; }
+        
+        /* Smaller Buildings */
+        .c-small-1 { left: 80px; top: -20px; transform: translateZ(0); }
+        .c-small-1 .f-top { width: 80px; height: 80px; background: #e2e8f0; transform: rotateX(90deg) translateZ(40px) translateY(-40px); border: 2px solid white;}
+        .c-small-1 .f-left { width: 80px; height: 140px; background: #cbd5e1; transform: rotateY(-90deg) translateZ(40px) translateY(-70px); border: 2px solid white;}
+        .c-small-1 .f-right { width: 80px; height: 140px; background: #94a3b8; transform: rotateY(0deg) translateZ(40px) translateY(-70px); border: 2px solid white;}
+
+        .c-small-2 { left: -20px; top: 100px; transform: translateZ(0); }
+        .c-small-2 .f-top { width: 60px; height: 60px; background: #dbeafe; transform: rotateX(90deg) translateZ(30px) translateY(-30px); border: 2px solid white;}
+        .c-small-2 .f-left { width: 60px; height: 100px; background: #bfdbfe; transform: rotateY(-90deg) translateZ(30px) translateY(-50px); border: 2px solid white;}
+        .c-small-2 .f-right { width: 60px; height: 100px; background: #93c5fd; transform: rotateY(0deg) translateZ(30px) translateY(-50px); border: 2px solid white;}
+        
+        /* Crane */
+        .iso-crane-base { position: absolute; width: 12px; height: 240px; background: #64748b; transform: rotateX(90deg) translateZ(70px) translateX(90px) translateY(-120px); }
+        .iso-crane-arm { position: absolute; top: 0; left: -80px; width: 280px; height: 12px; background: #94a3b8; transform-origin: 80px center; animation: craneSwing 15s ease-in-out infinite alternate; }
+        .iso-crane-rope { position: absolute; top: 12px; right: 20px; width: 2px; height: 100px; background: #475569; }
+        .iso-crane-hook { position: absolute; bottom: -8px; left: -4px; width: 10px; height: 8px; background: #334155; border-radius: 2px; }
+        @keyframes craneSwing { 0% { transform: rotateZ(15deg); } 100% { transform: rotateZ(-35deg); } }
+
+        /* Floating Cards */
+        .float-obj { position: absolute; background: white; border-radius: 12px; padding: 12px; box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.1); display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 14px; color: #1e293b; border: 1px solid #eff6ff; z-index: 10; }
+        .obj-1 { top: 10%; left: 0%; animation: f1 4s ease-in-out infinite; }
+        .obj-2 { bottom: 15%; right: 0%; animation: f1 5s ease-in-out infinite 1s; }
+        @keyframes f1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+      `}</style>
+
+      {/* ── HERO SECTION ── */}
+      <section className="relative min-h-[600px] flex items-center pt-0 pb-16 overflow-hidden bg-white">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="light-bg-grid opacity-60"></div>
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 transform translate-x-1/3 -translate-y-1/4"></div>
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 transform -translate-x-1/3 translate-y-1/4"></div>
         </div>
-        <div className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="inline-flex items-center gap-3 mb-4">
-              <div className="w-8 h-0.5 bg-white/50 rounded-full"></div>
-              <span className="text-sm font-bold text-white/80 uppercase tracking-wider">
-                About Arvish Constructions
+
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+          <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
+            <div className="inline-flex items-center gap-3 mb-6 bg-blue-100/50 px-4 py-2 rounded-full border border-blue-200">
+              <Shield size={16} className="text-blue-600" />
+              <span className="text-xs font-bold text-blue-700 uppercase tracking-widest">
+                About Arvish
               </span>
-              <div className="w-8 h-0.5 bg-white/50 rounded-full"></div>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mt-4 mb-4">
-              Building Dreams,<br />Creating Quality Spaces
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 leading-tight mb-6 tracking-tight">
+              Building <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-sky-400">Dreams</span>,<br />
+              Creating Spaces.
             </h1>
-            <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-slate-600 leading-relaxed mb-8 max-w-xl">
               Arvish Constructions is committed to delivering reliable and high-quality construction solutions with a focus on precision, durability, and timely execution.
             </p>
+            <div className="flex flex-wrap gap-4">
+              <button onClick={() => window.location.href = "/contact"} className="px-8 py-3.5 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-all shadow-[0_8px_20px_rgba(37,99,235,0.25)] hover:shadow-[0_10px_25px_rgba(37,99,235,0.4)]">
+                Discuss Your Project
+              </button>
+            </div>
+          </motion.div>
+
+          {/* 3D Isometric Hero Visual */}
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.2 }} className="relative h-[450px] lg:h-[600px] w-full hidden md:block">
+            <div className="iso-scene">
+              <div className="iso-wrapper">
+                {/* Massive Base Platform */}
+                <div style={{ width: 450, height: 450, background: 'rgba(241, 245, 249, 0.7)', border: '2px solid rgba(226, 232, 240, 0.8)', position: 'absolute', transform: 'translate(-50%, -50%)', borderRadius: 30, boxShadow: 'inset 0 0 40px rgba(255,255,255,1), 20px 20px 40px rgba(59,130,246,0.05)' }}>
+                  {/* Grid lines on platform */}
+                  <div style={{ position: 'absolute', inset: 20, border: '2px dashed rgba(148,163,184,0.2)', borderRadius: 20 }}></div>
+                </div>
+
+                {/* Main Tower Building */}
+                <div className="iso-cube c-main">
+                  <div className="iso-face f-top"></div>
+                  <div className="iso-face f-left">
+                    {Array(24).fill(0).map((_, i) => <div key={`l${i}`} className="iso-win" />)}
+                  </div>
+                  <div className="iso-face f-right">
+                    {Array(24).fill(0).map((_, i) => <div key={`r${i}`} className="iso-win" />)}
+                  </div>
+                </div>
+
+                {/* Smaller Ancillary Building 1 */}
+                <div className="iso-cube c-small-1">
+                  <div className="iso-face f-top"></div>
+                  <div className="iso-face f-left"></div>
+                  <div className="iso-face f-right"></div>
+                </div>
+
+                {/* Smaller Ancillary Building 2 */}
+                <div className="iso-cube c-small-2">
+                  <div className="iso-face f-top"></div>
+                  <div className="iso-face f-left"></div>
+                  <div className="iso-face f-right"></div>
+                </div>
+
+                {/* Crane Segment */}
+                <div className="iso-crane-base">
+                  <div className="iso-crane-arm">
+                    <div className="iso-crane-rope">
+                      <div className="iso-crane-hook"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Floating Info Cards */}
+            
+
+            <div className="float-obj obj-2">
+              <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">
+                <Award size={20} />
+              </div>
+              <div>
+                <div className="text-xs text-slate-400 font-medium">Quality</div>
+                <div className="text-sm font-bold text-slate-800">Premium</div>
+              </div>
+            </div>
           </motion.div>
         </div>
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7-7-7" />
-          </svg>
+      </section>
+
+      {/* ── WHO WE ARE ── */}
+      <section id="who-we-are" className="py-24 px-6 relative bg-slate-50">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+          {/* Animated Image with Holographic UI Overlay */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="order-2 lg:order-1 relative h-[450px] w-full rounded-[2rem] overflow-hidden shadow-2xl group border-8 border-white"
+          >
+            {/* Background Image */}
+            <div className="absolute inset-0 bg-slate-900 overflow-hidden">
+               <motion.img 
+                  animate={{ scale: [1, 1.05, 1] }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  src="/interior_blueprint.png" 
+                  alt="Architecture and Interior Designer with Holographic Blueprint" 
+                  className="w-full h-full object-cover opacity-90 mix-blend-screen"
+               />
+            </div>
+
+            {/* Glowing Tech Overlay HUD */}
+            <div className="absolute inset-0 z-10 pointer-events-none">
+               {/* Animated Scanning Line */}
+               <motion.div 
+                 animate={{ top: ['0%', '100%', '0%'] }} 
+                 transition={{ duration: 6, ease: "linear", repeat: Infinity }}
+                 className="absolute left-0 w-full h-[2px] bg-blue-400/50 shadow-[0_0_20px_rgba(96,165,250,0.9)]"
+               />
+
+               {/* Corner HUD Framing Elements */}
+               <div className="absolute top-6 left-6 w-10 h-10 border-t-[3px] border-l-[3px] border-blue-400/70 transition-transform duration-500 group-hover:-translate-x-2 group-hover:-translate-y-2"></div>
+               <div className="absolute top-6 right-6 w-10 h-10 border-t-[3px] border-r-[3px] border-blue-400/70 transition-transform duration-500 group-hover:translate-x-2 group-hover:-translate-y-2"></div>
+               <div className="absolute bottom-6 left-6 w-10 h-10 border-b-[3px] border-l-[3px] border-blue-400/70 transition-transform duration-500 group-hover:-translate-x-2 group-hover:translate-y-2"></div>
+               <div className="absolute bottom-6 right-6 w-10 h-10 border-b-[3px] border-r-[3px] border-blue-400/70 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+
+               {/* Floating Animated UI Dots */}
+               <motion.div 
+                 animate={{ opacity: [0.1, 1, 0.1], scale: [0.8, 1.2, 0.8] }} 
+                 transition={{ duration: 2, repeat: Infinity }}
+                 className="absolute top-1/4 left-1/3 w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_15px_rgba(34,211,238,1)]"
+               />
+               <motion.div 
+                 animate={{ opacity: [0.1, 1, 0.1], scale: [0.8, 1.2, 0.8] }} 
+                 transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+                 className="absolute bottom-1/3 right-1/4 w-3 h-3 rounded-full bg-blue-500 shadow-[0_0_15px_rgba(59,130,246,1)]"
+               />
+
+               {/* Sci-Fi Grid Texture Overlay */}
+               <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNHYtbGgtaHYtbGgtaHY0SDM2em0wIDRoOHY0aC04di00em0tNCA0aDR2NGgtNHYtNHptLTQgNGg0djRoLTR2LTR6bS00IDRoNHYzaC00di0zem0wLTd2LTRoLTR2NGg0em0wLTR2LTRoLTR2NGg0em0wLTR2LTRoLTR2NGg0em00IDBoNHY0aC00di00em00IDBoNHY0aC00di00em00IDBoNHY0aC00di00eiIgZmlsbD0iIzQwYjZmZiIgZmlsbC1vcGFjaXR5PSIwLjE1Ii8+PC9nPjwvc3ZnPg==')] opacity-50 mix-blend-lighten"></div>
+            </div>
+            
+           
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="order-1 lg:order-2"
+          >
+            <h2 className="text-sm font-bold text-blue-600 uppercase tracking-widest mb-2 border-l-4 border-blue-600 pl-4 py-1">Who We Are</h2>
+            <h3 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
+              Building the Future,<br />One Project at a Time.
+            </h3>
+            <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+              <p>
+                Arvish Constructions is a Hyderabad-based construction company focused on delivering residential, commercial, and infrastructure projects with uncompromised quality and absolute reliability.
+              </p>
+              <p>
+                We believe that every structure we build is a testament to our dedication. We work closely with our clients to fully understand their unique requirements, ensuring each project undergoes rigorous planning, precise detailing, and flawless execution.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Who We Are */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <div className="inline-flex items-center gap-3 mb-4">
-                <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
-                <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">Who We Are</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-6">
-                Building the Future, One Project at a Time
-              </h2>
-              <p className="text-gray-600 mb-4 leading-relaxed">
-                Arvish Constructions is a Hyderabad-based construction company focused on delivering residential, commercial, and infrastructure projects with quality and reliability.
-              </p>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                We work closely with clients to understand their requirements and ensure each project is completed with proper planning, attention to detail, and timely execution.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="relative h-80 md:h-96 rounded-2xl overflow-hidden shadow-xl"
-            >
-              <img
-                src="https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                alt="Arvish construction team"
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-transparent" />
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats with animated counters */}
+      {/* ── STATS SECTION ── */}
+ {/* Stats with animated counters */}
       <section ref={ref} className="py-16 px-6 bg-gradient-to-r from-blue-50 to-indigo-50">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -203,7 +353,7 @@ export default function AboutUs() {
               <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">What Drives Us</h2>
-            <div className="w-20 h-1 bg-blue-600 mx-auto mt-4" />
+           
           </motion.div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, idx) => (
@@ -226,7 +376,7 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* Journey Timeline */}
+      {/* ── TIMELINE ── */}
       <section className="py-20 px-6 bg-gradient-to-r from-blue-50 to-indigo-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -242,21 +392,21 @@ export default function AboutUs() {
               <div className="w-8 h-0.5 bg-blue-600 rounded-full" />
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Our Growth Journey</h2>
-            <div className="w-20 h-1 bg-blue-600 mx-auto mt-4" />
+            
           </motion.div>
 
           <div className="relative">
             <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-blue-200 hidden md:block" />
             <div className="space-y-8 md:space-y-0">
               {[
-                { stage: "Stage 1", title: "Company Foundation", desc: "Started with a vision to deliver reliable construction services in Hyderabad." },
-                { stage: "Stage 2", title: "Residential Projects", desc: "Focused on building quality residential homes with strong construction practices." },
-                { stage: "Stage 3", title: "Commercial Expansion", desc: "Expanded into commercial and retail construction projects." },
-                { stage: "Stage 4", title: "Project Growth", desc: "Successfully completed multiple projects with a focus on quality and timely delivery." },
-                { stage: "Stage 5", title: "Service Expansion", desc: "Extended services to include industrial and specialized construction projects." },
-                { stage: "Stage 6", title: "Modern Approach", desc: "Adopted efficient construction methods and improved project management practices." },
-                { stage: "Stage 7", title: "Client Trust", desc: "Built strong relationships with clients through reliable work and consistent results." },
-                { stage: "Stage 8", title: "Ongoing Growth", desc: "Continuing to grow with a focus on quality construction and customer satisfaction." }
+                { stage: "2017", title: "Company Foundation", desc: "Started with a vision to deliver reliable construction services in Hyderabad." },
+                { stage: "2018", title: "Residential Projects", desc: "Focused on building quality residential homes with strong construction practices." },
+                { stage: "2019", title: "Commercial Expansion", desc: "Expanded into commercial and retail construction projects." },
+                { stage: "2020", title: "Project Growth", desc: "Successfully completed multiple projects with a focus on quality and timely delivery." },
+                { stage: "2021", title: "Service Expansion", desc: "Extended services to include industrial and specialized construction projects." },
+                { stage: "2022", title: "Modern Approach", desc: "Adopted efficient construction methods and improved project management practices." },
+                { stage: "2023", title: "Client Trust", desc: "Built strong relationships with clients through reliable work and consistent results." },
+                { stage: "2024", title: "Ongoing Growth", desc: "Continuing to grow with a focus on quality construction and customer satisfaction." }
               ].map((item, idx) => (
                 <motion.div
                   key={idx}
@@ -282,103 +432,39 @@ export default function AboutUs() {
           </div>
         </div>
       </section>
+      {/* ── MISSION & VISION ── */}
+      <section className="py-24 px-6 relative overflow-hidden bg-white/70 backdrop-blur-xl border border-white/70 shadow-[0_30px_80px_rgba(15,23,42,0.08)]">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNHYtbGgtaHYtbGgtaHY0SDM2em0wIDRoOHY0aC04di00em0tNCA0aDR2NGgtNHYtNHptLTQgNGg0djRoLTR2LTR6bS00IDRoNHYzaC00di0zem0wLTd2LTRoLTR2NGg0em0wLTR2LTRoLTR2NGg0em0wLTR2LTRoLTR2NGg0em00IDBoNHY0aC00di00em00IDBoNHY0aC00di00em00IDBoNHY0aC00di00eiIgZmlsbD0iIzFZTDRGMCIgZmlsbC1vcGFjaXR5PSIwLjA1Ii8+PC9nPjwvc3ZnPg==')] opacity-20"></div>
 
-      {/* Mission & Vision */}
-      <section className="py-20 px-6 bg-blue-600">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <Target size={48} className="text-white/80 mx-auto mb-4" />
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Our Mission & Vision</h2>
-            <div className="w-20 h-1 bg-white/50 mx-auto mb-8" />
-            <p className="text-white/90 text-lg leading-relaxed max-w-2xl mx-auto">
-              To deliver high-quality construction services that meet client expectations while maintaining transparency, reliability, and timely project completion.
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-6">
-              <div className="flex items-center gap-2 text-white/80">
-                <TrendingUp size={20} className="text-white" />
-                <span>Innovation</span>
-              </div>
-              <div className="flex items-center gap-2 text-white/80">
-                <Heart size={20} className="text-white" />
-                <span>Integrity</span>
-              </div>
-              <div className="flex items-center gap-2 text-white/80">
-                <Award size={20} className="text-white" />
-                <span>Excellence</span>
-              </div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
+            <div className="w-20 h-20 bg-blue-100/70 rounded-full flex items-center justify-center mx-auto mb-8 border border-blue-100/80">
+              <Target size={40} className="text-blue-600" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-8">Our Mission & Vision</h2>
+            <h3 className="text-2xl font-serif text-slate-600 italic max-w-3xl mx-auto leading-relaxed mb-12">
+              "To deliver high-quality construction services that meet client expectations while maintaining absolute transparency, reliability, and precision."
+            </h3>
+
+            <div className="flex flex-wrap justify-center gap-4 md:gap-8">
+              {[
+                { icon: TrendingUp, label: "Constant Innovation" },
+                { icon: Heart, label: "Honest Integrity" },
+                { icon: Award, label: "Proven Excellence" }
+              ].map((m, i) => (
+                <div key={i} className="flex items-center gap-3 bg-white/80 border border-slate-200/70 rounded-full px-6 py-3 hover:scale-110 hover:shadow-xl hover:border-blue-400 hover:bg-blue-50/80 transition-all duration-300 cursor-pointer">
+                  <m.icon size={20} className="text-blue-600" />
+                  <span className="text-slate-900 font-medium">{m.label}</span>
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Testimonial / Quote */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <Quote size={48} className="text-blue-300 mx-auto mb-4" />
-          <p className="text-xl md:text-2xl text-gray-700 italic leading-relaxed">
-            "We focus on building strong relationships with our clients by delivering quality work and maintaining trust throughout every project."
-          </p>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 px-6 bg-blue-600">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Ready to start your next project?</h2>
-          <p className="text-blue-100 mb-8">Let's discuss how we can bring your vision to life.</p>
-          <button
-            onClick={() => (window.location.href = "/contact")}
-            className="px-8 py-3 bg-white text-blue-700 font-bold rounded-full hover:bg-blue-50 transition-all transform hover:scale-105 shadow-lg inline-flex items-center gap-2"
-          >
-            Contact Us Today
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </button>
-        </div>
-      </section>
+      
 
       <Footer />
-
-      {/* Animation Styles */}
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(5deg); }
-        }
-        @keyframes float-delayed {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(20px) rotate(-5deg); }
-        }
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-float {
-          animation: float 8s ease-in-out infinite;
-        }
-        .animate-float-delayed {
-          animation: float-delayed 10s ease-in-out infinite;
-        }
-        .animate-bounce {
-          animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-          0%, 100% { transform: translateY(-25%) translateX(-50%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }
-          50% { transform: translateY(0) translateX(-50%); animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
-        }
-      `}</style>
     </div>
   );
 }

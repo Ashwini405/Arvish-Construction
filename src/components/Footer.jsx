@@ -150,7 +150,7 @@ function ArchitecturalIllusion() {
       </defs>
 
       {/* Ground plane */}
-      <rect x="0" y="308" width="900" height="2" fill="#1E3A8A" opacity="0.12" />
+      <rect x="0" y="308" width="900" height="2" fill="#68769d" opacity="0.04" />
       <rect x="0" y="310" width="900" height="110" fill="url(#groundGrad)" />
 
       {/* Distant skyline */}
@@ -440,8 +440,8 @@ We focus on quality, trust, and delivering projects on time.
           </div>
         </div>
 
-        {/* Middle grid: Company | Services | Offices | Categories */}
-        <div className="relative z-10 max-w-[1280px] mx-auto px-4 xs:px-6 lg:px-8 py-4 sm:py-6 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 border-b border-slate-200">
+        {/* Middle grid: Company | Services | Contact | Offices */}
+        <div className="relative z-10 max-w-[1280px] mx-auto px-4 xs:px-6 lg:px-8 py-4 sm:py-6 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-[1fr_1fr_1.4fr_1fr] gap-6 sm:gap-8 border-b border-slate-200">
           {/* Company links */}
           <div style={{ animation: 'slideInUp 0.6s ease both', animationDelay: '0.1s' }}>
             <div className="flex items-center gap-2 mb-3">
@@ -516,7 +516,7 @@ We focus on quality, trust, and delivering projects on time.
               </div>
 
               {/* Offices */}
-          <div style={{ animation: 'slideInUp 0.6s ease both', animationDelay: '0.3s' }}>
+          <div className="md:pl-20" style={{ animation: 'slideInUp 0.6s ease both', animationDelay: '0.3s' }}>
             <div className="flex items-center gap-2 mb-3">
               <span className="w-2 h-2 rounded-full bg-[#F97316]" />
               <h4 className="footer-heading text-slate-700 text-[11px] font-bold uppercase tracking-[0.25em]">Our Offices</h4>
