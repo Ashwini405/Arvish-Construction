@@ -149,7 +149,7 @@ export default function Residential() {
               <div className="flex flex-wrap gap-8">
                 <div className="text-center">
                   <p className="text-3xl font-black text-blue-600">50+</p>
-                  <p className="text-xs text-gray-500 mt-1">Homes Delivered</p>
+                  <p className="text-xs text-gray-500 mt-1">Projects Delivered</p>
                 </div>
                 <div className="w-px bg-gray-300" />
                 <div className="text-center">
@@ -158,7 +158,7 @@ export default function Residential() {
                 </div>
                 <div className="w-px bg-gray-300" />
                 <div className="text-center">
-                  <p className="text-3xl font-black text-blue-600">5+</p>
+                  <p className="text-3xl font-black text-blue-600">9+</p>
                   <p className="text-xs text-gray-500 mt-1">Years Experience</p>
                 </div>
               </div>

@@ -76,28 +76,7 @@ const CommercialOfficeProject = () => {
 
             
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button
-                  onClick={() => navigate('/enquire')}
-                  className="group px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-full shadow-xl hover:shadow-blue-500/25 hover:-translate-y-1 transition-all duration-300 uppercase tracking-wider flex items-center gap-2"
-                >
-                  Start Your Project
-                  <svg
-                    className="w-5 h-5 group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </button>
-                <button
-                  onClick={() => navigate('/projects')}
-                  className="px-8 py-4 border-2 border-white/30 hover:border-blue-400 text-white font-bold text-lg rounded-full hover:bg-blue-600/10 backdrop-blur-sm hover:-translate-y-1 transition-all duration-300 uppercase tracking-wide"
-                >
-                  ← All Projects
-                </button>
-              </div>
+              
             </motion.div>
           </div>
         </section>

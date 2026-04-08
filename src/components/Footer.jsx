@@ -310,7 +310,7 @@ export default function Footer() {
           100% { border-color: #E31E24; }
         }
 
-        .footer-root { font-family: 'Lato', sans-serif; }
+        .footer-root { font-family: 'Lato', sans-serif; margin-bottom: 0; padding-bottom: env(safe-area-inset-bottom, 0); }
         .footer-heading { font-family: 'Barlow Condensed', sans-serif; }
 
         .link-item { position: relative; }
@@ -342,7 +342,7 @@ export default function Footer() {
         }
       `}</style>
 
-      <footer className="footer-root relative w-full overflow-hidden" style={{ background: 'linear-gradient(160deg, #ffffff 0%, #eef2f9 40%, #e8eef8 100%)' }}>
+      <footer className="footer-root relative w-full overflow-hidden" style={{ position: 'relative', bottom: 0, left: 0, right: 0, marginBottom: 0, paddingBottom: 'env(safe-area-inset-bottom, 0)', background: 'linear-gradient(160deg, #ffffff 0%, #eef2f9 40%, #e8eef8 100%)' }}>
         <BlueprintGrid />
 
         {/* Top banner */}
@@ -366,7 +366,7 @@ We focus on quality, trust, and delivering projects on time.
               </p>
               {/* Decorative line */}
               <svg viewBox="0 0 280 6" className="w-48 h-2">
-                <line x1="0" y1="3" x2="200" y2="3" stroke="#1E3A8A" strokeWidth="1.5"
+                <line x1="0" y1="3" x2="200" y2="3" stroke="#b4c4f0" strokeWidth="1.5"
                   strokeDasharray="200" style={{ animation: 'drawLine 1.2s ease forwards' }} />
                 <circle cx="210" cy="3" r="3" fill="#E31E24" />
                 <circle cx="225" cy="3" r="2" fill="#F97316" />
@@ -493,21 +493,21 @@ We focus on quality, trust, and delivering projects on time.
               <h4 className="footer-heading text-slate-700 text-[11px] font-bold uppercase tracking-[0.25em]">Contact</h4>
             </div>
                 <a href="tel:+91 99665 56804" className="flex items-center gap-3 text-slate-500 hover:text-slate-800 transition-colors duration-200 group">
-                  <span className="w-8 h-8 rounded-full flex items-center justify-center border border-current transition-transform duration-300 group-hover:scale-110"
+                  <span className="w-8 h-8 flex-shrink-0 rounded-full flex items-center justify-center border border-current transition-transform duration-300 group-hover:scale-110"
                     style={{ color: '#E31E24', borderColor: '#E31E2433', background: '#E31E2410' }}>
                     <Phone size={13} />
                   </span>
                   +91 99665 56804
                 </a>
-                <a href="mailto:arvishconstructions.interiors@gmail.com" className="flex items-center gap-3 text-slate-500 hover:text-slate-800 transition-colors duration-200 group">
-                  <span className="w-8 h-8 rounded-full flex items-center justify-center border border-current transition-transform duration-300 group-hover:scale-110"
+                <a href="mailto:arvishconstructions.interiors@gmail.com" className="flex items-center gap-3 text-slate-500 hover:text-slate-800 transition-colors duration-200 group min-w-0">
+                  <span className="w-8 h-8 flex-shrink-0 rounded-full flex items-center justify-center border border-current transition-transform duration-300 group-hover:scale-110"
                     style={{ color: '#1E3A8A', borderColor: '#1E3A8A33', background: '#1E3A8A10' }}>
                     <Mail size={13} />
                   </span>
-                  arvishconstructions.interiors@gmail.com
+                  <span className="break-all min-w-0">arvishconstructions.interiors@gmail.com</span>
                 </a>
                 <div className="flex items-center gap-3 text-slate-500">
-                  <span className="w-8 h-8 rounded-full flex items-center justify-center border border-current"
+                  <span className="w-8 h-8 flex-shrink-0 rounded-full flex items-center justify-center border border-current"
                     style={{ color: '#F97316', borderColor: '#F9731633', background: '#F9731610' }}>
                     <MapPin size={13} />
                   </span>
@@ -527,7 +527,7 @@ We focus on quality, trust, and delivering projects on time.
                   <p className="text-sm font-bold text-slate-700 mb-1">{office.city}</p>
                   <p className="text-xs text-slate-500 leading-relaxed">
                     {office.po}<br />
-                    Tel: {office.phone}<br />
+                    
                    
                   </p>
                 </div>

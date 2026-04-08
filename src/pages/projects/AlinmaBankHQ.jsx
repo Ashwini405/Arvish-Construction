@@ -78,20 +78,7 @@ const ResidentialVillaProject = () => {
             
             
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                onClick={() => navigate('/enquire')}
-                className="px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-full shadow-xl hover:shadow-blue-500/25 hover:-translate-y-1 transition-all duration-300 uppercase tracking-wider"
-              >
-                Start Your Project
-              </button>
-              <button 
-                onClick={() => navigate('/projects')}
-                className="px-8 py-4 border-2 border-white/30 hover:border-blue-400 text-white font-bold text-lg rounded-full hover:bg-blue-600/10 backdrop-blur-sm hover:-translate-y-1 transition-all duration-300 uppercase tracking-wide"
-              >
-                ← All Projects
-              </button>
-            </div>
+            
           </div>
         </section>
 

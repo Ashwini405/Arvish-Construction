@@ -1,5 +1,6 @@
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 export default function MaintenanceSupport() {
@@ -47,13 +48,13 @@ export default function MaintenanceSupport() {
             <p className="text-lg md:text-xl max-w-2xl mx-auto text-gray-200">
               Committed beyond completion. We provide ongoing support and maintenance to ensure your building remains safe, functional, and well-maintained.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <button className="px-6 py-3 bg-[#D4A13A] text-[#051614] font-bold rounded-lg hover:bg-[#c3922f] transition">
-                Schedule Service
-              </button>
-              <button className="px-6 py-3 border border-white text-white font-bold rounded-lg hover:bg-white/10 transition">
-                Explore Support Plans
-              </button>
+           <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <Link to="/contact" className="px-6 py-3 bg-[#D4A13A] text-[#051614] font-bold rounded-lg hover:bg-[#c3922f] transition inline-block">
+                Get Connect
+              </Link>
+              <Link to="/projects" className="px-6 py-3 border border-white text-white font-bold rounded-lg hover:bg-white/10 transition inline-block">
+                Explore Projects
+              </Link>
             </div>
           </motion.div>
         </div>

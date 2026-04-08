@@ -58,8 +58,8 @@ export default function CommercialRetail() {
   };
 
   const stats = [
-    { value: "40+", label: "Commercial Projects", icon: Building2 },
-    { value: "5+", label: "Years Experience", icon: TrendingUp },
+    { value: "50+", label: "Commercial Projects", icon: Building2 },
+    { value: "9+", label: "Years Experience", icon: TrendingUp },
     { value: "25+", label: "Clients Served", icon: Users },
     { value: "100%", label: "Quality Commitment", icon: Award },
   ];

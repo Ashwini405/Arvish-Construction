@@ -58,7 +58,7 @@ export default function EducationalHealthcare() {
   };
 
   const stats = [
-    { value: "10+", label: "Facilities Built", icon: Building2 },
+    { value: "50+", label: "Facilities Built", icon: Building2 },
     { value: "9+", label: "Years Experience", icon: HeartPulse },
     { value: "100%", label: "Quality Focus", icon: CheckCircle },
     { value: "50+", label: "People Served", icon: Users },

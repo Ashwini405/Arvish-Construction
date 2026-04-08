@@ -1,5 +1,6 @@
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 export default function Construction() {
@@ -48,12 +49,12 @@ export default function Construction() {
               Built with precision. Delivered with excellence. We execute every project with strong construction practices, quality materials, and efficient project management.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <button className="px-6 py-3 bg-[#D4A13A] text-[#051614] font-bold rounded-lg hover:bg-[#c3922f] transition">
-                Request a Quote
-              </button>
-              <button className="px-6 py-3 border border-white text-white font-bold rounded-lg hover:bg-white/10 transition">
-                View Our Projects
-              </button>
+              <Link to="/contact" className="px-6 py-3 bg-[#D4A13A] text-[#051614] font-bold rounded-lg hover:bg-[#c3922f] transition inline-block">
+                Get Connect
+              </Link>
+              <Link to="/projects" className="px-6 py-3 border border-white text-white font-bold rounded-lg hover:bg-white/10 transition inline-block">
+                Explore Projects
+              </Link>
             </div>
           </motion.div>
         </div>

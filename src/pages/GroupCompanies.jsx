@@ -56,7 +56,7 @@ export default function GroupCompanies() {
 
   const stats = [
     { value: "5", label: "Core Divisions", icon: Building2 },
-    { value: "5+", label: "Years Experience", icon: "⏱️" },
+    { value: "9+", label: "Years Experience", icon: "⏱️" },
     { value: "25+", label: "Team Members", icon: "👥" },
     { value: "100%", label: "Commitment", icon: Globe },
   ];

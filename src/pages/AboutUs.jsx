@@ -10,6 +10,7 @@ import {
   Clock,
   CheckCircle,
   TrendingUp,
+  Headphones,
   Shield,
   Heart,
   Lightbulb,
@@ -29,10 +30,10 @@ export default function AboutUs() {
   });
 
   const stats = [
-    { key: "years", value: 5, label: "Years Experience", suffix: "+", icon: Clock },
+    { key: "years", value: 9, label: "Years Experience", suffix: "+", icon: Clock },
     { key: "projects", value: 50, label: "Projects Completed", suffix: "+", icon: Building2 },
     { key: "clients", value: 25, label: "Happy Clients", suffix: "+", icon: Users },
-    { key: "countries", value: 1, label: "Cities Served", suffix: "", icon: Globe },
+    { key: "support", value: 24, label: "Client Support", suffix: "24/7", icon: Headphones }
   ];
 
   const values = [
