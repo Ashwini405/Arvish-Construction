@@ -58,10 +58,10 @@ export default function EducationalHealthcare() {
   };
 
   const stats = [
-    { value: "20+", label: "Facilities Built", icon: Building2 },
-    { value: "5+", label: "Years Experience", icon: HeartPulse },
+    { value: "10+", label: "Facilities Built", icon: Building2 },
+    { value: "9+", label: "Years Experience", icon: HeartPulse },
     { value: "100%", label: "Quality Focus", icon: CheckCircle },
-    { value: "500+", label: "People Served", icon: Users },
+    { value: "50+", label: "People Served", icon: Users },
   ];
 
   return (
@@ -78,11 +78,10 @@ export default function EducationalHealthcare() {
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.pexels.com/photos/236380/pexels-photo-236380.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            src="/eduhealheroi.png"
             alt="Educational campus"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-indigo-900/70 to-slate-900/80" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <motion.div
@@ -185,7 +184,7 @@ export default function EducationalHealthcare() {
               className="relative rounded-2xl overflow-hidden shadow-xl h-96"
             >
               <img
-                src="https://images.pexels.com/photos/236380/pexels-photo-236380.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                src="/eduheal1.png"
                 alt="Healthcare facility"
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />

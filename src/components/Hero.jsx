@@ -1192,7 +1192,7 @@ export default function Hero() {
             </div>
 
             <div className="ah-metrics">
-              {[["25+","Cities Delivered"],["98%","On-Time Completion"],["4.9★","Client Rating"]].map(([v,l])=>(
+              {[["100%","Quality Focus"],["98%","On-Time Completion"],["4.9★","Client Rating"]].map(([v,l])=>(
                 <div className="ah-metric" key={l}>
                   <div className="ah-metric-value">{v}</div>
                   <div className="ah-metric-label">{l}</div>

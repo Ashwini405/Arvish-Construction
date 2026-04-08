@@ -152,20 +152,17 @@ export default function Contact() {
                   <div className="space-y-2 mt-3 text-sm text-gray-600">
                     <p className="flex items-start gap-2">
                       <MapPin size={14} className="text-gray-400 mt-0.5 flex-shrink-0" />
-                      <span>Madhapur, Hyderabad - 500081, Telangana, India</span>
+                      <span>4 th Floor, CPR Galaxy, Kavuri Hills Rd, beside Orchids, Kakatiya Hills, Kavuri Hills Phase 3, Kavuri Hills, Madhapur, Hyderabad, Telangana 500033</span>
                     </p>
                     <p className="flex items-center gap-2">
                       <Phone size={14} className="text-gray-400" />
-                      Tel: +91 40 1234 5678
+                      +91 99665 56804
                     </p>
-                    <p className="flex items-center gap-2">
-                      <Mail size={14} className="text-gray-400" />
-                      Fax: +91 40 1234 5679
-                    </p>
-                    <p className="flex items-center gap-2">
+                    
+                    <a href="mailto:arvishconstructions.interiors@gmail.com" className="flex items-center gap-2 text-slate-500 hover:text-slate-800 transition-colors duration-200 group">
                       <Mail size={14} className="text-blue-600" />
-                      <span className="font-medium">Email:</span> corporate@arvishgroup.me
-                    </p>
+                      <span className="font-medium">Email:</span> arvishconstructions.interiors@gmail.com
+                    </a>
                   </div>
                 </div>
               </div>

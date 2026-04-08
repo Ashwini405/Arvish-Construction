@@ -15,7 +15,7 @@ export default function AboutGlassSection() {
   const metricDefs = [
     { key: "projects", label: "Projects\nCompleted", target: 50, suffix: "+" },
     { key: "satisfaction", label: "Client\nSatisfaction", target: 98, suffix: "%" },
-    { key: "years", label: "Years of\nExcellence", target: 5, suffix: "+" },
+    { key: "years", label: "Years of\nExcellence", target: 9, suffix: "+" },
   ];
 
   useEffect(() => {

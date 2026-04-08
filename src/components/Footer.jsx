@@ -67,7 +67,7 @@ const socials = [
 ];
 
 const offices = [
-  { city: 'Hyderabad', phone: '+91 XXXXX XXXXX', po: 'Telangana, India' },
+  { city: 'Hyderabad', phone: '+91 99665 56804', po: 'Telangana, India' },
 ];
 
 // ----- Decorative categories (from second footer) -----
@@ -492,19 +492,19 @@ We focus on quality, trust, and delivering projects on time.
               <span className="w-2 h-2 rounded-full bg-[#FACC15]" />
               <h4 className="footer-heading text-slate-700 text-[11px] font-bold uppercase tracking-[0.25em]">Contact</h4>
             </div>
-                <a href="tel:+91XXXXXXXXXX" className="flex items-center gap-3 text-slate-500 hover:text-slate-800 transition-colors duration-200 group">
+                <a href="tel:+91 99665 56804" className="flex items-center gap-3 text-slate-500 hover:text-slate-800 transition-colors duration-200 group">
                   <span className="w-8 h-8 rounded-full flex items-center justify-center border border-current transition-transform duration-300 group-hover:scale-110"
                     style={{ color: '#E31E24', borderColor: '#E31E2433', background: '#E31E2410' }}>
                     <Phone size={13} />
                   </span>
-                  +91 XXXXX XXXXX
+                  +91 99665 56804
                 </a>
-                <a href="mailto:info@arvishconstructions.com" className="flex items-center gap-3 text-slate-500 hover:text-slate-800 transition-colors duration-200 group">
+                <a href="mailto:arvishconstructions.interiors@gmail.com" className="flex items-center gap-3 text-slate-500 hover:text-slate-800 transition-colors duration-200 group">
                   <span className="w-8 h-8 rounded-full flex items-center justify-center border border-current transition-transform duration-300 group-hover:scale-110"
                     style={{ color: '#1E3A8A', borderColor: '#1E3A8A33', background: '#1E3A8A10' }}>
                     <Mail size={13} />
                   </span>
-                  info@arvishconstructions.com
+                  arvishconstructions.interiors@gmail.com
                 </a>
                 <div className="flex items-center gap-3 text-slate-500">
                   <span className="w-8 h-8 rounded-full flex items-center justify-center border border-current"
