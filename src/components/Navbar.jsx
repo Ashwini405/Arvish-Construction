@@ -257,9 +257,9 @@ export default function Navbar() {
         </div>
 
         {/* Desktop CTA */}
-        <button className="nb-cta" onClick={() => { setMenuOpen(false); navigate("/contact"); }}>
+        {/* <button className="nb-cta" onClick={() => { setMenuOpen(false); navigate("/contact"); }}>
           Start a Project
-        </button>
+        </button> */}
 
         {/* Mobile hamburger */}
         <button

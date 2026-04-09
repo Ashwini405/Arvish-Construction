@@ -76,15 +76,31 @@ export default function Careers() {
               <div className="flex flex-wrap gap-4 pt-4">
                 <button 
                   onClick={() => document.getElementById('open-positions')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                  className="group relative overflow-hidden bg-gradient-to-r from-[#3f76d3] to-[#2f5fb8] text-white px-8 py-3 rounded-full font-semibold
+                             transition-all duration-300 ease-out shadow-[0_14px_32px_rgba(47,95,184,0.22)]
+                             hover:-translate-y-0.5 hover:shadow-[0_18px_34px_rgba(47,95,184,0.28)]"
                 >
+                  <span className="absolute inset-0 bg-white/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <span className="relative z-10 inline-flex items-center gap-2">
                   View Open Positions
+                    <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
                 </button>
                 <button 
                   onClick={() => navigate('/contact')}
-                  className="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transform hover:scale-105 transition-all duration-300"
+                  className="group relative overflow-hidden border border-[#9ebcf0] bg-white text-[#2f5fb8] px-8 py-3 rounded-full font-semibold
+                             transition-all duration-300 ease-out shadow-[0_10px_24px_rgba(120,156,222,0.14)] hover:-translate-y-0.5
+                             hover:border-[#3f76d3] hover:text-white hover:shadow-[0_16px_30px_rgba(63,118,211,0.18)]"
                 >
-                  Contact Us
+                  <span className="absolute inset-0 bg-gradient-to-r from-[#3f76d3] to-[#2f5fb8] opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100" />
+                  <span className="relative z-10 inline-flex items-center gap-2">
+                    Contact Us
+                    <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
                 </button>
               </div>
             </div>
@@ -152,10 +168,10 @@ export default function Careers() {
                 <button
                   key={dept}
                   onClick={() => setActiveFilter(dept)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
+                  className={`relative overflow-hidden px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ease-out hover:-translate-y-0.5 ${
                     activeFilter === dept
-                      ? "bg-blue-600 text-white shadow-md"
-                      : "bg-gray-100 text-gray-700 hover:bg-blue-100"
+                      ? "bg-[#5f7f9d] text-white shadow-[0_10px_24px_rgba(95,127,157,0.22)]"
+                      : "bg-[#edf3f7] text-[#587895] hover:bg-[#dbe7f0] hover:text-[#3f5f7d]"
                   }`}
                 >
                   {dept}
@@ -205,10 +221,13 @@ export default function Careers() {
                   </div>
                   <button
                     onClick={() => navigate('/careers/apply', { state: { job } })}
-                    className="bg-white border-2 border-blue-600 text-blue-600 text-sm font-bold px-6 py-2.5 rounded-full hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 group/btn"
+                    className="group/btn relative overflow-hidden bg-white border border-[#9ab4ca] text-[#486887] text-sm font-bold
+                               px-6 py-2.5 rounded-full transition-all duration-300 ease-out flex items-center justify-center gap-2
+                               hover:-translate-y-0.5 hover:border-[#5f7f9d] hover:text-white hover:shadow-[0_16px_30px_rgba(95,127,157,0.18)]"
                   >
-                    Apply Now
-                    <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <span className="absolute inset-0 bg-gradient-to-r from-[#6f8dac] to-[#4f6f8f] opacity-0 transition-opacity duration-300 ease-out group-hover/btn:opacity-100" />
+                    <span className="relative z-10">Apply Now</span>
+                    <svg className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                     </svg>
                   </button>
@@ -238,9 +257,17 @@ export default function Careers() {
             </p>
             <button
               onClick={() => navigate('/careers/apply')}
-              className="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg"
+              className="group relative overflow-hidden bg-gradient-to-r from-[#5f7f9d] to-[#486887] text-white px-8 py-3 rounded-full font-semibold
+                         transition-all duration-300 ease-out shadow-[0_14px_32px_rgba(72,104,135,0.18)]
+                         hover:-translate-y-0.5 hover:shadow-[0_18px_34px_rgba(72,104,135,0.24)]"
             >
-              Submit Your Resume
+              <span className="absolute inset-0 bg-white/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <span className="relative z-10 inline-flex items-center gap-2">
+                Submit Your Resume
+                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
             </button>
           </div>
         </div>

@@ -122,21 +122,73 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition-all duration-300 transform hover:scale-[1.01] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
+                className="w-full group relative overflow-hidden border border-[#5f7f9d] bg-gradient-to-r from-[#5f7f9d] to-[#486887] text-white font-bold py-4 rounded-xl
+                           transition-all duration-300 ease-out shadow-[0_14px_32px_rgba(72,104,135,0.18)] inline-flex items-center justify-center gap-2
+                           hover:-translate-y-0.5 hover:border-[#486887] hover:text-white
+                           hover:shadow-[0_18px_36px_rgba(72,104,135,0.24)] disabled:opacity-70 disabled:cursor-not-allowed"
               >
+                <span className="absolute inset-0 bg-[#3f5f7d] translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0" />
                 {isSubmitting ? (
-                  <>
-                    <svg className="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24">
+                  <span className="relative z-10 inline-flex items-center gap-2">
+                    <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                     </svg>
                     Sending...
-                  </>
+                  </span>
                 ) : (
-                  "Send Message"
+                  <span className="relative z-10 inline-flex items-center gap-2">
+                    Send Message
+                    <Send size={18} className="transition-transform duration-300 ease-out group-hover:translate-x-1" />
+                  </span>
                 )}
               </button>
             </form>
+
+            <div className="mt-8 rounded-2xl border border-[#1e3a8a]/10 bg-gradient-to-br from-[#f8fbff] to-[#eef4fb] p-5 md:p-6">
+              <div className="flex flex-col md:flex-row gap-5 md:items-center">
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-9 h-9 rounded-full bg-[#1e3a8a]/10 flex items-center justify-center">
+                      <Phone size={18} className="text-[#1e3a8a]" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#1e3a8a]/70">What Happens Next</p>
+                      <h3 className="text-lg font-bold text-slate-900">A quick and clear response process</h3>
+                    </div>
+                  </div>
+                  <div className="space-y-3 text-sm text-slate-600">
+                    <div className="flex items-start gap-3">
+                      <span className="mt-0.5 h-6 w-6 rounded-full bg-white border border-[#1e3a8a]/10 text-[#1e3a8a] flex items-center justify-center text-xs font-bold">1</span>
+                      <p>We review your message and understand the scope, location, and timeline.</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <span className="mt-0.5 h-6 w-6 rounded-full bg-white border border-[#1e3a8a]/10 text-[#1e3a8a] flex items-center justify-center text-xs font-bold">2</span>
+                      <p>Our team reaches out with the next steps, budget guidance, or a site visit plan.</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <span className="mt-0.5 h-6 w-6 rounded-full bg-white border border-[#1e3a8a]/10 text-[#1e3a8a] flex items-center justify-center text-xs font-bold">3</span>
+                      <p>You get a practical conversation focused on timelines, quality, and delivery.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="w-full md:w-44 shrink-0">
+                  <div className="relative h-36 rounded-2xl overflow-hidden border border-[#1e3a8a]/10 bg-white/80">
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(30,58,138,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(30,58,138,0.06)_1px,transparent_1px)] bg-[size:18px_18px]" />
+                    <svg viewBox="0 0 180 140" className="absolute inset-0 h-full w-full">
+                      <rect x="34" y="68" width="80" height="34" rx="4" fill="#ffffff" stroke="#1e3a8a" strokeWidth="2" />
+                      <rect x="48" y="54" width="28" height="14" fill="#dbeafe" stroke="#1e3a8a" strokeWidth="2" />
+                      <rect x="82" y="46" width="18" height="22" fill="#eff6ff" stroke="#1e3a8a" strokeWidth="2" />
+                      <path d="M30 102h92" stroke="#1e3a8a" strokeWidth="2" strokeLinecap="round" />
+                      <path d="M124 44l16 0 0 14" stroke="#1e3a8a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <circle cx="140" cy="58" r="3" fill="#1e3a8a" />
+                      <path d="M118 84c8-12 22-18 36-18" stroke="#1e3a8a" strokeWidth="2" strokeDasharray="4 4" fill="none" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* RIGHT COLUMN: Address Block + Embedded Map + Office Hours */}

@@ -165,8 +165,19 @@ export default function AboutUs() {
               Arvish Constructions is committed to delivering reliable and high-quality construction solutions with a focus on precision, durability, and timely execution.
             </p>
             <div className="flex flex-wrap gap-4">
-              <button onClick={() => window.location.href = "/contact"} className="px-8 py-3.5 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-all shadow-[0_8px_20px_rgba(37,99,235,0.25)] hover:shadow-[0_10px_25px_rgba(37,99,235,0.4)]">
-                Discuss Your Project
+              <button
+                onClick={() => window.location.href = "/contact"}
+                className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-2xl
+                           border border-[#4f6478]/15 bg-gradient-to-r from-[#4f6478] to-[#3f5366] px-8 py-4
+                           text-white font-semibold shadow-[0_16px_34px_rgba(63,83,102,0.18)]
+                           transition-all duration-300 ease-out hover:-translate-y-0.5
+                           hover:shadow-[0_20px_40px_rgba(63,83,102,0.24)]"
+              >
+                <span className="absolute inset-0 bg-white/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <span className="relative z-10">Discuss Your Project</span>
+                <svg className="relative z-10 h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                </svg>
               </button>
             </div>
           </motion.div>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { motion, useInView, useAnimation } from "framer-motion";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import { Factory, Warehouse, Cog, Zap, CheckCircle, Building2, TrendingUp, MapPin } from "lucide-react";
+import { Factory, Warehouse, Cog, Zap, CheckCircle, Building2, TrendingUp, MapPin, ArrowRight } from "lucide-react";
 
 // ─── Animated SVG Hero Illustration ────────────────────────────────────────
 function HeroIllustration() {
@@ -347,22 +347,22 @@ export default function Industrial() {
     Warehouse: (
       <svg viewBox="0 0 80 60" className="w-full h-full" fill="none">
         <rect x="5" y="25" width="70" height="30" fill="#bfdbfe" rx="2" />
-        <polygon points="0,27 40,5 80,27" fill="#1d4ed8" />
-        <rect x="18" y="35" width="14" height="20" fill="#60a5fa" rx="1" />
-        <rect x="48" y="35" width="14" height="20" fill="#60a5fa" rx="1" />
+        <polygon points="0,27 40,5 80,27" fill="#6f8dac" />
+        <rect x="18" y="35" width="14" height="20" fill="#8db5df" rx="1" />
+        <rect x="48" y="35" width="14" height="20" fill="#8db5df" rx="1" />
         <rect x="33" y="38" width="15" height="17" fill="#93c5fd" rx="1" />
-        {[0, 1, 2].map(i => <line key={i} x1="33" y1={41 + i * 5} x2="48" y2={41 + i * 5} stroke="#1d4ed8" strokeWidth="0.8" opacity="0.4" />)}
+        {[0, 1, 2].map(i => <line key={i} x1="33" y1={41 + i * 5} x2="48" y2={41 + i * 5} stroke="#6f8dac" strokeWidth="0.8" opacity="0.4" />)}
       </svg>
     ),
     "Manufacturing Unit": (
       <svg viewBox="0 0 80 60" className="w-full h-full" fill="none">
         <rect x="5" y="20" width="50" height="35" fill="#bfdbfe" rx="2" />
         <rect x="55" y="30" width="22" height="25" fill="#dbeafe" rx="2" />
-        <rect x="5" y="20" width="50" height="6" fill="#1d4ed8" rx="1" />
-        <rect x="14" y="30" width="10" height="12" fill="#60a5fa" rx="1" />
-        <rect x="30" y="30" width="10" height="12" fill="#60a5fa" rx="1" />
-        <rect x="15" y="10" width="6" height="14" fill="#3b82f6" rx="2" />
-        <rect x="28" y="5" width="6" height="18" fill="#3b82f6" rx="2" />
+        <rect x="5" y="20" width="50" height="6" fill="#6f8dac" rx="1" />
+        <rect x="14" y="30" width="10" height="12" fill="#8db5df" rx="1" />
+        <rect x="30" y="30" width="10" height="12" fill="#8db5df" rx="1" />
+        <rect x="15" y="10" width="6" height="14" fill="#7ea0c2" rx="2" />
+        <rect x="28" y="5" width="6" height="18" fill="#7ea0c2" rx="2" />
         <circle cx="18" cy="8" r="5" fill="white" opacity="0.5" />
         <circle cx="31" cy="3" r="4" fill="white" opacity="0.4" />
       </svg>
@@ -370,21 +370,21 @@ export default function Industrial() {
     "Storage Unit": (
       <svg viewBox="0 0 80 60" className="w-full h-full" fill="none">
         <rect x="8" y="18" width="64" height="37" fill="#bfdbfe" rx="3" />
-        <rect x="8" y="18" width="64" height="8" fill="#1e3a8a" rx="2" />
-        <rect x="8" y="18" width="64" height="3" fill="#1d4ed8" />
+        <rect x="8" y="18" width="64" height="8" fill="#587895" rx="2" />
+        <rect x="8" y="18" width="64" height="3" fill="#6f8dac" />
         {[0, 1, 2, 3].map(i => <rect key={i} x={14 + i * 16} y="32" width="10" height="23" fill="#93c5fd" rx="1" />)}
-        <rect x="30" y="38" width="22" height="17" fill="#60a5fa" rx="1" />
-        {[0, 1, 2].map(i => <line key={i} x1="30" y1={41 + i * 5} x2="52" y2={41 + i * 5} stroke="#1d4ed8" strokeWidth="0.8" opacity="0.4" />)}
+        <rect x="30" y="38" width="22" height="17" fill="#8db5df" rx="1" />
+        {[0, 1, 2].map(i => <line key={i} x1="30" y1={41 + i * 5} x2="52" y2={41 + i * 5} stroke="#6f8dac" strokeWidth="0.8" opacity="0.4" />)}
       </svg>
     ),
     "Industrial Shed": (
       <svg viewBox="0 0 80 60" className="w-full h-full" fill="none">
         <rect x="4" y="28" width="72" height="27" fill="#bfdbfe" rx="2" />
-        <polygon points="0,30 40,8 80,30" fill="#1d4ed8" opacity="0.85" />
+        <polygon points="0,30 40,8 80,30" fill="#6f8dac" opacity="0.9" />
         <rect x="10" y="36" width="15" height="19" fill="#93c5fd" rx="1" />
         <rect x="34" y="36" width="15" height="19" fill="#93c5fd" rx="1" />
         <rect x="57" y="36" width="15" height="19" fill="#93c5fd" rx="1" />
-        {[0, 1, 2].map(i => <line key={i} x1={10 + i * 23} y1="36" x2={25 + i * 23} y2="36" stroke="#1d4ed8" strokeWidth="0.8" opacity="0.3" />)}
+        {[0, 1, 2].map(i => <line key={i} x1={10 + i * 23} y1="36" x2={25 + i * 23} y2="36" stroke="#6f8dac" strokeWidth="0.8" opacity="0.3" />)}
       </svg>
     ),
   };
@@ -787,37 +787,63 @@ export default function Industrial() {
       {/* ══════════════════════════════════════════════════
           CTA SECTION
           ══════════════════════════════════════════════════ */}
-      <section className="py-20 px-6" style={{ background: "linear-gradient(135deg, #e0f2fe 0%, #bae6fd 60%, #ffffff 100%)" }}>
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="py-24 px-6 bg-white">
+        <div className="relative max-w-5xl mx-auto overflow-hidden rounded-[2rem] border border-[#1e3a8a]/10 bg-[#f6f9fc] px-6 py-16 shadow-[0_28px_70px_rgba(148,163,184,0.12)] md:px-10">
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(30,58,138,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(30,58,138,0.04)_1px,transparent_1px)] bg-[size:32px_32px]" />
+          <div className="absolute -top-24 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-[#9ab9d6]/20 blur-3xl" />
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#1e3a8a]/20 to-transparent" />
+          <div className="absolute inset-x-10 bottom-0 h-px bg-gradient-to-r from-transparent via-[#1e3a8a]/12 to-transparent" />
+          <div className="relative text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            {/* Decorative circles — lightened for the new palette */}
-            <div className="flex justify-center gap-2 mb-6">
-              {[12, 8, 5].map((s, i) => (
-                <div key={i} className="rounded-full bg-blue-400/30" style={{ width: s * 4, height: s * 4 }} />
-              ))}
+            <div className="flex justify-center items-center gap-3 mb-6">
+              <div className="w-10 h-px bg-[#1e3a8a]/35" />
+              <span className="text-xs font-bold text-[#1e3a8a] uppercase tracking-[0.24em]">Start Today</span>
+              <div className="w-10 h-px bg-[#1e3a8a]/35" />
             </div>
-            <h2 className="font-display text-4xl md:text-5xl font-extrabold text-slate-800 mb-5">
+            <h2 className="font-display text-4xl md:text-5xl font-extrabold text-slate-900 mb-5">
               Ready to Build Something Exceptional?
             </h2>
             <p className="text-slate-600 text-lg mb-10 max-w-xl mx-auto">
               Let's discuss your industrial project. Our team is ready to deliver on time, within budget.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/projects" className="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-colors shadow-lg inline-flex items-center justify-center">
-                Start Your Project
+              <Link
+                to="/projects"
+                className="group relative overflow-hidden px-8 py-4 bg-gradient-to-r from-[#5f7f9d] to-[#486887] text-white font-bold rounded-xl
+                           transition-all duration-300 ease-out shadow-[0_14px_32px_rgba(72,104,135,0.18)]
+                           hover:-translate-y-0.5 hover:shadow-[0_18px_36px_rgba(72,104,135,0.24)] inline-flex items-center justify-center gap-2"
+              >
+                <span className="absolute inset-0 bg-white/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <span className="relative z-10">Start Your Project</span>
+                <ArrowRight className="relative z-10 h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-0.5" />
               </Link>
-              <Link to="/contact" className="px-8 py-4 border-2 border-blue-300 text-slate-700 font-semibold rounded-xl hover:bg-blue-50 transition-colors inline-flex items-center justify-center">
-                Contact Us →
+              <Link
+                to="/contact"
+                className="group relative overflow-hidden px-8 py-4 border border-[#1e3a8a]/20 bg-white text-[#1e3a8a] font-semibold
+                           rounded-xl shadow-sm inline-flex items-center justify-center gap-2 transition-all duration-300 ease-out
+                           hover:-translate-y-0.5 hover:border-[#1e3a8a]/35 hover:text-white
+                           hover:shadow-[0_14px_32px_rgba(30,58,138,0.18)]"
+              >
+                <span className="absolute inset-0 bg-[#1e3a8a] translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0" />
+                <span className="relative z-10">Contact Us</span>
+                <ArrowRight className="relative z-10 h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-1" />
               </Link>
             </div>
           </motion.div>
+          </div>
         </div>
       </section>
+
+      <div className="bg-white px-6 pb-10">
+        <div className="max-w-5xl mx-auto">
+          <div className="h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
+        </div>
+      </div>
 
       <Footer />
     </div>

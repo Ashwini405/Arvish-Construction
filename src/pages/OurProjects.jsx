@@ -752,9 +752,16 @@ export default function OurProjects() {
               </p>
               <div className="flex gap-3">
                
-                <Link to="/contact" className="px-6 py-3.5 border border-[#1e3a8a]/20 bg-white text-[#1e3a8a] font-semibold
-                                   text-sm rounded-xl hover:bg-slate-50 transition-colors duration-300 shadow-sm inline-flex items-center justify-center">
-                  Contact Us
+                <Link
+                  to="/contact"
+                  className="group relative overflow-hidden px-6 py-3.5 border border-[#1e3a8a]/20 bg-white text-[#1e3a8a] font-semibold
+                             text-sm rounded-xl shadow-sm inline-flex items-center justify-center gap-2
+                             transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#1e3a8a]/35
+                             hover:text-white hover:shadow-[0_14px_32px_rgba(30,58,138,0.18)]"
+                >
+                  <span className="absolute inset-0 bg-[#1e3a8a] translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0" />
+                  <span className="relative z-10">Contact Us</span>
+                  <ArrowRight className="relative z-10 h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-1" />
                 </Link>
               </div>
             </div>

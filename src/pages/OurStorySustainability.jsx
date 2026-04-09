@@ -63,7 +63,7 @@ export default function SustainabilityPage() {
       {/* ════════════════════════════════════════
           HERO SECTION — Environmental Blueprint
           ════════════════════════════════════════ */}
-      <div className="relative pt-32 pb-24 overflow-hidden border-b border-slate-200 bg-white">
+      <div className="relative pt-5 pb-24 overflow-hidden border-b border-slate-200 bg-white">
         
         {/* Soft background grid */}
         <div className="absolute inset-0 pointer-events-none z-0">
