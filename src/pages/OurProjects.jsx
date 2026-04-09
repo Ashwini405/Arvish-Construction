@@ -726,7 +726,6 @@ export default function OurProjects() {
         {/* Blueprint accent lines */}
         <div className="absolute top-0 left-12 w-px h-full bg-[#1e3a8a]/10" />
         <div className="absolute top-0 left-24 w-px h-full bg-[#1e3a8a]/5" />
-        <div className="absolute bottom-12 left-0 w-full h-px bg-[#1e3a8a]/10" />
 
         {/* Ghost letters */}
         <span className="absolute right-8 top-1/2 -translate-y-1/2 font-display

@@ -868,8 +868,8 @@ const FoundationSVG = () => (
    Data & Component
 ══════════════════════════════════════════════════════════════════ */
 const stats = [
-  { value:"50+", label:"Projects Completed" },
-  { value:"5+",   label:"Years Experience"   },
+  { value:"25+", label:"Projects Completed" },
+  { value:"9+",   label:"Years Experience"   },
   { value:"25+",  label:"Happy Clients"     },
   { value:"100%", label:"Quality Assurance" },
 ];
@@ -1379,7 +1379,7 @@ export default function HeroProjects() {
               <span className="site-section-kicker">Our Projects</span>
               <h1 className="site-section-title" style={{ maxWidth: "10ch" }}>
                 Build the <span className="site-section-accent">Future</span><br />
-                with us.
+                with us
               </h1>
             </div>
 
@@ -1390,7 +1390,7 @@ export default function HeroProjects() {
             <button className="hp-view-all" style={{marginTop:"45px"}} onClick={() => navigate('/projects')}>
               <span className="hp-view-all-text">
                 <span>View All Projects</span>
-                <span className="hp-view-all-sub">50+ Projects Completed</span>
+                <span className="hp-view-all-sub">25+ Projects Completed</span>
               </span>
               <span className="hp-view-all-arrow">↗</span>
             </button>
@@ -1415,8 +1415,7 @@ export default function HeroProjects() {
                   className={`hp-card${i===0?" hp-cl":""}${vis.c.includes(i)?" pop":""}`}
                 >
                   <div className="hp-svg">{c.svg}</div>
-                  <div className="hp-ov"/>
-                  {i===0 && <div className="hp-cloc">HYD</div>}
+                  
                   <div className="hp-ci">
                     <div>
                       <div className="hp-ccat" style={{color:c.accent}}>{c.cat}</div>

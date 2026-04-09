@@ -544,7 +544,7 @@ export default function AboutGlassSection() {
             {/* ── KICKER ── */}
             <div style={{ display: "flex", alignItems: "center" }}>
               <span className="kicker-line" />
-              <span style={{ fontSize: 12, fontWeight: 700, color: "#2563eb", letterSpacing: "0.1em", textTransform: "uppercase" }}>Building Excellence</span>
+              <span style={{ fontSize: 12, fontWeight: 700, color: "#0c1527", letterSpacing: "0.1em", textTransform: "uppercase" }}>Building Excellence</span>
             </div>
 
             {/* ── HEADLINE ── */}
@@ -559,7 +559,7 @@ export default function AboutGlassSection() {
               }}>
                 Crafting Strong<br />
                 Foundations for the{" "}
-                <span className="heading-underline" style={{ color: "#2563eb" }}>Future.</span>
+                <span className="" style={{ color: "#4f86c6" }}>Future</span>
               </h2>
               <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.7, marginTop: 16, marginBottom: 0, maxWidth: "55ch" }}>
                 With years of experience in the construction industry, we deliver residential, commercial & retail, educational & healthcare, and industrial projects with a strong commitment to quality, reliability, and timely completion.
