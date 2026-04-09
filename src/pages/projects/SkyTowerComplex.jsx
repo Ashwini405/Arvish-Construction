@@ -490,46 +490,47 @@ const specs = [
           <div className="absolute bottom-0 left-0 right-0 h-72 bg-gradient-to-t from-white via-white/75 to-transparent" />
           <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-white/50 to-transparent" />
 
-          <div className="relative z-10 container mx-auto px-6 pt-24 pb-0">
+          <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-20 sm:pt-24 md:pt-32 pb-0">
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur border border-slate-200 rounded-full px-4 py-1.5 mb-8 shadow-sm">
+            <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur border border-slate-200 rounded-full px-3 sm:px-4 py-1.5 mb-6 sm:mb-8 shadow-sm">
               <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-              <span className="text-xs font-medium tracking-widest text-slate-500 uppercase">Hyderabad · Commercial · Completed</span>
+              <span className="text-xs font-medium tracking-widest text-slate-500 uppercase hidden sm:inline">Hyderabad · Commercial · Completed</span>
+              <span className="text-xs font-medium tracking-widest text-slate-500 uppercase sm:hidden">Hyderabad</span>
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-bold text-slate-900 mb-3 leading-[0.92] tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-slate-900 mb-2 sm:mb-3 leading-[1.0] sm:leading-[0.92] tracking-tight">
               Commercial<br />
               <span className="text-blue-600">Office</span>
             </h1>
-            <p className="text-sm font-semibold text-blue-500 tracking-widest mb-7 uppercase">G + 8 Floors · Curtain Wall Facade</p>
+            <p className="text-xs sm:text-sm font-semibold text-blue-500 tracking-widest mb-5 sm:mb-7 uppercase">G + 8 Floors · Curtain Wall Facade</p>
 
-            <p className="text-base md:text-lg text-slate-500 max-w-xl mb-10 leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-slate-500 max-w-xl mb-8 sm:mb-10 leading-relaxed">
               A 40,000 sq ft premium commercial office building in Hyderabad — designed for modern business operations with efficient layouts, energy-efficient glazing, and BMS-integrated infrastructure.
             </p>
 
             {/* Status pill */}
-            <div className="inline-flex items-center gap-3 bg-green-50 border border-green-200 rounded-full px-5 py-2.5 shadow-sm">
+            <div className="inline-flex items-center gap-2 sm:gap-3 bg-green-50 border border-green-200 rounded-full px-4 sm:px-5 py-2 sm:py-2.5 shadow-sm text-xs sm:text-sm">
               <div className="w-2 h-2 rounded-full bg-green-500" />
-              <span className="text-green-700 text-sm font-semibold tracking-wide">Completed — Handed Over 2024</span>
+              <span className="text-green-700 font-semibold tracking-wide">Completed — Handed Over 2024</span>
             </div>
           </div>
         </section>
 
         {/* ── COUNTERS ── */}
-        <section className="py-5 border-y border-slate-100 bg-white">
-          <div className="container mx-auto px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-slate-100">
+        <section className="py-4 sm:py-5 border-y border-slate-100 bg-white">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-0 sm:divide-x divide-slate-100">
               {[
                 { ref: areaRef,  count: areaCount,  suffix: '',  unit: 'Sq Ft',   label: 'Total Built-up Area' },
                 { ref: floorRef, count: floorCount,  suffix: '',  unit: 'Floors',  label: 'G + 8 Structure'     },
                 { ref: parkRef,  count: parkCount,   suffix: '+', unit: 'Cars',    label: 'Basement Parking'    },
                 { ref: yearRef,  count: yearCount,   suffix: '',  unit: 'Year',    label: 'Project Completed'   },
               ].map(({ ref, count, suffix, unit, label }) => (
-                <div key={label} ref={ref} className="text-center py-8 px-4 group">
-                  <div className="text-4xl md:text-5xl font-bold text-slate-900 tabular-nums mb-1">{label === 'Project Completed' ? count.toString() : count.toLocaleString()}{suffix}</div>
+                <div key={label} ref={ref} className="text-center py-5 sm:py-8 px-2 sm:px-4 group">
+                  <div className="text-2xl sm:text-4xl md:text-5xl font-bold text-slate-900 tabular-nums mb-1">{label === 'Project Completed' ? count.toString() : count.toLocaleString()}{suffix}</div>
                   <div className="text-xs font-semibold text-blue-500 tracking-widest uppercase mb-1">{unit}</div>
-                  <div className="text-xs text-slate-400 tracking-wide">{label}</div>
-                  <div className="mt-3 h-0.5 w-8 bg-blue-400 mx-auto group-hover:w-16 transition-all duration-500" />
+                  <div className="text-xs text-slate-400 tracking-wide hidden sm:block">{label}</div>
+                  <div className="mt-2 sm:mt-3 h-0.5 w-6 sm:w-8 bg-blue-400 mx-auto group-hover:w-10 sm:group-hover:w-16 transition-all duration-500" />
                 </div>
               ))}
             </div>
@@ -592,25 +593,25 @@ const specs = [
         </section>
 
         {/* ── FEATURES ── */}
-        <section className="py-24 bg-white border-t border-slate-100">
-          <div className="container mx-auto px-6">
+        <section className="py-16 sm:py-24 bg-slate-50 border-t border-slate-100">
+          <div className="container mx-auto px-4 sm:px-6">
             <div className="max-w-2xl mb-14">
               <div className="inline-flex items-center gap-3 mb-4">
               <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
               <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">building features</span>
               <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
             </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 leading-tight mb-2 sm:mb-0">
                 Built for<br /><span className="text-blue-600">Business</span>
               </h2>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
               {features.map((f, i) => (
-                <div key={i} className="group p-7 bg-slate-50 border border-slate-100 hover:border-blue-200 rounded-2xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-50">
-                  <div className="mb-5 group-hover:scale-105 transition-transform duration-300">{f.icon}</div>
-                  <h4 className="text-sm font-bold text-slate-800 mb-2">{f.title}</h4>
-                  <p className="text-slate-400 text-sm leading-relaxed">{f.desc}</p>
-                  <div className="mt-5 h-0.5 w-0 group-hover:w-full transition-all duration-500" style={{ background: f.accent }} />
+                <div key={i} className="group p-5 sm:p-6 bg-slate-50 border border-slate-100 hover:border-blue-200 rounded-2xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-50">
+                  <div className="mb-4 sm:mb-5 group-hover:scale-105 transition-transform duration-300 text-lg sm:text-xl">{f.icon}</div>
+                  <h4 className="text-xs sm:text-sm font-bold text-slate-800 mb-2">{f.title}</h4>
+                  <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">{f.desc}</p>
+                  <div className="mt-4 sm:mt-5 h-0.5 w-0 group-hover:w-full transition-all duration-500" style={{ background: f.accent }} />
                 </div>
               ))}
             </div>
@@ -618,29 +619,29 @@ const specs = [
         </section>
 
         {/* ── FLOOR PLAN ── */}
-        <section className="py-24 bg-slate-50 border-t border-slate-100">
-          <div className="container mx-auto px-6 max-w-6xl">
-            <div className="flex flex-col lg:flex-row gap-16 items-start">
+        <section className="py-16 sm:py-24 bg-slate-50 border-t border-slate-100">
+          <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
+            <div className="flex flex-col lg:flex-row gap-6 sm:gap-10 lg:gap-16 items-start">
               <div className="lg:w-3/5 w-full">
                 <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-xl shadow-slate-100">
-                  <div className="bg-white px-4 py-2.5 flex items-center gap-2 border-b border-slate-200">
+                  <div className="bg-white px-3 sm:px-4 py-2 sm:py-2.5 flex items-center gap-2 border-b border-slate-200">
                     <div className="w-2 h-2 rounded-full bg-blue-500" />
                     <span className="text-xs font-medium text-slate-400 tracking-widest uppercase">Typical Floor Plan</span>
                   </div>
                   <OfficePlanSVG />
                 </div>
               </div>
-              <div className="lg:w-2/5 lg:sticky lg:top-28">
-               <div className="inline-flex items-center gap-3 mb-4">
+              <div className="lg:w-2/5 w-full lg:sticky lg:top-28">
+               <div className="inline-flex items-center gap-3 mb-3 sm:mb-4">
               <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
               <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">floor plan</span>
               <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
             </div>
-                <h2 className="text-4xl font-bold text-slate-900 mb-5 leading-tight">Strategic<br /><span className="text-blue-600">Zoning</span></h2>
-                <p className="text-slate-400 text-sm leading-relaxed mb-8">
+                <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 sm:mb-5 leading-tight">Strategic<br /><span className="text-blue-600">Zoning</span></h2>
+                <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
                   Each floor is designed for maximum usability — open workstations, enclosed boardrooms, a welcoming lobby, and clean MEP routing ensure both efficiency and comfort.
                 </p>
-                <div className="space-y-0 border border-slate-100 rounded-xl overflow-hidden">
+                <div className="space-y-0 border border-slate-100 rounded-xl overflow-hidden text-xs sm:text-sm">
                   {[
                     { color: '#2563eb', label: 'Open Office Workstations',    area: '2,100 sq ft' },
                     { color: '#16a34a', label: 'Boardroom + Meeting Rooms',    area: '800 sq ft'   },
@@ -648,9 +649,9 @@ const specs = [
                     { color: '#ea580c', label: 'Utilities and MEP',            area: '400 sq ft'   },
                     { color: '#16a34a', label: 'Parking and Service',          area: '400 sq ft'   },
                   ].map((z, i) => (
-                    <div key={z.label} className={`flex items-center justify-between py-3 px-4 ${i < 4 ? 'border-b border-slate-100' : ''} hover:bg-slate-50 transition-colors`}>
+                    <div key={z.label} className={`flex items-center justify-between py-2 sm:py-3 px-3 sm:px-4 ${i < 4 ? 'border-b border-slate-100' : ''} hover:bg-slate-50 transition-colors`}>
                       <div className="flex items-center gap-3">
-                        <div className="w-2.5 h-2.5 rounded-sm flex-shrink-0" style={{ background: z.color }} />
+                        <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-sm flex-shrink-0" style={{ background: z.color }} />
                         <span className="text-xs text-slate-600">{z.label}</span>
                       </div>
                       <span className="text-xs font-bold text-blue-600">{z.area}</span>

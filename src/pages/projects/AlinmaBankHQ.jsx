@@ -467,55 +467,56 @@ const specs = [
         <Navbar />
 
         {/* ── HERO ───────────────────────────────────────────── */}
-        <section className="relative flex items-center overflow-hidden bg-slate-50 pt-3 pb-8">
-          <div className="container mx-auto px-6 relative z-10">
+        <section className="relative flex items-center overflow-hidden bg-slate-50 pt-12 sm:pt-16 md:pt-20 pb-8 sm:pb-12 md:pb-16">
+          <div className="container mx-auto px-4 sm:px-6 relative z-10">
             
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
               
               {/* ── LEFT: Text Content ── */}
               <div className="text-left max-w-2xl">
                 {/* Architectural Tags */}
-                <div className="inline-flex items-center gap-4 mb-4 overflow-hidden rounded-full border border-blue-200 bg-blue-50 px-6 py-2">
-                  <div className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
-                  <span className="text-xs tracking-[0.2em] text-blue-800 uppercase font-sans font-bold">
+                <div className="inline-flex items-center gap-2 sm:gap-4 mb-4 sm:mb-6 overflow-hidden rounded-full border border-blue-200 bg-blue-50 px-3 sm:px-6 py-1.5 sm:py-2 text-xs">
+                  <div className="w-2 h-2 rounded-full bg-blue-600 animate-pulse flex-shrink-0" />
+                  <span className="tracking-[0.2em] text-blue-800 uppercase font-sans font-bold hidden sm:inline text-xs">
                     Live Project Data
                   </span>
-                  <div className="w-px h-3 bg-blue-300" />
-                  <span className="text-xs tracking-[0.1em] text-slate-600 uppercase font-sans font-medium">
-                    Hyderabad / 2024
+                  <span className="tracking-[0.2em] text-blue-800 uppercase font-sans font-bold sm:hidden text-xs">
+                    Project Data
                   </span>
+                  <div className="w-px h-2 sm:h-3 bg-blue-300" />
+                  <span className="tracking-[0.1em] text-slate-600 uppercase font-sans font-medium flex-shrink-0 text-xs">Hyderabad / 2024</span>
                 </div>
 
                 {/* Main Typography */}
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-4 leading-[1.1] tracking-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-900 mb-2 sm:mb-4 leading-tight tracking-tight">
                   Residential<br />
                   <span className="italic font-light text-blue-600">Villa</span>{' '}
                   <span>Project</span>
                 </h1>
 
-                <p className="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed font-sans font-light">
+                <p className="text-sm sm:text-base md:text-lg text-slate-600 mb-6 sm:mb-8 leading-relaxed font-sans font-light">
                   A 2,500 sq ft private residence conceived as a quiet retreat — where
                   timeless proportions meet the warmth of Hyderabad living through precision engineering.
                 </p>
 
                 {/* Flat & Clean Stat Pills */}
-                <div className="flex gap-4 w-full overflow-x-auto pb-4 scrollbar-hide">
+                <div className="flex gap-2 sm:gap-3 w-full overflow-x-auto pb-2 sm:pb-4 scrollbar-hide">
                   {[
                     { v: '2,500', l: 'sq ft' },
                     { v: 'G+1', l: 'Floors' },
                     { v: '2024', l: 'Delivered' },
                     { v: '8', l: 'Spaces' },
                   ].map(({ v, l }) => (
-                    <div key={l} className="bg-white border flex-shrink-0 border-slate-200 hover:border-blue-400 hover:shadow-md transition-all duration-300 rounded-full px-5 py-2.5 text-slate-900 font-sans whitespace-nowrap">
-                      <span className="font-bold text-blue-600">{v}</span>
-                      <span className="text-slate-500 text-sm ml-2 font-medium tracking-wide">{l}</span>
+                    <div key={l} className="bg-white border flex-shrink-0 border-slate-200 hover:border-blue-400 hover:shadow-md transition-all duration-300 rounded-full px-2.5 sm:px-4 py-1.5 sm:py-2 text-slate-900 font-sans whitespace-nowrap text-xs sm:text-sm">
+                      <span className="font-bold text-blue-600 text-xs sm:text-sm">{v}</span>
+                      <span className="text-slate-500 text-xs ml-1 sm:ml-2 font-medium tracking-wide">{l}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* ── RIGHT: Blueprint Illustration ── */}
-              <div className="relative w-full h-[400px] lg:h-[500px] flex items-center justify-center animate-fade-in-up">
+              <div className="relative w-full h-[280px] sm:h-[350px] md:h-[400px] lg:h-[500px] flex items-center justify-center animate-fade-in-up mt-6 lg:mt-0">
                 <div className="absolute inset-0">
                   <VillaHeroIllustration />
                 </div>
@@ -526,23 +527,23 @@ const specs = [
         </section>
 
         {/* ── COUNTERS ───────────────────────────────────────── */}
-        <section className="py-12 bg-white border-b border-stone-100">
-          <div className="container mx-auto px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+        <section className="py-8 sm:py-12 bg-white border-b border-stone-100">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-8 max-w-4xl mx-auto">
               {[
                 { ref: areaRef, count: areaCount, suffix: ' sq ft', label: 'Built-up Area' },
                 { ref: floorsRef, count: floorsCount, suffix: '', label: 'Storeys' },
                 { ref: roomsRef, count: roomsCount, suffix: '', label: 'Rooms & Spaces' },
                 { ref: yearRef, count: yearCount, suffix: '', label: 'Year Completed' },
               ].map(({ ref, count, suffix, label }) => (
-                <div key={label} ref={ref} className="text-center group py-4">
-                  <div className="text-4xl md:text-5xl font-light text-stone-900 mb-1 tabular-nums">
+                <div key={label} ref={ref} className="text-center group py-3 sm:py-4 px-1 sm:px-2">
+                  <div className="text-2xl sm:text-4xl md:text-5xl font-light text-stone-900 mb-0.5 sm:mb-1 tabular-nums">
                     {label === 'Year Completed' ? count.toString() : count.toLocaleString()}{suffix}
                   </div>
-                  <div className="text-xs tracking-widest uppercase text-stone-400 font-sans">
+                  <div className="text-xs tracking-widest uppercase text-stone-400 font-sans hidden sm:block">
                     {label}
                   </div>
-                  <div className="mt-3 h-px w-8 bg-amber-400 mx-auto group-hover:w-16 transition-all duration-500" />
+                  <div className="mt-2 sm:mt-3 h-px w-6 sm:w-8 bg-amber-400 mx-auto group-hover:w-10 sm:group-hover:w-16 transition-all duration-500" />
                 </div>
               ))}
             </div>
@@ -550,34 +551,34 @@ const specs = [
         </section>
 
         {/* ── FEATURES ───────────────────────────────────────── */}
-        <section className="py-24 bg-[#f9f7f4]">
-          <div className="container mx-auto px-6">
+        <section className="py-16 sm:py-24 bg-[#f9f7f4]">
+          <div className="container mx-auto px-4 sm:px-6">
             <div className="max-w-3xl mx-auto text-center mb-16">
               <div className="inline-flex items-center gap-3 mb-4">
                 <div className="w-8 h-0.5 bg-amber-600 rounded-full"></div>
                 <span className="text-xs font-bold text-amber-600 uppercase tracking-wider">Design Principles</span>
                 <div className="w-8 h-0.5 bg-amber-600 rounded-full"></div>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-stone-900 mb-6 leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-stone-900 mb-4 sm:mb-6 leading-tight">
                 Crafted for the<br />
                 <span className="text-amber-600">Art of Living</span>
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-5xl mx-auto">
               {features.map((f, i) => (
                 <div
                   key={i}
-                  className="group bg-white rounded-2xl p-8 border border-stone-100 hover:border-amber-200 hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
+                  className="group bg-white rounded-2xl p-5 sm:p-6 md:p-8 border border-stone-100 hover:border-amber-200 hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
                   style={{ animationDelay: `${i * 100}ms` }}
                 >
-                  <div className="mb-5 group-hover:scale-110 transition-transform duration-300 inline-block">
+                  <div className="mb-4 sm:mb-5 group-hover:scale-110 transition-transform duration-300 inline-block text-lg sm:text-xl">
                     {f.svg}
                   </div>
-                  <h4 className="text-lg font-semibold text-stone-900 mb-2 group-hover:text-amber-700 transition-colors">
+                  <h4 className="text-base sm:text-lg font-semibold text-stone-900 mb-2 group-hover:text-amber-700 transition-colors">
                     {f.title}
                   </h4>
-                  <p className="text-stone-500 text-sm leading-relaxed font-sans font-light">
+                  <p className="text-stone-500 text-xs sm:text-sm leading-relaxed font-sans font-light">
                     {f.desc}
                   </p>
                 </div>
@@ -587,33 +588,33 @@ const specs = [
         </section>
 
         {/* ── FLOOR PLANS ────────────────────────────────────── */}
-        <section className="py-24 bg-white">
-          <div className="container mx-auto px-6">
+        <section className="py-16 sm:py-24 bg-white">
+          <div className="container mx-auto px-4 sm:px-6">
             <div className="max-w-6xl mx-auto">
-              <div className="flex flex-col lg:flex-row gap-16 items-start">
+              <div className="flex flex-col lg:flex-row gap-6 sm:gap-10 lg:gap-16 items-start">
 
                 {/* Left – Text */}
-                <div className="lg:w-2/5 lg:sticky lg:top-32">
-                  <div className="inline-flex items-center gap-3 mb-4">
+                <div className="lg:w-2/5 w-full lg:sticky lg:top-32">
+                  <div className="inline-flex items-center gap-3 mb-3 sm:mb-4">
                     <div className="w-8 h-0.5 bg-amber-600 rounded-full"></div>
                     <span className="text-xs font-bold text-amber-600 uppercase tracking-wider">Architecture</span>
                     <div className="w-8 h-0.5 bg-amber-600 rounded-full"></div>
                   </div>
-                  <h2 className="text-4xl font-bold text-stone-900 mb-6 leading-tight">
+                  <h2 className="text-3xl sm:text-4xl font-bold text-stone-900 mb-4 sm:mb-6 leading-tight">
                     Thoughtful <span className="text-amber-600">Floor Plans</span>
                   </h2>
-                  <p className="text-stone-500 font-sans font-light leading-relaxed mb-8">
+                  <p className="text-stone-500 font-sans font-light leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">
                     Each room is positioned to maximise natural light, cross-ventilation,
                     and a seamless indoor-outdoor connection with the garden.
                   </p>
 
                   {/* Floor tabs */}
-                  <div className="flex gap-2 mb-6">
+                  <div className="flex gap-2 mb-4 sm:mb-6">
                     {['ground', 'first'].map(f => (
                       <button
                         key={f}
                         onClick={() => setActiveTab(f)}
-                        className={`px-5 py-2 rounded-full text-sm font-sans transition-all ${
+                        className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-sans transition-all ${
                           activeTab === f
                             ? 'bg-stone-900 text-white'
                             : 'bg-stone-100 text-stone-500 hover:bg-stone-200'
@@ -625,7 +626,7 @@ const specs = [
                   </div>
 
                   {/* Specs list */}
-                  <div className="space-y-3">
+                  <div className="space-y-2 sm:space-y-3">
                     {specs.slice(0, 5).map(s => (
                       <div key={s.label} className="flex justify-between items-center py-2 border-b border-stone-100">
                         <span className="text-xs tracking-wider text-stone-400 uppercase font-sans">{s.label}</span>
