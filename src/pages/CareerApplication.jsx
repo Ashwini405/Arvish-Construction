@@ -20,7 +20,7 @@ export default function CareerApplication() {
   return (
     <div className="bg-white min-h-screen">
       <Navbar />
-      <main className="relative pt-24 pb-16">
+      <main className="relative pt-12 pb-16">
         <div className="max-w-6xl mx-auto px-6">
           <div className="mb-10">
             <button

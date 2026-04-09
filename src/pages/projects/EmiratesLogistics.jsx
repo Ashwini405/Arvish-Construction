@@ -290,7 +290,7 @@ import ScrollToTop from '../../components/ScrollToTop';
 ═══════════════════════════════════════════════════════════════════ */
 
 const WarehouseHeroSVG = () => (
-  <svg viewBox="0 0 1200 680" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+  <svg viewBox="0 0 1200 680" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
     <defs>
       <linearGradient id="heroSky" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stopColor="#f0f4ff" />
@@ -382,9 +382,6 @@ const WarehouseHeroSVG = () => (
           <rect x={x - 16} y={223} width={32} height={7} fill="#dbeafe" opacity="0.6" />
         </g>
       ))}
-
-      {/* Amber accent bar */}
-      <rect x="200" y="256" width="750" height="10" fill="#f59e0b" />
 
       {/* Loading docks */}
       {[240, 370, 500, 630, 760].map((x, i) => (
@@ -731,11 +728,11 @@ const IndustrialWarehouseProject = () => {
   ];
 
   const timeline = [
-    { year: '2023', q: 'Q1', title: 'Site & Planning',   desc: 'Geotechnical surveys, DTCP/HMDA approvals, and fire safety clearance obtained.',             color: '#2563eb', bg: '#eff6ff', done: true },
-    { year: '2023', q: 'Q3', title: 'Foundation',        desc: 'Pile foundation, grade beam, and industrial-grade PCC concrete floor slab completed.',       color: '#7c3aed', bg: '#f5f3ff', done: true },
-    { year: '2024', q: 'Q1', title: 'Steel Structure',   desc: '900-tonne steel portal frame erection with sawtooth roofing system complete.',               color: '#16a34a', bg: '#f0fdf4', done: true },
-    { year: '2024', q: 'Q3', title: 'MEP & Cladding',    desc: 'Roof sheeting, wall cladding, HT/LT electrical, fire mains, and plumbing in progress.',     color: '#d97706', bg: '#fffbeb', done: false },
-    { year: '2025', q: 'Q2', title: 'Handover',          desc: 'Dock equipment commissioning, safety systems, landscaping, and building use completion.',    color: '#dc2626', bg: '#fff1f2', done: false },
+    { year: '2024', q: 'Q1', title: 'Site & Planning',   desc: 'Geotechnical surveys, DTCP/HMDA approvals, and fire safety clearance obtained.',             color: '#2563eb', bg: '#eff6ff', done: true },
+    { year: '2024', q: 'Q3', title: 'Foundation',        desc: 'Pile foundation, grade beam, and industrial-grade PCC concrete floor slab completed.',       color: '#7c3aed', bg: '#f5f3ff', done: true },
+    { year: '2025', q: 'Q1', title: 'Steel Structure',   desc: '900-tonne steel portal frame erection with sawtooth roofing system complete.',               color: '#16a34a', bg: '#f0fdf4', done: true },
+    { year: '2026', q: 'Q3', title: 'MEP & Cladding',    desc: 'Roof sheeting, wall cladding, HT/LT electrical, fire mains, and plumbing in progress.',     color: '#d97706', bg: '#fffbeb', done: false },
+    { year: '2026', q: 'Q2', title: 'Handover',          desc: 'Dock equipment commissioning, safety systems, landscaping, and building use completion.',    color: '#dc2626', bg: '#fff1f2', done: false },
   ];
 
   const specs = [
@@ -759,11 +756,11 @@ const IndustrialWarehouseProject = () => {
 
         {/* ── HERO ── */}
         <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-amber-50">
-          <div className="absolute inset-0 opacity-90"><WarehouseHeroSVG /></div>
-          <div className="absolute bottom-0 left-0 right-0 h-72 bg-gradient-to-t from-white via-white/80 to-transparent" />
-          <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white/50 to-transparent" />
+          <div className="absolute inset-0 opacity-95"><WarehouseHeroSVG /></div>
+          <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-white via-white/75 to-transparent" />
+          <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white/50 to-transparent" />
 
-          <div className="relative z-10 container mx-auto px-6 pt-32 pb-24">
+          <div className="relative z-10 container mx-auto px-6 pt-24 pb-0">
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur border border-slate-200 rounded-full px-4 py-1.5 mb-8 shadow-sm">
               <div className="w-1.5 h-1.5 rounded-full bg-amber-400" />
@@ -792,7 +789,7 @@ const IndustrialWarehouseProject = () => {
         </section>
 
         {/* ── COUNTERS ── */}
-        <section className="py-16 border-y border-slate-100 bg-white">
+        <section className="py-6 border-y border-slate-100 bg-white">
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-slate-100">
               {[
@@ -801,7 +798,7 @@ const IndustrialWarehouseProject = () => {
                 { ref: heightRef, count: heightCount,  suffix: '.2', unit: 'Metres',  label: 'Clear Height'      },
                 { ref: dockRef,   count: dockCount,    suffix: '',   unit: 'Units',   label: 'Dock Levellers'    },
               ].map(({ ref, count, suffix, unit, label }) => (
-                <div key={label} ref={ref} className="text-center py-10 px-4 group">
+                <div key={label} ref={ref} className="text-center py-8 px-4 group">
                   <div className="text-4xl md:text-5xl font-bold text-slate-900 tabular-nums mb-1">{count.toLocaleString()}{suffix}</div>
                   <div className="text-xs font-semibold text-amber-500 tracking-widest uppercase mb-1">{unit}</div>
                   <div className="text-xs text-slate-400 tracking-wide">{label}</div>
@@ -816,7 +813,11 @@ const IndustrialWarehouseProject = () => {
         <section className="py-24 bg-slate-50">
           <div className="container mx-auto px-6">
             <div className="max-w-2xl mb-14">
-              <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-3">Engineering Features</p>
+              <div className="inline-flex items-center gap-3 mb-4">
+                <div className="w-8 h-0.5 bg-amber-500 rounded-full"></div>
+                <span className="text-xs font-bold text-amber-500 uppercase tracking-wider">Engineering Features</span>
+                <div className="w-8 h-0.5 bg-amber-500 rounded-full"></div>
+              </div>
               <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
                 Built for<br /><span className="text-amber-500">Industry</span>
               </h2>
@@ -848,7 +849,11 @@ const IndustrialWarehouseProject = () => {
                 </div>
               </div>
               <div className="lg:w-2/5 lg:sticky lg:top-28">
-                <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-3">Floor Plan</p>
+                <div className="inline-flex items-center gap-3 mb-4">
+                  <div className="w-8 h-0.5 bg-amber-500 rounded-full"></div>
+                  <span className="text-xs font-bold text-amber-500 uppercase tracking-wider">Floor Plan</span>
+                  <div className="w-8 h-0.5 bg-amber-500 rounded-full"></div>
+                </div>
                 <h2 className="text-4xl font-bold text-slate-900 mb-5 leading-tight">Strategic<br /><span className="text-amber-500">Zoning</span></h2>
                 <p className="text-slate-400 text-sm leading-relaxed mb-8">
                   The floor plan is zoned for racked storage, a clear-aisle staging area, administrative offices, and a dedicated shipping and receiving zone — designed around forklift circulation paths.
@@ -879,7 +884,11 @@ const IndustrialWarehouseProject = () => {
         <section className="py-24 bg-slate-50 border-t border-slate-100">
           <div className="container mx-auto px-6 max-w-5xl">
             <div className="text-center mb-12">
-              <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-3">Engineering</p>
+              <div className="inline-flex items-center gap-3 mb-4">
+                <div className="w-8 h-0.5 bg-amber-500 rounded-full"></div>
+                <span className="text-xs font-bold text-amber-500 uppercase tracking-wider">Engineering</span>
+                <div className="w-8 h-0.5 bg-amber-500 rounded-full"></div>
+              </div>
               <h2 className="text-4xl font-bold text-slate-900">Structural <span className="text-amber-500">Section</span></h2>
             </div>
             <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-xl shadow-slate-100">
@@ -911,7 +920,11 @@ const IndustrialWarehouseProject = () => {
                 </div>
               </div>
               <div className="lg:w-3/5 w-full">
-                <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-3">Timeline</p>
+                <div className="inline-flex items-center gap-3 mb-4">
+                  <div className="w-8 h-0.5 bg-amber-500 rounded-full"></div>
+                  <span className="text-xs font-bold text-amber-500 uppercase tracking-wider">Timeline</span>
+                  <div className="w-8 h-0.5 bg-amber-500 rounded-full"></div>
+                </div>
                 <h2 className="text-4xl font-bold text-slate-900 mb-10 leading-tight">Construction<br /><span className="text-amber-500">Phases</span></h2>
                 <div className="relative">
                   <div className="absolute left-5 top-0 bottom-0 w-px bg-slate-100" />
@@ -956,7 +969,11 @@ const IndustrialWarehouseProject = () => {
         <section className="py-24 bg-slate-50 border-t border-slate-100">
           <div className="container mx-auto px-6 max-w-5xl">
             <div className="text-center mb-14">
-              <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-3">Technical Data</p>
+              <div className="inline-flex items-center gap-3 mb-4">
+                <div className="w-8 h-0.5 bg-amber-500 rounded-full"></div>
+                <span className="text-xs font-bold text-amber-500 uppercase tracking-wider">Technical Data</span>
+                <div className="w-8 h-0.5 bg-amber-500 rounded-full"></div>
+              </div>
               <h2 className="text-4xl font-bold text-slate-900">Project <span className="text-amber-500">Specifications</span></h2>
             </div>
             <div className="grid md:grid-cols-2 gap-px rounded-2xl overflow-hidden border border-slate-200 bg-slate-200 shadow-xl shadow-slate-100">
@@ -973,7 +990,11 @@ const IndustrialWarehouseProject = () => {
         {/* ── CTA ── */}
         <section className="py-28 bg-slate-900 border-t border-slate-800">
           <div className="container mx-auto px-6 max-w-3xl text-center">
-            <p className="text-xs font-semibold tracking-widest text-amber-400 uppercase mb-4">Commission a Project</p>
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-8 h-0.5 bg-amber-400 rounded-full"></div>
+              <span className="text-xs font-bold text-amber-400 uppercase tracking-wider">Commission a Project</span>
+              <div className="w-8 h-0.5 bg-amber-400 rounded-full"></div>
+            </div>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
               Need an Industrial<br /><span className="text-amber-400">Solution?</span>
             </h2>

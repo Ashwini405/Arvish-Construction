@@ -33,7 +33,8 @@ const sections = [
   },
   {
     title: "Contact Us",
-    content: `If you have any questions regarding this Privacy Policy, please contact us at: Arvish Constructions, Hyderabad, Telangana, India. Email: info@arvishconstructions.com | Phone: +91 XXXXX XXXXX.`,
+    content: `If you have any questions regarding this Privacy Policy, please contact us at: Arvish Constructions, Hyderabad, Telangana, India. Email: arvishconstructions.interiors@gmail.com | Phone:
++91 99665 56804`,
   },
   {
     title: "Legal Compliance",
@@ -128,10 +129,7 @@ export default function PrivacyPolicy() {
             Arvish Constructions values your privacy and is committed to protecting your personal
             information with transparency and responsibility.
           </p>
-          <p className="text-gray-500 text-sm mt-6 flex items-center justify-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-[#D4A13A]" />
-            Last updated: March 2026
-          </p>
+          
         </div>
       </section>
 

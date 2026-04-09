@@ -440,7 +440,7 @@ export default function OurProjects() {
 
               <p className="fu d3 text-slate-500 text-lg leading-relaxed max-w-md mb-8">
                 Residential, commercial, industrial and educational construction across
-                Hyderabad and Telangana — engineered for decades of performance.
+                Hyderabad and Telangana — engineered for decade of performance.
               </p>
 
               <div className="fu d4 flex items-center gap-3">

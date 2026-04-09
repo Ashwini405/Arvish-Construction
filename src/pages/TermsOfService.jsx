@@ -45,7 +45,8 @@ const sections = [
   },
   {
     title: "Contact",
-    content: `For any questions regarding these Terms, please contact us at: Arvish Constructions, Hyderabad, Telangana, India. Email: info@arvishconstructions.com | Phone: +91 XXXXX XXXXX.`,
+    content: `For any questions regarding these Terms, please contact us at: Arvish Constructions, Hyderabad, Telangana, India. Email: arvishconstructions.interiors@gmail.com | Phone:
++91 99665 56804`,
   },
 ];
 
@@ -134,10 +135,7 @@ export default function TermsOfService() {
           <p className="text-gray-300 text-base md:text-lg mt-4 max-w-2xl mx-auto leading-relaxed">
             Please read these terms carefully before using the Arvish Constructions website or our services.
           </p>
-          <p className="text-gray-500 text-sm mt-6 flex items-center justify-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-[#D4A13A]" />
-            Last updated: March 2026
-          </p>
+          
         </div>
       </section>
 

@@ -1,247 +1,4 @@
-// import React from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import { motion } from 'framer-motion';
-// import Navbar from '../../components/Navbar';
-// import Footer from '../../components/Footer';
-// import ScrollToTop from '../../components/ScrollToTop';
 
-// const CommercialOfficeProject = () => {
-//   const navigate = useNavigate();
-
-//   const stats = [
-//     { value: '40,000', label: 'sq ft Area', accent: true },
-//     { value: '1', label: 'Building', accent: false },
-//     { value: '2024', label: 'Completed', accent: true },
-//     { value: 'Hyderabad', label: 'Location', accent: false },
-//   ];
-
-//   const timeline = [
-//     { year: '2023', title: 'Planning', desc: 'Project planning, design, and site preparation.' },
-//     { year: '2023', title: 'Foundation Work', desc: 'Foundation and structural base construction.' },
-//     { year: '2024', title: 'Structure Completion', desc: 'Main building structure completed.' },
-//     { year: '2024', title: 'Finishing', desc: 'Interior and exterior finishing works.' },
-//     { year: '2024', title: 'Project Handover', desc: 'Final inspection and project delivery.' },
-//   ];
-
-//   const gallery = [
-//     'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&h=800&fit=crop',
-//     'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=800&fit=crop',
-//     'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=800&fit=crop',
-//     'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1200&h=800&fit=crop',
-//     'https://images.unsplash.com/photo-1517457373958-b7bdd4587206?w=1200&h=800&fit=crop',
-//     'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&h=800&fit=crop',
-//   ];
-
-//   return (
-//     <>
-//       <ScrollToTop />
-//       <div className="min-h-screen bg-white overflow-hidden">
-//         <Navbar />
-
-//         {/* Animated Background Orbs */}
-//         <div className="fixed inset-0 pointer-events-none overflow-hidden">
-//           <div className="absolute top-20 -left-20 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-float" />
-//           <div className="absolute bottom-20 -right-20 w-96 h-96 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-float-delayed" />
-//         </div>
-
-//         {/* HERO SECTION */}
-//         <section className="relative pt-32 pb-24 overflow-hidden">
-//           <div className="absolute inset-0">
-//             <img
-//               src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=2000&h=1200&fit=crop"
-//               alt="Commercial Office Building Project"
-//               className="w-full h-full object-cover"
-//             />
-//             <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-indigo-900/70 to-slate-900/80" />
-//           </div>
-//           <div className="relative z-10 container mx-auto px-6 text-center">
-//             <motion.div
-//               initial={{ opacity: 0, y: 30 }}
-//               animate={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.8 }}
-//             >
-//               <div className="inline-flex items-center gap-3 mb-6">
-//                 <div className="w-8 h-0.5 bg-white/50 rounded-full" />
-//                 <span className="text-xs font-bold text-white/80 uppercase tracking-wider">
-//                   Hyderabad • Commercial Project
-//                 </span>
-//                 <div className="w-8 h-0.5 bg-white/50 rounded-full" />
-//               </div>
-//               <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
-//                 Commercial Office
-//               </h1>
-//               <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-12 leading-relaxed">
-//                 A commercial office building designed to support modern business operations with efficient layouts, durable construction, and practical design.
-//               </p>
-
-            
-
-              
-//             </motion.div>
-//           </div>
-//         </section>
-
-//         {/* PROJECT OVERVIEW */}
-//         <section className="py-24 px-6 bg-white">
-//           <div className="max-w-7xl mx-auto">
-//             <div className="grid lg:grid-cols-2 gap-16 items-center">
-//               <motion.div
-//                 initial={{ opacity: 0, x: -30 }}
-//                 whileInView={{ opacity: 1, x: 0 }}
-//                 transition={{ duration: 0.7 }}
-//                 viewport={{ once: true }}
-//               >
-//                 <div className="inline-flex items-center gap-3 mb-4">
-//                   <div className="w-8 h-0.5 bg-blue-600 rounded-full" />
-//                   <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">
-//                     Project Overview
-//                   </span>
-//                 </div>
-//                 <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-2 mb-6 leading-tight">
-//                   Functional and Modern<br />
-//                   <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-//                     Commercial Spaces
-//                   </span>
-//                 </h2>
-//                 <p className="text-gray-600 text-lg leading-relaxed mb-8">
-//                   This project focuses on creating a practical and efficient office space suitable for business operations. The building is designed with proper planning, ensuring durability, functionality, and ease of use.
-//                 </p>
-//                 <div className="space-y-6">
-//                   <div className="flex items-start gap-4">
-//                     <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0" />
-//                     <div>
-//                       <h4 className="font-bold text-gray-900 text-lg mb-1">Efficient Layout Design</h4>
-//                       <p className="text-gray-500">
-//                         Optimized office spaces for better productivity and usage.
-//                       </p>
-//                     </div>
-//                   </div>
-//                   <div className="flex items-start gap-4">
-//                     <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0" />
-//                     <div>
-//                       <h4 className="font-bold text-gray-900 text-lg mb-1">Quality Construction</h4>
-//                       <p className="text-gray-500">
-//                         Built using reliable materials ensuring strength and durability.
-//                       </p>
-//                     </div>
-//                   </div>
-//                   <div className="flex items-start gap-4">
-//                     <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0" />
-//                     <div>
-//                       <h4 className="font-bold text-gray-900 text-lg mb-1">Practical Infrastructure</h4>
-//                       <p className="text-gray-500">
-//                         Includes essential facilities like parking and utility support.
-//                       </p>
-//                     </div>
-//                   </div>
-//                 </div>
-//               </motion.div>
-
-//               <motion.div
-//                 initial={{ opacity: 0, scale: 0.95 }}
-//                 whileInView={{ opacity: 1, scale: 1 }}
-//                 transition={{ duration: 0.7 }}
-//                 viewport={{ once: true }}
-//                 className="relative"
-//               >
-//                 <img
-//                   src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=1000&fit=crop"
-//                   alt="Prestige Business Park rendering"
-//                   className="w-full h-auto rounded-2xl shadow-2xl"
-//                 />
-//                 <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/10 via-transparent to-indigo-500/10 rounded-2xl blur-xl" />
-//               </motion.div>
-//             </div>
-//           </div>
-//         </section>
-
-//         {/* TIMELINE */}
-//         <section className="py-24 px-6 bg-gradient-to-r from-blue-50 to-indigo-50">
-//           <div className="max-w-6xl mx-auto">
-//             <motion.div
-//               initial={{ opacity: 0, y: 20 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6 }}
-//               viewport={{ once: true }}
-//               className="text-center mb-16"
-//             >
-//               <div className="inline-flex items-center gap-3 mb-4">
-//                 <div className="w-8 h-0.5 bg-blue-600 rounded-full" />
-//                 <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">
-//                   Project Timeline
-//                 </span>
-//                 <div className="w-8 h-0.5 bg-blue-600 rounded-full" />
-//               </div>
-//               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-2">
-//                 From Vision to Reality
-//               </h2>
-//             </motion.div>
-
-//             <div className="relative">
-//               <div className="absolute left-1/2 -translate-x-1/2 w-1 h-full bg-blue-200 rounded-full hidden md:block" />
-//               <div className="space-y-12">
-//                 {timeline.map((item, idx) => (
-//                   <div
-//                     key={idx}
-//                     className={`flex flex-col md:flex-row items-center gap-8 ${
-//                       idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-//                     }`}
-//                   >
-//                     <div className="flex-1">
-//                       <div
-//                         className={`p-6 rounded-xl bg-white shadow-md hover:shadow-lg transition-all ${
-//                           idx % 2 === 0 ? 'md:mr-8' : 'md:ml-8'
-//                         }`}
-//                       >
-//                         <div className="flex items-center gap-4 mb-3">
-//                           <div className="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center font-bold text-xl text-white shadow-md">
-//                             {item.year}
-//                           </div>
-//                           <h4 className="text-xl font-bold text-gray-900">{item.title}</h4>
-//                         </div>
-//                         <p className="text-gray-600 leading-relaxed">{item.desc}</p>
-//                       </div>
-//                     </div>
-//                     <div className="hidden md:flex w-10 h-10 bg-blue-600 rounded-full items-center justify-center text-white font-bold shadow-md z-10">
-//                       {idx + 1}
-//                     </div>
-//                     <div className="flex-1 hidden md:block" />
-//                   </div>
-//                 ))}
-//               </div>
-//             </div>
-//           </div>
-//         </section>
-
-      
-
-       
-
-//         <Footer />
-
-//         {/* Custom Animations */}
-//         <style>{`
-//           @keyframes float {
-//             0%, 100% { transform: translateY(0px) rotate(0deg); }
-//             50% { transform: translateY(-20px) rotate(5deg); }
-//           }
-//           @keyframes float-delayed {
-//             0%, 100% { transform: translateY(0px) rotate(0deg); }
-//             50% { transform: translateY(20px) rotate(-5deg); }
-//           }
-//           .animate-float {
-//             animation: float 8s ease-in-out infinite;
-//           }
-//           .animate-float-delayed {
-//             animation: float-delayed 10s ease-in-out infinite;
-//           }
-//         `}</style>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default CommercialOfficeProject;
 
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -255,7 +12,7 @@ import ScrollToTop from '../../components/ScrollToTop';
 ═══════════════════════════════════════════════════════════════════ */
 
 const OfficeHeroSVG = () => (
-  <svg viewBox="0 0 1200 680" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+  <svg viewBox="0 0 1200 680" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
     <defs>
       <linearGradient id="offSky" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stopColor="#eef4ff" />
@@ -662,8 +419,8 @@ const CommercialOfficeProject = () => {
           <text x="36" y="14" textAnchor="middle" fontSize="8" fill="#15803d" fontWeight="700">A</text>
         </svg>
       ),
-      title: 'Green Building Rating',
-      desc: 'Designed to meet IGBC Green Building standards with energy-efficient systems and sustainable materials.',
+      title: 'Efficient Design',
+      desc: 'Designed with a focus on energy efficiency and practical building performance.',
       accent: '#16a34a',
     },
     {
@@ -679,7 +436,7 @@ const CommercialOfficeProject = () => {
         </svg>
       ),
       title: 'Basement Parking',
-      desc: '120-car capacity basement parking with automated management system and 24/7 CCTV surveillance.',
+      desc: '120-car capacity basement parking with automated management system and secure parking facility designed for safe vehicle management.',
       accent: '#7c3aed',
     },
     {
@@ -694,8 +451,8 @@ const CommercialOfficeProject = () => {
           <line x1="26" y1="8" x2="26" y2="14" stroke="#ea580c" strokeWidth="0.8" />
         </svg>
       ),
-      title: 'BMS Integration',
-      desc: 'Fully integrated Building Management System controlling HVAC, lighting, energy, and fire safety in real time.',
+      title: 'Building Systems',
+      desc: 'Well-planned electrical, lighting, and ventilation systems for smooth building operation.',
       accent: '#ea580c',
     },
   ];
@@ -708,18 +465,18 @@ const CommercialOfficeProject = () => {
     { year: '2024', q: 'Q3', title: 'Interiors & Handover',    desc: 'Lobby fit-out, lift installation, landscaping, occupancy certificate, and client handover.',            color: '#16a34a', bg: '#f0fdf4', done: true },
   ];
 
-  const specs = [
-    { label: 'Total Built-up',  value: '40,000 sq ft'     },
-    { label: 'Plot Area',       value: '0.9 Acres'         },
-    { label: 'Building Height', value: 'G + 8 Floors'      },
-    { label: 'Floor Plate',     value: '4,200 sq ft'       },
-    { label: 'Parking',         value: '120 Cars (B1+B2)'  },
-    { label: 'Structure',       value: 'RCC Framed'        },
-    { label: 'Facade',          value: 'Curtain Wall'      },
-    { label: 'HVAC',            value: 'VRF + AHU System'  },
-    { label: 'Fire System',     value: 'NBC 2016 Compliant'},
-    { label: 'Rating',          value: 'IGBC Green'        },
-  ];
+const specs = [
+  { label: 'Total Built-up', value: '40,000 sq ft' },
+  { label: 'Plot Area', value: 'Approx. 1 Acre' },
+  { label: 'Building Height', value: 'G + 8 Floors' },
+  { label: 'Floor Space', value: 'Spacious Layouts' },
+  { label: 'Parking', value: 'Basement Parking Available' },
+  { label: 'Structure', value: 'RCC Construction' },
+  { label: 'Facade', value: 'Modern Exterior Design' },
+  { label: 'Utilities', value: 'Electrical & Water Systems' },
+  { label: 'Safety', value: 'Basic Safety Measures' },
+  { label: 'Design', value: 'Functional & Efficient' },
+];
 
   return (
     <>
@@ -728,12 +485,12 @@ const CommercialOfficeProject = () => {
         <Navbar />
 
         {/* ── HERO ── */}
-        <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-slate-50 to-indigo-50">
+        <section className="relative min-h-screen w-full flex flex-col justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-slate-50 to-indigo-50">
           <div className="absolute inset-0 opacity-95"><OfficeHeroSVG /></div>
           <div className="absolute bottom-0 left-0 right-0 h-72 bg-gradient-to-t from-white via-white/75 to-transparent" />
           <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-white/50 to-transparent" />
 
-          <div className="relative z-10 container mx-auto px-6 pt-32 pb-24">
+          <div className="relative z-10 container mx-auto px-6 pt-24 pb-0">
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur border border-slate-200 rounded-full px-4 py-1.5 mb-8 shadow-sm">
               <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
@@ -747,7 +504,7 @@ const CommercialOfficeProject = () => {
             <p className="text-sm font-semibold text-blue-500 tracking-widest mb-7 uppercase">G + 8 Floors · Curtain Wall Facade</p>
 
             <p className="text-base md:text-lg text-slate-500 max-w-xl mb-10 leading-relaxed">
-              A 40,000 sq ft Grade-A commercial office building in Hyderabad — designed for modern business operations with efficient layouts, energy-efficient glazing, and BMS-integrated infrastructure.
+              A 40,000 sq ft premium commercial office building in Hyderabad — designed for modern business operations with efficient layouts, energy-efficient glazing, and BMS-integrated infrastructure.
             </p>
 
             {/* Status pill */}
@@ -759,7 +516,7 @@ const CommercialOfficeProject = () => {
         </section>
 
         {/* ── COUNTERS ── */}
-        <section className="py-16 border-y border-slate-100 bg-white">
+        <section className="py-5 border-y border-slate-100 bg-white">
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-slate-100">
               {[
@@ -768,8 +525,8 @@ const CommercialOfficeProject = () => {
                 { ref: parkRef,  count: parkCount,   suffix: '+', unit: 'Cars',    label: 'Basement Parking'    },
                 { ref: yearRef,  count: yearCount,   suffix: '',  unit: 'Year',    label: 'Project Completed'   },
               ].map(({ ref, count, suffix, unit, label }) => (
-                <div key={label} ref={ref} className="text-center py-10 px-4 group">
-                  <div className="text-4xl md:text-5xl font-bold text-slate-900 tabular-nums mb-1">{count.toLocaleString()}{suffix}</div>
+                <div key={label} ref={ref} className="text-center py-8 px-4 group">
+                  <div className="text-4xl md:text-5xl font-bold text-slate-900 tabular-nums mb-1">{label === 'Project Completed' ? count.toString() : count.toLocaleString()}{suffix}</div>
                   <div className="text-xs font-semibold text-blue-500 tracking-widest uppercase mb-1">{unit}</div>
                   <div className="text-xs text-slate-400 tracking-wide">{label}</div>
                   <div className="mt-3 h-0.5 w-8 bg-blue-400 mx-auto group-hover:w-16 transition-all duration-500" />
@@ -789,7 +546,11 @@ const CommercialOfficeProject = () => {
                 transition={{ duration: 0.7 }}
                 viewport={{ once: true }}
               >
-                <p className="text-xs font-semibold tracking-widest text-blue-500 uppercase mb-3">Project Overview</p>
+                <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
+              <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">project overview</span>
+              <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
+            </div>
                 <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
                   Functional and<br /><span className="text-blue-600">Modern Spaces</span>
                 </h2>
@@ -834,7 +595,11 @@ const CommercialOfficeProject = () => {
         <section className="py-24 bg-white border-t border-slate-100">
           <div className="container mx-auto px-6">
             <div className="max-w-2xl mb-14">
-              <p className="text-xs font-semibold tracking-widest text-blue-500 uppercase mb-3">Building Features</p>
+              <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
+              <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">building features</span>
+              <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
+            </div>
               <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
                 Built for<br /><span className="text-blue-600">Business</span>
               </h2>
@@ -866,7 +631,11 @@ const CommercialOfficeProject = () => {
                 </div>
               </div>
               <div className="lg:w-2/5 lg:sticky lg:top-28">
-                <p className="text-xs font-semibold tracking-widest text-blue-500 uppercase mb-3">Floor Plan</p>
+               <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
+              <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">floor plan</span>
+              <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
+            </div>
                 <h2 className="text-4xl font-bold text-slate-900 mb-5 leading-tight">Strategic<br /><span className="text-blue-600">Zoning</span></h2>
                 <p className="text-slate-400 text-sm leading-relaxed mb-8">
                   Each floor is designed for maximum usability — open workstations, enclosed boardrooms, a welcoming lobby, and clean MEP routing ensure both efficiency and comfort.
@@ -897,7 +666,11 @@ const CommercialOfficeProject = () => {
         <section className="py-24 bg-white border-t border-slate-100">
           <div className="container mx-auto px-6 max-w-4xl">
             <div className="text-center mb-14">
-              <p className="text-xs font-semibold tracking-widest text-blue-500 uppercase mb-3">Project Timeline</p>
+              <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
+              <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">project timeline</span>
+              <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
+            </div>
               <h2 className="text-4xl font-bold text-slate-900">From Vision<br /><span className="text-blue-600">to Reality</span></h2>
             </div>
             <div className="relative">
@@ -939,7 +712,11 @@ const CommercialOfficeProject = () => {
         <section className="py-24 bg-slate-50 border-t border-slate-100">
           <div className="container mx-auto px-6 max-w-5xl">
             <div className="text-center mb-14">
-              <p className="text-xs font-semibold tracking-widest text-blue-500 uppercase mb-3">Technical Data</p>
+              <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
+              <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">technical data</span>
+              <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
+            </div>
               <h2 className="text-4xl font-bold text-slate-900">Project <span className="text-blue-600">Specifications</span></h2>
             </div>
             <div className="grid md:grid-cols-2 gap-px rounded-2xl overflow-hidden border border-slate-200 bg-slate-200 shadow-xl shadow-slate-100">
@@ -956,7 +733,11 @@ const CommercialOfficeProject = () => {
         {/* ── CTA ── */}
         <section className="py-28 bg-slate-900 border-t border-slate-800">
           <div className="container mx-auto px-6 max-w-3xl text-center">
-            <p className="text-xs font-semibold tracking-widest text-blue-400 uppercase mb-4">Commission a Project</p>
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
+              <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">commission a project</span>
+              <div className="w-8 h-0.5 bg-blue-600 rounded-full"></div>
+            </div>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
               Need a Commercial<br /><span className="text-blue-400">Office Building?</span>
             </h2>
