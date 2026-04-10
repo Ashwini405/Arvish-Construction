@@ -3,6 +3,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import arvishLogo from "../assets/Arvish-Logo-transparent.png";
 
 const PHASES = [
   { label: "Phase 1", name: "Groundworks", status: "Excavation, piling & podium underway.", hint: "Site prep", icon: "ground", pct: 9 },
@@ -820,23 +821,39 @@ export default function Hero() {
         }
         .ah{font-family:'DM Sans',sans-serif;color:var(--ink);min-height:100vh;display:flex;flex-direction:column;background:var(--bg);}
 
-        .ah-nav{height:72px;padding:0 52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:300;background:var(--surface);border-bottom:none;transition:box-shadow .3s;box-shadow:${scrolled?"0 4px 32px rgba(10,22,40,0.08)":"none"};}
-        .ah-brand-wrap{display:flex;align-items:center;gap:14px;text-decoration:none;margin-left:24px;}
-        .ah-brand-icon{display:flex;align-items:center;justify-content:center;width:108px;height:108px;background:linear-gradient(150deg,#0A1628,#1A2E50);
-          display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(10,22,40,0.2);
-          clip-path:polygon(14% 6%,86% 6%,95% 42%,50% 100%,5% 42%);
+        .ah-nav{height:72px;padding:0 52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:300;background:var(--surface);border-bottom:none;transition:box-shadow .3s;box-shadow:${scrolled?"0 4px 32px rgba(10,22,40,0.08)":"none"};overflow:visible;}
+        .ah-brand-wrap{display:flex;align-items:center;gap:12px;text-decoration:none;margin-left:12px;flex-shrink:0;}
+        .ah-brand-icon-wrap{
+          width:146px;height:92px;overflow:hidden;flex-shrink:0;
+          display:flex;align-items:flex-start;justify-content:flex-start;
         }
-        .ah-brand-text{display:flex;flex-direction:column;gap:4px;margin-left:1px;}
+        .ah-brand-logo{
+          width:236px;
+          height:auto;
+          display:block;
+          object-fit:contain;
+          transform:translate(-12px,-16px);
+          transform-origin:left top;
+        }
+        .ah-brand-copy{display:flex;flex-direction:column;line-height:1;}
         .ah-brand-name{
-          font-family:'Playfair Display',Georgia,serif;font-size:34px;font-weight:800;
-          letter-spacing:.04em;text-transform:uppercase;color:#2A4E7A;line-height:.95;
+          font-family:'Playfair Display',serif;
+          font-size:20px;
+          font-weight:700;
+          letter-spacing:.02em;
+          text-transform:uppercase;
+          color:#2A4E7A;
         }
         .ah-brand-sub{
-          font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;
-          letter-spacing:.16em;text-transform:uppercase;color:#A87418;line-height:1;font-weight:800;
+          margin-top:5px;
+          font-size:7px;
+          font-weight:700;
+          letter-spacing:.22em;
+          text-transform:uppercase;
+          color:#A87418;
         }
-        .ah-brand-wrap{display:flex;align-items:center;gap:14px;text-decoration:none;margin-left:24px;}
-        .ah-brand-text{display:flex;flex-direction:column;gap:4px;margin-left:1px;text-decoration:none;color:inherit;}
+        .ah-brand-wrap.night .ah-brand-name{color:#F3F7FC;}
+        .ah-brand-wrap.night .ah-brand-sub{color:#EDBA56;}
         .ah-nav-links{display:flex;align-items:center;margin-left:auto;padding-right:28px;gap:8px;}
         .ah-nav-dropdown{position:relative;}
         .ah-nav-links a,
@@ -1041,15 +1058,15 @@ export default function Hero() {
         .ah-metric-label{font-size:8px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-l);margin-top:5px;line-height:1.4;}
 
         @media(max-width:1000px){
-          .ah-nav{padding:14px 24px 12px;position:relative;height:auto;min-height:108px;}
+          .ah-nav{padding:0 24px;position:relative;height:68px;min-height:68px;overflow:visible;}
           .ah-nav-links{display:none;}
           .ah-nav-toggle{display:flex;}
           .ah-nav-right{display:none;}
-          .ah-brand-wrap{display:flex;align-items:center;justify-content:center;position:relative;width:100%;min-height:108px;margin-left:0;}
-          .ah-brand-icon{position:absolute;left:0;top:50%;transform:translateY(-50%);width:108px;height:108px;}
-          .ah-brand-text{margin:0 auto;text-align:center;padding:0 44px 0 96px;}
-          .ah-brand-name{font-size:26px;}
-          .ah-brand-sub{font-size:10px;}
+          .ah-brand-wrap{display:flex;align-items:center;justify-content:center;position:relative;width:100%;min-height:68px;margin-left:0;overflow:visible;gap:9px;}
+          .ah-brand-icon-wrap{width:112px;height:70px;}
+          .ah-brand-logo{width:178px;height:auto;transform:translate(-10px,-14px);transform-origin:left top;}
+          .ah-brand-name{font-size:17px;}
+          .ah-brand-sub{font-size:6.5px;margin-top:3px;letter-spacing:.16em;}
           .ah-hero{flex-direction:column;height:auto;}
           .ah-left{width:100%;-webkit-mask-image:none;mask-image:none;padding-top:20px;}
           .ah-h1{margin-top:0;}
@@ -1066,17 +1083,20 @@ export default function Hero() {
 
       <div className="ah">
         <nav className="ah-nav">
-          <div className="ah-brand-wrap">
-            <a href="#" className="ah-brand-icon">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-                <polygon points="12,2 22,22 2,22" fill="white" opacity="0.9"/>
-                <polygon points="12,9 17,22 7,22" fill="#C8922A" opacity="0.8"/>
-              </svg>
-            </a>
-            <a href="#" className="ah-brand-text">
+          <div className={`ah-brand-wrap${isNight ? " night" : ""}`}>
+            <Link to="/home" aria-label="Arvish Constructions home">
+              <span className="ah-brand-icon-wrap" aria-hidden="true">
+                <img
+                  src={arvishLogo}
+                  alt=""
+                  className="ah-brand-logo"
+                />
+              </span>
+            </Link>
+            <Link to="/home" aria-label="Arvish Constructions home" className="ah-brand-copy">
               <span className="ah-brand-name">Arvish</span>
               <span className="ah-brand-sub">Constructions</span>
-            </a>
+            </Link>
           </div>
           <button
             type="button"

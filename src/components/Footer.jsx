@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Phone, MapPin, ArrowUp, ArrowRight, Home, Building2, Factory, GraduationCap } from 'lucide-react';
+import arvishLogo from '../assets/Arvish-Logo-transparent.png';
 
 // ----- Data from first footer -----
 const navLinks = [
@@ -352,9 +353,9 @@ export default function Footer() {
            <div className="space-y-4" style={{ animation: 'slideInUp 0.7s ease both', paddingTop: '2.5rem' }}>
               <div className="flex items-center gap-3">
                 <img
-                  src="https://www.arvishconsulting.com/assets/arvish-logo-zo8liOBq.png"
-                  alt="Arvish logo"
-                  className="w-12 h-auto object-contain"
+                  src={arvishLogo}
+                  alt="Arvish Constructions"
+                  className="w-24 h-auto object-contain"
                 />
                 <span className="footer-heading text-4xl font-black tracking-tighter text-slate-800 uppercase">
                   Arvish Constructions

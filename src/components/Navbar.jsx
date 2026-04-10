@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import arvishLogo from "../assets/Arvish-Logo-transparent.png";
 
 const navLinks = [
   { label: "Home",       to: "/home" },
@@ -46,10 +47,11 @@ export default function Navbar() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&family=DM+Sans:wght@400;600;700&display=swap');
         .nb-root {
-          height: clamp(64px, 10vw, 72px); position: sticky; top: 0; z-index: 999;
+          height: 72px; position: sticky; top: 0; z-index: 999;
           display: flex; align-items: center; justify-content: space-between;
           padding: 0 1.25rem;
           background: rgba(255,255,255,0.97);
+          overflow: visible;
 
           backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
           transition: box-shadow .3s;
@@ -57,20 +59,40 @@ export default function Navbar() {
         }
         .nb-root.scrolled { box-shadow: 0 4px 28px rgba(5,22,20,0.10); }
 
-        .nb-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .nb-logo {
-          width: 42px; height: 42px; flex-shrink: 0;
-          background: linear-gradient(150deg,#051614,#0a2e2a);
-          clip-path: polygon(14% 6%,86% 6%,95% 42%,50% 100%,5% 42%);
-          display: flex; align-items: center; justify-content: center;
+        .nb-brand { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; gap: 10px; }
+        .nb-brand-icon-wrap {
+          width: 132px;
+          height: 84px;
+          overflow: hidden;
+          flex-shrink: 0;
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
         }
+        .nb-logo {
+          width: 210px;
+          height: auto;
+          display: block;
+          object-fit: contain;
+          transform: translate(-10px, -14px);
+          transform-origin: left top;
+        }
+        .nb-brand-copy { display: flex; flex-direction: column; line-height: 1; }
         .nb-brand-name {
-          font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 800;
-          color: #051614; letter-spacing: .03em; text-transform: uppercase; line-height: 1;
+          font-family: 'Playfair Display', serif;
+          font-size: 18px;
+          font-weight: 700;
+          letter-spacing: .02em;
+          text-transform: uppercase;
+          color: #051614;
         }
         .nb-brand-sub {
-          font-size: 9px; font-weight: 700; letter-spacing: .18em;
-          text-transform: uppercase; color: #D4A13A; line-height: 1; display: block;
+          margin-top: 4px;
+          font-size: 7px;
+          font-weight: 700;
+          letter-spacing: .2em;
+          text-transform: uppercase;
+          color: #A87418;
         }
 
         .nb-links { 
@@ -117,7 +139,7 @@ export default function Navbar() {
 
         /* Mobile drawer */
         .nb-drawer {
-          display: none; position: fixed; top: clamp(64px, 10vw, 72px); left: 0; right: 0;
+          display: none; position: fixed; top: 72px; left: 0; right: 0;
           background: rgba(255,255,255,0.98); backdrop-filter: blur(12px);
           border-bottom: 1px solid rgba(5,22,20,0.08);
           flex-direction: column; padding: 1rem 1.5rem 1.5rem; gap: 0.5rem;
@@ -128,7 +150,12 @@ export default function Navbar() {
         .nb-drawer .nb-cta { margin-top: 8px; text-align: center; padding: 13px; }
 
 @media (max-width: 860px) {
-          .nb-root { padding: 0 1rem; }
+          .nb-root { padding: 0 1rem; height: 68px; }
+          .nb-brand { gap: 7px; }
+          .nb-brand-icon-wrap { width: 102px; height: 66px; }
+          .nb-logo { width: 164px; transform: translate(-8px, -12px); }
+          .nb-brand-name { font-size: 16px; }
+          .nb-brand-sub { font-size: 6.5px; margin-top: 3px; letter-spacing: .14em; }
           .nb-links, .nb-cta { display: none; }
           .nb-burger { display: flex; }
           .nb-burger span { 
@@ -148,10 +175,10 @@ export default function Navbar() {
           .nb-drawer {
             display: none;
             position: fixed;
-            top: clamp(64px, 10vw, 72px);
+            top: 68px;
             left: 0;
             right: 0;
-            max-height: calc(100vh - clamp(64px, 10vw, 72px));
+            max-height: calc(100vh - 68px);
             overflow-y: auto;
           }
           .nb-drawer.open { display: flex; }
@@ -206,16 +233,13 @@ export default function Navbar() {
       <nav className={`nb-root${scrolled ? " scrolled" : ""}`}>
         {/* Brand */}
         <Link to="/home" className="nb-brand">
-          <div className="nb-logo">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <polygon points="12,2 22,22 2,22" fill="white" opacity="0.9"/>
-              <polygon points="12,9 17,22 7,22" fill="#D4A13A" opacity="0.9"/>
-            </svg>
-          </div>
-          <div>
+          <span className="nb-brand-icon-wrap" aria-hidden="true">
+            <img src={arvishLogo} alt="" className="nb-logo" />
+          </span>
+          <span className="nb-brand-copy">
             <span className="nb-brand-name">Arvish</span>
             <span className="nb-brand-sub">Constructions</span>
-          </div>
+          </span>
         </Link>
 
         {/* Desktop links */}

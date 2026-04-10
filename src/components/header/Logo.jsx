@@ -1,9 +1,13 @@
-const Logo = ({ text = "CityHub", colors = "from-blue-400 to-cyan-300" }) => {
+import arvishLogo from "../../assets/Arvish-Logo-transparent.png";
+
+const Logo = () => {
   return (
     <div className="flex-shrink-0">
-      <h1 className={`text-2xl font-bold bg-gradient-to-r ${colors} bg-clip-text text-transparent`}>
-        {text}
-      </h1>
+      <img
+        src={arvishLogo}
+        alt="Arvish Constructions"
+        className="w-36 h-auto object-contain"
+      />
     </div>
   );
 };
