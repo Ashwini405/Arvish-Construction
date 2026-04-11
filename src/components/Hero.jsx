@@ -1,9 +1,6 @@
-
-
-
 import { useEffect, useState, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import arvishLogo from "../assets/Arvish-Logo-transparent.png";
+import arvishLogo from "../assets/Arvish-Logo-transparent.svg";
 
 const PHASES = [
   { label: "Phase 1", name: "Groundworks", status: "Excavation, piling & podium underway.", hint: "Site prep", icon: "ground", pct: 9 },
@@ -821,80 +818,166 @@ export default function Hero() {
         }
         .ah{font-family:'DM Sans',sans-serif;color:var(--ink);min-height:100vh;display:flex;flex-direction:column;background:var(--bg);}
 
-        .ah-nav{height:72px;padding:0 52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:300;background:var(--surface);border-bottom:none;transition:box-shadow .3s;box-shadow:${scrolled?"0 4px 32px rgba(10,22,40,0.08)":"none"};overflow:visible;}
-        .ah-brand-wrap{display:flex;align-items:center;gap:12px;text-decoration:none;margin-left:12px;flex-shrink:0;}
-        .ah-brand-icon-wrap{
-          width:146px;height:92px;overflow:hidden;flex-shrink:0;
-          display:flex;align-items:flex-start;justify-content:flex-start;
+        /* ── Navbar ── */
+        .ah-nav{
+          height:72px;
+          padding:0 40px;
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          position:sticky;top:0;z-index:300;
+          background:var(--surface);
+          transition:box-shadow .3s;
+          overflow:visible;
+        }
+        .ah-nav.scrolled{ box-shadow:0 4px 32px rgba(10,22,40,0.08); }
+
+        /* ── Brand: logo + text side by side ── */
+        .ah-brand-wrap{
+          display:flex;
+          align-items:center;
+          text-decoration:none;
+          flex-shrink:0;
         }
         .ah-brand-logo{
-          width:236px;
-          height:auto;
-          display:block;
+          width:122px;
+          height:70px;
           object-fit:contain;
-          transform:translate(-12px,-16px);
-          transform-origin:left top;
+          display:block;
+          flex-shrink:0;
         }
-        .ah-brand-copy{display:flex;flex-direction:column;line-height:1;}
+        .ah-brand-copy{
+          display:flex;
+          flex-direction:column;
+          line-height:1;
+          margin-left:10px;
+        }
         .ah-brand-name{
           font-family:'Playfair Display',serif;
-          font-size:20px;
+          font-size:23px;
           font-weight:700;
           letter-spacing:.02em;
           text-transform:uppercase;
           color:#2A4E7A;
         }
         .ah-brand-sub{
-          margin-top:5px;
-          font-size:7px;
+          margin-top:4px;
+          font-size:9px;
           font-weight:700;
           letter-spacing:.22em;
           text-transform:uppercase;
           color:#A87418;
         }
-        .ah-brand-wrap.night .ah-brand-name{color:#F3F7FC;}
-        .ah-brand-wrap.night .ah-brand-sub{color:#EDBA56;}
-        .ah-nav-links{display:flex;align-items:center;margin-left:auto;padding-right:28px;gap:8px;}
+        .ah-brand-wrap.night .ah-brand-name{color:#23324D;}
+        .ah-brand-wrap.night .ah-brand-sub{color:#C8922A;}
+
+        /* ── Desktop nav links ── */
+        .ah-nav-links{
+          display:flex;
+          align-items:center;
+          margin-left:auto;
+          padding-right:20px;
+          gap:4px;
+        }
         .ah-nav-dropdown{position:relative;}
-        .ah-nav-links a,
-        .ah-nav-links button.ah-nav-link{font-size:12.5px;font-weight:700;color:var(--muted);text-decoration:none;letter-spacing:.04em;padding:8px 18px;border-radius:6px;transition:.18s;background:transparent;border:none;cursor:pointer;}
-        .ah-nav-links a:hover,
-        .ah-nav-links button.ah-nav-link:hover{color:var(--ink);background:var(--accent-pale);}
-        .ah-dropdown-menu{position:absolute;top:100%;left:0;min-width:220px;padding:10px 0;margin-top:10px;background:var(--white);border:1px solid var(--border);border-radius:16px;box-shadow:0 24px 48px rgba(10,22,40,0.12);opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .18s ease,transform .18s ease,visibility .18s ease;z-index:400;}
+        .ah-nav-link{
+          font-size:12.5px;font-weight:700;color:var(--muted);
+          text-decoration:none;letter-spacing:.04em;
+          padding:8px 14px;border-radius:6px;transition:.18s;
+          background:transparent;border:none;cursor:pointer;
+          font-family:'DM Sans',sans-serif;
+          white-space:nowrap;
+        }
+        .ah-nav-link:hover{color:var(--ink);background:var(--accent-pale);}
+        .ah-dropdown-menu{
+          position:absolute;top:100%;left:0;min-width:220px;
+          padding:10px 0;margin-top:10px;
+          background:var(--white);
+          border:1px solid var(--border);border-radius:16px;
+          box-shadow:0 24px 48px rgba(10,22,40,0.12);
+          opacity:0;visibility:hidden;
+          transform:translateY(12px);
+          transition:opacity .18s ease,transform .18s ease,visibility .18s ease;
+          z-index:400;
+        }
         .ah-nav-dropdown:hover .ah-dropdown-menu{opacity:1;visibility:visible;transform:translateY(4px);}
-        .ah-dropdown-item{display:block;padding:10px 18px;font-size:12px;font-weight:700;color:var(--muted);text-decoration:none;letter-spacing:.03em;transition:.18s;}
+        .ah-dropdown-item{
+          display:block;padding:10px 18px;
+          font-size:12px;font-weight:700;
+          color:var(--muted);text-decoration:none;
+          letter-spacing:.03em;transition:.18s;
+        }
         .ah-dropdown-item:hover{color:var(--ink);background:var(--accent-pale);}
+
+        /* ── Desktop CTA ── */
         .ah-nav-right{display:flex;align-items:center;gap:16px;}
-        .ah-nav-cta{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:#2A4E7A;border:none;border-radius:6px;padding:11px 24px;cursor:pointer;transition:.22s;}
+        .ah-nav-cta{
+          font-family:'DM Sans',sans-serif;
+          font-size:11px;font-weight:600;
+          letter-spacing:.12em;text-transform:uppercase;
+          color:#fff;background:#2A4E7A;
+          border:none;border-radius:6px;
+          padding:11px 24px;cursor:pointer;transition:.22s;
+          white-space:nowrap;
+        }
         .ah-nav-cta:hover{background:#1A2E50;transform:translateY(-1px);box-shadow:0 8px 24px rgba(10,22,40,0.22);}
 
-        .ah-nav-toggle{display:none;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid rgba(10,22,40,0.12);border-radius:14px;background:transparent;color:var(--ink);cursor:pointer;transition:.22s;}
+        /* ── Hamburger ── */
+        .ah-nav-toggle{
+          display:none;align-items:center;justify-content:center;
+          width:44px;height:44px;
+          border:1px solid rgba(10,22,40,0.12);border-radius:14px;
+          background:transparent;color:var(--ink);cursor:pointer;transition:.22s;
+          z-index:10000;
+        }
         .ah-nav-toggle:hover{background:rgba(10,22,40,0.04);}
         .ah-nav-toggle svg{width:20px;height:16px;}
-        .ah-nav-toggle rect{fill:var(--ink);rx:1;}
 
-        .ah-mobile-menu{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;gap:0.75rem;padding:1rem 24px;background:var(--surface);box-shadow:0 24px 48px rgba(10,22,40,0.12);z-index:299;border-bottom:1px solid var(--border);}
+        /* ── Mobile drawer ── */
+        .ah-mobile-menu{
+          display:none;
+          position:fixed;
+          top:72px;left:0;right:0;
+          max-height:calc(100vh - 72px);overflow-y:auto;
+          flex-direction:column;gap:0.5rem;
+          padding:1rem 24px 1.5rem;
+          background:var(--surface);
+          box-shadow:0 24px 48px rgba(10,22,40,0.12);
+          z-index:9999;
+          border-bottom:1px solid var(--border);
+          pointer-events:auto;
+        }
         .ah-mobile-menu.open{display:flex;}
-        .ah-mobile-menu a,
-        .ah-mobile-menu button.ah-nav-link{display:block;font-size:14px;font-weight:700;color:var(--ink);text-decoration:none;padding:14px 16px;border-radius:12px;transition:background .2s,color .2s;background:transparent;border:none;text-align:left;cursor:pointer;}
-        .ah-mobile-menu a:hover,
-        .ah-mobile-menu button.ah-nav-link:hover{background:var(--accent-pale);color:var(--ink);}
-        .ah-mobile-submenu{display:flex;flex-direction:column;gap:0.4rem;}
-        .ah-mobile-submenu-links{display:flex;flex-direction:column;gap:0.35rem;padding-left:1rem;max-height:0;overflow:hidden;opacity:0;transition:max-height .28s ease,opacity .2s ease;}
+        .ah-mobile-menu .ah-nav-link{
+          display:flex;align-items:center;
+          font-size:14px;padding:14px 16px;
+          border-radius:12px;min-height:44px;
+          width:100%;text-align:left;
+          position:relative;z-index:1;
+        }
+        .ah-mobile-menu .ah-nav-cta{
+          width:100%;padding:14px;
+          margin-top:8px;font-size:14px;
+          text-align:center;min-height:44px;
+        }
+        .ah-mobile-submenu{display:flex;flex-direction:column;gap:0.25rem;}
+        .ah-mobile-submenu-links{
+          display:flex;flex-direction:column;gap:0.35rem;padding-left:1rem;
+          max-height:0;overflow:hidden;opacity:0;
+          transition:max-height .28s ease,opacity .2s ease;
+        }
         .ah-mobile-submenu-links.open{max-height:500px;opacity:1;}
-        .ah-mobile-submenu-links a{padding-left:12px;border-radius:10px;}
-        .ah-mobile-menu .ah-nav-cta{width:100%;padding:14px;}
+        .ah-mobile-submenu-links .ah-nav-link{padding-left:12px;border-radius:10px;}
 
+        /* ── Hero layout ── */
         .ah-hero{flex:1;position:relative;display:flex;height:clamp(75vh, 90vw, calc(100vh - 72px));overflow:hidden;}
 
         .ah-right{position:absolute;top:0;right:0;bottom:0;width:58%;display:flex;flex-direction:column;overflow:hidden;transition:background 1.2s ease;}
         .ah-right::after{content:'';position:absolute;top:0;left:0;bottom:0;width:118px;pointer-events:none;z-index:5;transition:background 1.2s ease;}
         .ah-right.day::after  {background:linear-gradient(to right,rgba(255,255,255,0.42) 0%,rgba(255,255,255,0.16) 38%,rgba(255,255,255,0.05) 68%,transparent 100%);}
         .ah-right.night::after{background:linear-gradient(to right,#0D1826,transparent);}
-
         .ah-canvas{flex:1;min-height:0;position:relative;z-index:2;}
         .ah-canvas svg{position:absolute;inset:0;width:100%;height:100%;}
-
         .ah-scene-controls{position:absolute;top:22px;left:24px;z-index:20;display:flex;align-items:center;}
 
         .ah-left{
@@ -913,160 +996,72 @@ export default function Hero() {
         .ah-eyebrow{display:inline-flex;align-items:center;margin-bottom:18px;font-size:9px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);}
         .ah-h1{
           font-family:'Playfair Display',Georgia,serif;font-weight:900;line-height:.88;letter-spacing:-.04em;
-          color:var(--ink);margin-bottom:26px;margin-top:60px;transition:color .6s;text-align:left;
+          margin-bottom:26px;margin-top:60px;transition:color .6s;text-align:left;
           display:flex;flex-direction:column;gap:2px;color:#2A4E7A;
         }
-        .ah-h1 .ah-h1-line1{
-          display:flex;flex-wrap:nowrap;align-items:baseline;gap:.14em;
-          font-size:clamp(2.25rem, 8vw, clamp(48px,4.7vw,76px));
-          white-space:nowrap;
-        }
-        .ah-h1 .ah-h1-line2{
-          display:block;font-size:clamp(1.875rem, 7vw, clamp(34px,3.2vw,54px));
-          letter-spacing:-.03em;margin:8px 0 0 auto;text-align:right;color:#2A4E7A;
-        }
-        .ah-h1 em{
-          color:#A87418;font-style:normal;position:relative;display:inline-block;
-          background:none;
-          -webkit-background-clip:border-box;
-          background-clip:border-box;
-          text-shadow:0 6px 22px rgba(168,116,24,0.14);
-        }
-        .ah-h1 em::after{ content:none; }
+        .ah-h1 .ah-h1-line1{display:flex;flex-wrap:nowrap;align-items:baseline;gap:.14em;font-size:clamp(2.25rem, 8vw, clamp(48px,4.7vw,76px));white-space:nowrap;}
+        .ah-h1 .ah-h1-line2{display:block;font-size:clamp(1.875rem, 7vw, clamp(34px,3.2vw,54px));letter-spacing:-.03em;margin:8px 0 0 auto;text-align:right;color:#2A4E7A;}
+        .ah-h1 em{color:#A87418;font-style:normal;position:relative;display:inline-block;}
         .ah-left.night .ah-h1{color:#D4E4F4;}
         .ah-left.night .ah-h1 .ah-h1-line2{color:#E4EEF8;}
-        .ah-left.night .ah-h1 em{color:#EDBA56;text-shadow:0 8px 26px rgba(237,186,86,0.18);}
+        .ah-left.night .ah-h1 em{color:#EDBA56;}
 
-        /* ── Phase tracker ── */
-        .ah-phases{
-          position:relative;margin-bottom:26px;margin-top:0;
-          padding:20px 18px 20px;
-          border:1px solid var(--border);border-radius:18px;
-          background:rgba(255,255,255,0.82);overflow:visible;
-        }
-        .ah-left.night .ah-phases{
-          background:rgba(255,255,255,0.04);
-          border-color:rgba(255,255,255,0.08);
-        }
-        .ah-phases-fill{display:none;}
-
-        /* ── FIX: align-items:start so active icon expands downward freely ── */
-        .ah-phase-row{
-          display:grid;
-          grid-template-columns:repeat(5,minmax(0,1fr));
-          gap:10px;
-          position:relative;
-          z-index:1;
-          align-items:start;          /* ← was: end — this was causing the squeeze */
-        }
-
-        /* ── FIX: removed min-height, let content size naturally ── */
-        .ah-phase-item{
-          display:flex;flex-direction:column;align-items:center;
-          gap:8px;                    /* ← was: 5px — a bit more air between elements */
-          padding-bottom:4px;
-          transition:opacity .3s ease;
-        }
-        .ah-phase-item.done  { opacity:0.75; }
-        .ah-phase-item.active{ opacity:1; }
-
-        .ah-phase-num{
-          font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-          color:var(--muted-l);
-          transition:color .3s;
-          margin-top:2px;
-        }
-        .ah-phase-item.active .ah-phase-num{ color:var(--accent); }
-        .ah-phase-item.done  .ah-phase-num{ color:rgba(200,146,42,0.55); }
-
-        .ah-phase-label-txt{
-          font-size:8px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-          color:var(--muted-l);line-height:1;
-          transition:color .3s;
-          display:none;
-        }
-        .ah-phase-name-txt{
-          font-size:11px;font-weight:700;color:var(--muted);line-height:1.2;
-          text-align:center;
-          transition:color .3s;
-        }
-        .ah-phase-item.active .ah-phase-name-txt{ color:var(--ink); }
-        .ah-phase-item.done  .ah-phase-name-txt{ color:var(--ink); }
-        .ah-left.night .ah-phase-item.active .ah-phase-name-txt{ color:#D4E4F4; }
-        .ah-left.night .ah-phase-item.done  .ah-phase-name-txt{ color:#C4D8EC; }
-
-        .ah-phase-hint{
-          font-size:9px;color:var(--accent);font-weight:600;
-          letter-spacing:.1em;text-transform:uppercase;line-height:1;
-          margin-top:1px;
-        }
-        .ah-left.night .ah-phase-hint{ color:rgba(237,186,86,0.92); }
+        .ah-phases{position:relative;margin-bottom:26px;padding:20px 18px;border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,0.82);overflow:visible;}
+        .ah-left.night .ah-phases{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.08);}
+        .ah-phase-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;position:relative;z-index:1;align-items:start;}
+        .ah-phase-item{display:flex;flex-direction:column;align-items:center;gap:8px;padding-bottom:4px;transition:opacity .3s ease;}
+        .ah-phase-item.done{opacity:0.75;}
+        .ah-phase-item.active{opacity:1;}
+        .ah-phase-num{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-l);transition:color .3s;margin-top:2px;}
+        .ah-phase-item.active .ah-phase-num{color:var(--accent);}
+        .ah-phase-item.done  .ah-phase-num{color:rgba(200,146,42,0.55);}
+        .ah-phase-name-txt{font-size:11px;font-weight:700;color:var(--muted);line-height:1.2;text-align:center;transition:color .3s;}
+        .ah-phase-item.active .ah-phase-name-txt{color:var(--ink);}
+        .ah-phase-item.done  .ah-phase-name-txt{color:var(--ink);}
+        .ah-left.night .ah-phase-item.active .ah-phase-name-txt{color:#D4E4F4;}
+        .ah-left.night .ah-phase-item.done  .ah-phase-name-txt{color:#C4D8EC;}
+        .ah-phase-hint{font-size:9px;color:var(--accent);font-weight:600;letter-spacing:.1em;text-transform:uppercase;line-height:1;margin-top:1px;}
+        .ah-left.night .ah-phase-hint{color:rgba(237,186,86,0.92);}
 
         @keyframes checkPop{from{transform:scale(0)}to{transform:scale(1)}}
-
-        @keyframes btnPulse{
-          0%,100%{box-shadow:0 14px 34px rgba(42,78,122,0.28);}
-          50%{box-shadow:0 18px 42px rgba(42,78,122,0.44);}
-        }
-        @keyframes arrowBounce{
-          0%,100%{transform:translateX(0);}
-          50%{transform:translateX(3px);}
-        }
+        @keyframes btnPulse{0%,100%{box-shadow:0 14px 34px rgba(42,78,122,0.28);}50%{box-shadow:0 18px 42px rgba(42,78,122,0.44);}}
+        @keyframes arrowBounce{0%,100%{transform:translateX(0);}50%{transform:translateX(3px);}}
+        @keyframes ctaFillSweep{0%{transform:translateX(-135%) skewX(-12deg);}55%{transform:translateX(135%);}100%{transform:translateX(135%);}}
 
         .ah-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px;margin-top:auto;}
         .ah-cta-primary{
-          font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+          font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:10px;
+          font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
           color:#FFFFFF;background:linear-gradient(135deg,#3C689D 0%,#2A4E7A 52%,#1C375A 100%);
-          padding:13px 26px;border:none;border-radius:6px;cursor:pointer;transition:transform .22s,box-shadow .22s,color .22s;
-          position:relative;overflow:hidden;isolation:isolate;
+          padding:13px 26px;border:none;border-radius:6px;cursor:pointer;
+          transition:transform .22s,box-shadow .22s;position:relative;overflow:hidden;isolation:isolate;
           box-shadow:0 14px 34px rgba(42,78,122,0.28);animation:btnPulse 3s ease-in-out infinite;
         }
-        .ah-cta-primary::before{
-          content:'';position:absolute;inset:0;
-          background:linear-gradient(120deg,rgba(255,255,255,0) 18%,rgba(153,191,234,0.34) 50%,rgba(255,255,255,0) 82%);
-          transform:translateX(-135%) skewX(-12deg);
-          animation:ctaFillSweep 2.4s ease-in-out infinite;
-          z-index:0;
-        }
+        .ah-cta-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,255,255,0) 18%,rgba(153,191,234,0.34) 50%,rgba(255,255,255,0) 82%);transform:translateX(-135%) skewX(-12deg);animation:ctaFillSweep 2.4s ease-in-out infinite;z-index:0;}
         .ah-cta-primary svg{animation:arrowBounce 1.8s ease-in-out infinite;}
         .ah-cta-primary>*{position:relative;z-index:1;}
-        .ah-cta-primary:hover{
-          transform:translateY(-2px);
-          box-shadow:0 18px 40px rgba(42,78,122,0.36);
-          color:#FFFFFF;
-        }
-        @keyframes ctaFillSweep{
-          0%{transform:translateX(-135%) skewX(-12deg);}
-          55%{transform:translateX(135%);}
-          100%{transform:translateX(135%);}
-        }
+        .ah-cta-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(42,78,122,0.36);}
         .ah-cta-secondary{font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:transparent;padding:12px 20px;border:1.5px solid var(--border-s);border-radius:6px;cursor:pointer;transition:.2s;}
         .ah-cta-secondary:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-pale);}
 
-        .ah-metrics{display:flex;align-items:flex-end;gap:0;margin-top:auto;padding-top:24px;border-top:none;}
+        .ah-metrics{display:flex;align-items:flex-end;gap:0;margin-top:auto;padding-top:24px;}
         .ah-metric{flex:1;padding:0 20px;position:relative;}
         .ah-metric:first-child{padding-left:0;}
         .ah-metric:last-child{padding-right:0;}
         .ah-metric+.ah-metric::before{content:'';position:absolute;left:0;top:10%;height:80%;width:1px;background:var(--border);}
         .ah-left.night .ah-metric+.ah-metric::before{background:rgba(255,255,255,0.07);}
-        .ah-metric-value{
-          font-family:'Playfair Display',serif;font-size:36px;font-weight:800;line-height:1;
-          background:linear-gradient(135deg,#B98016,#EDBA56 55%,#C8922A);
-          -webkit-background-clip:text;background-clip:text;color:transparent;
-          letter-spacing:-.02em;
-        }
+        .ah-metric-value{font-family:'Playfair Display',serif;font-size:36px;font-weight:800;line-height:1;background:linear-gradient(135deg,#B98016,#EDBA56 55%,#C8922A);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.02em;}
         .ah-metric-label{font-size:8px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-l);margin-top:5px;line-height:1.4;}
 
+        /* ── Responsive ── */
         @media(max-width:1000px){
-          .ah-nav{padding:0 24px;position:relative;height:68px;min-height:68px;overflow:visible;}
-          .ah-nav-links{display:none;}
+          .ah-nav{padding:0 16px;height:68px;}
+          .ah-brand-logo{width:112px;height:64px;}
+          .ah-brand-name{font-size:18px;}
+          .ah-brand-sub{font-size:7.4px;margin-top:3px;}
+          .ah-nav-links,.ah-nav-right{display:none;}
           .ah-nav-toggle{display:flex;}
-          .ah-nav-right{display:none;}
-          .ah-brand-wrap{display:flex;align-items:center;justify-content:center;position:relative;width:100%;min-height:68px;margin-left:0;overflow:visible;gap:9px;}
-          .ah-brand-icon-wrap{width:112px;height:70px;}
-          .ah-brand-logo{width:178px;height:auto;transform:translate(-10px,-14px);transform-origin:left top;}
-          .ah-brand-name{font-size:17px;}
-          .ah-brand-sub{font-size:6.5px;margin-top:3px;letter-spacing:.16em;}
+          .ah-mobile-menu{top:68px;max-height:calc(100vh - 68px);}
           .ah-hero{flex-direction:column;height:auto;}
           .ah-left{width:100%;-webkit-mask-image:none;mask-image:none;padding-top:20px;}
           .ah-h1{margin-top:0;}
@@ -1077,45 +1072,33 @@ export default function Hero() {
         }
         @media(max-width:640px){
           .ah-left{padding:36px 20px 36px;}
-          .ah-h1{font-size:clamp(32px,10vw,48px);}
+          .ah-brand-logo{width:102px;height:58px;}
+          .ah-brand-copy{margin-left:8px;}
+          .ah-brand-name{font-size:16px;}
+          .ah-brand-sub{font-size:6.6px;letter-spacing:.14em;}
         }
       `}</style>
 
       <div className="ah">
-        <nav className="ah-nav">
-          <div className={`ah-brand-wrap${isNight ? " night" : ""}`}>
-            <Link to="/home" aria-label="Arvish Constructions home">
-              <span className="ah-brand-icon-wrap" aria-hidden="true">
-                <img
-                  src={arvishLogo}
-                  alt=""
-                  className="ah-brand-logo"
-                />
-              </span>
-            </Link>
-            <Link to="/home" aria-label="Arvish Constructions home" className="ah-brand-copy">
+
+        {/* ── Navbar ── */}
+        <nav className={`ah-nav${scrolled ? " scrolled" : ""}`}>
+
+          {/* Brand: logo directly beside text, no wrapper tricks */}
+          <Link to="/home" className={`ah-brand-wrap${isNight ? " night" : ""}`} aria-label="Arvish Constructions home">
+            <img src={arvishLogo} alt="Arvish Constructions" className="ah-brand-logo" />
+            <span className="ah-brand-copy">
               <span className="ah-brand-name">Arvish</span>
               <span className="ah-brand-sub">Constructions</span>
-            </Link>
-          </div>
-          <button
-            type="button"
-            className="ah-nav-toggle"
-            onClick={() => setMenuOpen(open => !open)}
-            aria-label="Toggle navigation"
-            aria-expanded={menuOpen}
-          >
-            <svg viewBox="0 0 20 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="0" y="1" width="20" height="2" rx="1" />
-              <rect x="0" y="7" width="20" height="2" rx="1" />
-              <rect x="0" y="13" width="20" height="2" rx="1" />
-            </svg>
-          </button>
+            </span>
+          </Link>
+
+          {/* Desktop links */}
           <nav className="ah-nav-links">
             <Link className="ah-nav-link" to="/about">About</Link>
             <Link className="ah-nav-link" to="/projects">Projects</Link>
             <div className="ah-nav-dropdown">
-              <button type="button" className="ah-nav-link ah-nav-button">Services ▼</button>
+              <button type="button" className="ah-nav-link">Services ▾</button>
               <div className="ah-dropdown-menu">
                 <Link className="ah-dropdown-item" to="/services/residential">Residential</Link>
                 <Link className="ah-dropdown-item" to="/services/commercial-retail">Commercial & Retail</Link>
@@ -1126,22 +1109,40 @@ export default function Hero() {
             <Link className="ah-nav-link" to="/our-story/sustainability">Sustainability</Link>
             <Link className="ah-nav-link" to="/careers">Careers</Link>
           </nav>
+
+          {/* Desktop CTA */}
           <div className="ah-nav-right">
             <button className="ah-nav-cta" onClick={() => navigate('/contact')}>Start a Project</button>
           </div>
+
+          {/* Hamburger */}
+          <button
+            type="button"
+            className="ah-nav-toggle"
+            onClick={() => setMenuOpen(o => !o)}
+            aria-label="Toggle navigation"
+            aria-expanded={menuOpen}
+          >
+            <svg viewBox="0 0 20 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="0" y="1" width="20" height="2" rx="1" fill="currentColor"/>
+              <rect x="0" y="7" width="20" height="2" rx="1" fill="currentColor"/>
+              <rect x="0" y="13" width="20" height="2" rx="1" fill="currentColor"/>
+            </svg>
+          </button>
         </nav>
 
+        {/* ── Mobile drawer ── */}
         <div className={`ah-mobile-menu${menuOpen ? " open" : ""}`}>
           <Link className="ah-nav-link" to="/about" onClick={() => setMenuOpen(false)}>About</Link>
           <Link className="ah-nav-link" to="/projects" onClick={() => setMenuOpen(false)}>Projects</Link>
           <div className="ah-mobile-submenu">
             <button
               type="button"
-              className="ah-nav-link ah-nav-button"
-              onClick={() => setServicesOpen(open => !open)}
+              className="ah-nav-link"
+              onClick={() => setServicesOpen(o => !o)}
               aria-expanded={servicesOpen}
             >
-              Services ▼
+              Services ▾
             </button>
             <div className={`ah-mobile-submenu-links${servicesOpen ? " open" : ""}`}>
               <Link className="ah-nav-link" to="/services/residential" onClick={() => { setMenuOpen(false); setServicesOpen(false); }}>Residential</Link>
@@ -1157,10 +1158,11 @@ export default function Hero() {
           </button>
         </div>
 
+        {/* ── Hero ── */}
         <div className="ah-hero">
           <div className={`ah-left ${isNight?"night":"day"}`}>
             <div className="ah-dot-grid"/>
-            <div className="ah-eyebrow"></div>
+            <div className="ah-eyebrow"/>
             <h1 className="ah-h1">
               <span className="ah-h1-line1">
                 <span>Shaping</span>
@@ -1170,25 +1172,16 @@ export default function Hero() {
             </h1>
 
             <div className="ah-phases">
-              <div
-                className="ah-phases-fill"
-                style={{ width: `calc((100% - 44px) * ${phase / (PHASES.length - 1)})` }}
-              />
               <div className="ah-phase-row">
                 {PHASES.map((ph, i) => {
                   const isDone   = i < phase;
                   const isActive = i === phase;
                   return (
-                    <div
-                      key={i}
-                      className={`ah-phase-item${isActive ? " active" : ""}${isDone ? " done" : ""}`}
-                    >
+                    <div key={i} className={`ah-phase-item${isActive?" active":""}${isDone?" done":""}`}>
                       <PhaseIcon type={ph.icon} active={isActive} done={isDone} />
                       <div className="ah-phase-num">0{i + 1}</div>
                       <div className="ah-phase-name-txt">{ph.name}</div>
-                      {isActive && (
-                        <div className="ah-phase-hint">{ph.hint}</div>
-                      )}
+                      {isActive && <div className="ah-phase-hint">{ph.hint}</div>}
                     </div>
                   );
                 })}
@@ -1230,6 +1223,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
+
       </div>
     </>
   );

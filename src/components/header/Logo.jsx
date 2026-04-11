@@ -1,4 +1,4 @@
-import arvishLogo from "../../assets/Arvish-Logo-transparent.png";
+import arvishLogo from "../../assets/Arvish-Logo-transparent.svg";
 
 const Logo = () => {
   return (

@@ -1,7 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Phone, MapPin, ArrowUp, ArrowRight, Home, Building2, Factory, GraduationCap } from 'lucide-react';
-import arvishLogo from '../assets/Arvish-Logo-transparent.png';
+import arvishLogo from "../assets/Arvish-Logo-transparent.svg";
 
 // ----- Data from first footer -----
 const navLinks = [
@@ -296,7 +297,7 @@ export default function Footer() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Lato:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=DM+Sans:wght@500;700;800&family=Lato:wght@300;400;700&display=swap');
 
         @keyframes spinSlow   { to { transform: rotate(360deg); } }
         @keyframes floatY     { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
@@ -313,6 +314,57 @@ export default function Footer() {
 
         .footer-root { font-family: 'Lato', sans-serif; margin-bottom: 0; padding-bottom: env(safe-area-inset-bottom, 0); }
         .footer-heading { font-family: 'Barlow Condensed', sans-serif; }
+        .footer-brand-lockup {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+        }
+        .footer-brand-logo {
+          width: 108px;
+          height: 62px;
+          object-fit: contain;
+          flex-shrink: 0;
+        }
+        .footer-brand-copy {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+        .footer-brand-name {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 2.8rem;
+          font-weight: 800;
+          letter-spacing: 0.045em;
+          line-height: 0.9;
+          text-transform: uppercase;
+          color: #23324d;
+        }
+        .footer-brand-sub {
+          margin-top: 10px;
+          padding-left: 4px;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.76rem;
+          font-weight: 700;
+          letter-spacing: 0.16em;
+          line-height: 1;
+          text-transform: uppercase;
+          color: #d49b25;
+        }
+
+        @media (max-width: 640px) {
+          .footer-brand-logo {
+            width: 96px;
+            height: 56px;
+          }
+          .footer-brand-name {
+            font-size: 2.15rem;
+            letter-spacing: 0.035em;
+          }
+          .footer-brand-sub {
+            font-size: 0.66rem;
+            letter-spacing: 0.12em;
+          }
+        }
 
         .link-item { position: relative; }
         .link-item::after {
@@ -351,15 +403,20 @@ export default function Footer() {
         <div className="max-w-[1280px] mx-auto px-4 xs:px-6 lg:px-8 py-4 sm:py-6 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 items-center">
             {/* Brand + contact */}
            <div className="space-y-4" style={{ animation: 'slideInUp 0.7s ease both', paddingTop: '2.5rem' }}>
-              <div className="flex items-center gap-3">
+              <div className="footer-brand-lockup">
                 <img
                   src={arvishLogo}
-                  alt="Arvish Constructions"
-                  className="w-24 h-auto object-contain"
+                  alt="Arvish logo"
+                  className="footer-brand-logo"
                 />
-                <span className="footer-heading text-4xl font-black tracking-tighter text-slate-800 uppercase">
-                  Arvish Constructions
-                </span>
+                <div className="footer-brand-copy">
+                  <span className="footer-brand-name">
+                    ARVISH
+                  </span>
+                  <span className="footer-brand-sub">
+                    CONSTRUCTIONS
+                  </span>
+                </div>
               </div>
               <p className="text-slate-500 text-sm leading-relaxed max-w-md">
                 Building reliable and modern construction projects in Hyderabad.

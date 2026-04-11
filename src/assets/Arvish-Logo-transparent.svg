@@ -1,0 +1,22 @@
+<svg width="1120" height="520" viewBox="0 0 1120 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="arvishGold" x1="864" y1="88" x2="864" y2="504" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F6B400"/>
+      <stop offset="1" stop-color="#FFC81A"/>
+    </linearGradient>
+  </defs>
+
+  <g stroke="#050505" stroke-width="16" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M82 468H720"/>
+    <path d="M198 426H720"/>
+
+    <path d="M408 424V136"/>
+    <path d="M538 424V34"/>
+    <path d="M586 424V34"/>
+
+    <path d="M198 306L716 64"/>
+    <path d="M164 372L716 112"/>
+  </g>
+
+  <path d="M740 88L880 200V156H942V242L1040 318H986V504H740V88Z" fill="url(#arvishGold)"/>
+</svg>

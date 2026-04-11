@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Landing.css";
-import arvishLogo from "../assets/Arvish-Logo-transparent.png";
+import arvishLogo from "../assets/Arvish-Logo-transparent.svg";
 
 const Landing = () => {
   const navigate = useNavigate();
