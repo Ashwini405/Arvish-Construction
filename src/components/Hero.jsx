@@ -572,10 +572,18 @@ function Scene({ isNight, pct, phase }) {
               fill="none" stroke="url(#brandCardEdge)" strokeWidth="1.1" opacity="0.95"/>
             <rect x={brandCardX+16} y={brandCardY+15} width="24" height="24" rx="6"
               fill={n?"#10213A":"#11243D"} stroke={n ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.2)"} strokeWidth="0.8"/>
-            <polygon points={`${brandCardX+28},${brandCardY+19} ${brandCardX+36},${brandCardY+35} ${brandCardX+20},${brandCardY+35}`}
-              fill="white" opacity="0.92"/>
-            <polygon points={`${brandCardX+28},${brandCardY+25} ${brandCardX+32},${brandCardY+35} ${brandCardX+24},${brandCardY+35}`}
-              fill={ac} opacity="0.9"/>
+            <g transform={`translate(${brandCardX+19.5}, ${brandCardY+20.2}) scale(0.0185)`}>
+              <g stroke="rgba(255,255,255,0.92)" strokeWidth="34" strokeLinecap="square" strokeLinejoin="miter">
+                <path d="M82 468H720"/>
+                <path d="M198 426H720"/>
+                <path d="M408 424V136"/>
+                <path d="M538 424V34"/>
+                <path d="M586 424V34"/>
+                <path d="M198 306L716 64"/>
+                <path d="M164 372L716 112"/>
+              </g>
+              <path d="M740 88L880 200V156H942V242L1040 318H986V504H740V88Z" fill={ac}/>
+            </g>
             <text x={brandCardX+49} y={brandCardY+20}
               fontFamily="'Rajdhani','DM Sans',sans-serif" fontSize="7.4" fontWeight="700" letterSpacing="1.8"
               fill={n?"rgba(237,186,86,0.98)":"rgba(200,146,42,1)"}>
